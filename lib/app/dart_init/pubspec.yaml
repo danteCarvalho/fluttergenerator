@@ -1,0 +1,26 @@
+name: teste
+description: teste
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: '>=2.17.1 <3.0.0'
+dependencies:
+  intl:
+  http:
+  postgres:
+  json_annotation:
+  json_serializable:
+  jaguar_jwt:
+  uuid:
+  hasura_connect:
+  reflection_factory:
+  reflectable:
+  sentry:
+  mercadopago_sdk:
+  dart_date:
+  dartutils:
+    path: /home/dante/a/projetosFlutter/dartutils
+dev_dependencies:
+  lints:
+  build_runner:
+  test:

@@ -1,0 +1,11 @@
+# Files and directories created by pub
+.dart_tool/
+.packages
+
+# Conventional directory for build outputs
+build/
+
+# Directory created by dartdoc
+doc/api/
+lib/dart_init64.dart
+lib/flutter_init64.dart

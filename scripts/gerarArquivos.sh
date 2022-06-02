@@ -1,0 +1,1 @@
+dart --no-sound-null-safety run lib/main.dart aa

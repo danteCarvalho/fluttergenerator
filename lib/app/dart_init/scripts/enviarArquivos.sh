@@ -1,0 +1,1 @@
+ scp -i /home/dante/OneDrive/trabalho/agentech/ec2/dantehost1.pem build/testeServer.sh        ubuntu@agentech.com.br:/home/ubuntu/teste/

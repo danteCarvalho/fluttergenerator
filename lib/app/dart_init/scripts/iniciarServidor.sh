@@ -1,0 +1,1 @@
+nohup ./testeServer.sh > teste.txt 2>&1 &

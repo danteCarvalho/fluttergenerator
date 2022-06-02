@@ -1,0 +1,57 @@
+name: teste
+description: teste
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  crypto:
+  http:
+  flutter_modular:
+  sembast:
+  sembast_web:
+  shared_preferences:
+  shared_preferences_web:
+  mobx:
+  flutter_mobx:
+  uuid:
+  json_annotation:
+  json_serializable:
+  asuka:
+  path_provider:
+  dart_date:
+  focus_widget:
+  dart_ping:
+  quiver:
+  package_info_plus:
+  network_info_plus:
+  url_launcher:
+  cached_network_image:
+  latlng:
+  map:
+  navigation_history_observer:
+  url_strategy:
+  reflection_factory:
+  reflectable:
+  sentry_flutter:
+  clipboard:
+  mercadopago_sdk:
+  qr_flutter:
+  flutterutils:
+    path: /home/dante/a/projetosFlutter/flutterutils
+  dartutils:
+    path: /home/dante/a/projetosFlutter/dartutils
+dev_dependencies:
+  mobx_codegen:
+  build_runner:
+  flutter_lints:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
+
+  

@@ -1,0 +1,13 @@
+name: flutter_generator
+description: A simple command-line application.
+environment:
+  sdk: '>=2.17.0 <3.0.0'
+dependencies:
+  simple_prompter:
+  path: 
+  recase:
+  archive:
+dev_dependencies:
+  lints:
+  build_runner:
+
