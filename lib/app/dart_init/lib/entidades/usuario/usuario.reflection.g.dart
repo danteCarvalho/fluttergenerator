@@ -127,6 +127,7 @@ class Usuario$reflection extends ClassReflection<Usuario> {
         'dataDelecao',
         'dataEdicao',
         'dataNascimento',
+        'dataPagamento',
         'email',
         'empresa',
         'endereco',
@@ -135,7 +136,10 @@ class Usuario$reflection extends ClassReflection<Usuario> {
         'id2',
         'nome',
         'senha',
-        'telefone'
+        'telefone',
+        'ultimoPagamentoCompleto',
+        'ultimoPagamentoGerado',
+        'valorPagamento'
       ];
 
   @override
@@ -322,6 +326,62 @@ class Usuario$reflection extends ClassReflection<Usuario> {
           true,
           (o) => () => o!.empresa as T,
           (o) => (T? v) => o!.empresa = v as Empresa?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'valorpagamento':
+        return FieldReflection<Usuario, T>(
+          this,
+          Usuario,
+          TypeReflection.tDouble,
+          'valorPagamento',
+          true,
+          (o) => () => o!.valorPagamento as T,
+          (o) => (T? v) => o!.valorPagamento = v as double?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'datapagamento':
+        return FieldReflection<Usuario, T>(
+          this,
+          Usuario,
+          TypeReflection(DateTime),
+          'dataPagamento',
+          true,
+          (o) => () => o!.dataPagamento as T,
+          (o) => (T? v) => o!.dataPagamento = v as DateTime?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'ultimopagamentocompleto':
+        return FieldReflection<Usuario, T>(
+          this,
+          Usuario,
+          TypeReflection(DateTime),
+          'ultimoPagamentoCompleto',
+          true,
+          (o) => () => o!.ultimoPagamentoCompleto as T,
+          (o) => (T? v) => o!.ultimoPagamentoCompleto = v as DateTime?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'ultimopagamentogerado':
+        return FieldReflection<Usuario, T>(
+          this,
+          Usuario,
+          TypeReflection(DateTime),
+          'ultimoPagamentoGerado',
+          true,
+          (o) => () => o!.ultimoPagamentoGerado as T,
+          (o) => (T? v) => o!.ultimoPagamentoGerado = v as DateTime?,
           obj,
           false,
           false,

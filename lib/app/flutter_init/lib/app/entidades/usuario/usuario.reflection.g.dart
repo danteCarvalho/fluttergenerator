@@ -117,15 +117,30 @@ class Usuario$reflection extends ClassReflection<Usuario> {
 
   @override
   List<String> get fieldsNames => const <String>[
+        'admin',
         'ativa',
+        'cep',
+        'cidade',
+        'complemento',
         'context',
+        'cpf',
         'dataCriacao',
         'dataDelecao',
         'dataEdicao',
+        'dataNascimento',
+        'dataPagamento',
         'email',
+        'empresa',
+        'endereco',
+        'estado',
         'id',
         'id2',
-        'nome'
+        'nome',
+        'senha',
+        'telefone',
+        'ultimoPagamentoCompleto',
+        'ultimoPagamentoGerado',
+        'valorPagamento'
       ];
 
   @override
@@ -149,6 +164,20 @@ class Usuario$reflection extends ClassReflection<Usuario> {
           false,
           null,
         );
+      case 'senha':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tString,
+          'senha',
+          true,
+          (o) => () => o!.senha as T,
+          (o) => (T? v) => o!.senha = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
       case 'email':
         return FieldReflection<Usuario, T>(
           this,
@@ -158,6 +187,202 @@ class Usuario$reflection extends ClassReflection<Usuario> {
           true,
           (o) => () => o!.email as T,
           (o) => (T? v) => o!.email = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'cpf':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tString,
+          'cpf',
+          true,
+          (o) => () => o!.cpf as T,
+          (o) => (T? v) => o!.cpf = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'datanascimento':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection(DateTime),
+          'dataNascimento',
+          true,
+          (o) => () => o!.dataNascimento as T,
+          (o) => (T? v) => o!.dataNascimento = v as DateTime?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'endereco':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tString,
+          'endereco',
+          true,
+          (o) => () => o!.endereco as T,
+          (o) => (T? v) => o!.endereco = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'cep':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tString,
+          'cep',
+          true,
+          (o) => () => o!.cep as T,
+          (o) => (T? v) => o!.cep = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'cidade':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tString,
+          'cidade',
+          true,
+          (o) => () => o!.cidade as T,
+          (o) => (T? v) => o!.cidade = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'estado':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tString,
+          'estado',
+          true,
+          (o) => () => o!.estado as T,
+          (o) => (T? v) => o!.estado = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'complemento':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tString,
+          'complemento',
+          true,
+          (o) => () => o!.complemento as T,
+          (o) => (T? v) => o!.complemento = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'telefone':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tString,
+          'telefone',
+          true,
+          (o) => () => o!.telefone as T,
+          (o) => (T? v) => o!.telefone = v as String?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'admin':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tBool,
+          'admin',
+          true,
+          (o) => () => o!.admin as T,
+          (o) => (T? v) => o!.admin = v as bool?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'empresa':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection(Empresa),
+          'empresa',
+          true,
+          (o) => () => o!.empresa as T,
+          (o) => (T? v) => o!.empresa = v as Empresa?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'valorpagamento':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection.tDouble,
+          'valorPagamento',
+          true,
+          (o) => () => o!.valorPagamento as T,
+          (o) => (T? v) => o!.valorPagamento = v as double?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'datapagamento':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection(DateTime),
+          'dataPagamento',
+          true,
+          (o) => () => o!.dataPagamento as T,
+          (o) => (T? v) => o!.dataPagamento = v as DateTime?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'ultimopagamentocompleto':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection(DateTime),
+          'ultimoPagamentoCompleto',
+          true,
+          (o) => () => o!.ultimoPagamentoCompleto as T,
+          (o) => (T? v) => o!.ultimoPagamentoCompleto = v as DateTime?,
+          obj,
+          false,
+          false,
+          null,
+        );
+      case 'ultimopagamentogerado':
+        return FieldReflection<Usuario, T>(
+          this,
+          _UsuarioBase,
+          TypeReflection(DateTime),
+          'ultimoPagamentoGerado',
+          true,
+          (o) => () => o!.ultimoPagamentoGerado as T,
+          (o) => (T? v) => o!.ultimoPagamentoGerado = v as DateTime?,
           obj,
           false,
           false,

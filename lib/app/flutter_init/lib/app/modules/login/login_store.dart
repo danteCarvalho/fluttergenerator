@@ -6,9 +6,9 @@ import '../../app_store.dart';
 
 part 'login_store.g.dart';
 
-class LoginStore = _LoginStoreBase with _$LoginStore;
+class LoginStore = LoginStoreBase with _$LoginStore;
 
-abstract class _LoginStoreBase with Store {
+abstract class LoginStoreBase with Store {
   AppStore app = Modular.get();
 
   init() async {

@@ -6,16 +6,19 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 
-import 'menus/root_app_bar/root_app_bar_widget.dart';
+import 'widgets/root_app_bar_widget.dart';
 import 'app_store.dart';
 
 class AppWidget extends StatefulWidget {
+  const AppWidget({Key? key}) : super(key: key);
+
   @override
-  _AppWidgetState createState() => _AppWidgetState();
+  AppWidgetState createState() => AppWidgetState();
 }
 
-class _AppWidgetState extends State<AppWidget> {
+class AppWidgetState extends State<AppWidget> {
   final AppStore store = Modular.get();
+
   @override
   void initState() {
     super.initState();
@@ -33,7 +36,7 @@ class _AppWidgetState extends State<AppWidget> {
         return MaterialApp.router(
           builder: (context, child) {
             child = Scaffold(
-                appBar: RootAppBarWidget(),
+                appBar: const RootAppBarWidget(),
                 body: child,
                 bottomNavigationBar: const Align(
                   alignment: Alignment.center,

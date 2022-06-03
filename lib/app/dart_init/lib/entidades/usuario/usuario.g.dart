@@ -34,7 +34,17 @@ Usuario _$UsuarioFromJson(Map json) => Usuario()
   ..telefone = json['telefone'] as String?
   ..admin = json['admin'] as bool?
   ..empresa =
-      json['empresa'] == null ? null : Empresa.fromJson(json['empresa'] as Map);
+      json['empresa'] == null ? null : Empresa.fromJson(json['empresa'] as Map)
+  ..valorPagamento = (json['valorPagamento'] as num?)?.toDouble()
+  ..dataPagamento = json['dataPagamento'] == null
+      ? null
+      : DateTime.parse(json['dataPagamento'] as String)
+  ..ultimoPagamentoCompleto = json['ultimoPagamentoCompleto'] == null
+      ? null
+      : DateTime.parse(json['ultimoPagamentoCompleto'] as String)
+  ..ultimoPagamentoGerado = json['ultimoPagamentoGerado'] == null
+      ? null
+      : DateTime.parse(json['ultimoPagamentoGerado'] as String);
 
 Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'id': instance.id,
@@ -56,4 +66,10 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'telefone': instance.telefone,
       'admin': instance.admin,
       'empresa': instance.empresa?.toJson(),
+      'valorPagamento': instance.valorPagamento,
+      'dataPagamento': instance.dataPagamento?.toIso8601String(),
+      'ultimoPagamentoCompleto':
+          instance.ultimoPagamentoCompleto?.toIso8601String(),
+      'ultimoPagamentoGerado':
+          instance.ultimoPagamentoGerado?.toIso8601String(),
     };

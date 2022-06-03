@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
+import '../outros/metodos_estaticos.dart';
 
-import '../../app_store.dart';
+import '../app_store.dart';
 
 
 class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget{
+  const RootAppBarWidget({Key? key}) : super(key: key);
+
   @override
   RootAppBarWidgetState createState() => RootAppBarWidgetState();
 
@@ -36,9 +39,9 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
           return TextButton(
               onPressed: () async {
                 if (kIsWeb) {
-                  app.logarWeb();
+                  googleLoginWeb();
                 } else {
-                  app.logarOS();
+                  googleLoginOs();
                 }
               },
               child: const Text(
@@ -55,6 +58,13 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
           },
           itemBuilder: (BuildContext context) {
             List<PopupMenuItem> list = [];
+            list.add(PopupMenuItem(
+              child: const Text("Mensalidades"),
+              value: (){
+                Modular.to.popUntil((p0) => false);
+                Modular.to.pushReplacementNamed("/mensalidades/");
+              },
+            ));
             list.add(PopupMenuItem(
               child: Text(usuario.nome!),
             ));

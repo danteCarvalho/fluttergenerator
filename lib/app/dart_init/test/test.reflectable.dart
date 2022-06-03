@@ -3,9 +3,12 @@
 // @dart = 2.12
 
 import 'dart:core';
-import 'package:teste/entidades/empresa/empresa.dart' as prefix1;
+import 'package:teste/entidades/empresa/empresa.dart' as prefix4;
 import 'package:teste/entidades/entidade.dart' as prefix2;
-import 'package:teste/entidades/usuario/usuario.dart' as prefix3;
+import 'package:teste/entidades/pagamento/pagamento.dart' as prefix1;
+import 'package:teste/entidades/pagamento_sistema/pagamento_sistema.dart'
+    as prefix3;
+import 'package:teste/entidades/usuario/usuario.dart' as prefix5;
 import 'package:teste/outros/entidade_helper.dart' as prefix0;
 
 // ignore_for_file: camel_case_types
@@ -25,8 +28,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
   const prefix0.Reflector(): r.ReflectorData(
       <m.TypeMirror>[
         r.NonGenericClassMirrorImpl(
-            r'Empresa',
-            r'.Empresa',
+            r'Pagamento',
+            r'.Pagamento',
             7,
             0,
             const prefix0.Reflector(),
@@ -36,7 +39,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix1.Empresa() : null},
+            {r'': (bool b) => () => b ? prefix1.Pagamento() : null},
             -1,
             -1,
             const <int>[-1],
@@ -61,11 +64,11 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null,
             null,
             (o) => false,
-            const <int>[3],
+            const <int>[5],
             1),
         r.NonGenericClassMirrorImpl(
-            r'Usuario',
-            r'.Usuario',
+            r'PagamentoSistema',
+            r'.PagamentoSistema',
             7,
             2,
             const prefix0.Reflector(),
@@ -75,7 +78,43 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix3.Usuario() : null},
+            {r'': (bool b) => () => b ? prefix3.PagamentoSistema() : null},
+            -1,
+            -1,
+            const <int>[-1],
+            null,
+            null),
+        r.NonGenericClassMirrorImpl(
+            r'Empresa',
+            r'.Empresa',
+            7,
+            3,
+            const prefix0.Reflector(),
+            const <int>[3],
+            const <int>[],
+            const <int>[],
+            -1,
+            {},
+            {},
+            {r'': (bool b) => () => b ? prefix4.Empresa() : null},
+            -1,
+            -1,
+            const <int>[-1],
+            null,
+            null),
+        r.NonGenericClassMirrorImpl(
+            r'Usuario',
+            r'.Usuario',
+            7,
+            4,
+            const prefix0.Reflector(),
+            const <int>[4],
+            const <int>[],
+            const <int>[],
+            -1,
+            {},
+            {},
+            {r'': (bool b) => () => b ? prefix5.Usuario() : null},
             -1,
             -1,
             const <int>[-1],
@@ -87,19 +126,25 @@ final _data = <r.Reflectable, r.ReflectorData>{
       <m.DeclarationMirror>[
         r.MethodMirrorImpl(r'', 64, 0, -1, 0, 0, null, const <int>[],
             const prefix0.Reflector(), null),
-        r.MethodMirrorImpl(r'', 64, 1, -1, 3, 1, null, const <int>[],
+        r.MethodMirrorImpl(r'', 64, 1, -1, 5, 1, null, const <int>[],
             const prefix0.Reflector(), null),
         r.MethodMirrorImpl(r'', 64, 2, -1, 2, 2, null, const <int>[],
+            const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'', 64, 3, -1, 3, 3, null, const <int>[],
+            const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'', 64, 4, -1, 4, 4, null, const <int>[],
             const prefix0.Reflector(), null)
       ],
       <m.ParameterMirror>[],
       <Type>[
-        prefix1.Empresa,
+        prefix1.Pagamento,
         prefix2.Entidade,
-        prefix3.Usuario,
+        prefix3.PagamentoSistema,
+        prefix4.Empresa,
+        prefix5.Usuario,
         const r.FakeType(r'.Entidade<T>')
       ],
-      3,
+      5,
       {},
       {},
       null,

@@ -4,12 +4,12 @@ import 'dart:io';
 import 'dart:isolate';
 
 import 'package:sentry/sentry.dart';
-import 'package:teste/schedules/init_schedules.dart';
 
 import 'endpoints/process_request.dart';
 import 'main.reflectable.dart';
 import 'outros/config.dart';
-import 'postgres/criar_banco.dart';
+import 'outros/criar_banco.dart';
+import 'schedules/init_schedules.dart';
 
 main() async {
 

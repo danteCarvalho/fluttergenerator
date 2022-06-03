@@ -2,9 +2,10 @@ import 'dart:math';
 
 import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 import 'package:dart_date/dart_date.dart';
-import 'package:teste/entidades/pagamento_sistema/pagamento_sistema.dart';
-import 'package:teste/hasura/hasura_dao.dart';
-import 'package:teste/outros/excecoes.dart';
+import '../entidades/pagamento_sistema/pagamento_sistema.dart';
+import '../outros/excecoes.dart';
+
+import '../daos/hasura_dao.dart';
 
 MP getMp() {
   // var mp = MP.fromAccessToken("TEST-2997362044584823-052123-be4b79be6d99b0204f4c78faba69711f-154167075");
@@ -35,7 +36,7 @@ buscarPagamentosSistema() async {
         await updateHasura(obj, "ativa");
         continue;
       }
-      var result;
+      Map<String, dynamic> result;
       if (obj.qrCode != null) {
         result = await mp.getPayment(obj.referencia!);
       } else {
@@ -59,9 +60,6 @@ buscarPagamentosSistema() async {
         await updateHasura(obj, "pago dataConfirmado");
       }
     }
-  }
-  catch (e) {
-      rethrow;
   }
   finally{
     Future.delayed(Duration(minutes: 5, seconds: Random().nextInt(60)), buscarPagamentosSistema);

@@ -9,6 +9,7 @@ import '../empresa/empresa.dart';
 import '../entidade.dart';
 
 part 'usuario.g.dart';
+
 part 'usuario.reflection.g.dart';
 
 @JsonSerializable(explicitToJson: true, anyMap: true)
@@ -30,9 +31,11 @@ class Usuario extends Entidade {
   String? telefone;
   bool? admin;
   Empresa? empresa;
+  double? valorPagamento;
   DateTime? dataPagamento;
   DateTime? ultimoPagamentoCompleto;
   DateTime? ultimoPagamentoGerado;
+
 
   static Usuario fromJson(Map map) {
     Map map2 = Usuario().dbMaptoClassMap(map);

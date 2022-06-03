@@ -1,6 +1,6 @@
 import 'package:http/http.dart';
 import 'package:test/test.dart';
-import '../lib/main.dart' as app;
+import 'package:teste/main.dart' as app;
 
 void main() {
   group('test endspoints ', () {

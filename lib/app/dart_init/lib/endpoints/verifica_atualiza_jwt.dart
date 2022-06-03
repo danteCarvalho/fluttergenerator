@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 
+import '../daos/hasura_dao.dart';
 import '../entidades/usuario/usuario.dart';
-import '../hasura/hasura_dao.dart';
 import '../outros/excecoes.dart';
 import '../outros/security.dart';
 

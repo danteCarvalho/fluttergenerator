@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:archive/archive_io.dart';
-import 'package:flutter_generator/app/dart_templates.dart';
+import 'app/dart_templates.dart';
 import 'package:path/path.dart';
 import 'package:recase/recase.dart';
 import 'package:simple_prompter/simple_prompter.dart';
@@ -55,16 +55,15 @@ void main(List args) async {
 
   var prompter = Prompter();
   var options = <Option>[
-    Option(label: 'Flutter Init', value: 'initFlutter'),
-    Option(label: 'Flutter Module', value: 'module'),
-    Option(label: 'Flutter Widget', value: 'widget'),
-    Option(label: 'Flutter ViewModel', value: 'flutterViewModel'),
-    Option(label: 'Flutter Model', value: 'flutterModel'),
-    Option(label: 'Flutter Model Request', value: 'modelRequest'),
-    Option(label: 'Dart Init', value: 'initDart'),
-    Option(label: 'Dart Model', value: 'dartModel'),
-    Option(label: 'Dart Model Endpoint', value: 'modelEndpoint'),
-    Option(label: 'clean', value: 'clean'),
+    Option(label: 'Flutter Init', value: 'FlutterInit'),
+    Option(label: 'Flutter Module', value: 'FlutterModule'),
+    Option(label: 'Flutter Widget', value: 'FlutterWidget'),
+    Option(label: 'Flutter Model', value: 'FlutterModel'),
+    Option(label: 'Flutter ViewModel', value: 'FlutterViewModel'),
+    Option(label: 'Dart Init', value: 'DartInit'),
+    Option(label: 'Dart Model', value: 'DartModel'),
+    Option(label: 'Dart Model Endpoint', value: 'DartModelEndpoint'),
+    Option(label: 'Clean', value: 'Clean'),
   ];
   String option = prompter.askMultiple('what to generate?', options);
 
@@ -85,85 +84,17 @@ void main(List args) async {
     exit(0);
   }
 
-  if (option == 'module') {
-    var directory = Directory(current.path + '/lib/app/' + folder + '/' + name);
-    await directory.create(recursive: true);
-    var module = FlutterTemplates.module.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var page = FlutterTemplates.page.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var moduleFile = File(directory.path + '/' + name + '_module.dart');
-    await moduleFile.writeAsString(module);
-    var pageFile = File(directory.path + '/' + name + '_page.dart');
-    await pageFile.writeAsString(page);
-    var storeFile = File(directory.path + '/' + name + '_store.dart');
-    await storeFile.writeAsString(store);
-    print('done');
-  } else if (option == 'widget') {
-    var directory = Directory(current.path + '/lib/app/' + folder + '/' + name);
-    await directory.create(recursive: true);
-    var comStore = prompter.askBinary("With store?");
-    if (comStore) {
-      var widgetWithStore = FlutterTemplates.widgetWithStore.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-      var widgetFile = File(directory.path + '/' + name + '_widget.dart');
-      await widgetFile.writeAsString(widgetWithStore);
-      var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-      var storeFile = File(directory.path + '/' + name + '_store.dart');
-      await storeFile.writeAsString(store);
-    } else {
-      var widget = FlutterTemplates.widget.replaceAll('WWWW', ReCase(name).pascalCase);
-      var widgetFile = File(directory.path + '/' + name + '_widget.dart');
-      await widgetFile.writeAsString(widget);
-    }
-    print('done');
-  } else if (option == 'flutterViewModel') {
-    var directory = Directory(current.path + '/lib/app/' + folder + '/' + name);
-    await directory.create(recursive: true);
-    var frontModel = FlutterTemplates.flutterViewModel.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var moduleFile = File(directory.path + '/' + name + '_view.dart');
-    await moduleFile.writeAsString(frontModel);
-    print('done');
-  } else if (option == 'flutterModel') {
-    var directory = Directory(current.path + '/lib/app/' + folder + '/' + name);
-    await directory.create(recursive: true);
-    var frontModel = FlutterTemplates.flutterModel.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var moduleFile = File(directory.path + '/' + name + '.dart');
-    await moduleFile.writeAsString(frontModel);
-    print('done');
-  } else if (option == 'dartModel') {
-    var directory = Directory(current.path + '/lib/' + folder + '/' + name);
-    await directory.create(recursive: true);
-    var frontModel = DartTemplates.dartModel.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var moduleFile = File(directory.path + '/' + name + '.dart');
-    await moduleFile.writeAsString(frontModel);
-    print('done');
-  } else if (option == 'modelEndpoint') {
-    var directory = Directory(current.path + '/lib/' + folder + '/' + name);
-    await directory.create(recursive: true);
-    var addEdPoint = DartTemplates.addEndPoint.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var editEdPoint = DartTemplates.editEndPoint.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    File(directory.path + '/add_' + name + '.dart').writeAsString(addEdPoint);
-    File(directory.path + '/edit_' + name + '.dart').writeAsString(editEdPoint);
-    print('done');
-  } else if (option == 'modelRequest') {
-    var directory = Directory(current.path + '/lib/app/' + folder + '/' + name);
-    await directory.create(recursive: true);
-    var add = FlutterTemplates.modelAddRequest.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var edit = FlutterTemplates.modelEditRequest.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    File(directory.path + '/add_' + name + '.dart').writeAsString(add);
-    File(directory.path + '/edit_' + name + '.dart').writeAsString(edit);
-    print('done');
-  }
-  else if (option == 'initFlutter') {
+  if (option == 'FlutterInit') {
     var resposta = prompter.askBinary("Delete files? (lib folder)");
     if (resposta == false) {
       exit(0);
     }
-    var lib = Directory(current.path + '/lib/');
-    var lock = File(current.path + '/pubspec.lock');
-    var yaml = File(current.path + '/pubspec.yaml');
-    var packages = File(current.path + '/.packages');
-    var plugins = File(current.path + '/.flutter-plugins');
-    var pluginsDep = File(current.path + '/.flutter-plugins-dependencies');
+    var lib = Directory('${current.path}/lib/');
+    var lock = File('${current.path}/pubspec.lock');
+    var yaml = File('${current.path}/pubspec.yaml');
+    var packages = File('${current.path}/.packages');
+    var plugins = File('${current.path}/.flutter-plugins');
+    var pluginsDep = File('${current.path}/.flutter-plugins-dependencies');
     lib.existsSync() ? lib.deleteSync(recursive: true) : 0;
     lock.existsSync() ? lock.deleteSync() : 0;
     yaml.existsSync() ? yaml.deleteSync() : 0;
@@ -184,16 +115,60 @@ void main(List args) async {
       }
     }
     print('done');
-  } else if (option == 'initDart') {
+  } else if (option == 'FlutterModule') {
+    var directory = Directory('${current.path}/lib/app/$folder/$name');
+    await directory.create(recursive: true);
+    var module = FlutterTemplates.module.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+    var page = FlutterTemplates.page.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+    var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+    var moduleFile = File('${directory.path}/${name}_module.dart');
+    await moduleFile.writeAsString(module);
+    var pageFile = File('${directory.path}/${name}_page.dart');
+    await pageFile.writeAsString(page);
+    var storeFile = File('${directory.path}/${name}_store.dart');
+    await storeFile.writeAsString(store);
+    print('done');
+  } else if (option == 'FlutterWidget') {
+    var directory = Directory('${current.path}/lib/app/$folder/$name');
+    await directory.create(recursive: true);
+    var comStore = prompter.askBinary("With store?");
+    if (comStore) {
+      var widgetWithStore = FlutterTemplates.widgetWithStore.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+      var widgetFile = File('${directory.path}/${name}_widget.dart');
+      await widgetFile.writeAsString(widgetWithStore);
+      var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+      var storeFile = File('${directory.path}/${name}_store.dart');
+      await storeFile.writeAsString(store);
+    } else {
+      var widget = FlutterTemplates.widget.replaceAll('WWWW', ReCase(name).pascalCase);
+      var widgetFile = File('${directory.path}/${name}_widget.dart');
+      await widgetFile.writeAsString(widget);
+    }
+    print('done');
+  } else if (option == 'FlutterModel') {
+    var directory = Directory('${current.path}/lib/app/$folder/$name');
+    await directory.create(recursive: true);
+    var frontModel = FlutterTemplates.flutterModel.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+    var moduleFile = File('${directory.path}/$name.dart');
+    await moduleFile.writeAsString(frontModel);
+    print('done');
+  } else if (option == 'FlutterViewModel') {
+    var directory = Directory('${current.path}/lib/app/$folder/$name');
+    await directory.create(recursive: true);
+    var frontModel = FlutterTemplates.flutterViewModel.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+    var moduleFile = File('${directory.path}/${name}_view.dart');
+    await moduleFile.writeAsString(frontModel);
+    print('done');
+  } else if (option == 'DartInit') {
     var resposta = prompter.askBinary("Delete files? (lib/bin folder)");
     if (resposta == false) {
       exit(0);
     }
-    var lib = Directory(current.path + '/lib/');
-    var bin = Directory(current.path + '/bin/');
-    var lock = File(current.path + '/pubspec.lock');
-    var yaml = File(current.path + '/pubspec.yaml');
-    var packages = File(current.path + '/.packages');
+    var lib = Directory('${current.path}/lib/');
+    var bin = Directory('${current.path}/bin/');
+    var lock = File('${current.path}/pubspec.lock');
+    var yaml = File('${current.path}/pubspec.yaml');
+    var packages = File('${current.path}/.packages');
     lib.existsSync() ? lib.deleteSync(recursive: true) : 0;
     bin.existsSync() ? bin.deleteSync(recursive: true) : 0;
     lock.existsSync() ? lock.deleteSync() : 0;
@@ -213,11 +188,32 @@ void main(List args) async {
       }
     }
     print('done');
-  } else if (option == 'clean') {
-    var lock = File(current.path + '/pubspec.lock');
-    var packages = File(current.path + '/.packages');
-    var plugins = File(current.path + '/.flutter-plugins');
-    var pluginsDep = File(current.path + '/.flutter-plugins-dependencies');
+  } else if (option == 'DartModel') {
+    var directory = Directory('${current.path}/lib/$folder/$name');
+    await directory.create(recursive: true);
+    var frontModel = DartTemplates.dartModel.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+    var moduleFile = File('${directory.path}/$name.dart');
+    await moduleFile.writeAsString(frontModel);
+    print('done');
+  } else if (option == 'DartModelEndpoint') {
+    var directory = Directory('${current.path}/lib/$folder/$name');
+    await directory.create(recursive: true);
+    var addEdPoint = DartTemplates.addEndPoint
+        .replaceAll('wwww', name)
+        .replaceAll('WWWW', ReCase(name).pascalCase)
+        .replaceAll("aaaa", ReCase(name).camelCase);
+    var editEdPoint = DartTemplates.editEndPoint
+        .replaceAll('wwww', name)
+        .replaceAll('WWWW', ReCase(name).pascalCase)
+        .replaceAll("aaaa", ReCase(name).camelCase);
+    File('${directory.path}/add_$name.dart').writeAsString(addEdPoint);
+    File('${directory.path}/edit_$name.dart').writeAsString(editEdPoint);
+    print('done');
+  } else if (option == 'Clean') {
+    var lock = File('${current.path}/pubspec.lock');
+    var packages = File('${current.path}/.packages');
+    var plugins = File('${current.path}/.flutter-plugins');
+    var pluginsDep = File('${current.path}/.flutter-plugins-dependencies');
     lock.existsSync() ? lock.deleteSync() : 0;
     packages.existsSync() ? packages.deleteSync() : 0;
     plugins.existsSync() ? plugins.deleteSync() : 0;

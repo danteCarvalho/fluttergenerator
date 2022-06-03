@@ -1,16 +1,15 @@
 import 'package:http/http.dart';
-import 'package:teste/entidades/pagamento/pagamento.dart';
-import 'package:teste/entidades/pagamento_sistema/pagamento_sistema.dart';
 
+import '../daos/hasura_dao.dart';
 import '../entidades/coluna.dart';
 import '../entidades/empresa/empresa.dart';
 import '../entidades/entidade.dart';
+import '../entidades/pagamento/pagamento.dart';
+import '../entidades/pagamento_sistema/pagamento_sistema.dart';
 import '../entidades/usuario/usuario.dart';
-import '../hasura/hasura_dao.dart';
-import '../outros/config.dart';
-import '../outros/entidade_helper.dart';
-import 'get_postgres_connection.dart';
-import 'select_postgres.dart';
+import 'config.dart';
+import 'entidade_helper.dart';
+import '../daos/postgres_dao.dart';
 
 criarBanco() async {
   List<Entidade> entidades = [];
@@ -87,7 +86,7 @@ addHasuraForeignKeys(Entidade tabela, Entidade  campo,String nomeCampo) async {
    "type": "pg_create_array_relationship",
    "args": {
       "table": "$nomeTabelaReferencia",
-      "name": "${nomeTabela + 's'}",
+      "name": "${'${nomeTabela}s'}",
       "using": {
          "foreign_key_constraint_on": {
             "table" : "$nomeTabela",
@@ -240,6 +239,7 @@ String? bancotype(String type) {
   } else if (type == "DateTime") {
     return "timestamp without time zone";
   }
+  return null;
 }
 
 addConstraints(Entidade entidade) async {
@@ -270,7 +270,7 @@ addConstraints(Entidade entidade) async {
       if (coluna.defaultValue == "sequence") {
         value = "nextval('${nomeTabela}_id_seq')";
       }
-      var sql = "ALTER TABLE $nomeTabela ALTER COLUMN $nomeColuna SET DEFAULT ${value};";
+      var sql = "ALTER TABLE $nomeTabela ALTER COLUMN $nomeColuna SET DEFAULT $value;";
       await executeSql(sql);
     }
   }
@@ -293,7 +293,7 @@ addForeignKeys(Entidade entidade) async {
     var sql =
         "ALTER TABLE $nomeTabela ADD CONSTRAINT fk_${nomeTabela}_${nomeColuna}_id FOREIGN KEY (${nomeColuna}_id) REFERENCES $tabelaReferencia (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION;";
     await executeSql(sql);
-    await addHasuraForeignKeys(entidade, referencia, nomeColuna + "_id");
+    await addHasuraForeignKeys(entidade, referencia, "${nomeColuna}_id");
   }
 }
 

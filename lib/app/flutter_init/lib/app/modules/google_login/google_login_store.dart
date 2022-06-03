@@ -7,13 +7,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../app_store.dart';
 import '../../entidades/usuario/usuario.dart';
-import '../../requests/google_login.dart';
+import '../../requests/server_requets.dart';
 
 part 'google_login_store.g.dart';
 
-class GoogleLoginStore = _GoogleLoginStoreBase with _$GoogleLoginStore;
+class GoogleLoginStore = GoogleLoginStoreBase with _$GoogleLoginStore;
 
-abstract class _GoogleLoginStoreBase with Store {
+abstract class GoogleLoginStoreBase with Store {
   AppStore app = Modular.get();
 
   init() async {
@@ -25,7 +25,7 @@ abstract class _GoogleLoginStoreBase with Store {
     map["client_id"] = "44265153130-1i4ub5c40hjq8i6420j5d71dc601ump1.apps.googleusercontent.com";
     map["redirect_uri"] = "${Uri.base.origin}/googleLogin/";
     map["tipo"] = "web";
-    var responseBody = await googleLogin(map);
+    var responseBody = await serverPost(map, "googleLogin");
     if (nuloOuvazio([responseBody])) {
       return;
     }

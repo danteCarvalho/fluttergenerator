@@ -21,6 +21,7 @@ Coluna? anotacaoColuna(List<Object> anotacoes) {
       return obj;
     }
   }
+  return null;
 }
 
 

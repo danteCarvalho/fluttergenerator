@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import '../daos/hasura_dao.dart';
 import '../entidades/usuario/usuario.dart';
-import '../hasura/hasura_dao.dart';
-import '../outros/entidade_helper.dart';
 import '../outros/excecoes.dart';
 import '../outros/security.dart';
 

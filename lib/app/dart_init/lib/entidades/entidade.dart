@@ -21,7 +21,7 @@ abstract class Entidade<T> {
 
   Map<String, dynamic> toJson();
 
-  Map<String, dynamic> dbMaptoClassMap(Map map);
+  Map<String, dynamic> dbMaptoClassMap(Map original);
 
   String classToString();
 

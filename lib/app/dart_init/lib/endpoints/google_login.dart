@@ -3,10 +3,9 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 
+import '../daos/hasura_dao.dart';
 import '../entidades/usuario/usuario.dart';
-import '../hasura/hasura_dao.dart';
 import '../outros/config.dart';
-import '../outros/entidade_helper.dart';
 import '../outros/excecoes.dart';
 import '../outros/security.dart';
 
@@ -37,7 +36,7 @@ googleLogin(HttpRequest request) async {
   Response response = await post(uri, body: json.encode(map));
   Map token = json.decode(response.body);
 
-  uri = Uri.parse("https://oauth2.googleapis.com/tokeninfo?id_token=" + token["id_token"]);
+  uri = Uri.parse("https://oauth2.googleapis.com/tokeninfo?id_token=${token["id_token"]}");
   response = await get(uri);
   Map tokenInfo = json.decode(response.body);
 

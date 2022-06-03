@@ -3,13 +3,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:url_strategy/url_strategy.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:url_strategy/url_strategy.dart';
 
-import 'main.reflectable.dart';
 import 'app/app_module.dart';
 import 'app/app_widget.dart';
 import 'app/outros/config.dart';
+import 'main.reflectable.dart';
 
 main() async {
   runZonedGuarded(() async{
@@ -23,16 +23,16 @@ main() async {
         options.tracesSampleRate = 1.0;
       },
     );
-    runApp(ModularApp(module: AppModule(), child: AppWidget()));
+    runApp(ModularApp(module: AppModule(), child: const AppWidget()));
   }, (Object error, StackTrace stack) async {
     await Sentry.captureException(error, stackTrace: stack);
-    print(error);
+    debugPrint(error.toString());
     String stack2 = "";
     LineSplitter.split(stack.toString()).forEach((s) {
       if (s.contains("teste/")) {
         stack2 += "$s\n";
       }
     });
-    print(stack2);
+    debugPrint(stack2);
   });
 }

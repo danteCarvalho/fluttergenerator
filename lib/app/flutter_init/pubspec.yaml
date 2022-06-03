@@ -7,6 +7,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  async:
   crypto:
   http:
   flutter_modular:

@@ -5,6 +5,7 @@ import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
+import '../empresa/empresa.dart';
 import '../entidade.dart';
 
 part 'usuario.g.dart';
@@ -87,6 +88,7 @@ class Usuario extends _UsuarioBase with _$Usuario {
 
 }
 
+
 abstract class _UsuarioBase extends Entidade with Store {
   String? nome;
   String? senha;
@@ -100,6 +102,11 @@ abstract class _UsuarioBase extends Entidade with Store {
   String? complemento;
   String? telefone;
   bool? admin;
+  Empresa? empresa;
+  double? valorPagamento;
+  DateTime? dataPagamento;
+  DateTime? ultimoPagamentoCompleto;
+  DateTime? ultimoPagamentoGerado;
 }
 
   

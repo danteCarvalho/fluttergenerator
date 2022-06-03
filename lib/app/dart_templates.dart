@@ -98,20 +98,21 @@ class WWWW extends Entidade {
 
   """;
 
-  static String addEndPoint =   """
+static String addEndPoint =   """
   
 import 'dart:convert';
 import 'dart:io';
 
-import '../entidades/wwww/wwww.dart';
-import '../hasura/hasura_dao.dart';
+import '../../entidades/wwww/wwww.dart';
+import '../../hasura/hasura_dao.dart';
 
 addWWWW(HttpRequest request) async {
   String requestString = await utf8.decoder.bind(request).join();
   Map requestMap = json.decode(requestString);
   Map resposta = {};
-  WWWW wwww = WWWW().mapToClass(requestMap["wwww"]);
-  wwww = await insertHasura(wwww);
+  WWWW aaaa = WWWW().mapToClass(requestMap["aaaa"]);
+  aaaa = await insertHasura(aaaa);
+  resposta["aaaa"] = aaaa;
   request.response.write(json.encode(resposta));
 }
 
@@ -123,16 +124,18 @@ addWWWW(HttpRequest request) async {
 import 'dart:convert';
 import 'dart:io';
 
-import '../entidades/wwww/wwww.dart';
-import '../hasura/hasura_dao.dart';
+import '../../entidades/wwww/wwww.dart';
+import '../../hasura/hasura_dao.dart';
 
 editWWWW(HttpRequest request) async {
   String requestString = await utf8.decoder.bind(request).join();
   Map requestMap = json.decode(requestString);
   Map resposta = {};
-  String updateFields = requestMap["updateFields"];
-  WWWW wwww = WWWW().mapToClass(requestMap["wwww"]);
-  wwww = await updateHasura(wwww, updateFields);
+  String id = requestMap["id"];
+  WWWW aaaa = await selectByIdHasura(id, WWWW());
+  //mude aqui
+  aaaa = await updateHasura(aaaa, "");
+  resposta["aaaa"] = aaaa;
   request.response.write(json.encode(resposta));
 }
 

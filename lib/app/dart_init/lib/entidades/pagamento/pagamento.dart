@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:reflection_factory/reflection_factory.dart';
-import 'package:teste/entidades/usuario/usuario.dart';
+import '../usuario/usuario.dart';
 
 import '../../outros/entidade_helper.dart';
 import '../coluna.dart';
@@ -54,7 +54,7 @@ class Pagamento extends Entidade {
 
   @override
   Map<String, dynamic> dbMaptoClassMap(Map original) {
-    Map<String, dynamic> map2 = Map();
+    Map<String, dynamic> map2 = {};
     List allFields = Pagamento().reflect().allFields();
     for (var obj in allFields) {
       var name = obj.name;

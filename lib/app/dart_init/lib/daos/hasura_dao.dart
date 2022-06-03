@@ -1,13 +1,24 @@
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
+import 'package:hasura_connect/hasura_connect.dart';
 import 'package:http/http.dart';
-import 'package:intl/intl.dart';
 
 import '../entidades/entidade.dart';
 import '../outros/config.dart';
 import '../outros/entidade_helper.dart';
 import '../outros/excecoes.dart';
+
+HasuraConnect? hasuraConnect;
+
+HasuraConnect getHasuraConnection() {
+  if (hasuraConnect != null) {
+    return hasuraConnect!;
+  } else {
+    hasuraConnect = HasuraConnect("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/graphql", headers: {});
+    return hasuraConnect!;
+  }
+}
 
 String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<String> selectList) {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
@@ -35,13 +46,13 @@ String customSelectHasura(String campo, List<Map> whereList, List<String> select
   return sql;
 }
 
-Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? returning}) async {
+Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? returning, bool subFields = false}) async {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
 
   String sql = """
 {
   ${nomeTabela}_by_pk(id: "$id") {
-    ${ returning ?? selectFields(entidade, subFields: true)}
+    ${returning ?? selectFields(entidade, subFields: subFields)}
   }
 }
 
@@ -103,10 +114,9 @@ Future selectHasura(String sql) async {
   }
   Map data = decode["data"];
   var first = data.values.first;
-  if(first is Map){
+  if (first is Map) {
     return first.values.first;
-  }
-  else if (first is List){
+  } else if (first is List) {
     return first;
   }
 }
@@ -141,7 +151,7 @@ Future<List<T>> selectListHasura<T extends Entidade>(String sql, T entidade) asy
   return retorno;
 }
 
-Future<T> insertHasura<T extends Entidade>(T entidade, {String? returning}) async {
+Future<T> insertHasura<T extends Entidade>(T entidade, {String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
   if (entidade.id != null) {
     throw PararError("insert com id");
@@ -164,11 +174,10 @@ Future<T> insertHasura<T extends Entidade>(T entidade, {String? returning}) asyn
 
   obj = fieldsToLowerCase(obj);
 
-
   var sql = """
 mutation MyMutation {
   insert_${nomeentidade}_one(object:   ${obj.toString()}  ) {
-    ${returning ?? selectFields(entidade,subFields: true)}
+    ${returning ?? selectFields(entidade, subFields: subFields)}
   }
 }
 """;
@@ -200,14 +209,12 @@ mutation MyMutation {
   return retorno;
 }
 
-Future<T> updateHasura<T extends Entidade>(T entidade, String updateFields, {String? returning}) async {
-
+Future<T> updateHasura<T extends Entidade>(T entidade, String updateFields, {String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
 
   if (entidade.id == null) {
     throw PararError("update sem id");
   }
-
 
   entidade.dataEdicao = DateTime.now();
 
@@ -224,7 +231,7 @@ Future<T> updateHasura<T extends Entidade>(T entidade, String updateFields, {Str
   var sql = """
 mutation MyMutation {
   update_${nomeentidade}_by_pk(pk_columns: {id:   $id   }, _set:   ${obj.toString()}   ) {
-    ${returning ?? selectFields(entidade,subFields: true)}
+    ${returning ?? selectFields(entidade, subFields: subFields)}
   }
 }
   """;
@@ -251,7 +258,7 @@ mutation MyMutation {
     throw decode["errors"];
   }
 
-  T retorno =  entidade.mapToClass(decode["data"]["update_${nomeentidade}_by_pk"]);
+  T retorno = entidade.mapToClass(decode["data"]["update_${nomeentidade}_by_pk"]);
 
   return retorno;
 }
@@ -274,7 +281,7 @@ String where(List<Map> list) {
 
 Map expr(String path, String operator, dynamic value) {
   List split = path.split(".");
-  Map currentValue = {operator: (value is String|| value is DateTime) ? "\"$value\"" : value};
+  Map currentValue = {operator: (value is String || value is DateTime) ? "\"$value\"" : value};
   for (var obj in split.reversed) {
     currentValue = {obj: currentValue};
   }
@@ -286,17 +293,16 @@ String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
   var allFields = reflection.allFields();
   String campos = "";
   for (var obj in allFields) {
-    if(reflector.canReflectType(obj.type.type)){
+    if (reflector.canReflectType(obj.type.type)) {
       if (subFields) {
         var newInstance = instancia(obj.type.type);
         campos += "${obj.name.toLowerCase()}{${selectFields(newInstance)}}";
       } else {
         campos += "${obj.name.toLowerCase()}{ id }";
       }
-    }
-    else{
+    } else {
       var type = obj.type.toString();
-      if (type == "String" || type == "int" || type == "double" || type == "bool"  || type == "DateTime") {
+      if (type == "String" || type == "int" || type == "double" || type == "bool" || type == "DateTime") {
         campos += "${obj.name.toLowerCase()} ";
       }
     }
@@ -310,7 +316,7 @@ trocarNomeEntidades(Entidade entidade, Map map) {
   for (var obj in allFields) {
     if (reflector.canReflectType(obj.type.type)) {
       var valor = map.remove(obj.name);
-      map[obj.name + "_id"] = valor?["id"];
+      map["${obj.name}_id"] = valor?["id"];
     }
   }
 }
@@ -344,6 +350,3 @@ manterCamposUpdate(String campos, Map obj) {
 
   return obj2;
 }
-
-
-

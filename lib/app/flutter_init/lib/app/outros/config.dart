@@ -18,7 +18,8 @@ class Config {
   int portaApp = const int.fromEnvironment("portaApp", defaultValue: 8001);
   int portaServidor = const int.fromEnvironment("portaServidor", defaultValue: 7001);
   int portaHasura = const int.fromEnvironment("portaHasura", defaultValue: 6001);
-  String sembastDbName = const String.fromEnvironment("sembastDbName", defaultValue: "teste.db");
+  String sembastDbName = const String.fromEnvironment("sembastDbName", defaultValue: "testeSembast.db");
+  String sqliteDbName = const String.fromEnvironment("sqliteDbName", defaultValue: "testeSqlite.db");
 
   Map toJson() {
     return _$ConfigToJson(this);

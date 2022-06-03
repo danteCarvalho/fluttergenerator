@@ -38,7 +38,7 @@ String customSelectHasura(String campo, List<Map> whereList, List<String> select
   return sql;
 }
 
-Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? returning}) async {
+Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? returning,bool subFields = false}) async {
   var instance = await SharedPreferences.getInstance();
   var jwt = instance.getString("jwt");
 
@@ -47,7 +47,7 @@ Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? r
   String sql = """
 {
   ${nomeTabela}_by_pk(id: "$id") {
-    ${ returning ?? selectFields(entidade, subFields: true)}
+    ${ returning ?? selectFields(entidade, subFields: subFields)}
   }
 }
 

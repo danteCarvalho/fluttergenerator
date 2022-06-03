@@ -15,7 +15,8 @@ Config _$ConfigFromJson(Map json) => Config()
   ..portaApp = json['portaApp'] as int
   ..portaServidor = json['portaServidor'] as int
   ..portaHasura = json['portaHasura'] as int
-  ..sembastDbName = json['sembastDbName'] as String;
+  ..sembastDbName = json['sembastDbName'] as String
+  ..sqliteDbName = json['sqliteDbName'] as String;
 
 Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'arquivoConf': instance.arquivoConf,
@@ -27,4 +28,5 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'portaServidor': instance.portaServidor,
       'portaHasura': instance.portaHasura,
       'sembastDbName': instance.sembastDbName,
+      'sqliteDbName': instance.sqliteDbName,
     };

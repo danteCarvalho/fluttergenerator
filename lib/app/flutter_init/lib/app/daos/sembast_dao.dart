@@ -1,13 +1,42 @@
+import 'dart:io';
+
 import 'package:dartutils/dartutils.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast.dart';
+import 'package:sembast/sembast_io.dart';
+import 'package:sembast_web/sembast_web.dart';
 import 'package:uuid/uuid.dart';
 
-import '../app_store.dart';
-import '../outros/excecoes.dart';
 import '../entidades/entidade.dart';
+import '../outros/config.dart';
+import '../outros/excecoes.dart';
 
 Map mapStore = {};
+Database? db;
+
+initSembast() async {
+  if (db != null) {
+    return;
+  }
+  if (kIsWeb) {
+    db = await databaseFactoryWeb.openDatabase(config.sembastDbName);
+  } else if (Platform.isAndroid) {
+    var dir = await getExternalStorageDirectory();
+    if (dir != null) {
+      await dir.create(recursive: true);
+      var dbPath = "${dir.path}/${config.sembastDbName}";
+      db = await databaseFactoryIo.openDatabase(dbPath);
+    }
+  } else {
+    var home = Platform.environment['HOME'] ?? Platform.environment['USERPROFILE'];
+    if (home != null) {
+      var dir = Directory(home);
+      var dbPath = "${dir.path}/${config.sembastDbName}";
+      db = await databaseFactoryIo.openDatabase(dbPath);
+    }
+  }
+}
 
 StoreRef<String, Map<String, Object?>> getStore<T extends Entidade>(T entidade) {
   var nome = entidade.runtimeType.toString();
@@ -34,16 +63,14 @@ updateSembast<T extends Entidade>(T entidade) async {
 }
 
 _insertUpdate<T extends Entidade>(T entidade) async {
-  AppStore app = Modular.get();
   var store = getStore(entidade);
   var classToMap = entidade.classToMap();
-  await store.record(entidade.id!).put(app.db!, classToMap);
+  await store.record(entidade.id!).put(db!, classToMap);
 }
 
 Future<T> selectByIdSembast<T extends Entidade>(id, T entidade) async {
   var store = getStore(entidade);
-  AppStore app = Modular.get();
-  var lista = await store.find(app.db!, finder: Finder(filter: Filter.equals("id", id)));
+  var lista = await store.find(db!, finder: Finder(filter: Filter.equals("id", id)));
   if (nuloOuvazio([lista])) {
     throw NaoEncontrado(entidade.runtimeType.toString());
   }
@@ -56,8 +83,7 @@ Future<T> selectByIdSembast<T extends Entidade>(id, T entidade) async {
 
 Future<T> selectOneSembast<T extends Entidade>(Finder finder, T entidade) async {
   var store = getStore(entidade);
-  AppStore app = Modular.get();
-  var lista = await store.find(app.db!, finder: finder);
+  var lista = await store.find(db!, finder: finder);
   if (nuloOuvazio([lista])) {
     throw NaoEncontrado(entidade.runtimeType.toString());
   }
@@ -70,8 +96,7 @@ Future<T> selectOneSembast<T extends Entidade>(Finder finder, T entidade) async 
 
 Future<List<T>> selectListSembast<T extends Entidade>(Finder finder, T entidade, {Function? init}) async {
   var store = getStore(entidade);
-  AppStore app = Modular.get();
-  var lista = await store.find(app.db!, finder: finder);
+  var lista = await store.find(db!, finder: finder);
   if (nuloOuvazio([lista])) {
     throw NaoEncontrado(entidade.runtimeType.toString());
   }
@@ -84,4 +109,22 @@ Future<List<T>> selectListSembast<T extends Entidade>(Finder finder, T entidade,
     lista2.add(item);
   }
   return lista2;
+}
+
+
+
+
+deleteSembast() async {
+  Database? database = db;
+  if (database == null) {
+    return;
+  } else {
+    await database.close();
+  }
+  db = null;
+  if (kIsWeb) {
+    databaseFactoryWeb.deleteDatabase(database.path);
+  } else {
+    databaseFactoryIo.deleteDatabase(database.path);
+  }
 }

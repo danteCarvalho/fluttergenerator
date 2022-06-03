@@ -314,8 +314,8 @@ import 'package:mobx/mobx.dart';
 import '../../app_store.dart';
 part 'wwww_store.g.dart';
 
-class WWWWStore = _WWWWStoreBase with _\$WWWWStore;
-abstract class _WWWWStoreBase with Store {
+class WWWWStore = WWWWStoreBase with _\$WWWWStore;
+abstract class WWWWStoreBase with Store {
   
   AppStore app = Modular.get();
   
@@ -328,60 +328,5 @@ abstract class _WWWWStoreBase with Store {
 
 """;
 
-  static String modelAddRequest = """
-  
-import 'dart:convert';
-import 'package:http/http.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../outros/config.dart';
-
-
-addWWWW(Map map) async {
-  try{
-    var instance = await SharedPreferences.getInstance();
-    var jwt = instance.getString("jwt");
-    Map<String, String> headers = {};
-    headers["Authorization"] = "Bearer " + jwt!;
-    var uri = Uri.parse("\${config.schemeServidor}://\${config.ipServidor}:\${config.portaServidor}/addWWWW");
-    var jsonSring = json.encode(map);
-    var response = await post(uri, body: jsonSring, headers: headers);
-    return response.body;
- } on Exception catch (e) {
-    throw e.toString();
-  } catch (e) {
-    throw e.toString();
-  }
-
-}
-
-
-  """;
-
-  static String modelEditRequest = """
-
-import 'dart:convert';
-import 'package:http/http.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../outros/config.dart';
-
-editWWWW(Map map) async {
-  try{
-    var instance = await SharedPreferences.getInstance();
-    var jwt = instance.getString("jwt");
-    Map<String, String> headers = {};
-    headers["Authorization"] = "Bearer " + jwt!;
-    var uri = Uri.parse("\${config.schemeServidor}://\${config.ipServidor}:\${config.portaServidor}/editWWWW");
-    var jsonSring = json.encode(map);
-    var response = await post(uri, body: jsonSring, headers: headers);
-    return response.body; 
-  } on Exception catch (e) {
-    throw e.toString();
-  } catch (e) {
-    throw e.toString();
-  }
-}
-
-
-  """;
 
 }

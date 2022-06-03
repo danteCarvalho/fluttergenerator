@@ -44,7 +44,7 @@ class Empresa extends _EmpresaBase with _$Empresa {
   
   @override
   Map<String, dynamic> dbMaptoClassMap(Map original) {
-    Map<String, dynamic> map2 = Map();
+    Map<String, dynamic> map2 = {};
     List allFields = Empresa().reflect().allFields();
     for(var obj in allFields){
       var name = obj.name;
