@@ -16,6 +16,7 @@ part 'usuario.reflection.g.dart';
 @EnableReflection()
 @reflector
 class Usuario extends Entidade {
+  @Coluna(nullable: false)
   String? nome;
   String? senha;
   @Coluna(unique: true)

@@ -8,17 +8,17 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
 
-part of 'usuario.dart';
+part of 'imagem.dart';
 
 // ignore: non_constant_identifier_names
-Usuario Usuario$fromJson(Map<String, Object?> map) =>
-    Usuario$reflection.staticInstance.fromJson(map);
+Imagem Imagem$fromJson(Map<String, Object?> map) =>
+    Imagem$reflection.staticInstance.fromJson(map);
 // ignore: non_constant_identifier_names
-Usuario Usuario$fromJsonEncoded(String jsonEncoded) =>
-    Usuario$reflection.staticInstance.fromJsonEncoded(jsonEncoded);
+Imagem Imagem$fromJsonEncoded(String jsonEncoded) =>
+    Imagem$reflection.staticInstance.fromJsonEncoded(jsonEncoded);
 
-class Usuario$reflection extends ClassReflection<Usuario> {
-  Usuario$reflection([Usuario? object]) : super(Usuario, object);
+class Imagem$reflection extends ClassReflection<Imagem> {
+  Imagem$reflection([Imagem? object]) : super(Imagem, object);
 
   static bool _registered = false;
   @override
@@ -37,51 +37,51 @@ class Usuario$reflection extends ClassReflection<Usuario> {
   Version get reflectionFactoryVersion => Version.parse('1.1.2');
 
   @override
-  Usuario$reflection withObject([Usuario? obj]) => Usuario$reflection(obj);
+  Imagem$reflection withObject([Imagem? obj]) => Imagem$reflection(obj);
 
-  static Usuario$reflection? _withoutObjectInstance;
+  static Imagem$reflection? _withoutObjectInstance;
   @override
-  Usuario$reflection withoutObjectInstance() => _withoutObjectInstance ??=
-      super.withoutObjectInstance() as Usuario$reflection;
+  Imagem$reflection withoutObjectInstance() => _withoutObjectInstance ??=
+      super.withoutObjectInstance() as Imagem$reflection;
 
-  static Usuario$reflection get staticInstance =>
-      _withoutObjectInstance ??= Usuario$reflection();
+  static Imagem$reflection get staticInstance =>
+      _withoutObjectInstance ??= Imagem$reflection();
 
   @override
-  Usuario$reflection getStaticInstance() => staticInstance;
+  Imagem$reflection getStaticInstance() => staticInstance;
 
   static bool _boot = false;
   static void boot() {
     if (_boot) return;
     _boot = true;
-    Usuario$reflection.staticInstance;
+    Imagem$reflection.staticInstance;
   }
 
   @override
   bool get hasDefaultConstructor => true;
   @override
-  Usuario? createInstanceWithDefaultConstructor() => Usuario();
+  Imagem? createInstanceWithDefaultConstructor() => Imagem();
 
   @override
   bool get hasEmptyConstructor => false;
   @override
-  Usuario? createInstanceWithEmptyConstructor() => null;
+  Imagem? createInstanceWithEmptyConstructor() => null;
   @override
   bool get hasNoRequiredArgsConstructor => false;
   @override
-  Usuario? createInstanceWithNoRequiredArgsConstructor() => null;
+  Imagem? createInstanceWithNoRequiredArgsConstructor() => null;
 
   @override
   List<String> get constructorsNames => const <String>[''];
 
   @override
-  ConstructorReflection<Usuario>? constructor<R>(String constructorName) {
+  ConstructorReflection<Imagem>? constructor<R>(String constructorName) {
     var lc = constructorName.trim().toLowerCase();
 
     switch (lc) {
       case '':
-        return ConstructorReflection<Usuario>(
-            this, Usuario, '', () => () => Usuario(), null, null, null, null);
+        return ConstructorReflection<Imagem>(
+            this, Imagem, '', () => () => Imagem(), null, null, null, null);
       default:
         return null;
     }
@@ -110,285 +110,75 @@ class Usuario$reflection extends ClassReflection<Usuario> {
   bool get hasMethodToJson => true;
 
   @override
-  Object? callMethodToJson([Usuario? obj]) {
+  Object? callMethodToJson([Imagem? obj]) {
     obj ??= object;
     return obj?.toJson();
   }
 
   @override
   List<String> get fieldsNames => const <String>[
-        'admin',
         'ativa',
-        'cep',
-        'cidade',
-        'complemento',
-        'cpf',
         'dataCriacao',
         'dataDelecao',
         'dataEdicao',
-        'dataNascimento',
-        'dataPagamento',
-        'email',
-        'empresa',
-        'endereco',
-        'estado',
         'id',
         'id2',
-        'nome',
-        'senha',
-        'telefone',
-        'ultimoPagamentoCompleto',
-        'ultimoPagamentoGerado',
-        'valorPagamento'
+        'name',
+        'size',
+        'value'
       ];
 
   @override
-  FieldReflection<Usuario, T>? field<T>(String fieldName, [Usuario? obj]) {
+  FieldReflection<Imagem, T>? field<T>(String fieldName, [Imagem? obj]) {
     obj ??= object;
 
     var lc = fieldName.trim().toLowerCase();
 
     switch (lc) {
-      case 'nome':
-        return FieldReflection<Usuario, T>(
+      case 'value':
+        return FieldReflection<Imagem, T>(
           this,
-          Usuario,
+          Imagem,
           TypeReflection.tString,
-          'nome',
+          'value',
           true,
-          (o) => () => o!.nome as T,
-          (o) => (T? v) => o!.nome = v as String?,
+          (o) => () => o!.value as T,
+          (o) => (T? v) => o!.value = v as String?,
           obj,
           false,
           false,
-          [Coluna(nullable: false)],
+          [Coluna(tipo: "character varying", nullable: false)],
         );
-      case 'senha':
-        return FieldReflection<Usuario, T>(
+      case 'name':
+        return FieldReflection<Imagem, T>(
           this,
-          Usuario,
+          Imagem,
           TypeReflection.tString,
-          'senha',
+          'name',
           true,
-          (o) => () => o!.senha as T,
-          (o) => (T? v) => o!.senha = v as String?,
+          (o) => () => o!.name as T,
+          (o) => (T? v) => o!.name = v as String?,
           obj,
           false,
           false,
           null,
         );
-      case 'email':
-        return FieldReflection<Usuario, T>(
+      case 'size':
+        return FieldReflection<Imagem, T>(
           this,
-          Usuario,
-          TypeReflection.tString,
-          'email',
+          Imagem,
+          TypeReflection.tInt,
+          'size',
           true,
-          (o) => () => o!.email as T,
-          (o) => (T? v) => o!.email = v as String?,
-          obj,
-          false,
-          false,
-          [Coluna(unique: true)],
-        );
-      case 'cpf':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tString,
-          'cpf',
-          true,
-          (o) => () => o!.cpf as T,
-          (o) => (T? v) => o!.cpf = v as String?,
-          obj,
-          false,
-          false,
-          [Coluna(unique: true)],
-        );
-      case 'datanascimento':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection(DateTime),
-          'dataNascimento',
-          true,
-          (o) => () => o!.dataNascimento as T,
-          (o) => (T? v) => o!.dataNascimento = v as DateTime?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'endereco':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tString,
-          'endereco',
-          true,
-          (o) => () => o!.endereco as T,
-          (o) => (T? v) => o!.endereco = v as String?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'cep':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tString,
-          'cep',
-          true,
-          (o) => () => o!.cep as T,
-          (o) => (T? v) => o!.cep = v as String?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'cidade':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tString,
-          'cidade',
-          true,
-          (o) => () => o!.cidade as T,
-          (o) => (T? v) => o!.cidade = v as String?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'estado':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tString,
-          'estado',
-          true,
-          (o) => () => o!.estado as T,
-          (o) => (T? v) => o!.estado = v as String?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'complemento':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tString,
-          'complemento',
-          true,
-          (o) => () => o!.complemento as T,
-          (o) => (T? v) => o!.complemento = v as String?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'telefone':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tString,
-          'telefone',
-          true,
-          (o) => () => o!.telefone as T,
-          (o) => (T? v) => o!.telefone = v as String?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'admin':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tBool,
-          'admin',
-          true,
-          (o) => () => o!.admin as T,
-          (o) => (T? v) => o!.admin = v as bool?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'empresa':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection(Empresa),
-          'empresa',
-          true,
-          (o) => () => o!.empresa as T,
-          (o) => (T? v) => o!.empresa = v as Empresa?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'valorpagamento':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection.tDouble,
-          'valorPagamento',
-          true,
-          (o) => () => o!.valorPagamento as T,
-          (o) => (T? v) => o!.valorPagamento = v as double?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'datapagamento':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection(DateTime),
-          'dataPagamento',
-          true,
-          (o) => () => o!.dataPagamento as T,
-          (o) => (T? v) => o!.dataPagamento = v as DateTime?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'ultimopagamentocompleto':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection(DateTime),
-          'ultimoPagamentoCompleto',
-          true,
-          (o) => () => o!.ultimoPagamentoCompleto as T,
-          (o) => (T? v) => o!.ultimoPagamentoCompleto = v as DateTime?,
-          obj,
-          false,
-          false,
-          null,
-        );
-      case 'ultimopagamentogerado':
-        return FieldReflection<Usuario, T>(
-          this,
-          Usuario,
-          TypeReflection(DateTime),
-          'ultimoPagamentoGerado',
-          true,
-          (o) => () => o!.ultimoPagamentoGerado as T,
-          (o) => (T? v) => o!.ultimoPagamentoGerado = v as DateTime?,
+          (o) => () => o!.size as T,
+          (o) => (T? v) => o!.size = v as int?,
           obj,
           false,
           false,
           null,
         );
       case 'id':
-        return FieldReflection<Usuario, T>(
+        return FieldReflection<Imagem, T>(
           this,
           Entidade,
           TypeReflection.tString,
@@ -408,7 +198,7 @@ class Usuario$reflection extends ClassReflection<Usuario> {
           ],
         );
       case 'id2':
-        return FieldReflection<Usuario, T>(
+        return FieldReflection<Imagem, T>(
           this,
           Entidade,
           TypeReflection.tInt,
@@ -422,7 +212,7 @@ class Usuario$reflection extends ClassReflection<Usuario> {
           [Coluna(tipo: "bigint", defaultValue: "sequence")],
         );
       case 'ativa':
-        return FieldReflection<Usuario, T>(
+        return FieldReflection<Imagem, T>(
           this,
           Entidade,
           TypeReflection.tBool,
@@ -436,7 +226,7 @@ class Usuario$reflection extends ClassReflection<Usuario> {
           null,
         );
       case 'datacriacao':
-        return FieldReflection<Usuario, T>(
+        return FieldReflection<Imagem, T>(
           this,
           Entidade,
           TypeReflection(DateTime),
@@ -450,7 +240,7 @@ class Usuario$reflection extends ClassReflection<Usuario> {
           null,
         );
       case 'dataedicao':
-        return FieldReflection<Usuario, T>(
+        return FieldReflection<Imagem, T>(
           this,
           Entidade,
           TypeReflection(DateTime),
@@ -464,7 +254,7 @@ class Usuario$reflection extends ClassReflection<Usuario> {
           null,
         );
       case 'datadelecao':
-        return FieldReflection<Usuario, T>(
+        return FieldReflection<Imagem, T>(
           this,
           Entidade,
           TypeReflection(DateTime),
@@ -486,7 +276,7 @@ class Usuario$reflection extends ClassReflection<Usuario> {
   List<String> get staticFieldsNames => const <String>[];
 
   @override
-  FieldReflection<Usuario, T>? staticField<T>(String fieldName) {
+  FieldReflection<Imagem, T>? staticField<T>(String fieldName) {
     return null;
   }
 
@@ -503,16 +293,16 @@ class Usuario$reflection extends ClassReflection<Usuario> {
       ];
 
   @override
-  MethodReflection<Usuario, R>? method<R>(String methodName, [Usuario? obj]) {
+  MethodReflection<Imagem, R>? method<R>(String methodName, [Imagem? obj]) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'classtomap':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'classToMap',
             TypeReflection.tMapStringDynamic,
             false,
@@ -524,9 +314,9 @@ class Usuario$reflection extends ClassReflection<Usuario> {
             null,
             [override]);
       case 'tojson':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'toJson',
             TypeReflection.tMapStringDynamic,
             false,
@@ -538,9 +328,9 @@ class Usuario$reflection extends ClassReflection<Usuario> {
             null,
             [override]);
       case 'dbmaptoclassmap':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'dbMaptoClassMap',
             TypeReflection.tMapStringDynamic,
             false,
@@ -555,9 +345,9 @@ class Usuario$reflection extends ClassReflection<Usuario> {
             null,
             [override]);
       case 'classtostring':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'classToString',
             TypeReflection.tString,
             false,
@@ -569,11 +359,11 @@ class Usuario$reflection extends ClassReflection<Usuario> {
             null,
             [override]);
       case 'stringtoclass':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'stringToClass',
-            TypeReflection(Usuario),
+            TypeReflection(Imagem),
             false,
             (o) => o!.stringToClass,
             obj,
@@ -586,11 +376,11 @@ class Usuario$reflection extends ClassReflection<Usuario> {
             null,
             [override]);
       case 'maptoclass':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'mapToClass',
-            TypeReflection(Usuario),
+            TypeReflection(Imagem),
             false,
             (o) => o!.mapToClass,
             obj,
@@ -603,11 +393,11 @@ class Usuario$reflection extends ClassReflection<Usuario> {
             null,
             [override]);
       case 'listmaptolistclass':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'listMapToListClass',
-            TypeReflection(List, [Usuario]),
+            TypeReflection(List, [Imagem]),
             true,
             (o) => o!.listMapToListClass,
             obj,
@@ -620,11 +410,11 @@ class Usuario$reflection extends ClassReflection<Usuario> {
             null,
             [override]);
       case 'reflect':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'reflect',
-            TypeReflection(ClassReflection, [dynamic]),
+            TypeReflection(ClassReflection, [Imagem]),
             false,
             (o) => o!.reflect,
             obj,
@@ -643,18 +433,18 @@ class Usuario$reflection extends ClassReflection<Usuario> {
       const <String>['fromJson', 'listMapToListClass2'];
 
   @override
-  MethodReflection<Usuario, R>? staticMethod<R>(String methodName) {
+  MethodReflection<Imagem, R>? staticMethod<R>(String methodName) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'fromJson',
-            TypeReflection(Usuario),
+            TypeReflection(Imagem),
             false,
-            (o) => Usuario.fromJson,
+            (o) => Imagem.fromJson,
             null,
             true,
             const <ParameterReflection>[
@@ -665,13 +455,13 @@ class Usuario$reflection extends ClassReflection<Usuario> {
             null,
             null);
       case 'listmaptolistclass2':
-        return MethodReflection<Usuario, R>(
+        return MethodReflection<Imagem, R>(
             this,
-            Usuario,
+            Imagem,
             'listMapToListClass2',
-            TypeReflection(List, [Usuario]),
+            TypeReflection(List, [Imagem]),
             true,
-            (o) => Usuario.listMapToListClass2,
+            (o) => Imagem.listMapToListClass2,
             null,
             true,
             const <ParameterReflection>[
@@ -687,27 +477,27 @@ class Usuario$reflection extends ClassReflection<Usuario> {
   }
 }
 
-extension Usuario$reflectionExtension on Usuario {
-  /// Returns a [ClassReflection] for type [Usuario]. (Generated by [ReflectionFactory])
-  ClassReflection<Usuario> get reflection => Usuario$reflection(this);
+extension Imagem$reflectionExtension on Imagem {
+  /// Returns a [ClassReflection] for type [Imagem]. (Generated by [ReflectionFactory])
+  ClassReflection<Imagem> get reflection => Imagem$reflection(this);
 
-  /// Returns a JSON [Map] for type [Usuario]. (Generated by [ReflectionFactory])
+  /// Returns a JSON [Map] for type [Imagem]. (Generated by [ReflectionFactory])
   Map<String, dynamic>? toJsonMap({bool duplicatedEntitiesAsID = false}) =>
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
-  /// Returns an encoded JSON [String] for type [Usuario]. (Generated by [ReflectionFactory])
+  /// Returns an encoded JSON [String] for type [Imagem]. (Generated by [ReflectionFactory])
   String toJsonEncoded(
           {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
       reflection.toJsonEncoded(
           pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
-  /// Returns a JSON for type [Usuario] using the class fields. (Generated by [ReflectionFactory])
+  /// Returns a JSON for type [Imagem] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
       .toJsonFromFields(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 }
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
-      Usuario$reflection(),
+      Imagem$reflection(),
     ];
 
 List<Reflection>? _siblingsReflectionList;

@@ -16,13 +16,16 @@ part 'empresa.reflection.g.dart';
 @EnableReflection()
 @reflector
 class Empresa extends Entidade {
+  @Coluna(nullable: false)
   String? nome;
+  @Coluna(nullable: false)
   double? valorPagamento;
   String? telefone;
   String? anydesk;
   String? whatsapp;
   double? latitude;
   double? longitude;
+  @Coluna(nullable: false)
   DateTime? dataPagamento;
   DateTime? lastUpdate;
   DateTime? lastTry;

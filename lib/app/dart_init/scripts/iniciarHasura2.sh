@@ -1,1 +1,1 @@
-docker start teste
+sudo docker start teste

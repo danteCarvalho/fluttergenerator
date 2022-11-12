@@ -9,6 +9,7 @@ import 'endpoints/process_request.dart';
 import 'main.reflectable.dart';
 import 'outros/config.dart';
 import 'outros/criar_banco.dart';
+import 'outros/metodos_estaticos.dart';
 import 'schedules/init_schedules.dart';
 
 main() async {

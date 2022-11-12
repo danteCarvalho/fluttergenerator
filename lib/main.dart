@@ -85,34 +85,14 @@ void main(List args) async {
   }
 
   if (option == 'FlutterInit') {
-    var resposta = prompter.askBinary("Delete files? (lib folder)");
-    if (resposta == false) {
-      exit(0);
-    }
-    var lib = Directory('${current.path}/lib/');
-    var lock = File('${current.path}/pubspec.lock');
-    var yaml = File('${current.path}/pubspec.yaml');
-    var packages = File('${current.path}/.packages');
-    var plugins = File('${current.path}/.flutter-plugins');
-    var pluginsDep = File('${current.path}/.flutter-plugins-dependencies');
-    lib.existsSync() ? lib.deleteSync(recursive: true) : 0;
-    lock.existsSync() ? lock.deleteSync() : 0;
-    yaml.existsSync() ? yaml.deleteSync() : 0;
-    packages.existsSync() ? packages.deleteSync() : 0;
-    plugins.existsSync() ? plugins.deleteSync() : 0;
-    pluginsDep.existsSync() ? pluginsDep.deleteSync() : 0;
+    deleteCache();
     var base64decode = base64Decode(flutterInit);
     var archive = ZipDecoder().decodeBytes(base64decode);
     for (final file in archive) {
-      final filename = file.name;
-      if (file.isFile) {
-        final data = file.content as List<int>;
-        File(filename)
-          ..createSync(recursive: true)
-          ..writeAsBytesSync(data);
-      } else {
-        Directory(filename).create(recursive: true);
-      }
+      final data = file.content as List<int>;
+      File file2 = File(file.name);
+      file2.createSync(recursive: true);
+      file2.writeAsBytesSync(data);
     }
     print('done');
   } else if (option == 'FlutterModule') {
@@ -160,32 +140,14 @@ void main(List args) async {
     await moduleFile.writeAsString(frontModel);
     print('done');
   } else if (option == 'DartInit') {
-    var resposta = prompter.askBinary("Delete files? (lib/bin folder)");
-    if (resposta == false) {
-      exit(0);
-    }
-    var lib = Directory('${current.path}/lib/');
-    var bin = Directory('${current.path}/bin/');
-    var lock = File('${current.path}/pubspec.lock');
-    var yaml = File('${current.path}/pubspec.yaml');
-    var packages = File('${current.path}/.packages');
-    lib.existsSync() ? lib.deleteSync(recursive: true) : 0;
-    bin.existsSync() ? bin.deleteSync(recursive: true) : 0;
-    lock.existsSync() ? lock.deleteSync() : 0;
-    yaml.existsSync() ? yaml.deleteSync() : 0;
-    packages.existsSync() ? packages.deleteSync() : 0;
+    deleteCache();
     var base64decode = base64Decode(dartInit);
     var archive = ZipDecoder().decodeBytes(base64decode);
     for (final file in archive) {
-      final filename = file.name;
-      if (file.isFile) {
-        final data = file.content as List<int>;
-        File(filename)
-          ..createSync(recursive: true)
-          ..writeAsBytesSync(data);
-      } else {
-        Directory(filename).create(recursive: true);
-      }
+      final data = file.content as List<int>;
+      File file2 = File(file.name);
+      file2.createSync(recursive: true);
+      file2.writeAsBytesSync(data);
     }
     print('done');
   } else if (option == 'DartModel') {
@@ -210,14 +172,25 @@ void main(List args) async {
     File('${directory.path}/edit_$name.dart').writeAsString(editEdPoint);
     print('done');
   } else if (option == 'Clean') {
-    var lock = File('${current.path}/pubspec.lock');
-    var packages = File('${current.path}/.packages');
-    var plugins = File('${current.path}/.flutter-plugins');
-    var pluginsDep = File('${current.path}/.flutter-plugins-dependencies');
-    lock.existsSync() ? lock.deleteSync() : 0;
-    packages.existsSync() ? packages.deleteSync() : 0;
-    plugins.existsSync() ? plugins.deleteSync() : 0;
-    pluginsDep.existsSync() ? pluginsDep.deleteSync() : 0;
+    deleteCache();
     print("done");
   }
+}
+
+deleteCache() {
+  var current = Directory.current;
+  var idea = Directory('${current.path}/.idea');
+  var dartTool = Directory('${current.path}/.dart_tool');
+  var metadata = File('${current.path}/.metadata');
+  var lock = File('${current.path}/pubspec.lock');
+  var packages = File('${current.path}/.packages');
+  var plugins = File('${current.path}/.flutter-plugins');
+  var pluginsDep = File('${current.path}/.flutter-plugins-dependencies');
+  idea.existsSync() ? idea.deleteSync(recursive: true) : 0;
+  dartTool.existsSync() ? dartTool.deleteSync(recursive: true) : 0;
+  metadata.existsSync() ? metadata.deleteSync() : 0;
+  lock.existsSync() ? lock.deleteSync() : 0;
+  packages.existsSync() ? packages.deleteSync() : 0;
+  plugins.existsSync() ? plugins.deleteSync() : 0;
+  pluginsDep.existsSync() ? pluginsDep.deleteSync() : 0;
 }

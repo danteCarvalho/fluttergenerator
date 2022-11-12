@@ -17,6 +17,7 @@ part 'pagamento_sistema.reflection.g.dart';
 @EnableReflection()
 @reflector
 class PagamentoSistema extends Entidade {
+  @Coluna(nullable: false)
   String? referencia;
   String? qrCode;
   bool? pago;
@@ -24,6 +25,7 @@ class PagamentoSistema extends Entidade {
   String? link;
   Empresa? empresa;
   Usuario? usuario;
+  @Coluna(nullable: false)
   double? valor;
 
   static PagamentoSistema fromJson(Map map) {

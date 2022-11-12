@@ -6,8 +6,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 
-import 'widgets/root_app_bar_widget.dart';
 import 'app_store.dart';
+import 'widgets/menu_lateral/menu_lateral_widget.dart';
+import 'widgets/root_app_bar_widget.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -36,6 +37,7 @@ class AppWidgetState extends State<AppWidget> {
         return MaterialApp.router(
           builder: (context, child) {
             child = Scaffold(
+              drawer:  store.menuLateral?const MenuLateralWidget():null,
                 appBar: const RootAppBarWidget(),
                 body: child,
                 bottomNavigationBar: const Align(

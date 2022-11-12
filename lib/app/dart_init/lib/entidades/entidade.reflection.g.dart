@@ -283,7 +283,7 @@ class Entidade$reflection extends ClassReflection<Entidade> {
             false,
             const <ParameterReflection>[
               ParameterReflection(TypeReflection(Map, [dynamic, dynamic]),
-                  'map', false, true, null, null)
+                  'original', false, true, null, null)
             ],
             null,
             null,

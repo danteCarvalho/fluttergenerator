@@ -14,6 +14,7 @@ class AppStore = AppStoreBase with _$AppStore;
 abstract class AppStoreBase with Store {
   @observable
   bool iniciado = false;
+  bool menuLateral = true;
   @observable
   Usuario? usuario;
   List<BuildContext> contexts = [];

@@ -14,7 +14,7 @@ finalizarPagamentoSistema(HttpRequest request) async {
   pagamentoSistema.pago = true;
   pagamentoSistema.dataConfirmado = DateTime.now();
   pagamentoSistema = await updateHasura(pagamentoSistema, "pago dataConfirmado");
-  resposta["pagamentoSistema"] = pagamentoSistema;
+  resposta["ok"] = "ok";
   request.response.write(json.encode(resposta));
 }
 

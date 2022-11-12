@@ -3,10 +3,10 @@
 // @dart = 2.12
 
 import 'dart:core';
-import 'package:teste/app/entidades/empresa/empresa.dart' as prefix4;
+import 'package:teste/app/entidades/empresa/empresa.dart' as prefix2;
 import 'package:teste/app/entidades/entidade.dart' as prefix3;
 import 'package:teste/app/entidades/pagamento_sistema/pagamento_sistema.dart'
-    as prefix2;
+    as prefix4;
 import 'package:teste/app/entidades/usuario/usuario.dart' as prefix1;
 import 'package:teste/app/outros/entidade_helper.dart' as prefix0;
 
@@ -45,8 +45,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null,
             null),
         r.NonGenericClassMirrorImpl(
-            r'PagamentoSistema',
-            r'.PagamentoSistema',
+            r'Empresa',
+            r'.Empresa',
             7,
             1,
             const prefix0.Reflector(),
@@ -56,7 +56,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix2.PagamentoSistema() : null},
+            {r'': (bool b) => () => b ? prefix2.Empresa() : null},
             -1,
             -1,
             const <int>[-1],
@@ -84,8 +84,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <int>[4],
             2),
         r.NonGenericClassMirrorImpl(
-            r'Empresa',
-            r'.Empresa',
+            r'PagamentoSistema',
+            r'.PagamentoSistema',
             7,
             3,
             const prefix0.Reflector(),
@@ -95,7 +95,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix4.Empresa() : null},
+            {r'': (bool b) => () => b ? prefix4.PagamentoSistema() : null},
             -1,
             -1,
             const <int>[-1],
@@ -117,9 +117,9 @@ final _data = <r.Reflectable, r.ReflectorData>{
       <m.ParameterMirror>[],
       <Type>[
         prefix1.Usuario,
-        prefix2.PagamentoSistema,
+        prefix2.Empresa,
         prefix3.Entidade,
-        prefix4.Empresa,
+        prefix4.PagamentoSistema,
         const r.FakeType(r'.Entidade<T>')
       ],
       4,

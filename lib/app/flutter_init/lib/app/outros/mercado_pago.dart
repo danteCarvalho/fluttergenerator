@@ -9,8 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PagamentoSistemaUtil {
   static MP getMp() {
-    var mp = MP.fromAccessToken("TEST-2997362044584823-052123-be4b79be6d99b0204f4c78faba69711f-154167075");
-    // var mp = MP.fromAccessToken("APP_USR-2997362044584823-052123-680e3917e24fbd12374bba9c357088ef-154167075");
+    // var mp = MP.fromAccessToken("TEST-2997362044584823-052123-be4b79be6d99b0204f4c78faba69711f-154167075");
+    var mp = MP.fromAccessToken("APP_USR-2997362044584823-052123-680e3917e24fbd12374bba9c357088ef-154167075");
     return mp;
   }
 

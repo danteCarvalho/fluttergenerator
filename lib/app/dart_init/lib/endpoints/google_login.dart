@@ -12,7 +12,6 @@ import '../outros/security.dart';
 
 googleLogin(HttpRequest request) async {
   String requestString = await utf8.decoder.bind(request).join();
-
   Map requestObj = json.decode(requestString);
 
   String secret = "";

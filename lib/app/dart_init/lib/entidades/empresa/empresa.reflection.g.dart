@@ -178,7 +178,7 @@ class Empresa$reflection extends ClassReflection<Empresa> {
           obj,
           false,
           false,
-          null,
+          [Coluna(nullable: false)],
         );
       case 'valorpagamento':
         return FieldReflection<Empresa, T>(
@@ -192,7 +192,7 @@ class Empresa$reflection extends ClassReflection<Empresa> {
           obj,
           false,
           false,
-          null,
+          [Coluna(nullable: false)],
         );
       case 'telefone':
         return FieldReflection<Empresa, T>(
@@ -276,7 +276,7 @@ class Empresa$reflection extends ClassReflection<Empresa> {
           obj,
           false,
           false,
-          null,
+          [Coluna(nullable: false)],
         );
       case 'lastupdate':
         return FieldReflection<Empresa, T>(

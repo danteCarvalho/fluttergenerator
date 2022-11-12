@@ -199,6 +199,9 @@ abstract class _WWWWBase extends Entidade with Store {
 import 'package:flutter/material.dart';
 
 class WWWWWidget extends StatefulWidget {
+
+  const WWWWWidget({Key? key}) : super(key: key);
+
   @override
   WWWWWidgetState createState() => WWWWWidgetState();
 }

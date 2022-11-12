@@ -153,7 +153,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento> {
           obj,
           false,
           false,
-          null,
+          [Coluna(nullable: false)],
         );
       case 'qrcode':
         return FieldReflection<Pagamento, T>(
@@ -251,7 +251,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento> {
           obj,
           false,
           false,
-          null,
+          [Coluna(nullable: false)],
         );
       case 'id':
         return FieldReflection<Pagamento, T>(

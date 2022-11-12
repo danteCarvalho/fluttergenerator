@@ -17,6 +17,9 @@ processRequest(HttpRequest request, HttpServer server) async {
       }
       await Links.posts[path]?.call(request);
     } else if (request.method == "GET") {
+      if (!Links.excecoes.contains(path)) {
+        Security.verificarJwt(request);
+      }
       await Links.gets[path]?.call(request);
     }
   } catch (e) {

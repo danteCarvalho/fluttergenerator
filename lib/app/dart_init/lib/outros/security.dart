@@ -9,7 +9,8 @@ class Security {
   static verificarJwt(HttpRequest request) {
     var jwt = request.headers.value("Authorization");
     if (jwt == null) {
-      throw JwtException("No Jwt found");
+
+      throw JwtException("No Jwt found ${request.uri.toString()}");
     }
     jwt = jwt.replaceAll("Bearer ", "");
 

@@ -13,4 +13,5 @@ abstract class HomeStoreBase with Store {
 
   @action
   init() async {}
+
 }

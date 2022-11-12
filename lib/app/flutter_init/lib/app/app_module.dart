@@ -5,11 +5,13 @@ import 'modules/google_login/google_login_module.dart';
 import 'modules/home/home_module.dart';
 import 'modules/lista_mensalidades/lista_mensalidades_module.dart';
 import 'modules/login/login_module.dart';
+import 'widgets/menu_lateral/menu_lateral_store.dart';
 
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => AppStore()),
+    Bind.lazySingleton((i) => MenuLateralStore()),
   ];
 
   @override

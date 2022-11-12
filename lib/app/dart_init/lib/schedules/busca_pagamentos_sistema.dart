@@ -14,18 +14,16 @@ MP getMp() {
 }
 
 buscarPagamentosSistema() async {
-
-  try{
+  try {
     List<Map> list = [];
     list.add(expr("ativa", "_eq", true));
     list.add(expr("pago", "_eq", false));
     list.add(expr("datacriacao", "_lt", DateTime.now().subMinutes(5)));
     var sql = sqlHasura(PagamentoSistema(), list, [selectFields(PagamentoSistema())]);
     List<PagamentoSistema> pagamentos;
-    try{
+    try {
       pagamentos = await selectListHasura(sql, PagamentoSistema());
-    }
-    on NaoEncontrado catch (_) {
+    } on NaoEncontrado catch (_) {
       return;
     }
     var mp = getMp();
@@ -42,10 +40,11 @@ buscarPagamentosSistema() async {
       } else {
         result = await mp.getPreference(obj.referencia!);
       }
-      var status = result["status"];
+      var status = result["response"]?["status"];
       if (status == "approved") {
         obj.pago = true;
         obj.dataConfirmado = DateTime.now();
+        await updateHasura(obj, "pago dataConfirmado");
         if (obj.empresa != null) {
           var empresa = obj.empresa!;
           empresa.dataPagamento = DateTime.now().addDays(30);
@@ -57,14 +56,9 @@ buscarPagamentosSistema() async {
           usuario.ultimoPagamentoCompleto = DateTime.now();
           await updateHasura(usuario, "dataPagamento ultimoPagamentoCompleto");
         }
-        await updateHasura(obj, "pago dataConfirmado");
       }
     }
-  }
-  finally{
-    Future.delayed(Duration(minutes: 5, seconds: Random().nextInt(60)), buscarPagamentosSistema);
+  } finally {
+    Future.delayed(Duration(minutes: 2, seconds: Random().nextInt(60)), buscarPagamentosSistema);
   }
 }
-
-
-

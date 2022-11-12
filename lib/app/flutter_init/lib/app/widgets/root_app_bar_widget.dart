@@ -1,4 +1,3 @@
-  
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -8,8 +7,7 @@ import '../outros/metodos_estaticos.dart';
 
 import '../app_store.dart';
 
-
-class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget{
+class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   const RootAppBarWidget({Key? key}) : super(key: key);
 
   @override
@@ -19,6 +17,7 @@ class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget{
   // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
+
 class RootAppBarWidgetState extends State<RootAppBarWidget> {
   AppStore app = Modular.get();
   var historyObserver = NavigationHistoryObserver();
@@ -31,8 +30,7 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-
-    Observer observer = Observer(
+    Observer menu = Observer(
       builder: (context) {
         var usuario = app.usuario;
         if (usuario == null) {
@@ -58,13 +56,15 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
           },
           itemBuilder: (BuildContext context) {
             List<PopupMenuItem> list = [];
-            list.add(PopupMenuItem(
-              child: const Text("Mensalidades"),
-              value: (){
-                Modular.to.popUntil((p0) => false);
-                Modular.to.pushReplacementNamed("/mensalidades/");
-              },
-            ));
+            if (usuario.admin == true) {
+              list.add(PopupMenuItem(
+                child: const Text("Mensalidades"),
+                value: () {
+                  Modular.to.popUntil((p0) => false);
+                  Modular.to.pushReplacementNamed("/mensalidades/");
+                },
+              ));
+            }
             list.add(PopupMenuItem(
               child: Text(usuario.nome!),
             ));
@@ -79,20 +79,20 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
       },
     );
 
-
     List<Widget> list = [];
     for (Route route in historyObserver.history) {
       String nome = route.settings.name!;
-      if(nome.contains("?")){
+      if (nome.contains("?")) {
         nome = nome.split("?")[0];
       }
       list.add(Text(nome));
     }
 
     return AppBar(
-      title: Row(children: list,),
-      actions: [observer],);
+      title: Row(
+        children: list,
+      ),
+      actions: [menu],
+    );
   }
 }
-  
-  

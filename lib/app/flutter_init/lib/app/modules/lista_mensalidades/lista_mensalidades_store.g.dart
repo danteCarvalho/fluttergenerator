@@ -13,15 +13,31 @@ mixin _$ListaMensalidadesStore on ListaMensalidadesStoreBase, Store {
       Atom(name: 'ListaMensalidadesStoreBase.mensalidades', context: context);
 
   @override
-  List<PagamentoSistema>? get mensalidades {
+  List<PagamentoSistema> get mensalidades {
     _$mensalidadesAtom.reportRead();
     return super.mensalidades;
   }
 
   @override
-  set mensalidades(List<PagamentoSistema>? value) {
+  set mensalidades(List<PagamentoSistema> value) {
     _$mensalidadesAtom.reportWrite(value, super.mensalidades, () {
       super.mensalidades = value;
+    });
+  }
+
+  late final _$existeAtom =
+      Atom(name: 'ListaMensalidadesStoreBase.existe', context: context);
+
+  @override
+  bool get existe {
+    _$existeAtom.reportRead();
+    return super.existe;
+  }
+
+  @override
+  set existe(bool value) {
+    _$existeAtom.reportWrite(value, super.existe, () {
+      super.existe = value;
     });
   }
 
@@ -36,7 +52,8 @@ mixin _$ListaMensalidadesStore on ListaMensalidadesStoreBase, Store {
   @override
   String toString() {
     return '''
-mensalidades: ${mensalidades}
+mensalidades: ${mensalidades},
+existe: ${existe}
     ''';
   }
 }

@@ -4,6 +4,7 @@ import '../daos/hasura_dao.dart';
 import '../entidades/coluna.dart';
 import '../entidades/empresa/empresa.dart';
 import '../entidades/entidade.dart';
+import '../entidades/imagem/imagem.dart';
 import '../entidades/pagamento/pagamento.dart';
 import '../entidades/pagamento_sistema/pagamento_sistema.dart';
 import '../entidades/usuario/usuario.dart';
@@ -17,6 +18,7 @@ criarBanco() async {
   entidades.add(Empresa());
   entidades.add(Pagamento());
   entidades.add(PagamentoSistema());
+  entidades.add(Imagem());
   await processaEntidades(entidades);
   await refreshHarusa();
   await verificaAdmin();

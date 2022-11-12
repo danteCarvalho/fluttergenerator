@@ -104,7 +104,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import '../../entidades/wwww/wwww.dart';
-import '../../hasura/hasura_dao.dart';
+import '../../daos/hasura_dao.dart';
 
 addWWWW(HttpRequest request) async {
   String requestString = await utf8.decoder.bind(request).join();
@@ -125,7 +125,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import '../../entidades/wwww/wwww.dart';
-import '../../hasura/hasura_dao.dart';
+import '../../daos/hasura_dao.dart';
 
 editWWWW(HttpRequest request) async {
   String requestString = await utf8.decoder.bind(request).join();

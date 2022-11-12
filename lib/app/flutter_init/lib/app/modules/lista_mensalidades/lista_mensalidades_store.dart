@@ -3,15 +3,16 @@ import 'dart:convert';
 
 import 'package:async/async.dart';
 import 'package:dartutils/dartutils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import '../../requests/server_requets.dart';
 
 import '../../app_store.dart';
+import '../../daos/hasura_dao.dart';
 import '../../entidades/pagamento_sistema/pagamento_sistema.dart';
 import '../../outros/excecoes.dart';
 import '../../outros/mercado_pago.dart';
-import '../../daos/hasura_dao.dart';
+import '../../requests/server_requets.dart';
 
 part 'lista_mensalidades_store.g.dart';
 
@@ -20,12 +21,13 @@ class ListaMensalidadesStore = ListaMensalidadesStoreBase with _$ListaMensalidad
 abstract class ListaMensalidadesStoreBase with Store {
   AppStore app = Modular.get();
   @observable
-  List<PagamentoSistema>? mensalidades;
+  List<PagamentoSistema> mensalidades = [];
   String? id;
-
   Timer? timer;
   CancelableOperation? cancelableOperation;
   PagamentoSistema? pagamentoSistema;
+  @observable
+  bool existe = false;
 
   @action
   init() async {
@@ -33,10 +35,21 @@ abstract class ListaMensalidadesStoreBase with Store {
     List<Map> list = [];
     list.add(expr("ativa", "_eq", true));
     list.add(expr("usuario.id", "_eq", usuario.id));
-    var sql = sqlHasura(PagamentoSistema(), list, [selectFields(PagamentoSistema())]);
+
+    var sql =
+        sqlHasura(PagamentoSistema(), list, [selectFields(PagamentoSistema())], orderByList: [orderExpr("datacriacao", "desc")], maximo: 6);
     try {
       mensalidades = await selectListHasura(sql, PagamentoSistema());
-    } on NaoEncontrado {}
+    } on NaoEncontrado {
+      mensalidades = [];
+    }
+    existe = false;
+    for (var obj in mensalidades) {
+      if (obj.pago == false) {
+        existe = true;
+        break;
+      }
+    }
   }
 
   iniciarPagamento() async {
@@ -57,19 +70,16 @@ abstract class ListaMensalidadesStoreBase with Store {
     pagamentoSistema.referencia = id;
     Map map = {};
     map["pagamentoSistema"] = pagamentoSistema;
-    var responseBody = await serverJwtPost(map,"addPagamentoSistema");
+    var responseBody = await serverJwtPost(map, "addPagamentoSistema");
     if (!nuloOuvazio([responseBody])) {
-        Map responseMap = json.decode(responseBody);
-        if (responseMap.containsKey("pagamentoSistema")) {
-          this.pagamentoSistema =  PagamentoSistema.fromJson(responseMap["pagamentoSistema"]);
-        }
-        else if(responseMap.containsKey("mensagem")){
-          app.mostrarSnackBar(responseMap["mensagem"]);
-          return;
-        }
+      Map responseMap = json.decode(responseBody);
+      if (responseMap.containsKey("pagamentoSistema")) {
+        this.pagamentoSistema = PagamentoSistema.fromJson(responseMap["pagamentoSistema"]);
+      } else if (responseMap.containsKey("mensagem")) {
+        app.mostrarSnackBar(responseMap["mensagem"]);
+        return;
+      }
     }
-
-
 
     timer = Timer(const Duration(seconds: 10), verificaPix);
     await PagamentoSistemaUtil.mostarQrcode(result);
@@ -78,24 +88,24 @@ abstract class ListaMensalidadesStoreBase with Store {
   }
 
   verificaPix() async {
+    debugPrint("Verificando pix");
     cancelableOperation = CancelableOperation.fromFuture(PagamentoSistemaUtil.buscarPagamento(id!));
     Map result = await cancelableOperation?.value;
     if (result["response"]?["status"] == null) {
       return;
     }
     var status = result["response"]?["status"];
+    debugPrint(status);
     if (status == "approved") {
-
-      Map map ={"pagamentoSistema":pagamentoSistema};
+      Map map = {"pagamentoSistema": pagamentoSistema};
       var responseBody = await serverJwtPost(map, "finalizarPagamentoSistema");
       if (!nuloOuvazio([responseBody])) {
-          Map responseMap = json.decode(responseBody);
-          if (responseMap.containsKey("algo")) {
-             var obj =  responseMap["algo"];
-          }
-          else if(responseMap.containsKey("mensagem")){
-            app.mostrarSnackBar(responseMap["mensagem"]);
-          }
+        Map responseMap = json.decode(responseBody);
+        if (responseMap.containsKey("ok")) {
+          debugPrint("salvo");
+        } else if (responseMap.containsKey("mensagem")) {
+          app.mostrarSnackBar(responseMap["mensagem"]);
+        }
       }
       await app.pop();
       app.mostrarSnackBar("Pix aprovado");

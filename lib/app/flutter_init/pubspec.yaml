@@ -3,7 +3,7 @@ description: teste
 publish_to: 'none'
 version: 1.0.0+1
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: '>=2.17.1 <3.0.0'
 dependencies:
   flutter:
     sdk: flutter
@@ -27,7 +27,6 @@ dependencies:
   dart_ping:
   quiver:
   package_info_plus:
-  network_info_plus:
   url_launcher:
   cached_network_image:
   latlng:
@@ -40,6 +39,8 @@ dependencies:
   clipboard:
   mercadopago_sdk:
   qr_flutter:
+  file_picker:
+  extended_image:
   flutterutils:
     path: /home/dante/a/projetosFlutter/flutterutils
   dartutils:

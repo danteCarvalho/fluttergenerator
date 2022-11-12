@@ -3,11 +3,12 @@
 // @dart = 2.12
 
 import 'dart:core';
-import 'package:teste/entidades/empresa/empresa.dart' as prefix4;
-import 'package:teste/entidades/entidade.dart' as prefix2;
-import 'package:teste/entidades/pagamento/pagamento.dart' as prefix1;
+import 'package:teste/entidades/empresa/empresa.dart' as prefix2;
+import 'package:teste/entidades/entidade.dart' as prefix1;
+import 'package:teste/entidades/imagem/imagem.dart' as prefix4;
+import 'package:teste/entidades/pagamento/pagamento.dart' as prefix3;
 import 'package:teste/entidades/pagamento_sistema/pagamento_sistema.dart'
-    as prefix3;
+    as prefix6;
 import 'package:teste/entidades/usuario/usuario.dart' as prefix5;
 import 'package:teste/outros/entidade_helper.dart' as prefix0;
 
@@ -27,31 +28,13 @@ import 'package:reflectable/reflectable.dart' as r show Reflectable;
 final _data = <r.Reflectable, r.ReflectorData>{
   const prefix0.Reflector(): r.ReflectorData(
       <m.TypeMirror>[
-        r.NonGenericClassMirrorImpl(
-            r'Pagamento',
-            r'.Pagamento',
-            7,
-            0,
-            const prefix0.Reflector(),
-            const <int>[0],
-            const <int>[],
-            const <int>[],
-            -1,
-            {},
-            {},
-            {r'': (bool b) => () => b ? prefix1.Pagamento() : null},
-            -1,
-            -1,
-            const <int>[-1],
-            null,
-            null),
         r.GenericClassMirrorImpl(
             r'Entidade',
             r'.Entidade',
             519,
-            1,
+            0,
             const prefix0.Reflector(),
-            const <int>[1],
+            const <int>[0],
             const <int>[],
             const <int>[],
             -1,
@@ -64,11 +47,29 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null,
             null,
             (o) => false,
-            const <int>[5],
-            1),
+            const <int>[6],
+            0),
         r.NonGenericClassMirrorImpl(
-            r'PagamentoSistema',
-            r'.PagamentoSistema',
+            r'Empresa',
+            r'.Empresa',
+            7,
+            1,
+            const prefix0.Reflector(),
+            const <int>[1],
+            const <int>[],
+            const <int>[],
+            -1,
+            {},
+            {},
+            {r'': (bool b) => () => b ? prefix2.Empresa() : null},
+            -1,
+            -1,
+            const <int>[-1],
+            null,
+            null),
+        r.NonGenericClassMirrorImpl(
+            r'Pagamento',
+            r'.Pagamento',
             7,
             2,
             const prefix0.Reflector(),
@@ -78,15 +79,15 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix3.PagamentoSistema() : null},
+            {r'': (bool b) => () => b ? prefix3.Pagamento() : null},
             -1,
             -1,
             const <int>[-1],
             null,
             null),
         r.NonGenericClassMirrorImpl(
-            r'Empresa',
-            r'.Empresa',
+            r'Imagem',
+            r'.Imagem',
             7,
             3,
             const prefix0.Reflector(),
@@ -96,7 +97,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix4.Empresa() : null},
+            {r'': (bool b) => () => b ? prefix4.Imagem() : null},
             -1,
             -1,
             const <int>[-1],
@@ -120,31 +121,52 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <int>[-1],
             null,
             null),
+        r.NonGenericClassMirrorImpl(
+            r'PagamentoSistema',
+            r'.PagamentoSistema',
+            7,
+            5,
+            const prefix0.Reflector(),
+            const <int>[5],
+            const <int>[],
+            const <int>[],
+            -1,
+            {},
+            {},
+            {r'': (bool b) => () => b ? prefix6.PagamentoSistema() : null},
+            -1,
+            -1,
+            const <int>[-1],
+            null,
+            null),
         r.TypeVariableMirrorImpl(
-            r'T', r'.Entidade.T', const prefix0.Reflector(), -1, 1, null)
+            r'T', r'.Entidade.T', const prefix0.Reflector(), -1, 0, null)
       ],
       <m.DeclarationMirror>[
-        r.MethodMirrorImpl(r'', 64, 0, -1, 0, 0, null, const <int>[],
+        r.MethodMirrorImpl(r'', 64, 0, -1, 6, 0, null, const <int>[],
             const prefix0.Reflector(), null),
-        r.MethodMirrorImpl(r'', 64, 1, -1, 5, 1, null, const <int>[],
+        r.MethodMirrorImpl(r'', 64, 1, -1, 1, 1, null, const <int>[],
             const prefix0.Reflector(), null),
         r.MethodMirrorImpl(r'', 64, 2, -1, 2, 2, null, const <int>[],
             const prefix0.Reflector(), null),
         r.MethodMirrorImpl(r'', 64, 3, -1, 3, 3, null, const <int>[],
             const prefix0.Reflector(), null),
         r.MethodMirrorImpl(r'', 64, 4, -1, 4, 4, null, const <int>[],
+            const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'', 64, 5, -1, 5, 5, null, const <int>[],
             const prefix0.Reflector(), null)
       ],
       <m.ParameterMirror>[],
       <Type>[
-        prefix1.Pagamento,
-        prefix2.Entidade,
-        prefix3.PagamentoSistema,
-        prefix4.Empresa,
+        prefix1.Entidade,
+        prefix2.Empresa,
+        prefix3.Pagamento,
+        prefix4.Imagem,
         prefix5.Usuario,
+        prefix6.PagamentoSistema,
         const r.FakeType(r'.Entidade<T>')
       ],
-      5,
+      6,
       {},
       {},
       null,
