@@ -32,7 +32,7 @@ class MenuLateralWidgetState extends State<MenuLateralWidget> {
         var listView = ListView.builder(
           itemBuilder: (context, index) {
             if (index == 0) {
-              return DrawerHeader(child: Text("teste"));
+              return const DrawerHeader(child: Text("teste"));
             } else {
               List obj = objs.elementAt(index);
               return ListTile(leading: Icon(obj[2]),title: Text(obj[1]),onTap: (){

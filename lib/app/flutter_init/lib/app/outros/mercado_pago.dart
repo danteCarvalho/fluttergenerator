@@ -59,10 +59,9 @@ class PagamentoSistemaUtil {
             app.mostrarSnackBar("Texto copiado");
           },
         );
+        var qrImage = QrImageView(data: pix["qr_code"],);
         var qrcode = Dialog(
-          child: QrImage(
-            data: pix["qr_code"],
-          ),
+          child: qrImage,
         );
         var valor = Text("Valor: ${result["response"]["transaction_amount"]} R\$");
         List<Widget> columnWidgets = [];

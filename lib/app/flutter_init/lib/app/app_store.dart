@@ -1,11 +1,14 @@
-import 'package:asuka/asuka.dart' as asuka;
+import 'dart:developer';
+
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'outros/metodos_estaticos.dart';
 
+import 'app_widget.dart';
 import 'entidades/usuario/usuario.dart';
+import 'outros/metodos_estaticos.dart';
 
 part 'app_store.g.dart';
 
@@ -19,21 +22,36 @@ abstract class AppStoreBase with Store {
   Usuario? usuario;
   List<BuildContext> contexts = [];
 
-  init() async {
+  init(AppWidgetState appWidgetState) async {
     var shared = await SharedPreferences.getInstance();
     usuario = shared.containsKey("usuario") ? Usuario().stringToClass(shared.getString("usuario")!) : null;
+    if (usuario != null) {
+      Modular.setInitialRoute("/principal/");
+    } else {
+      Modular.setInitialRoute("/home/");
+    }
     verificaJwt();
+    await Future.delayed(const Duration(seconds: 3));
     iniciado = true;
+    appWidgetState.refresh();
+  }
+
+  printLog(String msg, e) {
+    log(msg, error: e);
+  }
+
+  printDebug(msg) {
+    debugPrint(msg.toString());
   }
 
   mostrarSnackBar(String texto) {
-    asuka.showSnackBar(SnackBar(
+    Asuka.showSnackBar(SnackBar(
       content: Text(texto),
     ));
   }
 
   dialog(Widget dialog) async {
-    await asuka.showDialog(
+    await Asuka.showDialog(
       builder: (context) {
         contexts.add(context);
         return dialog;

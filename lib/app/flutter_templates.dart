@@ -237,7 +237,7 @@ class WWWWWidgetState extends State<WWWWWidget> {
   @override
   void initState() {
     super.initState();
-    store.init();
+    store.init(this);
   }
 
   @override
@@ -266,7 +266,7 @@ class WWWWPageState extends State<WWWWPage> {
   @override
   void initState() {
     super.initState();
-    store.init();
+    store.init(this);
   }
 
   @override
@@ -315,6 +315,8 @@ class WWWWModule extends Module {
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import '../../app_store.dart';
+import 'wwww_yyyy.dart';
+
 part 'wwww_store.g.dart';
 
 class WWWWStore = WWWWStoreBase with _\$WWWWStore;
@@ -323,7 +325,7 @@ abstract class WWWWStoreBase with Store {
   AppStore app = Modular.get();
   
   @action
-  init()async{
+  init(WWWWYYYYState wwwwYYYYState)async{
   
   }
 

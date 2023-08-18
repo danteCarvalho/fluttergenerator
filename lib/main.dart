@@ -90,9 +90,11 @@ void main(List args) async {
     var archive = ZipDecoder().decodeBytes(base64decode);
     for (final file in archive) {
       final data = file.content as List<int>;
-      File file2 = File(file.name);
-      file2.createSync(recursive: true);
-      file2.writeAsBytesSync(data);
+      if (file.isFile) {
+        File file2 = File(file.name);
+        file2.createSync(recursive: true);
+        file2.writeAsBytesSync(data);
+      }
     }
     print('done');
   } else if (option == 'FlutterModule') {
@@ -100,7 +102,7 @@ void main(List args) async {
     await directory.create(recursive: true);
     var module = FlutterTemplates.module.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
     var page = FlutterTemplates.page.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+    var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase).replaceAll("YYYY", "Page").replaceAll("yyyy", "page");
     var moduleFile = File('${directory.path}/${name}_module.dart');
     await moduleFile.writeAsString(module);
     var pageFile = File('${directory.path}/${name}_page.dart');
@@ -116,7 +118,7 @@ void main(List args) async {
       var widgetWithStore = FlutterTemplates.widgetWithStore.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
       var widgetFile = File('${directory.path}/${name}_widget.dart');
       await widgetFile.writeAsString(widgetWithStore);
-      var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
+      var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase).replaceAll("YYYY", "Widget").replaceAll("yyyy", "widget");
       var storeFile = File('${directory.path}/${name}_store.dart');
       await storeFile.writeAsString(store);
     } else {
@@ -145,9 +147,11 @@ void main(List args) async {
     var archive = ZipDecoder().decodeBytes(base64decode);
     for (final file in archive) {
       final data = file.content as List<int>;
-      File file2 = File(file.name);
-      file2.createSync(recursive: true);
-      file2.writeAsBytesSync(data);
+      if (file.isFile) {
+        File file2 = File(file.name);
+        file2.createSync(recursive: true);
+        file2.writeAsBytesSync(data);
+      }
     }
     print('done');
   } else if (option == 'DartModel') {

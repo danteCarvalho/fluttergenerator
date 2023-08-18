@@ -50,7 +50,7 @@ class Imagem extends Entidade {
 
   @override
   Map<String, dynamic> dbMaptoClassMap(Map original) {
-    Map<String, dynamic> map2 = Map();
+    Map<String, dynamic> map2 = {};
     List allFields = Imagem().reflect().allFields();
     for(var obj in allFields){
       var name = obj.name;

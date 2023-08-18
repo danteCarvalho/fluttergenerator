@@ -19,23 +19,48 @@ initSembast() async {
   if (db != null) {
     return;
   }
+  DatabaseFactory databaseFactory = getDatabaseFactory();
+  String dbPath = await getDbPath();
+  db = await databaseFactory.openDatabase(dbPath);
+}
+
+getDbPath() async {
   if (kIsWeb) {
-    db = await databaseFactoryWeb.openDatabase(config.sembastDbName);
+    return config.sembastDbName;
   } else if (Platform.isAndroid) {
     var dir = await getExternalStorageDirectory();
     if (dir != null) {
       await dir.create(recursive: true);
-      var dbPath = "${dir.path}/${config.sembastDbName}";
-      db = await databaseFactoryIo.openDatabase(dbPath);
+      return "${dir.path}/${config.sembastDbName}";
     }
   } else {
     var home = Platform.environment['HOME'] ?? Platform.environment['USERPROFILE'];
     if (home != null) {
       var dir = Directory(home);
-      var dbPath = "${dir.path}/${config.sembastDbName}";
-      db = await databaseFactoryIo.openDatabase(dbPath);
+      return "${dir.path}/${config.sembastDbName}";
     }
   }
+}
+
+deleteSembast() async {
+  var banco = db;
+  if (banco != null) {
+    await banco.close();
+    db = null;
+  }
+  DatabaseFactory databaseFactory = getDatabaseFactory();
+  var dbPath = await getDbPath();
+  await databaseFactory.deleteDatabase(dbPath);
+}
+
+getDatabaseFactory() {
+  DatabaseFactory databaseFactory;
+  if (kIsWeb) {
+    databaseFactory = databaseFactoryWeb;
+  } else {
+    databaseFactory = databaseFactoryIo;
+  }
+  return databaseFactory;
 }
 
 StoreRef<String, Map<String, Object?>> getStore<T extends Entidade>(T entidade) {
@@ -114,17 +139,4 @@ Future<List<T>> selectListSembast<T extends Entidade>(Finder finder, T entidade,
 
 
 
-deleteSembast() async {
-  Database? database = db;
-  if (database == null) {
-    return;
-  } else {
-    await database.close();
-  }
-  db = null;
-  if (kIsWeb) {
-    databaseFactoryWeb.deleteDatabase(database.path);
-  } else {
-    databaseFactoryIo.deleteDatabase(database.path);
-  }
-}
+

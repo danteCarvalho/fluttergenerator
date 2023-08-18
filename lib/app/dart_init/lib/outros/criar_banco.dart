@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:http/http.dart';
 
 import '../daos/hasura_dao.dart';
@@ -19,9 +21,28 @@ criarBanco() async {
   entidades.add(Pagamento());
   entidades.add(PagamentoSistema());
   entidades.add(Imagem());
+  await checkHasura();
   await processaEntidades(entidades);
   await refreshHarusa();
   await verificaAdmin();
+}
+
+checkHasura() async {
+  Map<String, String> headers = {};
+  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
+
+  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/healthz");
+
+  try {
+    var response = await get(uri, headers: headers);
+    print('Hasura: ${response.body}');
+  } on SocketException catch (e) {
+    print("Hasura desligado ou não alcançado");
+    exit(0);
+  } catch (e) {
+    print(e);
+    exit(0);
+  }
 }
 
 refreshHarusa() async {
@@ -66,7 +87,7 @@ addHasuraTable(Entidade entidade) async {
   print(response.body);
 }
 
-addHasuraForeignKeys(Entidade tabela, Entidade  campo,String nomeCampo) async {
+addHasuraForeignKeys(Entidade tabela, Entidade campo, String nomeCampo) async {
   var nomeTabela = tabela.runtimeType.toString().toLowerCase();
   var nomeTabelaReferencia = campo.runtimeType.toString().toLowerCase();
 

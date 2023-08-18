@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -28,8 +29,9 @@ main() async {
     await Sentry.captureException(error, stackTrace: stack);
     debugPrint(error.toString());
     String stack2 = "";
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
     LineSplitter.split(stack.toString()).forEach((s) {
-      if (s.contains("teste/")) {
+      if (s.contains("${packageInfo.appName}/")) {
         stack2 += "$s\n";
       }
     });

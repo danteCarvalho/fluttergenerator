@@ -20,9 +20,10 @@ linter:
    - prefer_relative_imports
    - avoid_relative_lib_imports
 
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
+analyzer:
+  exclude:
+    - lib/**.g.dart
+    - lib/main.reflectable.dart
 
 # For more information about the core and recommended set of lints, see
 # https://dart.dev/go/core-lints

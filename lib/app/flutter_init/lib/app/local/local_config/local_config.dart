@@ -6,46 +6,42 @@ import 'package:reflection_factory/reflection_factory.dart';
 
 
 import '../../outros/entidade_helper.dart';
-import '../entidade.dart';
 
-part 'imagem.g.dart';
-part 'imagem.reflection.g.dart';
+part 'local_config.g.dart';
+part 'local_config.reflection.g.dart';
 
 @JsonSerializable(explicitToJson: true,anyMap: true)
 @EnableReflection()
 @reflector
-class Imagem extends _ImagemBase with _$Imagem {
+class LocalConfig extends _LocalConfigBase with _$LocalConfig {
 
-  static Imagem fromJson(Map map) {
-    Map map2 = Imagem().dbMaptoClassMap(map);
-    return _$ImagemFromJson(map2);
+  static LocalConfig fromJson(Map map) {
+    Map map2 = LocalConfig().dbMaptoClassMap(map);
+    return _$LocalConfigFromJson(map2);
   }
   
-  static List<Imagem>? listMapToListClass2(List? list) {
+  static List<LocalConfig>? listMapToListClass2(List? list) {
     if(list == null){
       return null;
     }
-    List<Imagem> list2 = [];
+    List<LocalConfig> list2 = [];
     for(var obj in list){
       list2.add(fromJson(obj));
     }
     return list2;
   }
 
-  @override
   Map<String, dynamic> classToMap() {
-    return _$ImagemToJson(this);
+    return _$LocalConfigToJson(this);
   }
 
-  @override
   Map<String, dynamic> toJson() {
-    return _$ImagemToJson(this);
+    return _$LocalConfigToJson(this);
   }
   
-  @override
   Map<String, dynamic> dbMaptoClassMap(Map original) {
-    Map<String, dynamic> map2 = {};
-    List allFields = Imagem().reflect().allFields();
+    Map<String, dynamic> map2 = Map();
+    List allFields = LocalConfig().reflect().allFields();
     for(var obj in allFields){
       var name = obj.name;
       if (original.containsKey(name)) {
@@ -57,41 +53,34 @@ class Imagem extends _ImagemBase with _$Imagem {
     return map2;
   }
   
-  @override
   String classToString(){
     return json.encode(this);
   }
 
-  @override
-  Imagem stringToClass(String string) {
+  LocalConfig stringToClass(String string) {
     Map map2 = json.decode(string);
     map2 = dbMaptoClassMap(map2);
-    return _$ImagemFromJson(map2);
+    return _$LocalConfigFromJson(map2);
   }
 
-  @override
-  Imagem mapToClass(Map map) {
+  LocalConfig mapToClass(Map map) {
     Map map2 = dbMaptoClassMap(map);
-    return _$ImagemFromJson(map2);
+    return _$LocalConfigFromJson(map2);
   }
   
-  @override
-  List<Imagem>? listMapToListClass(List? list) {
+  List<LocalConfig>? listMapToListClass(List? list) {
     return listMapToListClass2(list);
   }
   
-  @override
-  ClassReflection<Imagem> reflect() {
+  ClassReflection<LocalConfig> reflect() {
     return reflection;
   }
   
 
 }
 
-abstract class _ImagemBase extends Entidade with Store {
-    String? value;
-    String? name;
-    int? size;
+abstract class _LocalConfigBase with Store {
+
 }
 
   
