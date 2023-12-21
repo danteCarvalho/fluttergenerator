@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'app_store.dart';
+import 'widgets/root_app_bar_widget.dart';
 import 'widgets/splash/splash_widget.dart';
 
 class AppWidget extends StatefulWidget {
@@ -33,6 +34,7 @@ class AppWidgetState extends State<AppWidget> {
       return MaterialApp.router(
         builder: (context, child) {
           child = Scaffold(
+            appBar: RootAppBarWidget(),
             body: child,
           );
           child = Asuka.builder(context, child);

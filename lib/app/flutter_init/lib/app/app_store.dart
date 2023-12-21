@@ -4,6 +4,7 @@ import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app_widget.dart';
@@ -23,6 +24,7 @@ abstract class AppStoreBase with Store {
   List<BuildContext> contexts = [];
 
   init(AppWidgetState appWidgetState) async {
+    Modular.setObservers([Asuka.asukaHeroController, NavigationHistoryObserver()]);
     var shared = await SharedPreferences.getInstance();
     usuario = shared.containsKey("usuario") ? Usuario().stringToClass(shared.getString("usuario")!) : null;
     if (usuario != null) {

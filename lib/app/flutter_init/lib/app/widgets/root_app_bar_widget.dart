@@ -88,11 +88,17 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
       list.add(Text(nome));
     }
 
+    Widget? leading;
+    if (historyObserver.history.length > 1) {
+      leading = IconButton(onPressed: () => Modular.to.pop(), icon: const Icon(Icons.arrow_back));
+    }
+
     return AppBar(
       title: Row(
         children: list,
       ),
       actions: [menu],
+      leading: leading,
     );
   }
 }

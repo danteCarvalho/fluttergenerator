@@ -4,12 +4,12 @@ class DartTemplates {
 
 import 'dart:convert';
 
+import 'package:dartutils/dartutils.dart';  
 import 'package:json_annotation/json_annotation.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
 import '../coluna.dart';
-import '../empresa/empresa.dart';
 import '../entidade.dart';
 
 part 'wwww.g.dart';
@@ -19,78 +19,14 @@ part 'wwww.reflection.g.dart';
 @JsonSerializable(explicitToJson: true, anyMap: true)
 @EnableReflection()
 @reflector
-class WWWW extends Entidade {
+@SerialAnnotation()
+class WWWW extends Entidade with _\$Serial {
 
   static WWWW fromJson(Map map) {
     Map map2 = WWWW().dbMaptoClassMap(map);
     return _\$WWWWFromJson(map2);
   }
-  
-  static List<WWWW>? listMapToListClass2(List? list) {
-    if(list == null){
-      return null;
-    }
-    List<WWWW> list2 = [];
-    for(var obj in list){
-      list2.add(fromJson(obj));
-    }
-    return list2;
-  }
-
-  @override
-  Map<String, dynamic> classToMap() {
-    return _\$WWWWToJson(this);
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _\$WWWWToJson(this);
-  }
-
-  @override
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
-    Map<String, dynamic> map2 = Map();
-    List allFields = WWWW().reflect().allFields();
-    for(var obj in allFields){
-      var name = obj.name;
-      if (original.containsKey(name)) {
-        map2[name] = original[name];
-      } else if (original.containsKey(name.toString().toLowerCase())) {
-        map2[name] = original[name.toString().toLowerCase()];
-      }
-    }
-    return map2;
-  }
-
-  @override
-  String classToString() {
-    return json.encode(this);
-  }
-
-  @override
-  WWWW stringToClass(String string) {
-    Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
-    return _\$WWWWFromJson(map2);
-
-  }
-
-  @override
-  WWWW mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
-    return _\$WWWWFromJson(map2);
-  }
-  
-  @override
-  List<WWWW>? listMapToListClass(List? list) {
-    return listMapToListClass2(list);
-  }
-  
-  @override
-  ClassReflection<WWWW> reflect() {
-    return reflection;
-  }
-  
+ 
 }
 
 

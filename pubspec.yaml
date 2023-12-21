@@ -1,9 +1,9 @@
 name: flutter_generator
 description: A simple command-line application.
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: '>=3.0.6 <4.0.0'
 dependencies:
-  simple_prompter: ^2.2.1
+  simple_prompter:
   path: ^1.8.3
   recase: ^4.1.0
   archive: ^3.3.6
