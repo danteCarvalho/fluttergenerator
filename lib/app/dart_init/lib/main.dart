@@ -52,11 +52,12 @@ serverStart(Map map) async {
     });
   }, (Object error, StackTrace stack) async {
     await Sentry.captureException(error, stackTrace: stack);
-    print(error);
-    String stack2 = "";
-    LineSplitter.split(stack.toString()).forEach((s) {
-      if (s.contains("teste/")) {
-        stack2 += "$s\n";
+    String stack2 = "$error\n";
+    LineSplitter.split(stack.toString()).forEach((linha) {
+      if (linha.contains("gitalert/")) {
+        var split = linha.split("      ");
+        split = split[1].toString().split("(package:");
+        stack2 += "(package:${split[1]} ${split[0]}\n";
       }
     });
     print(stack2);

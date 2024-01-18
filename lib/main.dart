@@ -8,8 +8,8 @@ import 'package:recase/recase.dart';
 import 'package:simple_prompter/simple_prompter.dart';
 
 import 'app/flutter_templates.dart';
-import 'dart_init64.dart';
-import 'flutter_init64.dart';
+import 'dart64.dart';
+import 'flutter64.dart';
 
 void main(List args) async {
   var current = Directory.current;
@@ -20,8 +20,8 @@ void main(List args) async {
     var file = File("out.zip");
     var readAsBytesSync = file.readAsBytesSync();
     var base64encode = base64Encode(readAsBytesSync);
-    File file2 = File("lib/dart_init64.dart");
-    file2.writeAsStringSync("String dartInit = '$base64encode';");
+    File file2 = File("lib/dart64.dart");
+    file2.writeAsStringSync("String dart64String = '$base64encode';");
     file.deleteSync();
 
     encoder = ZipFileEncoder();
@@ -29,8 +29,8 @@ void main(List args) async {
     file = File("out.zip");
     readAsBytesSync = file.readAsBytesSync();
     base64encode = base64Encode(readAsBytesSync);
-    file2 = File("lib/flutter_init64.dart");
-    file2.writeAsStringSync("String flutterInit = '$base64encode';");
+    file2 = File("lib/flutter64.dart");
+    file2.writeAsStringSync("String flutter64String = '$base64encode';");
     file.deleteSync();
     print("Arquivos gerados");
     exit(0);
@@ -86,7 +86,7 @@ void main(List args) async {
 
   if (option == 'FlutterInit') {
     deleteCache();
-    var base64decode = base64Decode(flutterInit);
+    var base64decode = base64Decode(flutter64String);
     var archive = ZipDecoder().decodeBytes(base64decode);
     for (final file in archive) {
       final data = file.content as List<int>;
@@ -143,7 +143,7 @@ void main(List args) async {
     print('done');
   } else if (option == 'DartInit') {
     deleteCache();
-    var base64decode = base64Decode(dartInit);
+    var base64decode = base64Decode(dart64String);
     var archive = ZipDecoder().decodeBytes(base64decode);
     for (final file in archive) {
       final data = file.content as List<int>;

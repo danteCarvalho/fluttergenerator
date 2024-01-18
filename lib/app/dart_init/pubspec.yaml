@@ -20,7 +20,7 @@ dependencies:
   dart_date: ^1.2.2
   file: ^7.0.0
   dartutils:
-    path: /home/dante/a/projetosFlutter/dartutils
+    git: https://dantecarvalho@bitbucket.org/dantecarvalho/dartutils.git
 dev_dependencies:
   lints: ^2.1.1
   build_runner: ^2.4.6

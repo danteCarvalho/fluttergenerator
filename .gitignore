@@ -7,7 +7,5 @@ build/
 
 # Directory created by dartdoc
 doc/api/
-lib/dart_init64.dart
-lib/flutter_init64.dart
 /.idea/*
 /pubspec.lock
