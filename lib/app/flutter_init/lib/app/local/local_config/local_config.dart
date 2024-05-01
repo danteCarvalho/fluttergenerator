@@ -1,9 +1,8 @@
 import 'dart:convert';
-  
+
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
-
 
 import '../../outros/entidade_helper.dart';
 
@@ -40,7 +39,7 @@ class LocalConfig extends _LocalConfigBase with _$LocalConfig {
   }
   
   Map<String, dynamic> dbMaptoClassMap(Map original) {
-    Map<String, dynamic> map2 = Map();
+    Map<String, dynamic> map2 = {};
     List allFields = LocalConfig().reflect().allFields();
     for(var obj in allFields){
       var name = obj.name;

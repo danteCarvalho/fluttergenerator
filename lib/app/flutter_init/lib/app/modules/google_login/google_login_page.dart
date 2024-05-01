@@ -6,7 +6,7 @@ import 'google_login_store.dart';
 class GoogleLoginPage extends StatefulWidget {
   final String title;
 
-  const GoogleLoginPage({Key? key, this.title = 'GoogleLogin'}) : super(key: key);
+  const GoogleLoginPage({super.key, this.title = 'GoogleLogin'});
 
   @override
   GoogleLoginPageState createState() => GoogleLoginPageState();
@@ -18,7 +18,7 @@ class GoogleLoginPageState extends State<GoogleLoginPage> {
   @override
   void initState() {
     super.initState();
-    store.init();
+    store.init(this);
   }
 
   @override

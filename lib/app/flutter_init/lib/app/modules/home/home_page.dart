@@ -6,7 +6,7 @@ import 'home_store.dart';
 class HomePage extends StatefulWidget {
   final String title;
 
-  const HomePage({Key? key, this.title = "Home"}) : super(key: key);
+  const HomePage({super.key, this.title = "Home"});
 
   @override
   HomePageState createState() => HomePageState();
@@ -18,7 +18,7 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    store.init();
+    store.init(this);
   }
 
   @override

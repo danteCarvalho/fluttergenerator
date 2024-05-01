@@ -1,14 +1,13 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
-import '../outros/metodos_estaticos.dart';
 
 import '../app_store.dart';
+import '../outros/metodos_estaticos.dart';
 
 class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
-  const RootAppBarWidget({Key? key}) : super(key: key);
+  const RootAppBarWidget({super.key});
 
   @override
   RootAppBarWidgetState createState() => RootAppBarWidgetState();
@@ -33,45 +32,46 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
     Observer menu = Observer(
       builder: (context) {
         var usuario = app.usuario;
-        if (usuario == null) {
-          return TextButton(
-              onPressed: () async {
-                if (kIsWeb) {
-                  googleLoginWeb();
-                } else {
-                  googleLoginOs();
-                }
-              },
-              child: const Text(
-                "Login",
-                style: TextStyle(color: Colors.white),
-              ));
-        }
         return PopupMenuButton(
           icon: const Icon(
-            Icons.person,
+            Icons.more_vert,
           ),
           onSelected: (dynamic value) {
             value?.call();
           },
           itemBuilder: (BuildContext context) {
             List<PopupMenuItem> list = [];
-            if (usuario.admin == true) {
+
+            if (usuario == null) {
+              list.add(const PopupMenuItem(
+                value: googleLogin,
+                child: Text("Google Login"),
+              ));
               list.add(PopupMenuItem(
-                child: const Text("Mensalidades"),
+                child: const Text("Login"),
                 value: () {
                   Modular.to.popUntil((p0) => false);
-                  Modular.to.pushReplacementNamed("/mensalidades/");
+                  Modular.to.pushReplacementNamed("/login/");
                 },
               ));
+            } else {
+              if (usuario.admin == true) {
+                list.add(PopupMenuItem(
+                  child: const Text("Mensalidades"),
+                  value: () {
+                    Modular.to.popUntil((p0) => false);
+                    Modular.to.pushReplacementNamed("/mensalidades/");
+                  },
+                ));
+              }
+              list.add(PopupMenuItem(
+                child: Text(usuario.nome!),
+              ));
+              list.add(PopupMenuItem(
+                value: app.sair,
+                child: const Text("Sair"),
+              ));
             }
-            list.add(PopupMenuItem(
-              child: Text(usuario.nome!),
-            ));
-            list.add(PopupMenuItem(
-              value: app.sair,
-              child: const Text("Sair"),
-            ));
 
             return list;
           },
@@ -97,6 +97,7 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
       title: Row(
         children: list,
       ),
+      backgroundColor: Colors.lightBlueAccent,
       actions: [menu],
       leading: leading,
     );

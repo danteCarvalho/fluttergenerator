@@ -41,14 +41,6 @@ mixin _$ListaMensalidadesStore on ListaMensalidadesStoreBase, Store {
     });
   }
 
-  late final _$initAsyncAction =
-      AsyncAction('ListaMensalidadesStoreBase.init', context: context);
-
-  @override
-  Future init() {
-    return _$initAsyncAction.run(() => super.init());
-  }
-
   @override
   String toString() {
     return '''

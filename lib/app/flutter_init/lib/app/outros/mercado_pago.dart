@@ -4,8 +4,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
 import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import '../app_store.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../app_store.dart';
 
 class PagamentoSistemaUtil {
   static MP getMp() {

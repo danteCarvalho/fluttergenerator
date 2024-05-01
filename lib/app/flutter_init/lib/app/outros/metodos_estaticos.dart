@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartutils/dartutils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../app_store.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../app_store.dart';
 import '../entidades/usuario/usuario.dart';
 import '../requests/server_requets.dart';
 import 'config.dart';
@@ -24,6 +25,7 @@ void uriTest() {
   Modular.args.uri.port;
   Modular.args.uri.fragment;
   Modular.args.uri.data;
+  Modular.args.uri.queryParameters;
   Uri.base.scheme;
   Uri.base.path;
   Uri.base.host;
@@ -35,6 +37,15 @@ void uriTest() {
   Uri.base.port;
   Uri.base.fragment;
   Uri.base.data;
+  Uri.base.queryParameters;
+}
+
+googleLogin(){
+  if (kIsWeb) {
+    googleLoginWeb();
+  } else {
+    googleLoginOs();
+  }
 }
 
 googleLoginWeb() async {
@@ -70,7 +81,7 @@ googleLoginOs() async {
     map["client_id"] = "44265153130-ifekhq2splh4lcf25tuvhrikaha73dhf.apps.googleusercontent.com";
     map["redirect_uri"] = "http://localhost:${config.portaApp}";
     map["tipo"] = "OS";
-    var responseBody = await serverPost(map, "googleLogin");
+    var responseBody = await serverPost(map, "api/googleLogin");
     if (nuloOuvazio([responseBody])) {
       return;
     }
@@ -90,6 +101,7 @@ googleLoginOs() async {
     shared.setString("usuario", usuario.classToString());
 
     app.usuario = usuario;
+    app.mostrarSnackBar("Logado com sucesso");
   });
 }
 
@@ -101,7 +113,7 @@ verificaJwt() async {
     Map map = {};
     map["jwt"] = jwt;
     map["usuarioId"] = app.usuario?.id;
-    var responseBody = await serverPost(map, "verificaAtualizaJwt");
+    var responseBody = await serverPost(map, "api/verificaAtualizaJwt");
     if (!nuloOuvazio([responseBody])) {
       Map responseMap = json.decode(responseBody);
       if (responseMap.containsKey("jwt")) {

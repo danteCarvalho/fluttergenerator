@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:dartutils/dartutils.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
+import 'package:sembast_sqflite/sembast_sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart' as sqflite_ffi;
 import 'package:uuid/uuid.dart';
 
 import '../entidades/entidade.dart';
@@ -12,13 +14,22 @@ import '../outros/excecoes.dart';
 Map mapStore = {};
 Database? db;
 
-initSembast() async {
+initSembast({bool useSqflite = false}) async {
   if (db != null) {
     return;
   }
-  DatabaseFactory databaseFactory = getDatabaseFactory();
+  DatabaseFactory databaseFactory = getDatabaseFactory(useSqflite: useSqflite);
   String dbPath = await getDbPath();
+  print("db path $dbPath");
   db = await databaseFactory.openDatabase(dbPath);
+}
+
+closeSembast() async {
+  var banco = db;
+  if (banco != null) {
+    await banco.close();
+    db = null;
+  }
 }
 
 getDbPath() async {
@@ -40,20 +51,20 @@ deleteDbSembast() async {
   await databaseFactory.deleteDatabase(dbPath);
 }
 
-getDatabaseFactory() {
+getDatabaseFactory({bool useSqflite = false}) {
   DatabaseFactory databaseFactory;
-  databaseFactory = databaseFactoryIo;
+  if (useSqflite) {
+    databaseFactory = getDatabaseFactorySqflite(sqflite_ffi.databaseFactoryFfi);
+  } else {
+    databaseFactory = databaseFactoryIo;
+  }
   return databaseFactory;
 }
 
 StoreRef<String, Map<String, Object?>> getStore<T extends Entidade>(T entidade) {
   var nome = entidade.runtimeType.toString();
-  if (mapStore.containsKey(nome)) {
-    return mapStore[nome];
-  } else {
-    mapStore[nome] = stringMapStoreFactory.store(nome);
-    return mapStore[nome];
-  }
+
+  return stringMapStoreFactory.store(nome);
 }
 
 insertSembast<T extends Entidade>(T entidade) async {
@@ -123,7 +134,3 @@ deleteSembast<T extends Entidade>(T entidade) async {
   var store = getStore(entidade);
   await store.record(entidade.id!).delete(db!);
 }
-
-
-
-

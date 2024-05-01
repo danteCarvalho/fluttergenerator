@@ -1,5 +1,6 @@
   
 import 'dart:convert';
+
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,7 +30,7 @@ serverJwtPost(Map map,String endpoint) async {
 }
 
 
-serverPost(Map map,String endpoint) async {
+Future<String> serverPost(Map map,String endpoint) async {
   try {
     var uri = Uri.parse("${config.schemeServidor}://${config.ipServidor}:${config.portaServidor}/$endpoint");
     var jsonSring = json.encode(map);

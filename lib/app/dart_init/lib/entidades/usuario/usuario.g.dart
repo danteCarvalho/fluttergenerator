@@ -73,3 +73,67 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'ultimoPagamentoGerado':
           instance.ultimoPagamentoGerado?.toIso8601String(),
     };
+
+// **************************************************************************
+// MyCustomGenerator
+// **************************************************************************
+
+mixin _$Serial {
+  Map<String, dynamic> classToMap() {
+    return _$UsuarioToJson(this as Usuario);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$UsuarioToJson(this as Usuario);
+  }
+
+  String classToString() {
+    return json.encode(this as Usuario);
+  }
+
+  String listClassToString(List list) {
+    return json.encode(list);
+  }
+
+  Map<String, dynamic> dbMaptoClassMap(Map original) {
+    Map<String, dynamic> map2 = {};
+    List allFields = Usuario().reflect().allFields();
+    for (var obj in allFields) {
+      var name = obj.name;
+      if (original.containsKey(name)) {
+        map2[name] = original[name];
+      } else if (original.containsKey(name.toString().toLowerCase())) {
+        map2[name] = original[name.toString().toLowerCase()];
+      }
+    }
+    return map2;
+  }
+
+  Usuario stringToClass(String string) {
+    Map map2 = json.decode(string);
+    map2 = dbMaptoClassMap(map2);
+    return _$UsuarioFromJson(map2);
+  }
+
+  Usuario mapToClass(Map map) {
+    Map map2 = dbMaptoClassMap(map);
+    return _$UsuarioFromJson(map2);
+  }
+
+  List<Usuario> listMapToListClass(List list) {
+    List<Usuario> list2 = [];
+    for (var obj in list) {
+      list2.add(Usuario.fromJson(obj));
+    }
+    return list2;
+  }
+
+  List<Usuario> listStringToListClass(String listString) {
+    var list = json.decode(listString);
+    return listMapToListClass(list);
+  }
+
+  ClassReflection<Usuario> reflect() {
+    return Usuario().reflection;
+  }
+}

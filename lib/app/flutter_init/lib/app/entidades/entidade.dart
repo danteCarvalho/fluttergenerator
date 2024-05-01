@@ -1,6 +1,7 @@
 
 import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';
+
 import '../outros/entidade_helper.dart';
 
 part 'entidade.reflection.g.dart';

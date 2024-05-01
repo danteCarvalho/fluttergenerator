@@ -9,7 +9,7 @@ import 'widgets/root_app_bar_widget.dart';
 import 'widgets/splash/splash_widget.dart';
 
 class AppWidget extends StatefulWidget {
-  const AppWidget({Key? key}) : super(key: key);
+  const AppWidget({super.key});
 
   @override
   AppWidgetState createState() => AppWidgetState();
@@ -30,33 +30,25 @@ class AppWidgetState extends State<AppWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (store.iniciado) {
-      return MaterialApp.router(
-        builder: (context, child) {
-          child = Scaffold(
-            appBar: RootAppBarWidget(),
-            body: child,
-          );
-          child = Asuka.builder(context, child);
-          return child;
-        },
-        debugShowCheckedModeBanner: false,
-        title: "teste",
-        theme: ThemeData(
-          buttonTheme: const ButtonThemeData(
-            alignedDropdown: true,
-          ),
+    return MaterialApp.router(
+      builder: (context, child) {
+        child = Scaffold(
+          appBar: const RootAppBarWidget(),
+          body: child,
+        );
+        child = Asuka.builder(context, child);
+        return store.iniciado?child:const SplashWidget();
+      },
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        buttonTheme: const ButtonThemeData(
+          alignedDropdown: true,
         ),
-        routeInformationParser: Modular.routeInformationParser,
-        routerDelegate: Modular.routerDelegate,
-        scrollBehavior: ScrollConfiguration.of(context).copyWith(
-          dragDevices: PointerDeviceKind.values.toSet(),
-        ),
-      );
-    } else {
-      return const MaterialApp(
-        home: SplashWidget(),
-      );
-    }
+      ),
+      routerConfig: Modular.routerConfig,
+      scrollBehavior: ScrollConfiguration.of(context).copyWith(
+        dragDevices: PointerDeviceKind.values.toSet(),
+      ),
+    );
   }
 }

@@ -13,6 +13,7 @@ import '../../entidades/pagamento_sistema/pagamento_sistema.dart';
 import '../../outros/excecoes.dart';
 import '../../outros/mercado_pago.dart';
 import '../../requests/server_requets.dart';
+import 'lista_mensalidades_page.dart';
 
 part 'lista_mensalidades_store.g.dart';
 
@@ -29,8 +30,7 @@ abstract class ListaMensalidadesStoreBase with Store {
   @observable
   bool existe = false;
 
-  @action
-  init() async {
+  init(ListaMensalidadesPageState state) async {
     var usuario = app.usuario!;
     List<Map> list = [];
     list.add(expr("ativa", "_eq", true));
@@ -70,7 +70,7 @@ abstract class ListaMensalidadesStoreBase with Store {
     pagamentoSistema.referencia = id;
     Map map = {};
     map["pagamentoSistema"] = pagamentoSistema;
-    var responseBody = await serverJwtPost(map, "addPagamentoSistema");
+    var responseBody = await serverJwtPost(map, "api/addPagamentoSistema");
     if (!nuloOuvazio([responseBody])) {
       Map responseMap = json.decode(responseBody);
       if (responseMap.containsKey("pagamentoSistema")) {
@@ -98,7 +98,7 @@ abstract class ListaMensalidadesStoreBase with Store {
     debugPrint(status);
     if (status == "approved") {
       Map map = {"pagamentoSistema": pagamentoSistema};
-      var responseBody = await serverJwtPost(map, "finalizarPagamentoSistema");
+      var responseBody = await serverJwtPost(map, "api/finalizarPagamentoSistema");
       if (!nuloOuvazio([responseBody])) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {

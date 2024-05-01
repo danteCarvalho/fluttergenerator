@@ -1,16 +1,14 @@
-import 'dart:io';
 import 'dart:math';
+
+import 'package:jaguar_jwt/jaguar_jwt.dart';
 
 import '../entidades/usuario/usuario.dart';
 import '../outros/config.dart';
-import 'package:jaguar_jwt/jaguar_jwt.dart';
 
 class Security {
-  static verificarJwt(HttpRequest request) {
-    var jwt = request.headers.value("Authorization");
+  static verificarJwt(String? jwt) {
     if (jwt == null) {
-
-      throw JwtException("No Jwt found ${request.uri.toString()}");
+      throw JwtException("No Jwt found");
     }
     jwt = jwt.replaceAll("Bearer ", "");
 

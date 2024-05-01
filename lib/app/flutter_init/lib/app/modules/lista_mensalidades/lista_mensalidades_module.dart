@@ -1,18 +1,16 @@
-
 import 'package:flutter_modular/flutter_modular.dart';
-import 'lista_mensalidades_store.dart';
+
 import 'lista_mensalidades_page.dart';
+import 'lista_mensalidades_store.dart';
 
 class ListaMensalidadesModule extends Module {
   @override
-  final List<Bind> binds = [
-    Bind.lazySingleton((i) => ListaMensalidadesStore()),
-  ];
+  void binds(i) {
+    i.addLazySingleton(ListaMensalidadesStore.new);
+  }
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute, child: (_, args) => const ListaMensalidadesPage()),
-  ];
+  void routes(r) {
+    r.child(Modular.initialRoute, child: (context) => const ListaMensalidadesPage());
+  }
 }
-
-

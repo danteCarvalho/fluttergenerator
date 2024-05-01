@@ -10,7 +10,7 @@ import 'lista_mensalidades_store.dart';
 class ListaMensalidadesPage extends StatefulWidget {
   final String title;
 
-  const ListaMensalidadesPage({Key? key, this.title = 'ListaMensalidades'}) : super(key: key);
+  const ListaMensalidadesPage({super.key, this.title = 'ListaMensalidades'});
 
   @override
   ListaMensalidadesPageState createState() => ListaMensalidadesPageState();
@@ -22,7 +22,7 @@ class ListaMensalidadesPageState extends State<ListaMensalidadesPage> {
   @override
   void initState() {
     super.initState();
-    store.init();
+    store.init(this);
   }
 
   @override

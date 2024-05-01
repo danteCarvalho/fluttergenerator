@@ -1,7 +1,7 @@
 import 'package:reflectable/reflectable.dart';
 
-import '../entidades/entidade.dart';
 import '../entidades/coluna.dart';
+import '../entidades/entidade.dart';
 
 class Reflector extends Reflectable {
   const Reflector() : super(reflectedTypeCapability, newInstanceCapability);

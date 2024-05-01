@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart';
 
 import '../daos/hasura_dao.dart';
+import '../daos/postgres_dao.dart';
 import '../entidades/coluna.dart';
 import '../entidades/empresa/empresa.dart';
 import '../entidades/entidade.dart';
@@ -12,7 +13,6 @@ import '../entidades/pagamento_sistema/pagamento_sistema.dart';
 import '../entidades/usuario/usuario.dart';
 import 'config.dart';
 import 'entidade_helper.dart';
-import '../daos/postgres_dao.dart';
 
 criarBanco() async {
   List<Entidade> entidades = [];
@@ -36,7 +36,7 @@ checkHasura() async {
   try {
     var response = await get(uri, headers: headers);
     print('Hasura: ${response.body}');
-  } on SocketException catch (e) {
+  } on SocketException {
     print("Hasura desligado ou não alcançado");
     exit(0);
   } catch (e) {

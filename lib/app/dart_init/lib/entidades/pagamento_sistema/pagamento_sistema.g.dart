@@ -49,3 +49,67 @@ Map<String, dynamic> _$PagamentoSistemaToJson(PagamentoSistema instance) =>
       'usuario': instance.usuario?.toJson(),
       'valor': instance.valor,
     };
+
+// **************************************************************************
+// MyCustomGenerator
+// **************************************************************************
+
+mixin _$Serial {
+  Map<String, dynamic> classToMap() {
+    return _$PagamentoSistemaToJson(this as PagamentoSistema);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$PagamentoSistemaToJson(this as PagamentoSistema);
+  }
+
+  String classToString() {
+    return json.encode(this as PagamentoSistema);
+  }
+
+  String listClassToString(List list) {
+    return json.encode(list);
+  }
+
+  Map<String, dynamic> dbMaptoClassMap(Map original) {
+    Map<String, dynamic> map2 = {};
+    List allFields = PagamentoSistema().reflect().allFields();
+    for (var obj in allFields) {
+      var name = obj.name;
+      if (original.containsKey(name)) {
+        map2[name] = original[name];
+      } else if (original.containsKey(name.toString().toLowerCase())) {
+        map2[name] = original[name.toString().toLowerCase()];
+      }
+    }
+    return map2;
+  }
+
+  PagamentoSistema stringToClass(String string) {
+    Map map2 = json.decode(string);
+    map2 = dbMaptoClassMap(map2);
+    return _$PagamentoSistemaFromJson(map2);
+  }
+
+  PagamentoSistema mapToClass(Map map) {
+    Map map2 = dbMaptoClassMap(map);
+    return _$PagamentoSistemaFromJson(map2);
+  }
+
+  List<PagamentoSistema> listMapToListClass(List list) {
+    List<PagamentoSistema> list2 = [];
+    for (var obj in list) {
+      list2.add(PagamentoSistema.fromJson(obj));
+    }
+    return list2;
+  }
+
+  List<PagamentoSistema> listStringToListClass(String listString) {
+    var list = json.decode(listString);
+    return listMapToListClass(list);
+  }
+
+  ClassReflection<PagamentoSistema> reflect() {
+    return PagamentoSistema().reflection;
+  }
+}

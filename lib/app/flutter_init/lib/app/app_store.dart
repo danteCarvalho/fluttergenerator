@@ -27,11 +27,6 @@ abstract class AppStoreBase with Store {
     Modular.setObservers([Asuka.asukaHeroController, NavigationHistoryObserver()]);
     var shared = await SharedPreferences.getInstance();
     usuario = shared.containsKey("usuario") ? Usuario().stringToClass(shared.getString("usuario")!) : null;
-    if (usuario != null) {
-      Modular.setInitialRoute("/principal/");
-    } else {
-      Modular.setInitialRoute("/home/");
-    }
     verificaJwt();
     await Future.delayed(const Duration(seconds: 3));
     iniciado = true;

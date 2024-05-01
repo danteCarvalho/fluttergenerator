@@ -5,7 +5,7 @@ import 'package:flutterutils/flutterutils.dart';
 
 class SplashWidget extends StatefulWidget {
 
-  const SplashWidget({Key? key}) : super(key: key);
+  const SplashWidget({super.key});
 
   @override
   SplashWidgetState createState() => SplashWidgetState();

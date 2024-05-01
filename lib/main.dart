@@ -63,6 +63,7 @@ void main(List args) async {
     Option(label: 'Dart Init', value: 'DartInit'),
     Option(label: 'Dart Model', value: 'DartModel'),
     Option(label: 'Dart Model Endpoint', value: 'DartModelEndpoint'),
+    Option(label: 'Dart Model Shelf Endpoint', value: 'DartModelShelfEndpoint'),
     Option(label: 'Clean', value: 'Clean'),
   ];
   String option = prompter.askMultiple('what to generate?', options);
@@ -102,7 +103,11 @@ void main(List args) async {
     await directory.create(recursive: true);
     var module = FlutterTemplates.module.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
     var page = FlutterTemplates.page.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
-    var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase).replaceAll("YYYY", "Page").replaceAll("yyyy", "page");
+    var store = FlutterTemplates.store
+        .replaceAll('wwww', name)
+        .replaceAll('WWWW', ReCase(name).pascalCase)
+        .replaceAll("YYYY", "Page")
+        .replaceAll("yyyy", "page");
     var moduleFile = File('${directory.path}/${name}_module.dart');
     await moduleFile.writeAsString(module);
     var pageFile = File('${directory.path}/${name}_page.dart');
@@ -118,7 +123,11 @@ void main(List args) async {
       var widgetWithStore = FlutterTemplates.widgetWithStore.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase);
       var widgetFile = File('${directory.path}/${name}_widget.dart');
       await widgetFile.writeAsString(widgetWithStore);
-      var store = FlutterTemplates.store.replaceAll('wwww', name).replaceAll('WWWW', ReCase(name).pascalCase).replaceAll("YYYY", "Widget").replaceAll("yyyy", "widget");
+      var store = FlutterTemplates.store
+          .replaceAll('wwww', name)
+          .replaceAll('WWWW', ReCase(name).pascalCase)
+          .replaceAll("YYYY", "Widget")
+          .replaceAll("yyyy", "widget");
       var storeFile = File('${directory.path}/${name}_store.dart');
       await storeFile.writeAsString(store);
     } else {
@@ -164,18 +173,24 @@ void main(List args) async {
   } else if (option == 'DartModelEndpoint') {
     var directory = Directory('${current.path}/lib/$folder/$name');
     await directory.create(recursive: true);
-    var addEdPoint = DartTemplates.addEndPoint
+    var endPoint = DartTemplates.endPoint
         .replaceAll('wwww', name)
         .replaceAll('WWWW', ReCase(name).pascalCase)
         .replaceAll("aaaa", ReCase(name).camelCase);
-    var editEdPoint = DartTemplates.editEndPoint
-        .replaceAll('wwww', name)
-        .replaceAll('WWWW', ReCase(name).pascalCase)
-        .replaceAll("aaaa", ReCase(name).camelCase);
-    File('${directory.path}/add_$name.dart').writeAsString(addEdPoint);
-    File('${directory.path}/edit_$name.dart').writeAsString(editEdPoint);
+    File('${directory.path}/$name.dart').writeAsString(endPoint);
     print('done');
-  } else if (option == 'Clean') {
+  }
+  else if (option == 'DartModelShelfEndpoint') {
+    var directory = Directory('${current.path}/lib/$folder/$name');
+    await directory.create(recursive: true);
+    var endPoint = DartTemplates.shelfEndPoint
+        .replaceAll('wwww', name)
+        .replaceAll('WWWW', ReCase(name).pascalCase)
+        .replaceAll("aaaa", ReCase(name).camelCase);
+    File('${directory.path}/$name.dart').writeAsString(endPoint);
+    print('done');
+  }
+  else if (option == 'Clean') {
     deleteCache();
     print("done");
   }

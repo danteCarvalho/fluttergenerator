@@ -197,7 +197,6 @@ abstract class WWWWStoreBase with Store {
   
   AppStore app = Modular.get();
   
-  @action
   init(WWWWYYYYState state)async{
   
   }

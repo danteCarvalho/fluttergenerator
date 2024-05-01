@@ -1,7 +1,9 @@
 
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+
 import '../../app_store.dart';
+
 part 'menu_lateral_store.g.dart';
 
 class MenuLateralStore = MenuLateralStoreBase with _$MenuLateralStore;

@@ -1,10 +1,9 @@
 import 'dart:convert';
-  
+
 import 'package:dartutils/dartutils.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
-
 
 import '../../outros/entidade_helper.dart';
 import '../empresa/empresa.dart';

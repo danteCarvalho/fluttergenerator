@@ -34,7 +34,7 @@ class WWWW extends Entidade with _\$Serial {
 
   """;
 
-static String addEndPoint =   """
+  static String endPoint = """
   
 import 'dart:convert';
 import 'dart:io';
@@ -52,31 +52,67 @@ addWWWW(HttpRequest request) async {
   request.response.write(json.encode(resposta));
 }
 
-  
-  """;
-
-  static String editEndPoint = """
-
-import 'dart:convert';
-import 'dart:io';
-
-import '../../entidades/wwww/wwww.dart';
-import '../../daos/hasura_dao.dart';
-
 editWWWW(HttpRequest request) async {
   String requestString = await utf8.decoder.bind(request).join();
   Map requestMap = json.decode(requestString);
   Map resposta = {};
   String id = requestMap["id"];
   WWWW aaaa = await selectByIdHasura(id, WWWW());
-  //mude aqui
+  //colocar aqui os campos de update
   aaaa = await updateHasura(aaaa, "");
   resposta["aaaa"] = aaaa;
   request.response.write(json.encode(resposta));
 }
 
   
-
   """;
+
+
+  static String shelfEndPoint = """
+import 'dart:convert';
+
+import 'package:dartutils/dartutils.dart';
+import 'package:shelf/shelf.dart';
+import 'package:shelf_router/shelf_router.dart';
+
+import '../../daos/hasura_dao.dart';
+import '../../entidades/wwww/wwww.dart';
+
+part 'wwww.g.dart';
+
+
+@routerAnnotation
+class WWWWEndpoint extends RouterMethods {
+  @Route.post('/addWWWW')
+  Future<Response> addWWWW(Request request) async {
+    String myJson = await utf8.decoder.bind(request.read()).join();
+    Map requestMap = json.decode(myJson);
+    Map resposta = {};
+    WWWW aaaa = WWWW().mapToClass(requestMap["aaaa"]);
+    aaaa = await insertHasura(aaaa);
+    resposta["aaaa"] = aaaa;
+    return Response.ok(json.encode(resposta));
+  }
+
+  @Route.post('/editWWWW')
+  Future<Response> finalizarWWWW(Request request) async {
+    String myJson = await utf8.decoder.bind(request.read()).join();
+    Map requestMap = json.decode(myJson);
+    Map resposta = {};
+    String id = requestMap["id"];
+    WWWW aaaa = await selectByIdHasura(id, WWWW());
+    //colocar aqui os campos de update
+    aaaa = await updateHasura(aaaa, "");
+    resposta["aaaa"] = aaaa;
+    return Response.ok(json.encode(resposta));
+  }
+
+  @override
+  Router getRouter() {
+    return _\$WWWWEndpointRouter(this);
+  }
+}
+
+""";
 
 }

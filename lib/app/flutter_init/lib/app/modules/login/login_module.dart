@@ -1,18 +1,16 @@
-
 import 'package:flutter_modular/flutter_modular.dart';
-import 'login_store.dart';
+
 import 'login_page.dart';
+import 'login_store.dart';
 
 class LoginModule extends Module {
   @override
-  final List<Bind> binds = [
-    Bind.lazySingleton((i) => LoginStore()),
-  ];
+  void binds(i) {
+    i.addLazySingleton(LoginStore.new);
+  }
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute, child: (_, args) => const LoginPage()),
-  ];
+  void routes(r) {
+    r.child(Modular.initialRoute, child: (context) => const LoginPage());
+  }
 }
-
-

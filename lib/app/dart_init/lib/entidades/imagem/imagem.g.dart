@@ -34,3 +34,67 @@ Map<String, dynamic> _$ImagemToJson(Imagem instance) => <String, dynamic>{
       'name': instance.name,
       'size': instance.size,
     };
+
+// **************************************************************************
+// MyCustomGenerator
+// **************************************************************************
+
+mixin _$Serial {
+  Map<String, dynamic> classToMap() {
+    return _$ImagemToJson(this as Imagem);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$ImagemToJson(this as Imagem);
+  }
+
+  String classToString() {
+    return json.encode(this as Imagem);
+  }
+
+  String listClassToString(List list) {
+    return json.encode(list);
+  }
+
+  Map<String, dynamic> dbMaptoClassMap(Map original) {
+    Map<String, dynamic> map2 = {};
+    List allFields = Imagem().reflect().allFields();
+    for (var obj in allFields) {
+      var name = obj.name;
+      if (original.containsKey(name)) {
+        map2[name] = original[name];
+      } else if (original.containsKey(name.toString().toLowerCase())) {
+        map2[name] = original[name.toString().toLowerCase()];
+      }
+    }
+    return map2;
+  }
+
+  Imagem stringToClass(String string) {
+    Map map2 = json.decode(string);
+    map2 = dbMaptoClassMap(map2);
+    return _$ImagemFromJson(map2);
+  }
+
+  Imagem mapToClass(Map map) {
+    Map map2 = dbMaptoClassMap(map);
+    return _$ImagemFromJson(map2);
+  }
+
+  List<Imagem> listMapToListClass(List list) {
+    List<Imagem> list2 = [];
+    for (var obj in list) {
+      list2.add(Imagem.fromJson(obj));
+    }
+    return list2;
+  }
+
+  List<Imagem> listStringToListClass(String listString) {
+    var list = json.decode(listString);
+    return listMapToListClass(list);
+  }
+
+  ClassReflection<Imagem> reflect() {
+    return Imagem().reflection;
+  }
+}

@@ -1,11 +1,13 @@
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutterutils/flutterutils.dart';
+
 import 'login_store.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
 
-  const LoginPage({Key? key, this.title = 'Login'}) : super(key: key);
+  const LoginPage({super.key, this.title = 'Login'});
 
   @override
   LoginPageState createState() => LoginPageState();
@@ -17,7 +19,7 @@ class LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    store.init();
+    store.init(this);
   }
 
   @override
@@ -28,11 +30,19 @@ class LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: columnWidgets,
     );
+    var login = MyTextFormField("Login", () => store.login, (v) => store.login = v);
+    var senha = MyTextFormField("Senha", () => store.senha, (v) => store.senha = v,obscure: true,);
+    var botao = ElevatedButton(onPressed: ()=>store.enviar(), child: const Text("Enviar"),);
+    columnWidgets.add(login);
+    columnWidgets.add(senha);
+    columnWidgets.add(botao);
+
+
     return Scaffold(
       body: SingleChildScrollView(
           child: Card(
-        child: column,
-      )),
+            child: column,
+          )),
     );
   }
 }

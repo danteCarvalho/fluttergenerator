@@ -1,11 +1,14 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.1.6
+// BUILDER: reflection_factory/2.3.1
 // BUILD COMMAND: dart run build_runner build
 //
 
 // coverage:ignore-file
 // ignore_for_file: unused_element
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_extensions
 // ignore_for_file: unnecessary_const
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
@@ -17,7 +20,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.1.6');
+  static final Version _version = Version.parse('2.3.1');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -95,8 +98,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
   @override
   List<String> get constructorsNames => _constructorsNames;
 
-  static final Map<String, ConstructorReflection<Usuario>> _constructors =
-      <String, ConstructorReflection<Usuario>>{};
+  static final Map<String, ConstructorReflection<Usuario>> _constructors = {};
 
   @override
   ConstructorReflection<Usuario>? constructor(String constructorName) {
@@ -181,10 +183,9 @@ class Usuario$reflection extends ClassReflection<Usuario>
   List<String> get fieldsNames => _fieldsNames;
 
   static final Map<String, FieldReflection<Usuario, dynamic>> _fieldsNoObject =
-      <String, FieldReflection<Usuario, dynamic>>{};
+      {};
 
-  final Map<String, FieldReflection<Usuario, dynamic>> _fieldsObject =
-      <String, FieldReflection<Usuario, dynamic>>{};
+  final Map<String, FieldReflection<Usuario, dynamic>> _fieldsObject = {};
 
   @override
   FieldReflection<Usuario, T>? field<T>(String fieldName, [Usuario? obj]) {
@@ -241,7 +242,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.nome = v,
           obj,
           false,
-          false,
         );
       case 'senha':
         return FieldReflection<Usuario, String?>(
@@ -253,7 +253,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.senha,
           (o) => (v) => o!.senha = v,
           obj,
-          false,
           false,
         );
       case 'email':
@@ -267,7 +266,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.email = v,
           obj,
           false,
-          false,
         );
       case 'cpf':
         return FieldReflection<Usuario, String?>(
@@ -279,7 +277,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.cpf,
           (o) => (v) => o!.cpf = v,
           obj,
-          false,
           false,
         );
       case 'datanascimento':
@@ -293,7 +290,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.dataNascimento = v,
           obj,
           false,
-          false,
         );
       case 'endereco':
         return FieldReflection<Usuario, String?>(
@@ -305,7 +301,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.endereco,
           (o) => (v) => o!.endereco = v,
           obj,
-          false,
           false,
         );
       case 'cep':
@@ -319,7 +314,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.cep = v,
           obj,
           false,
-          false,
         );
       case 'cidade':
         return FieldReflection<Usuario, String?>(
@@ -331,7 +325,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.cidade,
           (o) => (v) => o!.cidade = v,
           obj,
-          false,
           false,
         );
       case 'estado':
@@ -345,7 +338,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.estado = v,
           obj,
           false,
-          false,
         );
       case 'complemento':
         return FieldReflection<Usuario, String?>(
@@ -357,7 +349,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.complemento,
           (o) => (v) => o!.complemento = v,
           obj,
-          false,
           false,
         );
       case 'telefone':
@@ -371,7 +362,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.telefone = v,
           obj,
           false,
-          false,
         );
       case 'admin':
         return FieldReflection<Usuario, bool?>(
@@ -383,7 +373,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.admin,
           (o) => (v) => o!.admin = v,
           obj,
-          false,
           false,
         );
       case 'empresa':
@@ -397,7 +386,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.empresa = v,
           obj,
           false,
-          false,
         );
       case 'valorpagamento':
         return FieldReflection<Usuario, double?>(
@@ -409,7 +397,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.valorPagamento,
           (o) => (v) => o!.valorPagamento = v,
           obj,
-          false,
           false,
         );
       case 'datapagamento':
@@ -423,7 +410,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.dataPagamento = v,
           obj,
           false,
-          false,
         );
       case 'ultimopagamentocompleto':
         return FieldReflection<Usuario, DateTime?>(
@@ -435,7 +421,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.ultimoPagamentoCompleto,
           (o) => (v) => o!.ultimoPagamentoCompleto = v,
           obj,
-          false,
           false,
         );
       case 'ultimopagamentogerado':
@@ -449,7 +434,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.ultimoPagamentoGerado = v,
           obj,
           false,
-          false,
         );
       case 'id':
         return FieldReflection<Usuario, String?>(
@@ -461,7 +445,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
-          false,
           false,
         );
       case 'id2':
@@ -475,7 +458,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.id2 = v,
           obj,
           false,
-          false,
         );
       case 'ativa':
         return FieldReflection<Usuario, bool?>(
@@ -487,7 +469,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.ativa,
           (o) => (v) => o!.ativa = v,
           obj,
-          false,
           false,
         );
       case 'datacriacao':
@@ -501,7 +482,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.dataCriacao = v,
           obj,
           false,
-          false,
         );
       case 'dataedicao':
         return FieldReflection<Usuario, DateTime?>(
@@ -513,7 +493,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => () => o!.dataEdicao,
           (o) => (v) => o!.dataEdicao = v,
           obj,
-          false,
           false,
         );
       case 'datadelecao':
@@ -527,7 +506,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.dataDelecao = v,
           obj,
           false,
-          false,
         );
       case 'context':
         return FieldReflection<Usuario, ReactiveContext>(
@@ -540,11 +518,42 @@ class Usuario$reflection extends ClassReflection<Usuario>
           null,
           obj,
           false,
-          false,
         );
       default:
         return null;
     }
+  }
+
+  @override
+  Map<String, dynamic> getFieldsValues(Usuario? obj,
+      {bool withHashCode = false}) {
+    return <String, dynamic>{
+      'nome': obj?.nome,
+      'senha': obj?.senha,
+      'email': obj?.email,
+      'cpf': obj?.cpf,
+      'dataNascimento': obj?.dataNascimento,
+      'endereco': obj?.endereco,
+      'cep': obj?.cep,
+      'cidade': obj?.cidade,
+      'estado': obj?.estado,
+      'complemento': obj?.complemento,
+      'telefone': obj?.telefone,
+      'admin': obj?.admin,
+      'empresa': obj?.empresa,
+      'valorPagamento': obj?.valorPagamento,
+      'dataPagamento': obj?.dataPagamento,
+      'ultimoPagamentoCompleto': obj?.ultimoPagamentoCompleto,
+      'ultimoPagamentoGerado': obj?.ultimoPagamentoGerado,
+      'id': obj?.id,
+      'id2': obj?.id2,
+      'ativa': obj?.ativa,
+      'dataCriacao': obj?.dataCriacao,
+      'dataEdicao': obj?.dataEdicao,
+      'dataDelecao': obj?.dataDelecao,
+      'context': obj?.context,
+      if (withHashCode) 'hashCode': obj?.hashCode,
+    };
   }
 
   static const List<String> _staticFieldsNames = const <String>[];
@@ -553,7 +562,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  FieldReflection<Usuario, T>? staticField<T>(String fieldName) => null;
+  StaticFieldReflection<Usuario, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'classToMap',
@@ -573,10 +582,9 @@ class Usuario$reflection extends ClassReflection<Usuario>
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Usuario, dynamic>>
-      _methodsNoObject = <String, MethodReflection<Usuario, dynamic>>{};
+      _methodsNoObject = {};
 
-  final Map<String, MethodReflection<Usuario, dynamic>> _methodsObject =
-      <String, MethodReflection<Usuario, dynamic>>{};
+  final Map<String, MethodReflection<Usuario, dynamic>> _methodsObject = {};
 
   @override
   MethodReflection<Usuario, R>? method<R>(String methodName, [Usuario? obj]) {
@@ -632,7 +640,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.reflect,
             obj,
-            false,
             null,
             null,
             null,
@@ -646,7 +653,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.classToMap,
             obj,
-            false,
             null,
             null,
             null,
@@ -660,7 +666,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.toJson,
             obj,
-            false,
             null,
             null,
             null,
@@ -674,7 +679,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.dbMaptoClassMap,
             obj,
-            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -695,7 +699,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.classToString,
             obj,
-            false,
             null,
             null,
             null,
@@ -709,7 +712,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.listClassToString,
             obj,
-            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -723,7 +725,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.stringToClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tString, 'string', false, true)],
             null,
             null,
@@ -737,7 +738,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.mapToClass,
             obj,
-            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -758,7 +758,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.listMapToListClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -772,7 +771,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.listStringToListClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tString, 'listString', false, true)],
             null,
             null,
@@ -786,7 +784,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
             false,
             (o) => o!.toString,
             obj,
-            false,
             null,
             null,
             null,
@@ -801,35 +798,34 @@ class Usuario$reflection extends ClassReflection<Usuario>
   @override
   List<String> get staticMethodsNames => _staticMethodsNames;
 
-  static final Map<String, MethodReflection<Usuario, dynamic>> _staticMethods =
-      <String, MethodReflection<Usuario, dynamic>>{};
+  static final Map<String, StaticMethodReflection<Usuario, dynamic>>
+      _staticMethods = {};
 
   @override
-  MethodReflection<Usuario, R>? staticMethod<R>(String methodName) {
+  StaticMethodReflection<Usuario, R>? staticMethod<R>(String methodName) {
     var m = _staticMethods[methodName];
     if (m != null) {
-      return m as MethodReflection<Usuario, R>;
+      return m as StaticMethodReflection<Usuario, R>;
     }
     m = _staticMethodImpl(methodName);
     if (m == null) return null;
     _staticMethods[methodName] = m;
-    return m as MethodReflection<Usuario, R>;
+    return m as StaticMethodReflection<Usuario, R>;
   }
 
-  MethodReflection<Usuario, dynamic>? _staticMethodImpl(String methodName) {
+  StaticMethodReflection<Usuario, dynamic>? _staticMethodImpl(
+      String methodName) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
-        return MethodReflection<Usuario, dynamic>(
+        return StaticMethodReflection<Usuario, dynamic>(
             this,
             Usuario,
             'fromJson',
             __TR.tDynamic,
             false,
-            (o) => Usuario.fromJson,
-            null,
-            true,
+            () => Usuario.fromJson,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(

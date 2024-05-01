@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
 import 'menu_lateral_store.dart';
 
 class MenuLateralWidget extends StatefulWidget {
-  const MenuLateralWidget({Key? key}) : super(key: key);
+  const MenuLateralWidget({super.key});
 
   @override
   MenuLateralWidgetState createState() => MenuLateralWidgetState();
