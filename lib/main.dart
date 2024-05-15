@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:archive/archive_io.dart';
-import 'app/dart_templates.dart';
 import 'package:path/path.dart';
 import 'package:recase/recase.dart';
 import 'package:simple_prompter/simple_prompter.dart';
 
+import 'app/dart_templates.dart';
 import 'app/flutter_templates.dart';
 import 'dart64.dart';
 import 'flutter64.dart';

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
+import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -9,7 +10,8 @@ import '../../entidades/pagamento_sistema/pagamento_sistema.dart';
 
 part 'pagamento_sistema.g.dart';
 
-
+part 'pagamento_sistema.reflection.g.dart';
+@EnableReflection()
 @routerAnnotation
 class PagamentoSistemaEndpoint extends RouterMethods {
   @Route.post('/addPagamentoSistema')
@@ -41,4 +43,10 @@ class PagamentoSistemaEndpoint extends RouterMethods {
   Router getRouter() {
     return _$PagamentoSistemaEndpointRouter(this);
   }
+
+  @override
+  ClassReflection reflect() {
+    return reflection;
+  }
+
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartutils/dartutils.dart';
+import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -10,6 +11,8 @@ import '../../entidades/imagem/imagem.dart';
 
 part 'imagem.g.dart';
 
+part 'imagem.reflection.g.dart';
+@EnableReflection()
 @routerAnnotation
 class ImagemEndpoint extends RouterMethods {
   @Route.post('/addImagem')
@@ -51,5 +54,10 @@ class ImagemEndpoint extends RouterMethods {
   @override
   Router getRouter() {
     return _$ImagemEndpointRouter(this);
+  }
+
+  @override
+  ClassReflection reflect() {
+    return reflection;
   }
 }

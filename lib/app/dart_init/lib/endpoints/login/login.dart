@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
+import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -11,6 +12,8 @@ import '../../outros/security.dart';
 
 part 'login.g.dart';
 
+part 'login.reflection.g.dart';
+@EnableReflection()
 @routerAnnotation
 class LoginEndpoint extends RouterMethods {
   @Route.post('/login')
@@ -44,5 +47,10 @@ class LoginEndpoint extends RouterMethods {
   @override
   Router getRouter() {
     return _$LoginEndpointRouter(this);
+  }
+
+  @override
+  ClassReflection reflect() {
+    return reflection;
   }
 }

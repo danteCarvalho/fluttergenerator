@@ -6,6 +6,8 @@ import 'package:shelf_router/shelf_router.dart';
 part 'teste.g.dart';
 
 
+part 'teste.reflection.g.dart';
+@EnableReflection()
 @routerAnnotation
 class TesteEndpoint extends RouterMethods {
   @Route.get('/teste')
@@ -16,5 +18,9 @@ class TesteEndpoint extends RouterMethods {
   @override
   Router getRouter() {
     return _$TesteEndpointRouter(this);
+  }
+  @override
+  ClassReflection reflect() {
+    return reflection;
   }
 }

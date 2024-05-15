@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:http/http.dart' as http;
+import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -13,6 +14,8 @@ import '../../outros/security.dart';
 
 part 'google_login.g.dart';
 
+part 'google_login.reflection.g.dart';
+@EnableReflection()
 @routerAnnotation
 class GoogleLoginEndpoint extends RouterMethods {
   @Route.post('/googleLogin')
@@ -68,5 +71,9 @@ class GoogleLoginEndpoint extends RouterMethods {
   @override
   Router getRouter() {
     return _$GoogleLoginEndpointRouter(this);
+  }
+  @override
+  ClassReflection reflect() {
+    return reflection;
   }
 }

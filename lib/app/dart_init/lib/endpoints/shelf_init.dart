@@ -2,7 +2,6 @@ import 'package:dartutils/dartutils.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as shelf_server;
 import 'package:shelf_router/shelf_router.dart';
-import 'package:shelf_router_classes/shelf_router_classes.dart';
 
 import '../outros/config.dart';
 import 'middlewares/exception_middle.dart';

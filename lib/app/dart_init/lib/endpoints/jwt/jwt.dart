@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
+import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -12,6 +13,8 @@ import '../../outros/security.dart';
 
 part 'jwt.g.dart';
 
+part 'jwt.reflection.g.dart';
+@EnableReflection()
 @routerAnnotation
 class JwtEndpoint extends RouterMethods {
   @Route.post('/verificaAtualizaJwt')
@@ -42,5 +45,10 @@ class JwtEndpoint extends RouterMethods {
   @override
   Router getRouter() {
     return _$JwtEndpointRouter(this);
+  }
+
+  @override
+  ClassReflection reflect() {
+    return reflection;
   }
 }
