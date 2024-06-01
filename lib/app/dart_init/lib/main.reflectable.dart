@@ -2,18 +2,7 @@
 // https://github.com/dart-lang/reflectable.
 
 import 'dart:core';
-
 import 'package:dartutils/src/generators/router/router.dart' as prefix7;
-// ignore_for_file: camel_case_types
-// ignore_for_file: implementation_imports
-// ignore_for_file: prefer_adjacent_string_concatenation
-// ignore_for_file: prefer_collection_literals
-// ignore_for_file: unnecessary_const
-// ignore_for_file: unused_import
-
-import 'package:reflectable/mirrors.dart' as m;
-import 'package:reflectable/reflectable.dart' as r show Reflectable;
-import 'package:reflectable/src/reflectable_builder_based.dart' as r;
 import 'package:teste/endpoints/google_login/google_login.dart' as prefix13;
 import 'package:teste/endpoints/imagem/imagem.dart' as prefix12;
 import 'package:teste/endpoints/jwt/jwt.dart' as prefix11;
@@ -29,6 +18,17 @@ import 'package:teste/entidades/pagamento_sistema/pagamento_sistema.dart'
     as prefix5;
 import 'package:teste/entidades/usuario/usuario.dart' as prefix6;
 import 'package:teste/outros/entidade_helper.dart' as prefix0;
+
+// ignore_for_file: camel_case_types
+// ignore_for_file: implementation_imports
+// ignore_for_file: prefer_adjacent_string_concatenation
+// ignore_for_file: prefer_collection_literals
+// ignore_for_file: unnecessary_const
+// ignore_for_file: unused_import
+
+import 'package:reflectable/mirrors.dart' as m;
+import 'package:reflectable/src/reflectable_builder_based.dart' as r;
+import 'package:reflectable/reflectable.dart' as r show Reflectable;
 
 final _data = <r.Reflectable, r.ReflectorData>{
   const prefix0.Reflector(): r.ReflectorData(

@@ -8,7 +8,7 @@ part of 'imagem.dart';
 
 Imagem _$ImagemFromJson(Map json) => Imagem()
   ..id = json['id'] as String?
-  ..id2 = json['id2'] as int?
+  ..id2 = (json['id2'] as num?)?.toInt()
   ..ativa = json['ativa'] as bool?
   ..dataCriacao = json['dataCriacao'] == null
       ? null
@@ -21,7 +21,7 @@ Imagem _$ImagemFromJson(Map json) => Imagem()
       : DateTime.parse(json['dataDelecao'] as String)
   ..value = json['value'] as String?
   ..name = json['name'] as String?
-  ..size = json['size'] as int?;
+  ..size = (json['size'] as num?)?.toInt();
 
 Map<String, dynamic> _$ImagemToJson(Imagem instance) => <String, dynamic>{
       'id': instance.id,

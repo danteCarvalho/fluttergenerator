@@ -9,6 +9,7 @@ myLog(Object error, StackTrace stack) async {
   String stack2 = "$error\n";
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   LineSplitter.split(stack.toString()).forEach((linha) {
+    print(linha);
     if (linha.contains("${packageInfo.appName}/")) {
       if (linha.startsWith("../packages/")) {
         var split = linha.split(" ");

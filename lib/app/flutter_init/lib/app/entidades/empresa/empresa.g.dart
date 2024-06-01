@@ -8,7 +8,7 @@ part of 'empresa.dart';
 
 Empresa _$EmpresaFromJson(Map json) => Empresa()
   ..id = json['id'] as String?
-  ..id2 = json['id2'] as int?
+  ..id2 = (json['id2'] as num?)?.toInt()
   ..ativa = json['ativa'] as bool?
   ..dataCriacao = json['dataCriacao'] == null
       ? null
@@ -48,9 +48,10 @@ Empresa _$EmpresaFromJson(Map json) => Empresa()
   ..tipoGeracaoNota = json['tipoGeracaoNota'] as String?
   ..csc = json['csc'] as String?
   ..idCsc = json['idCsc'] as String?
-  ..serie = json['serie'] as int?
-  ..numeroNotaFiscal = json['numeroNotaFiscal'] as int?
-  ..numeroNotaFiscalHomologacao = json['numeroNotaFiscalHomologacao'] as int?
+  ..serie = (json['serie'] as num?)?.toInt()
+  ..numeroNotaFiscal = (json['numeroNotaFiscal'] as num?)?.toInt()
+  ..numeroNotaFiscalHomologacao =
+      (json['numeroNotaFiscalHomologacao'] as num?)?.toInt()
   ..cnpj = json['cnpj'] as String?
   ..razaoSocial = json['razaoSocial'] as String?
   ..municipio = json['municipio'] as String?

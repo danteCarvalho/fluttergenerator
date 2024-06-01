@@ -8,7 +8,7 @@ part of 'usuario.dart';
 
 Usuario _$UsuarioFromJson(Map json) => Usuario()
   ..id = json['id'] as String?
-  ..id2 = json['id2'] as int?
+  ..id2 = (json['id2'] as num?)?.toInt()
   ..ativa = json['ativa'] as bool?
   ..dataCriacao = json['dataCriacao'] == null
       ? null

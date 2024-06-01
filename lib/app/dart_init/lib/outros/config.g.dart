@@ -12,9 +12,10 @@ Config _$ConfigFromJson(Map json) => Config()
   ..schemeHasura = json['schemeHasura'] as String
   ..ipHasura = json['ipHasura'] as String
   ..ipBanco = json['ipBanco'] as String
-  ..portaServidor = json['portaServidor'] as int
-  ..portaHasura = json['portaHasura'] as int
-  ..portaBanco = json['portaBanco'] as int
+  ..portaServidor = (json['portaServidor'] as num).toInt()
+  ..portaHasura = (json['portaHasura'] as num).toInt()
+  ..portaBanco = (json['portaBanco'] as num).toInt()
+  ..sembastDbName = json['sembastDbName'] as String
   ..usuario = json['usuario'] as String
   ..senha = json['senha'] as String
   ..banco = json['banco'] as String
@@ -32,6 +33,7 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'portaServidor': instance.portaServidor,
       'portaHasura': instance.portaHasura,
       'portaBanco': instance.portaBanco,
+      'sembastDbName': instance.sembastDbName,
       'usuario': instance.usuario,
       'senha': instance.senha,
       'banco': instance.banco,

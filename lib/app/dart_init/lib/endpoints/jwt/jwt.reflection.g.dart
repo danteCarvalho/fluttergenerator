@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.3.4
+// BUILDER: reflection_factory/2.2.8
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -20,7 +20,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.3.4');
+  static final Version _version = Version.parse('2.2.8');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -57,7 +57,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.0.0');
+  Version get languageVersion => Version.parse('3.4.0');
 
   @override
   JwtEndpoint$reflection withObject([JwtEndpoint? obj]) =>
@@ -100,7 +100,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
   List<String> get constructorsNames => _constructorsNames;
 
   static final Map<String, ConstructorReflection<JwtEndpoint>> _constructors =
-      {};
+      <String, ConstructorReflection<JwtEndpoint>>{};
 
   @override
   ConstructorReflection<JwtEndpoint>? constructor(String constructorName) {
@@ -149,22 +149,13 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
   FieldReflection<JwtEndpoint, T>? field<T>(String fieldName,
           [JwtEndpoint? obj]) =>
       null;
-
-  @override
-  Map<String, dynamic> getFieldsValues(JwtEndpoint? obj,
-          {bool withHashCode = false}) =>
-      {
-        if (withHashCode) 'hashCode': obj?.hashCode,
-      };
-
   static const List<String> _staticFieldsNames = const <String>[];
 
   @override
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  StaticFieldReflection<JwtEndpoint, T>? staticField<T>(String fieldName) =>
-      null;
+  FieldReflection<JwtEndpoint, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'getRouter',
@@ -176,9 +167,10 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<JwtEndpoint, dynamic>>
-      _methodsNoObject = {};
+      _methodsNoObject = <String, MethodReflection<JwtEndpoint, dynamic>>{};
 
-  final Map<String, MethodReflection<JwtEndpoint, dynamic>> _methodsObject = {};
+  final Map<String, MethodReflection<JwtEndpoint, dynamic>> _methodsObject =
+      <String, MethodReflection<JwtEndpoint, dynamic>>{};
 
   @override
   MethodReflection<JwtEndpoint, R>? method<R>(String methodName,
@@ -234,6 +226,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
             false,
             (o) => o!.verificaAtualizaJwt,
             obj,
+            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
@@ -247,6 +240,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
             false,
             (o) => o!.getRouter,
             obj,
+            false,
             null,
             null,
             null,
@@ -261,6 +255,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
             false,
             (o) => o!.reflect,
             obj,
+            false,
             null,
             null,
             null,
@@ -276,8 +271,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   @override
-  StaticMethodReflection<JwtEndpoint, R>? staticMethod<R>(String methodName) =>
-      null;
+  MethodReflection<JwtEndpoint, R>? staticMethod<R>(String methodName) => null;
 }
 
 extension JwtEndpoint$reflectionExtension on JwtEndpoint {

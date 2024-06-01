@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.3.4
+// BUILDER: reflection_factory/2.2.8
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -20,7 +20,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.3.4');
+  static final Version _version = Version.parse('2.2.8');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -57,7 +57,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.0.0');
+  Version get languageVersion => Version.parse('3.4.0');
 
   @override
   LoginEndpoint$reflection withObject([LoginEndpoint? obj]) =>
@@ -100,7 +100,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
   List<String> get constructorsNames => _constructorsNames;
 
   static final Map<String, ConstructorReflection<LoginEndpoint>> _constructors =
-      {};
+      <String, ConstructorReflection<LoginEndpoint>>{};
 
   @override
   ConstructorReflection<LoginEndpoint>? constructor(String constructorName) {
@@ -150,22 +150,13 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
   FieldReflection<LoginEndpoint, T>? field<T>(String fieldName,
           [LoginEndpoint? obj]) =>
       null;
-
-  @override
-  Map<String, dynamic> getFieldsValues(LoginEndpoint? obj,
-          {bool withHashCode = false}) =>
-      {
-        if (withHashCode) 'hashCode': obj?.hashCode,
-      };
-
   static const List<String> _staticFieldsNames = const <String>[];
 
   @override
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  StaticFieldReflection<LoginEndpoint, T>? staticField<T>(String fieldName) =>
-      null;
+  FieldReflection<LoginEndpoint, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'getRouter',
@@ -177,10 +168,10 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<LoginEndpoint, dynamic>>
-      _methodsNoObject = {};
+      _methodsNoObject = <String, MethodReflection<LoginEndpoint, dynamic>>{};
 
   final Map<String, MethodReflection<LoginEndpoint, dynamic>> _methodsObject =
-      {};
+      <String, MethodReflection<LoginEndpoint, dynamic>>{};
 
   @override
   MethodReflection<LoginEndpoint, R>? method<R>(String methodName,
@@ -237,6 +228,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
             false,
             (o) => o!.login,
             obj,
+            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
@@ -250,6 +242,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
             false,
             (o) => o!.getRouter,
             obj,
+            false,
             null,
             null,
             null,
@@ -264,6 +257,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
             false,
             (o) => o!.reflect,
             obj,
+            false,
             null,
             null,
             null,
@@ -279,8 +273,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   @override
-  StaticMethodReflection<LoginEndpoint, R>? staticMethod<R>(
-          String methodName) =>
+  MethodReflection<LoginEndpoint, R>? staticMethod<R>(String methodName) =>
       null;
 }
 

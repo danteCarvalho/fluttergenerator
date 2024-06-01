@@ -12,6 +12,10 @@ import '../entidades/usuario/usuario.dart';
 import '../requests/server_requets.dart';
 import 'config.dart';
 
+void errorTest(){
+  print(1~/0);
+}
+
 void uriTest() {
   Modular.to.path;
   Modular.args.uri.scheme;

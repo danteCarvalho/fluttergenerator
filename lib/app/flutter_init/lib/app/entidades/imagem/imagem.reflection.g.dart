@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.3.1
+// BUILDER: reflection_factory/2.2.8
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -20,7 +20,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.3.1');
+  static final Version _version = Version.parse('2.2.8');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -55,7 +55,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   }
 
   @override
-  Version get languageVersion => Version.parse('3.0.0');
+  Version get languageVersion => Version.parse('3.4.0');
 
   @override
   Imagem$reflection withObject([Imagem? obj]) =>
@@ -97,7 +97,8 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   @override
   List<String> get constructorsNames => _constructorsNames;
 
-  static final Map<String, ConstructorReflection<Imagem>> _constructors = {};
+  static final Map<String, ConstructorReflection<Imagem>> _constructors =
+      <String, ConstructorReflection<Imagem>>{};
 
   @override
   ConstructorReflection<Imagem>? constructor(String constructorName) {
@@ -168,9 +169,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   List<String> get fieldsNames => _fieldsNames;
 
   static final Map<String, FieldReflection<Imagem, dynamic>> _fieldsNoObject =
-      {};
+      <String, FieldReflection<Imagem, dynamic>>{};
 
-  final Map<String, FieldReflection<Imagem, dynamic>> _fieldsObject = {};
+  final Map<String, FieldReflection<Imagem, dynamic>> _fieldsObject =
+      <String, FieldReflection<Imagem, dynamic>>{};
 
   @override
   FieldReflection<Imagem, T>? field<T>(String fieldName, [Imagem? obj]) {
@@ -226,6 +228,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => (v) => o!.value = v,
           obj,
           false,
+          false,
         );
       case 'name':
         return FieldReflection<Imagem, String?>(
@@ -237,6 +240,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => () => o!.name,
           (o) => (v) => o!.name = v,
           obj,
+          false,
           false,
         );
       case 'size':
@@ -250,6 +254,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => (v) => o!.size = v,
           obj,
           false,
+          false,
         );
       case 'id':
         return FieldReflection<Imagem, String?>(
@@ -261,6 +266,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
+          false,
           false,
         );
       case 'id2':
@@ -274,6 +280,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => (v) => o!.id2 = v,
           obj,
           false,
+          false,
         );
       case 'ativa':
         return FieldReflection<Imagem, bool?>(
@@ -285,6 +292,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => () => o!.ativa,
           (o) => (v) => o!.ativa = v,
           obj,
+          false,
           false,
         );
       case 'datacriacao':
@@ -298,6 +306,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => (v) => o!.dataCriacao = v,
           obj,
           false,
+          false,
         );
       case 'dataedicao':
         return FieldReflection<Imagem, DateTime?>(
@@ -309,6 +318,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => () => o!.dataEdicao,
           (o) => (v) => o!.dataEdicao = v,
           obj,
+          false,
           false,
         );
       case 'datadelecao':
@@ -322,6 +332,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           (o) => (v) => o!.dataDelecao = v,
           obj,
           false,
+          false,
         );
       case 'context':
         return FieldReflection<Imagem, ReactiveContext>(
@@ -334,28 +345,11 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           null,
           obj,
           false,
+          false,
         );
       default:
         return null;
     }
-  }
-
-  @override
-  Map<String, dynamic> getFieldsValues(Imagem? obj,
-      {bool withHashCode = false}) {
-    return <String, dynamic>{
-      'value': obj?.value,
-      'name': obj?.name,
-      'size': obj?.size,
-      'id': obj?.id,
-      'id2': obj?.id2,
-      'ativa': obj?.ativa,
-      'dataCriacao': obj?.dataCriacao,
-      'dataEdicao': obj?.dataEdicao,
-      'dataDelecao': obj?.dataDelecao,
-      'context': obj?.context,
-      if (withHashCode) 'hashCode': obj?.hashCode,
-    };
   }
 
   static const List<String> _staticFieldsNames = const <String>[];
@@ -364,7 +358,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  StaticFieldReflection<Imagem, T>? staticField<T>(String fieldName) => null;
+  FieldReflection<Imagem, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'classToMap',
@@ -384,9 +378,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Imagem, dynamic>> _methodsNoObject =
-      {};
+      <String, MethodReflection<Imagem, dynamic>>{};
 
-  final Map<String, MethodReflection<Imagem, dynamic>> _methodsObject = {};
+  final Map<String, MethodReflection<Imagem, dynamic>> _methodsObject =
+      <String, MethodReflection<Imagem, dynamic>>{};
 
   @override
   MethodReflection<Imagem, R>? method<R>(String methodName, [Imagem? obj]) {
@@ -442,6 +437,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.reflect,
             obj,
+            false,
             null,
             null,
             null,
@@ -455,6 +451,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.classToMap,
             obj,
+            false,
             null,
             null,
             null,
@@ -468,6 +465,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.toJson,
             obj,
+            false,
             null,
             null,
             null,
@@ -481,6 +479,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.dbMaptoClassMap,
             obj,
+            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -501,6 +500,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.classToString,
             obj,
+            false,
             null,
             null,
             null,
@@ -514,6 +514,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.listClassToString,
             obj,
+            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -527,6 +528,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.stringToClass,
             obj,
+            false,
             const <__PR>[__PR(__TR.tString, 'string', false, true)],
             null,
             null,
@@ -540,6 +542,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.mapToClass,
             obj,
+            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -560,6 +563,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.listMapToListClass,
             obj,
+            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -573,6 +577,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.listStringToListClass,
             obj,
+            false,
             const <__PR>[__PR(__TR.tString, 'listString', false, true)],
             null,
             null,
@@ -586,6 +591,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
             false,
             (o) => o!.toString,
             obj,
+            false,
             null,
             null,
             null,
@@ -600,34 +606,35 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   @override
   List<String> get staticMethodsNames => _staticMethodsNames;
 
-  static final Map<String, StaticMethodReflection<Imagem, dynamic>>
-      _staticMethods = {};
+  static final Map<String, MethodReflection<Imagem, dynamic>> _staticMethods =
+      <String, MethodReflection<Imagem, dynamic>>{};
 
   @override
-  StaticMethodReflection<Imagem, R>? staticMethod<R>(String methodName) {
+  MethodReflection<Imagem, R>? staticMethod<R>(String methodName) {
     var m = _staticMethods[methodName];
     if (m != null) {
-      return m as StaticMethodReflection<Imagem, R>;
+      return m as MethodReflection<Imagem, R>;
     }
     m = _staticMethodImpl(methodName);
     if (m == null) return null;
     _staticMethods[methodName] = m;
-    return m as StaticMethodReflection<Imagem, R>;
+    return m as MethodReflection<Imagem, R>;
   }
 
-  StaticMethodReflection<Imagem, dynamic>? _staticMethodImpl(
-      String methodName) {
+  MethodReflection<Imagem, dynamic>? _staticMethodImpl(String methodName) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
-        return StaticMethodReflection<Imagem, Imagem>(
+        return MethodReflection<Imagem, Imagem>(
             this,
             Imagem,
             'fromJson',
             __TR<Imagem>(Imagem),
             false,
-            () => Imagem.fromJson,
+            (o) => Imagem.fromJson,
+            null,
+            true,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(

@@ -12,9 +12,9 @@ Config _$ConfigFromJson(Map json) => Config()
   ..schemeHasura = json['schemeHasura'] as String
   ..ipServidor = json['ipServidor'] as String
   ..ipHasura = json['ipHasura'] as String
-  ..portaApp = json['portaApp'] as int
-  ..portaServidor = json['portaServidor'] as int
-  ..portaHasura = json['portaHasura'] as int
+  ..portaApp = (json['portaApp'] as num).toInt()
+  ..portaServidor = (json['portaServidor'] as num).toInt()
+  ..portaHasura = (json['portaHasura'] as num).toInt()
   ..sembastDbName = json['sembastDbName'] as String
   ..sqliteDbName = json['sqliteDbName'] as String;
 

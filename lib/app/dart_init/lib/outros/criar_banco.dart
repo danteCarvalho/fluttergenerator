@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:http/http.dart';
+import 'package:postgres/postgres.dart';
 
 import '../daos/hasura_dao.dart';
 import '../daos/postgres_dao.dart';
@@ -21,12 +22,28 @@ criarBanco() async {
   entidades.add(Pagamento());
   entidades.add(PagamentoSistema());
   entidades.add(Imagem());
+  await checkPostgres();
   await checkHasura();
   await processaEntidades(entidades);
   await refreshHarusa();
   await verificaAdmin();
 }
-
+checkPostgres() async {
+  try{
+    Connection connection = await getPostgresConnection();
+    print(connection);
+  }
+  on SocketException catch (e) {
+    print("Postgres desligado ou não alcançado");
+    print(e);
+    exit(0);
+  }
+  catch (e) {
+    print("Hasura desligado ou não alcançado");
+    print(e);
+    exit(0);
+  }
+}
 checkHasura() async {
   Map<String, String> headers = {};
   headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
@@ -38,6 +55,7 @@ checkHasura() async {
     print('Hasura: ${response.body}');
   } on SocketException {
     print("Hasura desligado ou não alcançado");
+    print(uri);
     exit(0);
   } catch (e) {
     print(e);

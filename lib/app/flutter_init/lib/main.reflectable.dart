@@ -2,6 +2,7 @@
 // https://github.com/dart-lang/reflectable.
 
 import 'dart:core';
+import 'package:dartutils/src/generators/router/router.dart' as prefix5;
 import 'package:teste/app/entidades/empresa/empresa.dart' as prefix2;
 import 'package:teste/app/entidades/entidade.dart' as prefix3;
 import 'package:teste/app/entidades/pagamento_sistema/pagamento_sistema.dart'
@@ -235,6 +236,16 @@ final _data = <r.Reflectable, r.ReflectorData>{
         const r.FakeType(r'.Entidade<T>')
       ],
       10,
+      {},
+      {},
+      null,
+      []),
+  const prefix5.RouterAnnotation(): r.ReflectorData(
+      <m.TypeMirror>[],
+      <m.DeclarationMirror>[],
+      <m.ParameterMirror>[],
+      <Type>[],
+      0,
       {},
       {},
       null,

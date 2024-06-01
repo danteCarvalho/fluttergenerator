@@ -8,15 +8,15 @@ Future<Connection> getPostgresConnection() async {
   if (connection != null) {
     return connection!;
   } else {
-    connection = await Connection.open(
-        Endpoint(
-          host: config.ipBanco,
-          port: config.portaBanco,
-          database: config.banco,
-          username: config.usuario,
-          password: config.senha,
-        ),
-        settings: ConnectionSettings(sslMode: config.sslBanco ? SslMode.require : SslMode.disable));
+    Endpoint endpoint = Endpoint(
+      host: config.ipBanco,
+      port: config.portaBanco,
+      database: config.banco,
+      username: config.usuario,
+      password: config.senha,
+    );
+    print("${endpoint.host}:${endpoint.port}" );
+    connection = await Connection.open(endpoint, settings: ConnectionSettings(sslMode: config.sslBanco ? SslMode.require : SslMode.disable));
     return connection!;
   }
 }

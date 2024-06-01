@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.3.1
+// BUILDER: reflection_factory/2.2.8
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -20,7 +20,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.3.1');
+  static final Version _version = Version.parse('2.2.8');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -57,7 +57,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.0.0');
+  Version get languageVersion => Version.parse('3.4.0');
 
   @override
   Entidade$reflection withObject([Entidade? obj]) =>
@@ -99,7 +99,8 @@ class Entidade$reflection extends ClassReflection<Entidade>
   @override
   List<String> get constructorsNames => _constructorsNames;
 
-  static final Map<String, ConstructorReflection<Entidade>> _constructors = {};
+  static final Map<String, ConstructorReflection<Entidade>> _constructors =
+      <String, ConstructorReflection<Entidade>>{};
 
   @override
   ConstructorReflection<Entidade>? constructor(String constructorName) {
@@ -147,9 +148,10 @@ class Entidade$reflection extends ClassReflection<Entidade>
   List<String> get fieldsNames => _fieldsNames;
 
   static final Map<String, FieldReflection<Entidade, dynamic>> _fieldsNoObject =
-      {};
+      <String, FieldReflection<Entidade, dynamic>>{};
 
-  final Map<String, FieldReflection<Entidade, dynamic>> _fieldsObject = {};
+  final Map<String, FieldReflection<Entidade, dynamic>> _fieldsObject =
+      <String, FieldReflection<Entidade, dynamic>>{};
 
   @override
   FieldReflection<Entidade, T>? field<T>(String fieldName, [Entidade? obj]) {
@@ -206,6 +208,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
           (o) => (v) => o!.id = v,
           obj,
           false,
+          false,
         );
       case 'id2':
         return FieldReflection<Entidade, int?>(
@@ -217,6 +220,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
           (o) => () => o!.id2,
           (o) => (v) => o!.id2 = v,
           obj,
+          false,
           false,
         );
       case 'ativa':
@@ -230,6 +234,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
           (o) => (v) => o!.ativa = v,
           obj,
           false,
+          false,
         );
       case 'datacriacao':
         return FieldReflection<Entidade, DateTime?>(
@@ -241,6 +246,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
           (o) => () => o!.dataCriacao,
           (o) => (v) => o!.dataCriacao = v,
           obj,
+          false,
           false,
         );
       case 'dataedicao':
@@ -254,6 +260,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
           (o) => (v) => o!.dataEdicao = v,
           obj,
           false,
+          false,
         );
       case 'datadelecao':
         return FieldReflection<Entidade, DateTime?>(
@@ -266,24 +273,11 @@ class Entidade$reflection extends ClassReflection<Entidade>
           (o) => (v) => o!.dataDelecao = v,
           obj,
           false,
+          false,
         );
       default:
         return null;
     }
-  }
-
-  @override
-  Map<String, dynamic> getFieldsValues(Entidade? obj,
-      {bool withHashCode = false}) {
-    return <String, dynamic>{
-      'id': obj?.id,
-      'id2': obj?.id2,
-      'ativa': obj?.ativa,
-      'dataCriacao': obj?.dataCriacao,
-      'dataEdicao': obj?.dataEdicao,
-      'dataDelecao': obj?.dataDelecao,
-      if (withHashCode) 'hashCode': obj?.hashCode,
-    };
   }
 
   static const List<String> _staticFieldsNames = const <String>[];
@@ -292,7 +286,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  StaticFieldReflection<Entidade, T>? staticField<T>(String fieldName) => null;
+  FieldReflection<Entidade, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'classToMap',
@@ -311,9 +305,10 @@ class Entidade$reflection extends ClassReflection<Entidade>
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Entidade, dynamic>>
-      _methodsNoObject = {};
+      _methodsNoObject = <String, MethodReflection<Entidade, dynamic>>{};
 
-  final Map<String, MethodReflection<Entidade, dynamic>> _methodsObject = {};
+  final Map<String, MethodReflection<Entidade, dynamic>> _methodsObject =
+      <String, MethodReflection<Entidade, dynamic>>{};
 
   @override
   MethodReflection<Entidade, R>? method<R>(String methodName, [Entidade? obj]) {
@@ -369,6 +364,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.reflect,
             obj,
+            false,
             null,
             null,
             null,
@@ -382,6 +378,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.classToMap,
             obj,
+            false,
             null,
             null,
             null,
@@ -395,6 +392,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.toJson,
             obj,
+            false,
             null,
             null,
             null,
@@ -408,6 +406,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.dbMaptoClassMap,
             obj,
+            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -428,6 +427,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.classToString,
             obj,
+            false,
             null,
             null,
             null,
@@ -441,6 +441,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.listClassToString,
             obj,
+            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -454,6 +455,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.stringToClass,
             obj,
+            false,
             const <__PR>[__PR(__TR.tString, 'string', false, true)],
             null,
             null,
@@ -467,6 +469,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.mapToClass,
             obj,
+            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -487,6 +490,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.listMapToListClass,
             obj,
+            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -500,6 +504,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             false,
             (o) => o!.listStringToListClass,
             obj,
+            false,
             const <__PR>[__PR(__TR.tString, 'listString', false, true)],
             null,
             null,
@@ -515,8 +520,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   @override
-  StaticMethodReflection<Entidade, R>? staticMethod<R>(String methodName) =>
-      null;
+  MethodReflection<Entidade, R>? staticMethod<R>(String methodName) => null;
 }
 
 extension Entidade$reflectionExtension on Entidade {

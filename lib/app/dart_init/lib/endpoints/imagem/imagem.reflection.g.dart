@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.3.4
+// BUILDER: reflection_factory/2.2.8
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -20,7 +20,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.3.4');
+  static final Version _version = Version.parse('2.2.8');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -58,7 +58,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.0.0');
+  Version get languageVersion => Version.parse('3.4.0');
 
   @override
   ImagemEndpoint$reflection withObject([ImagemEndpoint? obj]) =>
@@ -101,7 +101,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
   List<String> get constructorsNames => _constructorsNames;
 
   static final Map<String, ConstructorReflection<ImagemEndpoint>>
-      _constructors = {};
+      _constructors = <String, ConstructorReflection<ImagemEndpoint>>{};
 
   @override
   ConstructorReflection<ImagemEndpoint>? constructor(String constructorName) {
@@ -151,22 +151,13 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
   FieldReflection<ImagemEndpoint, T>? field<T>(String fieldName,
           [ImagemEndpoint? obj]) =>
       null;
-
-  @override
-  Map<String, dynamic> getFieldsValues(ImagemEndpoint? obj,
-          {bool withHashCode = false}) =>
-      {
-        if (withHashCode) 'hashCode': obj?.hashCode,
-      };
-
   static const List<String> _staticFieldsNames = const <String>[];
 
   @override
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  StaticFieldReflection<ImagemEndpoint, T>? staticField<T>(String fieldName) =>
-      null;
+  FieldReflection<ImagemEndpoint, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'addImagem',
@@ -179,10 +170,10 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<ImagemEndpoint, dynamic>>
-      _methodsNoObject = {};
+      _methodsNoObject = <String, MethodReflection<ImagemEndpoint, dynamic>>{};
 
   final Map<String, MethodReflection<ImagemEndpoint, dynamic>> _methodsObject =
-      {};
+      <String, MethodReflection<ImagemEndpoint, dynamic>>{};
 
   @override
   MethodReflection<ImagemEndpoint, R>? method<R>(String methodName,
@@ -239,6 +230,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             false,
             (o) => o!.addImagem,
             obj,
+            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
@@ -252,6 +244,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             false,
             (o) => o!.getImagem,
             obj,
+            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
@@ -265,6 +258,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             false,
             (o) => o!.getRouter,
             obj,
+            false,
             null,
             null,
             null,
@@ -279,6 +273,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             false,
             (o) => o!.reflect,
             obj,
+            false,
             null,
             null,
             null,
@@ -294,8 +289,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   @override
-  StaticMethodReflection<ImagemEndpoint, R>? staticMethod<R>(
-          String methodName) =>
+  MethodReflection<ImagemEndpoint, R>? staticMethod<R>(String methodName) =>
       null;
 }
 

@@ -8,7 +8,7 @@ part of 'pagamento_sistema.dart';
 
 PagamentoSistema _$PagamentoSistemaFromJson(Map json) => PagamentoSistema()
   ..id = json['id'] as String?
-  ..id2 = json['id2'] as int?
+  ..id2 = (json['id2'] as num?)?.toInt()
   ..ativa = json['ativa'] as bool?
   ..dataCriacao = json['dataCriacao'] == null
       ? null

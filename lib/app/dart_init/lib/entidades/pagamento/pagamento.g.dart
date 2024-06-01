@@ -8,7 +8,7 @@ part of 'pagamento.dart';
 
 Pagamento _$PagamentoFromJson(Map json) => Pagamento()
   ..id = json['id'] as String?
-  ..id2 = json['id2'] as int?
+  ..id2 = (json['id2'] as num?)?.toInt()
   ..ativa = json['ativa'] as bool?
   ..dataCriacao = json['dataCriacao'] == null
       ? null
