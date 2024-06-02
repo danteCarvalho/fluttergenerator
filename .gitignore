@@ -9,3 +9,5 @@ build/
 doc/api/
 /.idea/*
 /pubspec.lock
+lib/dart64.dart
+lib/flutter64.dart
