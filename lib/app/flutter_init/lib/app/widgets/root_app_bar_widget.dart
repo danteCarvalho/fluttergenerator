@@ -79,14 +79,23 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
       },
     );
 
-    List<Widget> list = [];
-    for (Route route in historyObserver.history) {
+    List<DropdownMenuItem<String>> list = [];
+    for (Route route in historyObserver.history.reversed) {
       String nome = route.settings.name!;
       if (nome.contains("?")) {
         nome = nome.split("?")[0];
       }
-      list.add(Text(nome));
+      list.add(DropdownMenuItem<String>(
+        value: nome,
+        child: Text(nome),
+      ));
     }
+
+    var dropdownButton = DropdownButton<String>(
+      items: list,
+      onChanged: (Object? value) {},
+      value: list.isEmpty?null: list.first.value,
+    );
 
     Widget? leading;
     if (historyObserver.history.length > 1) {
@@ -95,7 +104,7 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
 
     return AppBar(
       title: Row(
-        children: list,
+        children: [dropdownButton],
       ),
       backgroundColor: Colors.lightBlueAccent,
       actions: [menu],

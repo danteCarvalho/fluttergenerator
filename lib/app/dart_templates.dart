@@ -72,6 +72,7 @@ editWWWW(HttpRequest request) async {
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
+import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -79,8 +80,10 @@ import '../../daos/hasura_dao.dart';
 import '../../entidades/wwww/wwww.dart';
 
 part 'wwww.g.dart';
+part 'wwww.reflection.g.dart';
 
 
+@EnableReflection()
 @routerAnnotation
 class WWWWEndpoint extends RouterMethods {
   @Route.post('/addWWWW')
@@ -95,13 +98,11 @@ class WWWWEndpoint extends RouterMethods {
   }
 
   @Route.post('/editWWWW')
-  Future<Response> finalizarWWWW(Request request) async {
+  Future<Response> editWWWW(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);
     Map resposta = {};
-    String id = requestMap["id"];
-    WWWW aaaa = await selectByIdHasura(id, WWWW());
-    //colocar aqui os campos de update
+    WWWW aaaa = WWWW().mapToClass(requestMap["aaaa"]);
     aaaa = await updateHasura(aaaa, "");
     resposta["aaaa"] = aaaa;
     return Response.ok(json.encode(resposta));
@@ -110,6 +111,10 @@ class WWWWEndpoint extends RouterMethods {
   @override
   Router getRouter() {
     return _\$WWWWEndpointRouter(this);
+  }
+  @override
+  ClassReflection reflect() {
+    return reflection;
   }
 }
 

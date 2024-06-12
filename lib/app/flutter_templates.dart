@@ -129,7 +129,7 @@ import 'wwww_store.dart';
 
 class WWWWPage extends StatefulWidget {
   final String title;
-  const WWWWPage({Key? key, this.title = 'WWWW'}) : super(key: key);
+  const WWWWPage({super.key, this.title = 'WWWW'});
   @override
   WWWWPageState createState() => WWWWPageState();
 }
@@ -146,9 +146,9 @@ class WWWWPageState extends State<WWWWPage> {
   Widget build(BuildContext context) {
     List<Widget> columnWidgets = [];
     var column = Column(
-      children: columnWidgets,
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
+      children: columnWidgets,
     );
     return Scaffold(
       body: SingleChildScrollView(
@@ -170,14 +170,14 @@ import 'wwww_page.dart';
 
 class WWWWModule extends Module {
   @override
-  final List<Bind> binds = [
-    Bind.lazySingleton((i) => WWWWStore()),
-  ];
+  void binds(i) {
+    i.addLazySingleton(WWWWStore.new);
+  }
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute, child: (_, args) => WWWWPage()),
-  ];
+  void routes(r) {
+    r.child(Modular.initialRoute, child: (context) => const WWWWPage());
+  }
 }
 
 
