@@ -28,14 +28,16 @@ class Usuario extends Entidade with _$Serial {
   @Coluna(unique: true)
   String? email;
   @Coluna(unique: true)
-  String? cpf;
-  DateTime? dataNascimento;
-  String? endereco;
-  String? cep;
-  String? cidade;
-  String? estado;
-  String? complemento;
-  String? telefone;
+  String cpfCnpj = "";
+  DateTime dataNascimento = DateTime.now();
+  String enderecoLogradouroRua = "";
+  String numeroEndereco = "";
+  String bairro = "";
+  String cep = "";
+  String cidade = "";
+  String estado = "";
+  String complemento = "";
+  String telefone = "";
   bool? admin;
   Empresa? empresa;
   double? valorPagamento;

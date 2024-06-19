@@ -28,17 +28,19 @@ class Usuario extends _UsuarioBase with _$Usuario, _$Serial {
 
 
 abstract class _UsuarioBase extends Entidade with Store {
-  String? nome;
-  String? senha;
-  String? email;
-  String? cpf;
-  DateTime? dataNascimento;
-  String? endereco;
-  String? cep;
-  String? cidade;
-  String? estado;
-  String? complemento;
-  String? telefone;
+  String nome = "";
+  String senha  ="";
+  String email = "";
+  String cpfCnpj = "";
+  DateTime dataNascimento = DateTime.now();
+  String enderecoLogradouroRua = "";
+  String numeroEndereco = "";
+  String bairro = "";
+  String cep = "";
+  String cidade = "";
+  String estado = "";
+  String complemento = "";
+  String telefone = "";
   bool? admin;
   Empresa? empresa;
   double? valorPagamento;

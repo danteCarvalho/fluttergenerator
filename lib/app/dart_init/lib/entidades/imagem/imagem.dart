@@ -22,7 +22,8 @@ class Imagem extends Entidade with _$Serial {
   }
 
   @Coluna(tipo: "character varying", nullable: false)
-  String? value;
-  String? name;
-  int? size;
+  String value  = "";
+  String name = "";
+  String extension = "";
+  int size = 0;
 }

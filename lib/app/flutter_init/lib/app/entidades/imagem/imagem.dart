@@ -26,9 +26,10 @@ class Imagem extends _ImagemBase with _$Imagem, _$Serial {
 }
 
 abstract class _ImagemBase extends Entidade with Store {
-    String? value;
-    String? name;
-    int? size;
+  String value  = "";
+  String name = "";
+  String extension = "";
+  int size = 0;
 }
 
   
