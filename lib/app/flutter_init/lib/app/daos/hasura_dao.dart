@@ -30,7 +30,7 @@ String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<Strin
 
   String sql = """
 {
-  $nomeTabela ( $whereString $orderByString $inicioString $maximoString ) {
+  $nomeTabela${config.hasuraSufix} ( $whereString $orderByString $inicioString $maximoString ) {
     $selectString
   }
 }
@@ -69,7 +69,7 @@ Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? r
 
   String sql = """
 {
-  ${nomeTabela}_by_pk(id: "$id") {
+  $nomeTabela${config.hasuraSufix}_by_pk(id: "$id") {
     ${returning ?? selectFields(entidade, subFields: subFields)}
   }
 }
@@ -94,10 +94,10 @@ Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? r
   if (decode.containsKey("errors")) {
     throw decode["errors"];
   }
-  if (decode["data"]["${nomeTabela}_by_pk"] == null) {
+  if (decode["data"]["$nomeTabela${config.hasuraSufix}_by_pk"] == null) {
     throw NaoEncontrado(nomeTabela);
   }
-  T retorno = entidade.mapToClass(decode["data"]["${nomeTabela}_by_pk"]);
+  T retorno = entidade.mapToClass(decode["data"]["$nomeTabela${config.hasuraSufix}_by_pk"]);
   return retorno;
 }
 
@@ -123,10 +123,10 @@ Future<T> selectOneHasura<T extends Entidade>(String sql, T entidade) async {
     throw decode["errors"];
   }
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
-  if (nuloOuvazio([decode["data"][nomeTabela]])) {
+  if (nuloOuvazio([decode["data"][nomeTabela + config.hasuraSufix]])) {
     throw NaoEncontrado(nomeTabela);
   }
-  List listaEntidades = decode["data"][nomeTabela];
+  List listaEntidades = decode["data"][nomeTabela + config.hasuraSufix];
   if (listaEntidades.length > 1) {
     throw PararError("Mais de uma entidade");
   }
@@ -187,56 +187,15 @@ Future<List<T>> selectListHasura<T extends Entidade>(String sql, T entidade) asy
     throw decode["errors"];
   }
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
-  if (nuloOuvazio([decode["data"][nomeTabela]])) {
+  if (nuloOuvazio([decode["data"][nomeTabela + config.hasuraSufix]])) {
     throw NaoEncontrado(nomeTabela);
   }
-  List list = decode["data"][nomeTabela];
+  List list = decode["data"][nomeTabela + config.hasuraSufix];
   List<T> retorno = [];
   for (var obj in list) {
     retorno.add(entidade.mapToClass(obj));
   }
   return retorno;
-}
-
-subscriptionHasura(String sql) async {
-  var instance = await SharedPreferences.getInstance();
-  var jwt = instance.getString("jwt");
-
-  String init = """
-{
-   "type":"connection_init",
-   "payload":{
-      "lazy":true
-   }
-}      
-      """;
-
-  String start = """
-{
-   "id":"${const Uuid().v4()}",
-   "type":"start",
-   "payload":{
-      "query":"${sql.replaceAll("\n", "")}"
-   }
-}      
-      """;
-
-  Map<String, String> headers = {};
-  headers["Authorization"] = "Bearer ${jwt!}";
-  WebSocket webSocket;
-  try {
-    webSocket = await WebSocket.connect(
-        "${config.schemeHasura == "http" ? "ws" : "wss"}://${config.ipHasura}:${config.portaHasura}/v1/graphql",
-        headers: headers);
-  } on Exception catch (e) {
-    throw e.toString();
-  } catch (e) {
-    throw e.toString();
-  }
-
-  webSocket.add(init);
-  webSocket.add(start);
-  return webSocket;
 }
 
 String select(List<String> selectList) {
@@ -306,4 +265,46 @@ String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
     }
   }
   return campos;
+}
+
+
+subscriptionHasura(String sql) async {
+  var instance = await SharedPreferences.getInstance();
+  var jwt = instance.getString("jwt");
+
+  String init = """
+{
+   "type":"connection_init",
+   "payload":{
+      "lazy":true
+   }
+}      
+      """;
+
+  String start = """
+{
+   "id":"${const Uuid().v4()}",
+   "type":"start",
+   "payload":{
+      "query":"${sql.replaceAll("\n", "")}"
+   }
+}      
+      """;
+
+  Map<String, String> headers = {};
+  headers["Authorization"] = "Bearer ${jwt!}";
+  WebSocket webSocket;
+  try {
+    webSocket = await WebSocket.connect(
+        "${config.schemeHasura == "http" ? "ws" : "wss"}://${config.ipHasura}:${config.portaHasura}/v1/graphql",
+        headers: headers);
+  } on Exception catch (e) {
+    throw e.toString();
+  } catch (e) {
+    throw e.toString();
+  }
+
+  webSocket.add(init);
+  webSocket.add(start);
+  return webSocket;
 }

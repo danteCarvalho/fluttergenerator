@@ -91,7 +91,11 @@ addHasuraTable(Entidade entidade) async {
 {
    "type": "pg_track_table",
    "args": {
-      "name": "$nomeTabela"
+      "source":  "${config.hasuraSource}" ,
+      "table": "$nomeTabela",
+      "configuration": {
+        "custom_name": "$nomeTabela${config.hasuraSufix}"
+      }
    }
 }
   """;
@@ -113,6 +117,7 @@ addHasuraForeignKeys(Entidade tabela, Entidade campo, String nomeCampo) async {
 {
    "type": "pg_create_object_relationship",
    "args": {
+      "source":  "${config.hasuraSource}" ,
       "table": "$nomeTabela",
       "name": "$nomeTabelaReferencia",
       "using": {
@@ -126,6 +131,7 @@ addHasuraForeignKeys(Entidade tabela, Entidade campo, String nomeCampo) async {
 {
    "type": "pg_create_array_relationship",
    "args": {
+      "source":  "${config.hasuraSource}" ,
       "table": "$nomeTabelaReferencia",
       "name": "${'${nomeTabela}s'}",
       "using": {
@@ -196,6 +202,7 @@ permissoesTabela(Entidade entidade) async {
 {
     "type" : "create_select_permission",
     "args" : {
+        "source":  "${config.hasuraSource}" ,
         "table" : "$nomeTabela",
         "role" : "usuario",
         "permission" : {

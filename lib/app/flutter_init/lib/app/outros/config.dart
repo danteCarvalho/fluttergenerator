@@ -11,15 +11,16 @@ Config config = Config();
 @JsonSerializable(explicitToJson: true, anyMap: true)
 class Config {
   bool arquivoConf =  const bool.fromEnvironment('arquivoConf', defaultValue: false);
-  String schemeServidor = const String.fromEnvironment('schemeServidor', defaultValue: 'http');
-  String schemeHasura = const String.fromEnvironment('schemeHasura', defaultValue: 'http');
-  String ipServidor = const String.fromEnvironment('ipServidor', defaultValue: 'localhost');
-  String ipHasura = const String.fromEnvironment('ipHasura', defaultValue: 'localhost');
   int portaApp = const int.fromEnvironment("portaApp", defaultValue: 8001);
-  int portaServidor = const int.fromEnvironment("portaServidor", defaultValue: 7001);
-  int portaHasura = const int.fromEnvironment("portaHasura", defaultValue: 6001);
   String sembastDbName = const String.fromEnvironment("sembastDbName", defaultValue: "testeSembast.db");
-  String sqliteDbName = const String.fromEnvironment("sqliteDbName", defaultValue: "testeSqlite.db");
+  String schemeServidor = const String.fromEnvironment('schemeServidor', defaultValue: 'http');
+  String ipServidor = const String.fromEnvironment('ipServidor', defaultValue: 'localhost');
+  int portaServidor = const int.fromEnvironment("portaServidor", defaultValue: 7001);
+  String schemeHasura = const String.fromEnvironment('schemeHasura', defaultValue: 'http');
+  String ipHasura = const String.fromEnvironment('ipHasura', defaultValue: 'localhost');
+  int portaHasura = const int.fromEnvironment("portaHasura", defaultValue: 6001);
+  String hasuraSource = const String.fromEnvironment('hasuraSource', defaultValue: 'default');
+  String hasuraSufix = const String.fromEnvironment('hasuraSufix', defaultValue: '');
 
   Map toJson() {
     return _$ConfigToJson(this);
