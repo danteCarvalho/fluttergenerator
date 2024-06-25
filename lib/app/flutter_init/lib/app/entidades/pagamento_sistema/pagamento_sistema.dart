@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
@@ -13,7 +12,6 @@ import '../usuario/usuario.dart';
 part 'pagamento_sistema.g.dart';
 part 'pagamento_sistema.reflection.g.dart';
 
-@JsonSerializable(explicitToJson: true,anyMap: true)
 @EnableReflection()
 @reflector
 @SerialAnnotation()

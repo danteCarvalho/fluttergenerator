@@ -43,5 +43,7 @@ abstract class LoginStoreBase with Store {
     shared.setString("usuario", usuario.classToString());
     app.usuario = usuario;
     app.mostrarSnackBar("Logado com sucesso");
+    Modular.to.popUntil((p0) => false);
+    Modular.to.pushReplacementNamed("/logado/");
   }
 }

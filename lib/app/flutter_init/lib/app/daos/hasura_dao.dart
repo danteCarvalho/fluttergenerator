@@ -7,24 +7,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 import '../entidades/entidade.dart';
-import '../outros/config.dart';
+import '../outros/config/config.dart';
 import '../outros/entidade_helper.dart';
 import '../outros/excecoes.dart';
 
-String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<String> selectList,{List<Map>? orderByList, int? inicio, int? maximo}) {
+String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<String> selectList, {List<Map>? orderByList, int? inicio, int? maximo}) {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
   String whereString = where(whereList);
   String selectString = select(selectList);
   String orderByString = "";
   String inicioString = "";
   String maximoString = "";
-  if(orderByList != null){
+  if (orderByList != null) {
     orderByString = orderBy(orderByList);
   }
-  if(inicio != null){
+  if (inicio != null) {
     inicioString = ", offset: $inicio";
   }
-  if(maximo != null){
+  if (maximo != null) {
     maximoString = ", limit: $maximo";
   }
 
@@ -38,19 +38,19 @@ String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<Strin
   return sql;
 }
 
-String customSelectHasura(String campo, List<Map> whereList, List<String> selectList,{List<Map>? orderByList, int? inicio, int? maximo}) {
+String customSelectHasura(String campo, List<Map> whereList, List<String> selectList, {List<Map>? orderByList, int? inicio, int? maximo}) {
   String whereString = where(whereList);
   String selectString = select(selectList);
   String orderByString = "";
   String inicioString = "";
   String maximoString = "";
-  if(orderByList != null){
+  if (orderByList != null) {
     orderByString = orderBy(orderByList);
   }
-  if(inicio != null){
+  if (inicio != null) {
     inicioString = ", offset: $inicio";
   }
-  if(maximo != null){
+  if (maximo != null) {
     maximoString = ", limit: $maximo";
   }
   String sql = """
@@ -244,7 +244,6 @@ Map orderExpr(String path, String order) {
   return currentValue;
 }
 
-
 String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
   var reflection = entidade.reflect();
   var allFields = reflection.allFields();
@@ -258,15 +257,11 @@ String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
         campos += "${obj.name.toLowerCase()}{ id }";
       }
     } else {
-      var type = obj.type.toString();
-      if (type == "String" || type == "int" || type == "double" || type == "bool" || type == "DateTime") {
         campos += "${obj.name.toLowerCase()} ";
-      }
     }
   }
   return campos;
 }
-
 
 subscriptionHasura(String sql) async {
   var instance = await SharedPreferences.getInstance();
@@ -295,9 +290,7 @@ subscriptionHasura(String sql) async {
   headers["Authorization"] = "Bearer ${jwt!}";
   WebSocket webSocket;
   try {
-    webSocket = await WebSocket.connect(
-        "${config.schemeHasura == "http" ? "ws" : "wss"}://${config.ipHasura}:${config.portaHasura}/v1/graphql",
-        headers: headers);
+    webSocket = await WebSocket.connect("${config.schemeHasura == "http" ? "ws" : "wss"}://${config.ipHasura}:${config.portaHasura}/v1/graphql", headers: headers);
   } on Exception catch (e) {
     throw e.toString();
   } catch (e) {

@@ -14,7 +14,7 @@ abstract class RootStoreBase with Store {
   init(RootPageState state) async {
     Modular.to.popUntil((p0) => false);
     if (app.usuario != null) {
-      Modular.to.pushReplacementNamed("/principal/");
+      Modular.to.pushReplacementNamed("/logado/");
     } else {
       Modular.to.pushReplacementNamed("/home/");
     }

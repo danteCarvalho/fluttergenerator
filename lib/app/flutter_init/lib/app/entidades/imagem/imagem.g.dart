@@ -3,25 +3,26 @@
 part of 'imagem.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// MyCustomGenerator
 // **************************************************************************
 
 Imagem _$ImagemFromJson(Map json) => Imagem()
-  ..id = json['id'] as String?
-  ..id2 = (json['id2'] as num?)?.toInt()
-  ..ativa = json['ativa'] as bool?
-  ..dataCriacao = json['dataCriacao'] == null
-      ? null
-      : DateTime.parse(json['dataCriacao'] as String)
-  ..dataEdicao = json['dataEdicao'] == null
-      ? null
-      : DateTime.parse(json['dataEdicao'] as String)
-  ..dataDelecao = json['dataDelecao'] == null
-      ? null
-      : DateTime.parse(json['dataDelecao'] as String)
-  ..value = json['value'] as String?
-  ..name = json['name'] as String?
-  ..size = (json['size'] as num?)?.toInt();
+  ..id = json['id'] != null ? json['id'] as String? : null
+  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : null
+  ..ativa = json['ativa'] != null ? json['ativa'] as bool? : null
+  ..dataCriacao = json['dataCriacao'] != null
+      ? DateTime.parse(json['dataCriacao'] as String)
+      : null
+  ..dataEdicao = json['dataEdicao'] != null
+      ? DateTime.parse(json['dataEdicao'] as String)
+      : null
+  ..dataDelecao = json['dataDelecao'] != null
+      ? DateTime.parse(json['dataDelecao'] as String)
+      : null
+  ..value = json['value'] != null ? json['value'] as String : ""
+  ..name = json['name'] != null ? json['name'] as String : ""
+  ..extension = json['extension'] != null ? json['extension'] as String : ""
+  ..size = json['size'] != null ? (json['size'] as num).toInt() : 0;
 
 Map<String, dynamic> _$ImagemToJson(Imagem instance) => <String, dynamic>{
       'id': instance.id,
@@ -32,12 +33,9 @@ Map<String, dynamic> _$ImagemToJson(Imagem instance) => <String, dynamic>{
       'dataDelecao': instance.dataDelecao?.toIso8601String(),
       'value': instance.value,
       'name': instance.name,
+      'extension': instance.extension,
       'size': instance.size,
     };
-
-// **************************************************************************
-// MyCustomGenerator
-// **************************************************************************
 
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
@@ -106,10 +104,25 @@ mixin _$Serial {
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$Imagem on _ImagemBase, Store {
+  late final _$valueAtom = Atom(name: '_ImagemBase.value', context: context);
+
+  @override
+  String get value {
+    _$valueAtom.reportRead();
+    return super.value;
+  }
+
+  @override
+  set value(String value) {
+    _$valueAtom.reportWrite(value, super.value, () {
+      super.value = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-
+value: ${value}
     ''';
   }
 }

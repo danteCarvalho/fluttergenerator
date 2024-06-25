@@ -28,11 +28,98 @@ mixin __ReflectionMixin {
 }
 
 // ignore: non_constant_identifier_names
+TipoPerfil? TipoPerfil$from(Object? o) =>
+    TipoPerfil$reflection.staticInstance.from(o);
+// ignore: non_constant_identifier_names
 Usuario Usuario$fromJson(Map<String, Object?> map) =>
     Usuario$reflection.staticInstance.fromJson(map);
 // ignore: non_constant_identifier_names
 Usuario Usuario$fromJsonEncoded(String jsonEncoded) =>
     Usuario$reflection.staticInstance.fromJsonEncoded(jsonEncoded);
+
+class TipoPerfil$reflection extends EnumReflection<TipoPerfil>
+    with __ReflectionMixin {
+  static final Expando<TipoPerfil$reflection> _objectReflections = Expando();
+
+  factory TipoPerfil$reflection([TipoPerfil? object]) {
+    if (object == null) return staticInstance;
+    return _objectReflections[object] ??= TipoPerfil$reflection._(object);
+  }
+
+  TipoPerfil$reflection._([TipoPerfil? object])
+      : super(TipoPerfil, 'TipoPerfil', object);
+
+  static bool _registered = false;
+  @override
+  void register() {
+    if (!_registered) {
+      _registered = true;
+      super.register();
+      _registerSiblingsReflection();
+    }
+  }
+
+  @override
+  Version get languageVersion => Version.parse('3.4.0');
+
+  @override
+  TipoPerfil$reflection withObject([TipoPerfil? obj]) =>
+      TipoPerfil$reflection(obj);
+
+  static TipoPerfil$reflection? _withoutObjectInstance;
+  @override
+  TipoPerfil$reflection withoutObjectInstance() => staticInstance;
+
+  static TipoPerfil$reflection get staticInstance =>
+      _withoutObjectInstance ??= TipoPerfil$reflection._();
+
+  @override
+  TipoPerfil$reflection getStaticInstance() => staticInstance;
+
+  static bool _boot = false;
+  static void boot() {
+    if (_boot) return;
+    _boot = true;
+    TipoPerfil$reflection.staticInstance;
+  }
+
+  static const List<Object> _classAnnotations = <Object>[];
+
+  @override
+  List<Object> get classAnnotations => _classAnnotations;
+
+  static const List<String> _staticFieldsNames = const <String>[
+    'artistaBanda',
+    'casaShow',
+    'musicoFreelancer',
+    'nenhum',
+    'prestadorFonnecedor',
+    'produtorCultural'
+  ];
+
+  @override
+  List<String> get staticFieldsNames => _staticFieldsNames;
+
+  static const Map<String, TipoPerfil> _valuesByName =
+      const <String, TipoPerfil>{
+    'artistaBanda': TipoPerfil.artistaBanda,
+    'casaShow': TipoPerfil.casaShow,
+    'musicoFreelancer': TipoPerfil.musicoFreelancer,
+    'nenhum': TipoPerfil.nenhum,
+    'prestadorFonnecedor': TipoPerfil.prestadorFonnecedor,
+    'produtorCultural': TipoPerfil.produtorCultural,
+  };
+
+  @override
+  Map<String, TipoPerfil> get valuesByName => _valuesByName;
+  @override
+  List<TipoPerfil> get values => TipoPerfil.values;
+
+  static const List<String> _fieldsNames = const <String>['descricao'];
+
+  @override
+  List<String> get fieldsNames => _fieldsNames;
+}
 
 class Usuario$reflection extends ClassReflection<Usuario>
     with __ReflectionMixin {
@@ -124,7 +211,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 
   static const List<Object> _classAnnotations = const [
-    JsonSerializable(explicitToJson: true, anyMap: true),
     reflector,
     SerialAnnotation()
   ];
@@ -153,10 +239,11 @@ class Usuario$reflection extends ClassReflection<Usuario>
   static const List<String> _fieldsNames = const <String>[
     'admin',
     'ativa',
+    'bairro',
     'cep',
     'cidade',
     'complemento',
-    'cpf',
+    'cpfCnpj',
     'dataCriacao',
     'dataDelecao',
     'dataEdicao',
@@ -164,13 +251,17 @@ class Usuario$reflection extends ClassReflection<Usuario>
     'dataPagamento',
     'email',
     'empresa',
-    'endereco',
+    'enderecoLogradouroRua',
     'estado',
     'id',
     'id2',
+    'imagem',
     'nome',
+    'numeroEndereco',
+    'preferenciaNome',
     'senha',
     'telefone',
+    'tipoPerfil',
     'ultimoPagamentoCompleto',
     'ultimoPagamentoGerado',
     'valorPagamento'
@@ -230,12 +321,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
 
     switch (lc) {
       case 'nome':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
           'nome',
-          true,
+          false,
           (o) => () => o!.nome,
           (o) => (v) => o!.nome = v,
           obj,
@@ -244,12 +335,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           const [Coluna(nullable: false)],
         );
       case 'senha':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
           'senha',
-          true,
+          false,
           (o) => () => o!.senha,
           (o) => (v) => o!.senha = v,
           obj,
@@ -257,12 +348,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'email':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
           'email',
-          true,
+          false,
           (o) => () => o!.email,
           (o) => (v) => o!.email = v,
           obj,
@@ -270,53 +361,78 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
           const [Coluna(unique: true)],
         );
-      case 'cpf':
+      case 'cpfcnpj':
         return FieldReflection<Usuario, String?>(
           this,
           Usuario,
           __TR.tString,
-          'cpf',
+          'cpfCnpj',
           true,
-          (o) => () => o!.cpf,
-          (o) => (v) => o!.cpf = v,
+          (o) => () => o!.cpfCnpj,
+          (o) => (v) => o!.cpfCnpj = v,
           obj,
           false,
           false,
-          const [Coluna(unique: true)],
         );
       case 'datanascimento':
-        return FieldReflection<Usuario, DateTime?>(
+        return FieldReflection<Usuario, DateTime>(
           this,
           Usuario,
           __TR<DateTime>(DateTime),
           'dataNascimento',
-          true,
+          false,
           (o) => () => o!.dataNascimento,
           (o) => (v) => o!.dataNascimento = v,
           obj,
           false,
           false,
         );
-      case 'endereco':
-        return FieldReflection<Usuario, String?>(
+      case 'enderecologradourorua':
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
-          'endereco',
-          true,
-          (o) => () => o!.endereco,
-          (o) => (v) => o!.endereco = v,
+          'enderecoLogradouroRua',
+          false,
+          (o) => () => o!.enderecoLogradouroRua,
+          (o) => (v) => o!.enderecoLogradouroRua = v,
+          obj,
+          false,
+          false,
+        );
+      case 'numeroendereco':
+        return FieldReflection<Usuario, String>(
+          this,
+          Usuario,
+          __TR.tString,
+          'numeroEndereco',
+          false,
+          (o) => () => o!.numeroEndereco,
+          (o) => (v) => o!.numeroEndereco = v,
+          obj,
+          false,
+          false,
+        );
+      case 'bairro':
+        return FieldReflection<Usuario, String>(
+          this,
+          Usuario,
+          __TR.tString,
+          'bairro',
+          false,
+          (o) => () => o!.bairro,
+          (o) => (v) => o!.bairro = v,
           obj,
           false,
           false,
         );
       case 'cep':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
           'cep',
-          true,
+          false,
           (o) => () => o!.cep,
           (o) => (v) => o!.cep = v,
           obj,
@@ -324,12 +440,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'cidade':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
           'cidade',
-          true,
+          false,
           (o) => () => o!.cidade,
           (o) => (v) => o!.cidade = v,
           obj,
@@ -337,12 +453,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'estado':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
           'estado',
-          true,
+          false,
           (o) => () => o!.estado,
           (o) => (v) => o!.estado = v,
           obj,
@@ -350,12 +466,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'complemento':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
           'complemento',
-          true,
+          false,
           (o) => () => o!.complemento,
           (o) => (v) => o!.complemento = v,
           obj,
@@ -363,12 +479,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'telefone':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Usuario,
           __TR.tString,
           'telefone',
-          true,
+          false,
           (o) => () => o!.telefone,
           (o) => (v) => o!.telefone = v,
           obj,
@@ -376,12 +492,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'admin':
-        return FieldReflection<Usuario, bool?>(
+        return FieldReflection<Usuario, bool>(
           this,
           Usuario,
           __TR.tBool,
           'admin',
-          true,
+          false,
           (o) => () => o!.admin,
           (o) => (v) => o!.admin = v,
           obj,
@@ -449,6 +565,45 @@ class Usuario$reflection extends ClassReflection<Usuario>
           true,
           (o) => () => o!.ultimoPagamentoGerado,
           (o) => (v) => o!.ultimoPagamentoGerado = v,
+          obj,
+          false,
+          false,
+        );
+      case 'preferencianome':
+        return FieldReflection<Usuario, String>(
+          this,
+          Usuario,
+          __TR.tString,
+          'preferenciaNome',
+          false,
+          (o) => () => o!.preferenciaNome,
+          (o) => (v) => o!.preferenciaNome = v,
+          obj,
+          false,
+          false,
+        );
+      case 'imagem':
+        return FieldReflection<Usuario, Imagem?>(
+          this,
+          Usuario,
+          __TR<Imagem>(Imagem),
+          'imagem',
+          true,
+          (o) => () => o!.imagem,
+          (o) => (v) => o!.imagem = v,
+          obj,
+          false,
+          false,
+        );
+      case 'tipoperfil':
+        return FieldReflection<Usuario, TipoPerfil>(
+          this,
+          Usuario,
+          __TR<TipoPerfil>(TipoPerfil),
+          'tipoPerfil',
+          false,
+          (o) => () => o!.tipoPerfil,
+          (o) => (v) => o!.tipoPerfil = v,
           obj,
           false,
           false,
@@ -829,6 +984,24 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 }
 
+extension TipoPerfil$reflectionExtension on TipoPerfil {
+  /// Returns a [EnumReflection] for type [TipoPerfil]. (Generated by [ReflectionFactory])
+  EnumReflection<TipoPerfil> get reflection => TipoPerfil$reflection(this);
+
+  /// Returns the name of the [TipoPerfil] instance. (Generated by [ReflectionFactory])
+  String get enumName => TipoPerfil$reflection(this).name()!;
+
+  /// Returns a JSON for type [TipoPerfil]. (Generated by [ReflectionFactory])
+  String? toJson() => reflection.toJson();
+
+  /// Returns a JSON [Map] for type [TipoPerfil]. (Generated by [ReflectionFactory])
+  Map<String, Object>? toJsonMap() => reflection.toJsonMap();
+
+  /// Returns an encoded JSON [String] for type [TipoPerfil]. (Generated by [ReflectionFactory])
+  String toJsonEncoded({bool pretty = false}) =>
+      reflection.toJsonEncoded(pretty: pretty);
+}
+
 extension Usuario$reflectionExtension on Usuario {
   /// Returns a [ClassReflection] for type [Usuario]. (Generated by [ReflectionFactory])
   ClassReflection<Usuario> get reflection => Usuario$reflection(this);
@@ -850,6 +1023,7 @@ extension Usuario$reflectionExtension on Usuario {
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
       Usuario$reflection(),
+      TipoPerfil$reflection(),
     ];
 
 List<Reflection>? _siblingsReflectionList;

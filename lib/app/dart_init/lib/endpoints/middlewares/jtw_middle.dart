@@ -20,4 +20,4 @@ Middleware jwtMiddleware() {
   );
 }
 
-List<String> excecoes = ["", "favicon.ico", "api/teste", "api/login", "api/googleLogin", "api/verificaAtualizaJwt"];
+List<String> excecoes = ["", "favicon.ico", "api/teste", "api/login", "api/googleLogin", "api/verificaAtualizaJwt","api/addUsuario"];

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
@@ -11,7 +10,6 @@ import '../entidade.dart';
 part 'imagem.g.dart';
 part 'imagem.reflection.g.dart';
 
-@JsonSerializable(explicitToJson: true,anyMap: true)
 @EnableReflection()
 @reflector
 @SerialAnnotation()
@@ -26,10 +24,10 @@ class Imagem extends _ImagemBase with _$Imagem, _$Serial {
 }
 
 abstract class _ImagemBase extends Entidade with Store {
-  String value  = "";
-  String name = "";
-  String extension = "";
-  int size = 0;
+    @observable
+    String value  = "";
+    String name = "";
+    String extension = "";
+    int size = 0;
 }
 
-  

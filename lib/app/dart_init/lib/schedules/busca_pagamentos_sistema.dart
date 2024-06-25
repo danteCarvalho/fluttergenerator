@@ -31,7 +31,7 @@ buscarPagamentosSistema() async {
       var differenceInDays = obj.dataCriacao!.differenceInDays(DateTime.now());
       if (differenceInDays > 1) {
         obj.ativa = false;
-        await updateHasura(obj, "ativa");
+        await updateHasura(obj, updateFields: "ativa");
         continue;
       }
       Map<String, dynamic> result;
@@ -44,17 +44,17 @@ buscarPagamentosSistema() async {
       if (status == "approved") {
         obj.pago = true;
         obj.dataConfirmado = DateTime.now();
-        await updateHasura(obj, "pago dataConfirmado");
+        await updateHasura(obj, updateFields: "pago dataConfirmado");
         if (obj.empresa != null) {
           var empresa = obj.empresa!;
           empresa.dataPagamento = DateTime.now().addDays(30);
           empresa.ultimoPagamentoCompleto = DateTime.now();
-          await updateHasura(empresa, "dataPagamento ultimoPagamentoCompleto");
+          await updateHasura(empresa, updateFields: "dataPagamento ultimoPagamentoCompleto");
         } else if (obj.usuario != null) {
           var usuario = obj.usuario!;
           usuario.dataPagamento = DateTime.now().addDays(30);
           usuario.ultimoPagamentoCompleto = DateTime.now();
-          await updateHasura(usuario, "dataPagamento ultimoPagamentoCompleto");
+          await updateHasura(usuario, updateFields: "dataPagamento ultimoPagamentoCompleto");
         }
       }
     }

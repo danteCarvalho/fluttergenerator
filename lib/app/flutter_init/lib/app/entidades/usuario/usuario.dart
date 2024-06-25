@@ -1,37 +1,35 @@
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
 import '../empresa/empresa.dart';
 import '../entidade.dart';
+import '../imagem/imagem.dart';
 
 part 'usuario.g.dart';
 part 'usuario.reflection.g.dart';
 
-@JsonSerializable(explicitToJson: true,anyMap: true)
 @EnableReflection()
 @reflector
 @SerialAnnotation()
 class Usuario extends _UsuarioBase with _$Usuario, _$Serial {
-
   static fromJson(Map map) {
     Map map2 = Usuario().dbMaptoClassMap(map);
     return _$UsuarioFromJson(map2);
   }
-
-
 }
 
-
 abstract class _UsuarioBase extends Entidade with Store {
+  @observable
   String nome = "";
-  String senha  ="";
+  @observable
+  String senha = "";
+  @observable
   String email = "";
-  String cpfCnpj = "";
+  String? cpfCnpj;
   DateTime dataNascimento = DateTime.now();
   String enderecoLogradouroRua = "";
   String numeroEndereco = "";
@@ -41,12 +39,13 @@ abstract class _UsuarioBase extends Entidade with Store {
   String estado = "";
   String complemento = "";
   String telefone = "";
-  bool? admin;
+  bool admin = false;
   Empresa? empresa;
   double? valorPagamento;
   DateTime? dataPagamento;
   DateTime? ultimoPagamentoCompleto;
   DateTime? ultimoPagamentoGerado;
+  Imagem? imagem ;
 }
 
-  
+

@@ -11,7 +11,6 @@ import '../../outros/excecoes.dart';
 import '../../outros/security.dart';
 
 part 'login.g.dart';
-
 part 'login.reflection.g.dart';
 @EnableReflection()
 @routerAnnotation

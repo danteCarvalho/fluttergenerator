@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:postgres/postgres.dart';
+import 'package:reflection_factory/builder.dart';
 
 import '../daos/hasura_dao.dart';
 import '../daos/postgres_dao.dart';
@@ -12,24 +13,25 @@ import '../entidades/imagem/imagem.dart';
 import '../entidades/pagamento/pagamento.dart';
 import '../entidades/pagamento_sistema/pagamento_sistema.dart';
 import '../entidades/usuario/usuario.dart';
-import 'config.dart';
+import 'config/config.dart';
 import 'entidade_helper.dart';
 
 criarBanco() async {
   List<Entidade> entidades = [];
+  entidades.add(Imagem());
   entidades.add(Usuario());
   entidades.add(Empresa());
   entidades.add(Pagamento());
   entidades.add(PagamentoSistema());
-  entidades.add(Imagem());
   await checkPostgres();
   await checkHasura();
   await processaEntidades(entidades);
   await refreshHarusa();
   await verificaAdmin();
 }
+
 checkPostgres() async {
-  try{
+  try {
     Connection connection = await getPostgresConnection();
     print(connection);
   }
@@ -44,6 +46,7 @@ checkPostgres() async {
     exit(0);
   }
 }
+
 checkHasura() async {
   Map<String, String> headers = {};
   headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
@@ -256,6 +259,7 @@ addCampos(Entidade entidade) async {
     Coluna? coluna = anotacaoColuna(obj.annotations);
     String tipo;
     try {
+      ReflectionFactory().hasRegisterEnumReflection(obj.type.type);
       instancia(obj.type.type);
       nomeColuna = "${nomeColuna.toLowerCase()}_id";
       tipo = "uuid";
@@ -263,7 +267,8 @@ addCampos(Entidade entidade) async {
       if (coluna != null && coluna.tipo != null) {
         tipo = coluna.tipo!;
       } else {
-        var tipo2 = bancotype(obj.type.toString());
+        obj is String;
+        var tipo2 = bancotype(obj);
         if (tipo2 == null) {
           continue;
         }
@@ -275,18 +280,24 @@ addCampos(Entidade entidade) async {
   }
 }
 
-String? bancotype(String type) {
-  if (type == "String") {
+String? bancotype(FieldReflection field) {
+  var reflectionFactory = ReflectionFactory();
+  var typeString = field.type.type.toString();
+  if (typeString == "String") {
     return "character varying (255)";
-  } else if (type == "int") {
+  } else if (typeString == "int") {
     return "integer";
-  } else if (type == "double") {
+  } else if (typeString == "double") {
     return "double precision";
-  } else if (type == "bool") {
+  } else if (typeString == "bool") {
     return "boolean";
-  } else if (type == "DateTime") {
+  } else if (typeString == "DateTime") {
     return "timestamp without time zone";
   }
+  else if(reflectionFactory.hasRegisterEnumReflection(field.type.type)){
+    return "character varying (255)";
+  }
+
   return null;
 }
 

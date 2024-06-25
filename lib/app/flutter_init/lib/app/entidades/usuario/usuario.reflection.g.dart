@@ -124,7 +124,6 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 
   static const List<Object> _classAnnotations = const [
-    JsonSerializable(explicitToJson: true, anyMap: true),
     reflector,
     SerialAnnotation()
   ];
@@ -156,11 +155,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
   static const List<String> _fieldsNames = const <String>[
     'admin',
     'ativa',
+    'bairro',
     'cep',
     'cidade',
     'complemento',
     'context',
-    'cpf',
+    'cpfCnpj',
     'dataCriacao',
     'dataDelecao',
     'dataEdicao',
@@ -168,13 +168,17 @@ class Usuario$reflection extends ClassReflection<Usuario>
     'dataPagamento',
     'email',
     'empresa',
-    'endereco',
+    'enderecoLogradouroRua',
     'estado',
     'id',
     'id2',
+    'imagem',
     'nome',
+    'numeroEndereco',
+    'preferenciaNome',
     'senha',
     'telefone',
+    'tipoPerfil',
     'ultimoPagamentoCompleto',
     'ultimoPagamentoGerado',
     'valorPagamento'
@@ -234,90 +238,119 @@ class Usuario$reflection extends ClassReflection<Usuario>
 
     switch (lc) {
       case 'nome':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
           'nome',
-          true,
+          false,
           (o) => () => o!.nome,
           (o) => (v) => o!.nome = v,
           obj,
           false,
           false,
+          const [observable],
         );
       case 'senha':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
           'senha',
-          true,
+          false,
           (o) => () => o!.senha,
           (o) => (v) => o!.senha = v,
           obj,
           false,
           false,
+          const [observable],
         );
       case 'email':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
           'email',
-          true,
+          false,
           (o) => () => o!.email,
           (o) => (v) => o!.email = v,
           obj,
           false,
           false,
+          const [observable],
         );
-      case 'cpf':
+      case 'cpfcnpj':
         return FieldReflection<Usuario, String?>(
           this,
           _UsuarioBase,
           __TR.tString,
-          'cpf',
+          'cpfCnpj',
           true,
-          (o) => () => o!.cpf,
-          (o) => (v) => o!.cpf = v,
+          (o) => () => o!.cpfCnpj,
+          (o) => (v) => o!.cpfCnpj = v,
           obj,
           false,
           false,
         );
       case 'datanascimento':
-        return FieldReflection<Usuario, DateTime?>(
+        return FieldReflection<Usuario, DateTime>(
           this,
           _UsuarioBase,
           __TR<DateTime>(DateTime),
           'dataNascimento',
-          true,
+          false,
           (o) => () => o!.dataNascimento,
           (o) => (v) => o!.dataNascimento = v,
           obj,
           false,
           false,
         );
-      case 'endereco':
-        return FieldReflection<Usuario, String?>(
+      case 'enderecologradourorua':
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
-          'endereco',
-          true,
-          (o) => () => o!.endereco,
-          (o) => (v) => o!.endereco = v,
+          'enderecoLogradouroRua',
+          false,
+          (o) => () => o!.enderecoLogradouroRua,
+          (o) => (v) => o!.enderecoLogradouroRua = v,
+          obj,
+          false,
+          false,
+        );
+      case 'numeroendereco':
+        return FieldReflection<Usuario, String>(
+          this,
+          _UsuarioBase,
+          __TR.tString,
+          'numeroEndereco',
+          false,
+          (o) => () => o!.numeroEndereco,
+          (o) => (v) => o!.numeroEndereco = v,
+          obj,
+          false,
+          false,
+        );
+      case 'bairro':
+        return FieldReflection<Usuario, String>(
+          this,
+          _UsuarioBase,
+          __TR.tString,
+          'bairro',
+          false,
+          (o) => () => o!.bairro,
+          (o) => (v) => o!.bairro = v,
           obj,
           false,
           false,
         );
       case 'cep':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
           'cep',
-          true,
+          false,
           (o) => () => o!.cep,
           (o) => (v) => o!.cep = v,
           obj,
@@ -325,12 +358,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'cidade':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
           'cidade',
-          true,
+          false,
           (o) => () => o!.cidade,
           (o) => (v) => o!.cidade = v,
           obj,
@@ -338,12 +371,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'estado':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
           'estado',
-          true,
+          false,
           (o) => () => o!.estado,
           (o) => (v) => o!.estado = v,
           obj,
@@ -351,12 +384,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'complemento':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
           'complemento',
-          true,
+          false,
           (o) => () => o!.complemento,
           (o) => (v) => o!.complemento = v,
           obj,
@@ -364,12 +397,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'telefone':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           _UsuarioBase,
           __TR.tString,
           'telefone',
-          true,
+          false,
           (o) => () => o!.telefone,
           (o) => (v) => o!.telefone = v,
           obj,
@@ -377,12 +410,12 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'admin':
-        return FieldReflection<Usuario, bool?>(
+        return FieldReflection<Usuario, bool>(
           this,
           _UsuarioBase,
           __TR.tBool,
           'admin',
-          true,
+          false,
           (o) => () => o!.admin,
           (o) => (v) => o!.admin = v,
           obj,
@@ -453,6 +486,47 @@ class Usuario$reflection extends ClassReflection<Usuario>
           obj,
           false,
           false,
+        );
+      case 'preferencianome':
+        return FieldReflection<Usuario, String>(
+          this,
+          _UsuarioBase,
+          __TR.tString,
+          'preferenciaNome',
+          false,
+          (o) => () => o!.preferenciaNome,
+          (o) => (v) => o!.preferenciaNome = v,
+          obj,
+          false,
+          false,
+          const [observable],
+        );
+      case 'imagem':
+        return FieldReflection<Usuario, Imagem?>(
+          this,
+          _UsuarioBase,
+          __TR<Imagem>(Imagem),
+          'imagem',
+          true,
+          (o) => () => o!.imagem,
+          (o) => (v) => o!.imagem = v,
+          obj,
+          false,
+          false,
+        );
+      case 'tipoperfil':
+        return FieldReflection<Usuario, TipoPerfil>(
+          this,
+          _UsuarioBase,
+          __TR<TipoPerfil>(TipoPerfil),
+          'tipoPerfil',
+          false,
+          (o) => () => o!.tipoPerfil,
+          (o) => (v) => o!.tipoPerfil = v,
+          obj,
+          false,
+          false,
+          const [observable],
         );
       case 'id':
         return FieldReflection<Usuario, String?>(

@@ -8,12 +8,11 @@ import 'package:shelf_router/shelf_router.dart';
 
 import '../../daos/hasura_dao.dart';
 import '../../entidades/usuario/usuario.dart';
-import '../../outros/config.dart';
+import '../../outros/config/config.dart';
 import '../../outros/excecoes.dart';
 import '../../outros/security.dart';
 
 part 'google_login.g.dart';
-
 part 'google_login.reflection.g.dart';
 @EnableReflection()
 @routerAnnotation

@@ -123,7 +123,6 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   }
 
   static const List<Object> _classAnnotations = const [
-    JsonSerializable(explicitToJson: true, anyMap: true),
     reflector,
     SerialAnnotation()
   ];
@@ -158,6 +157,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
     'dataCriacao',
     'dataDelecao',
     'dataEdicao',
+    'extension',
     'id',
     'id2',
     'name',
@@ -218,38 +218,52 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
 
     switch (lc) {
       case 'value':
-        return FieldReflection<Imagem, String?>(
+        return FieldReflection<Imagem, String>(
           this,
           _ImagemBase,
           __TR.tString,
           'value',
-          true,
+          false,
           (o) => () => o!.value,
           (o) => (v) => o!.value = v,
           obj,
           false,
           false,
+          const [observable],
         );
       case 'name':
-        return FieldReflection<Imagem, String?>(
+        return FieldReflection<Imagem, String>(
           this,
           _ImagemBase,
           __TR.tString,
           'name',
-          true,
+          false,
           (o) => () => o!.name,
           (o) => (v) => o!.name = v,
           obj,
           false,
           false,
         );
+      case 'extension':
+        return FieldReflection<Imagem, String>(
+          this,
+          _ImagemBase,
+          __TR.tString,
+          'extension',
+          false,
+          (o) => () => o!.extension,
+          (o) => (v) => o!.extension = v,
+          obj,
+          false,
+          false,
+        );
       case 'size':
-        return FieldReflection<Imagem, int?>(
+        return FieldReflection<Imagem, int>(
           this,
           _ImagemBase,
           __TR.tInt,
           'size',
-          true,
+          false,
           (o) => () => o!.size,
           (o) => (v) => o!.size = v,
           obj,

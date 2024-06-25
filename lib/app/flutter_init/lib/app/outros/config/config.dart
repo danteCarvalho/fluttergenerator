@@ -1,15 +1,22 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:json_annotation/json_annotation.dart';
+import 'package:dartutils/dartutils.dart';
+import 'package:reflection_factory/reflection_factory.dart';
+
+import '../entidade_helper.dart';
 
 part 'config.g.dart';
+part 'config.reflection.g.dart';
+
 
 
 Config config = Config();
 
-@JsonSerializable(explicitToJson: true, anyMap: true)
-class Config {
+@EnableReflection()
+@reflector
+@SerialAnnotation()
+class Config with _$Serial{
   bool arquivoConf =  const bool.fromEnvironment('arquivoConf', defaultValue: false);
   int portaApp = const int.fromEnvironment("portaApp", defaultValue: 8001);
   String sembastDbName = const String.fromEnvironment("sembastDbName", defaultValue: "testeSembast.db");
@@ -22,22 +29,6 @@ class Config {
   String hasuraSource = const String.fromEnvironment('hasuraSource', defaultValue: 'default');
   String hasuraSufix = const String.fromEnvironment('hasuraSufix', defaultValue: '');
 
-  Map toJson() {
-    return _$ConfigToJson(this);
-  }
-
-  Map classToMap() {
-    return _$ConfigToJson(this);
-  }
-
-  static stringToClass(String string) {
-    Map map2 = json.decode(string);
-    return _$ConfigFromJson(map2);
-  }
-
-  static mapToClass(Map map) {
-    return _$ConfigFromJson(map);
-  }
 
   static fromJson(Map map) {
     return _$ConfigFromJson(map);
@@ -60,7 +51,7 @@ configurar() async {
     var velho = json.decode(s);
     var novo = config.classToMap();
     novo.addAll(velho);
-    config = Config.mapToClass(novo);
+    config = config.mapToClass(novo);
   } catch (e) {
     var encode = json.encode(Config());
     await file.writeAsString(encode);

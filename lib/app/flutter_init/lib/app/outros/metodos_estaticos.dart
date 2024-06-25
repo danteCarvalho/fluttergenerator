@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../app_store.dart';
 import '../entidades/usuario/usuario.dart';
 import '../requests/server_requets.dart';
-import 'config.dart';
+import 'config/config.dart';
 
 void errorTest(){
   print(1~/0);

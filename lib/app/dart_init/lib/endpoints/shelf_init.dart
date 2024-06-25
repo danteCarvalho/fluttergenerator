@@ -3,7 +3,7 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as shelf_server;
 import 'package:shelf_router/shelf_router.dart';
 
-import '../outros/config.dart';
+import '../outros/config/config.dart';
 import 'middlewares/exception_middle.dart';
 import 'middlewares/headers_middle.dart';
 import 'middlewares/jtw_middle.dart';

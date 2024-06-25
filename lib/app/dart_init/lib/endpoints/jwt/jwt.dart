@@ -12,7 +12,6 @@ import '../../outros/excecoes.dart';
 import '../../outros/security.dart';
 
 part 'jwt.g.dart';
-
 part 'jwt.reflection.g.dart';
 @EnableReflection()
 @routerAnnotation

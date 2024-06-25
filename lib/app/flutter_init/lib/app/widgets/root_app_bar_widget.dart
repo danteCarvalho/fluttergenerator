@@ -81,6 +81,9 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
 
     List<DropdownMenuItem<String>> list = [];
     for (Route route in historyObserver.history.reversed) {
+      if(route.settings.name == null){
+        continue;
+      }
       String nome = route.settings.name!;
       if (nome.contains("?")) {
         nome = nome.split("?")[0];
@@ -98,7 +101,7 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
     );
 
     Widget? leading;
-    if (historyObserver.history.length > 1) {
+    if (list.length > 1) {
       leading = IconButton(onPressed: () => Modular.to.pop(), icon: const Icon(Icons.arrow_back));
     }
 

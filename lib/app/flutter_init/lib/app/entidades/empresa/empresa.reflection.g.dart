@@ -124,7 +124,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
   }
 
   static const List<Object> _classAnnotations = const [
-    JsonSerializable(explicitToJson: true, anyMap: true),
     reflector,
     SerialAnnotation()
   ];

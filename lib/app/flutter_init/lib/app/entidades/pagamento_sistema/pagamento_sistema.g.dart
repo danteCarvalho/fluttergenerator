@@ -3,34 +3,35 @@
 part of 'pagamento_sistema.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// MyCustomGenerator
 // **************************************************************************
 
 PagamentoSistema _$PagamentoSistemaFromJson(Map json) => PagamentoSistema()
-  ..id = json['id'] as String?
-  ..id2 = (json['id2'] as num?)?.toInt()
-  ..ativa = json['ativa'] as bool?
-  ..dataCriacao = json['dataCriacao'] == null
-      ? null
-      : DateTime.parse(json['dataCriacao'] as String)
-  ..dataEdicao = json['dataEdicao'] == null
-      ? null
-      : DateTime.parse(json['dataEdicao'] as String)
-  ..dataDelecao = json['dataDelecao'] == null
-      ? null
-      : DateTime.parse(json['dataDelecao'] as String)
-  ..referencia = json['referencia'] as String?
-  ..qrCode = json['qrCode'] as String?
-  ..pago = json['pago'] as bool?
-  ..dataConfirmado = json['dataConfirmado'] == null
-      ? null
-      : DateTime.parse(json['dataConfirmado'] as String)
-  ..link = json['link'] as String?
+  ..id = json['id'] != null ? json['id'] as String? : null
+  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : null
+  ..ativa = json['ativa'] != null ? json['ativa'] as bool? : null
+  ..dataCriacao = json['dataCriacao'] != null
+      ? DateTime.parse(json['dataCriacao'] as String)
+      : null
+  ..dataEdicao = json['dataEdicao'] != null
+      ? DateTime.parse(json['dataEdicao'] as String)
+      : null
+  ..dataDelecao = json['dataDelecao'] != null
+      ? DateTime.parse(json['dataDelecao'] as String)
+      : null
+  ..referencia =
+      json['referencia'] != null ? json['referencia'] as String? : null
+  ..qrCode = json['qrCode'] != null ? json['qrCode'] as String? : null
+  ..pago = json['pago'] != null ? json['pago'] as bool? : null
+  ..dataConfirmado = json['dataConfirmado'] != null
+      ? DateTime.parse(json['dataConfirmado'] as String)
+      : null
+  ..link = json['link'] != null ? json['link'] as String? : null
   ..empresa =
-      json['empresa'] == null ? null : Empresa.fromJson(json['empresa'] as Map)
+      json['empresa'] != null ? Empresa.fromJson(json['empresa'] as Map) : null
   ..usuario =
-      json['usuario'] == null ? null : Usuario.fromJson(json['usuario'] as Map)
-  ..valor = (json['valor'] as num?)?.toDouble();
+      json['usuario'] != null ? Usuario.fromJson(json['usuario'] as Map) : null
+  ..valor = json['valor'] != null ? (json['valor'] as num).toDouble() : null;
 
 Map<String, dynamic> _$PagamentoSistemaToJson(PagamentoSistema instance) =>
     <String, dynamic>{
@@ -49,10 +50,6 @@ Map<String, dynamic> _$PagamentoSistemaToJson(PagamentoSistema instance) =>
       'usuario': instance.usuario?.toJson(),
       'valor': instance.valor,
     };
-
-// **************************************************************************
-// MyCustomGenerator
-// **************************************************************************
 
 mixin _$Serial {
   Map<String, dynamic> classToMap() {

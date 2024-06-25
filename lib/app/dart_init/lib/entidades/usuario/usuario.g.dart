@@ -3,48 +3,63 @@
 part of 'usuario.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// MyCustomGenerator
 // **************************************************************************
 
 Usuario _$UsuarioFromJson(Map json) => Usuario()
-  ..id = json['id'] as String?
-  ..id2 = (json['id2'] as num?)?.toInt()
-  ..ativa = json['ativa'] as bool?
-  ..dataCriacao = json['dataCriacao'] == null
-      ? null
-      : DateTime.parse(json['dataCriacao'] as String)
-  ..dataEdicao = json['dataEdicao'] == null
-      ? null
-      : DateTime.parse(json['dataEdicao'] as String)
-  ..dataDelecao = json['dataDelecao'] == null
-      ? null
-      : DateTime.parse(json['dataDelecao'] as String)
-  ..nome = json['nome'] as String?
-  ..senha = json['senha'] as String?
-  ..email = json['email'] as String?
-  ..cpf = json['cpf'] as String?
-  ..dataNascimento = json['dataNascimento'] == null
-      ? null
-      : DateTime.parse(json['dataNascimento'] as String)
-  ..endereco = json['endereco'] as String?
-  ..cep = json['cep'] as String?
-  ..cidade = json['cidade'] as String?
-  ..estado = json['estado'] as String?
-  ..complemento = json['complemento'] as String?
-  ..telefone = json['telefone'] as String?
-  ..admin = json['admin'] as bool?
+  ..id = json['id'] != null ? json['id'] as String? : null
+  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : null
+  ..ativa = json['ativa'] != null ? json['ativa'] as bool? : null
+  ..dataCriacao = json['dataCriacao'] != null
+      ? DateTime.parse(json['dataCriacao'] as String)
+      : null
+  ..dataEdicao = json['dataEdicao'] != null
+      ? DateTime.parse(json['dataEdicao'] as String)
+      : null
+  ..dataDelecao = json['dataDelecao'] != null
+      ? DateTime.parse(json['dataDelecao'] as String)
+      : null
+  ..nome = json['nome'] != null ? json['nome'] as String : ""
+  ..senha = json['senha'] != null ? json['senha'] as String : ""
+  ..email = json['email'] != null ? json['email'] as String : ""
+  ..cpfCnpj = json['cpfCnpj'] != null ? json['cpfCnpj'] as String? : null
+  ..dataNascimento = json['dataNascimento'] != null
+      ? DateTime.parse(json['dataNascimento'] as String)
+      : DateTime.now()
+  ..enderecoLogradouroRua = json['enderecoLogradouroRua'] != null
+      ? json['enderecoLogradouroRua'] as String
+      : ""
+  ..numeroEndereco =
+      json['numeroEndereco'] != null ? json['numeroEndereco'] as String : ""
+  ..bairro = json['bairro'] != null ? json['bairro'] as String : ""
+  ..cep = json['cep'] != null ? json['cep'] as String : ""
+  ..cidade = json['cidade'] != null ? json['cidade'] as String : ""
+  ..estado = json['estado'] != null ? json['estado'] as String : ""
+  ..complemento =
+      json['complemento'] != null ? json['complemento'] as String : ""
+  ..telefone = json['telefone'] != null ? json['telefone'] as String : ""
+  ..admin = json['admin'] != null ? json['admin'] as bool : false
   ..empresa =
-      json['empresa'] == null ? null : Empresa.fromJson(json['empresa'] as Map)
-  ..valorPagamento = (json['valorPagamento'] as num?)?.toDouble()
-  ..dataPagamento = json['dataPagamento'] == null
-      ? null
-      : DateTime.parse(json['dataPagamento'] as String)
-  ..ultimoPagamentoCompleto = json['ultimoPagamentoCompleto'] == null
-      ? null
-      : DateTime.parse(json['ultimoPagamentoCompleto'] as String)
-  ..ultimoPagamentoGerado = json['ultimoPagamentoGerado'] == null
-      ? null
-      : DateTime.parse(json['ultimoPagamentoGerado'] as String);
+      json['empresa'] != null ? Empresa.fromJson(json['empresa'] as Map) : null
+  ..valorPagamento = json['valorPagamento'] != null
+      ? (json['valorPagamento'] as num).toDouble()
+      : null
+  ..dataPagamento = json['dataPagamento'] != null
+      ? DateTime.parse(json['dataPagamento'] as String)
+      : null
+  ..ultimoPagamentoCompleto = json['ultimoPagamentoCompleto'] != null
+      ? DateTime.parse(json['ultimoPagamentoCompleto'] as String)
+      : null
+  ..ultimoPagamentoGerado = json['ultimoPagamentoGerado'] != null
+      ? DateTime.parse(json['ultimoPagamentoGerado'] as String)
+      : null
+  ..preferenciaNome =
+      json['preferenciaNome'] != null ? json['preferenciaNome'] as String : ""
+  ..imagem =
+      json['imagem'] != null ? Imagem.fromJson(json['imagem'] as Map) : null
+  ..tipoPerfil = json['tipoPerfil'] != null
+      ? TipoPerfil.values.byName(json['tipoPerfil'] as String)
+      : TipoPerfil.nenhum;
 
 Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'id': instance.id,
@@ -56,9 +71,11 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'nome': instance.nome,
       'senha': instance.senha,
       'email': instance.email,
-      'cpf': instance.cpf,
-      'dataNascimento': instance.dataNascimento?.toIso8601String(),
-      'endereco': instance.endereco,
+      'cpfCnpj': instance.cpfCnpj,
+      'dataNascimento': instance.dataNascimento.toIso8601String(),
+      'enderecoLogradouroRua': instance.enderecoLogradouroRua,
+      'numeroEndereco': instance.numeroEndereco,
+      'bairro': instance.bairro,
       'cep': instance.cep,
       'cidade': instance.cidade,
       'estado': instance.estado,
@@ -72,11 +89,10 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
           instance.ultimoPagamentoCompleto?.toIso8601String(),
       'ultimoPagamentoGerado':
           instance.ultimoPagamentoGerado?.toIso8601String(),
+      'preferenciaNome': instance.preferenciaNome,
+      'imagem': instance.imagem?.toJson(),
+      'tipoPerfil': instance.tipoPerfil.name,
     };
-
-// **************************************************************************
-// MyCustomGenerator
-// **************************************************************************
 
 mixin _$Serial {
   Map<String, dynamic> classToMap() {

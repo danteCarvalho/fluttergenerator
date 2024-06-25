@@ -10,7 +10,6 @@ import '../../daos/hasura_dao.dart';
 import '../../entidades/imagem/imagem.dart';
 
 part 'imagem.g.dart';
-
 part 'imagem.reflection.g.dart';
 @EnableReflection()
 @routerAnnotation

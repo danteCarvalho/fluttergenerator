@@ -3,66 +3,90 @@
 part of 'empresa.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// MyCustomGenerator
 // **************************************************************************
 
 Empresa _$EmpresaFromJson(Map json) => Empresa()
-  ..id = json['id'] as String?
-  ..id2 = (json['id2'] as num?)?.toInt()
-  ..ativa = json['ativa'] as bool?
-  ..dataCriacao = json['dataCriacao'] == null
-      ? null
-      : DateTime.parse(json['dataCriacao'] as String)
-  ..dataEdicao = json['dataEdicao'] == null
-      ? null
-      : DateTime.parse(json['dataEdicao'] as String)
-  ..dataDelecao = json['dataDelecao'] == null
-      ? null
-      : DateTime.parse(json['dataDelecao'] as String)
-  ..nome = json['nome'] as String?
-  ..valorPagamento = (json['valorPagamento'] as num?)?.toDouble()
-  ..telefone = json['telefone'] as String?
-  ..anydesk = json['anydesk'] as String?
-  ..whatsapp = json['whatsapp'] as String?
-  ..latitude = (json['latitude'] as num?)?.toDouble()
-  ..longitude = (json['longitude'] as num?)?.toDouble()
-  ..dataPagamento = json['dataPagamento'] == null
-      ? null
-      : DateTime.parse(json['dataPagamento'] as String)
-  ..lastUpdate = json['lastUpdate'] == null
-      ? null
-      : DateTime.parse(json['lastUpdate'] as String)
+  ..id = json['id'] != null ? json['id'] as String? : null
+  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : null
+  ..ativa = json['ativa'] != null ? json['ativa'] as bool? : null
+  ..dataCriacao = json['dataCriacao'] != null
+      ? DateTime.parse(json['dataCriacao'] as String)
+      : null
+  ..dataEdicao = json['dataEdicao'] != null
+      ? DateTime.parse(json['dataEdicao'] as String)
+      : null
+  ..dataDelecao = json['dataDelecao'] != null
+      ? DateTime.parse(json['dataDelecao'] as String)
+      : null
+  ..nome = json['nome'] != null ? json['nome'] as String? : null
+  ..valorPagamento = json['valorPagamento'] != null
+      ? (json['valorPagamento'] as num).toDouble()
+      : null
+  ..telefone = json['telefone'] != null ? json['telefone'] as String? : null
+  ..anydesk = json['anydesk'] != null ? json['anydesk'] as String? : null
+  ..whatsapp = json['whatsapp'] != null ? json['whatsapp'] as String? : null
+  ..latitude =
+      json['latitude'] != null ? (json['latitude'] as num).toDouble() : null
+  ..longitude =
+      json['longitude'] != null ? (json['longitude'] as num).toDouble() : null
+  ..dataPagamento = json['dataPagamento'] != null
+      ? DateTime.parse(json['dataPagamento'] as String)
+      : null
+  ..lastUpdate = json['lastUpdate'] != null
+      ? DateTime.parse(json['lastUpdate'] as String)
+      : null
   ..lastTry =
-      json['lastTry'] == null ? null : DateTime.parse(json['lastTry'] as String)
-  ..ultimoPagamentoCompleto = json['ultimoPagamentoCompleto'] == null
-      ? null
-      : DateTime.parse(json['ultimoPagamentoCompleto'] as String)
-  ..ultimoPagamentoGerado = json['ultimoPagamentoGerado'] == null
-      ? null
-      : DateTime.parse(json['ultimoPagamentoGerado'] as String)
-  ..ambienteProducao = json['ambienteProducao'] as bool?
-  ..emissaoNormal = json['emissaoNormal'] as bool?
-  ..impressaoNfce = json['impressaoNfce'] as bool?
-  ..contingenciaAoDemorar = json['contingenciaAoDemorar'] as bool?
-  ..justificativaContingencia = json['justificativaContingencia'] as String?
-  ..tipoGeracaoNota = json['tipoGeracaoNota'] as String?
-  ..csc = json['csc'] as String?
-  ..idCsc = json['idCsc'] as String?
-  ..serie = (json['serie'] as num?)?.toInt()
-  ..numeroNotaFiscal = (json['numeroNotaFiscal'] as num?)?.toInt()
-  ..numeroNotaFiscalHomologacao =
-      (json['numeroNotaFiscalHomologacao'] as num?)?.toInt()
-  ..cnpj = json['cnpj'] as String?
-  ..razaoSocial = json['razaoSocial'] as String?
-  ..municipio = json['municipio'] as String?
-  ..estado = json['estado'] as String?
-  ..cep = json['cep'] as String?
-  ..bairro = json['bairro'] as String?
-  ..logradouro = json['logradouro'] as String?
-  ..numeroCasa = json['numeroCasa'] as String?
-  ..inscricaoEstadual = json['inscricaoEstadual'] as String?
-  ..regimeTributario = json['regimeTributario'] as String?
-  ..nsu = json['nsu'] as String?;
+      json['lastTry'] != null ? DateTime.parse(json['lastTry'] as String) : null
+  ..ultimoPagamentoCompleto = json['ultimoPagamentoCompleto'] != null
+      ? DateTime.parse(json['ultimoPagamentoCompleto'] as String)
+      : null
+  ..ultimoPagamentoGerado = json['ultimoPagamentoGerado'] != null
+      ? DateTime.parse(json['ultimoPagamentoGerado'] as String)
+      : null
+  ..ambienteProducao = json['ambienteProducao'] != null
+      ? json['ambienteProducao'] as bool?
+      : null
+  ..emissaoNormal =
+      json['emissaoNormal'] != null ? json['emissaoNormal'] as bool? : null
+  ..impressaoNfce =
+      json['impressaoNfce'] != null ? json['impressaoNfce'] as bool? : null
+  ..contingenciaAoDemorar = json['contingenciaAoDemorar'] != null
+      ? json['contingenciaAoDemorar'] as bool?
+      : null
+  ..justificativaContingencia = json['justificativaContingencia'] != null
+      ? json['justificativaContingencia'] as String?
+      : null
+  ..tipoGeracaoNota = json['tipoGeracaoNota'] != null
+      ? json['tipoGeracaoNota'] as String?
+      : null
+  ..csc = json['csc'] != null ? json['csc'] as String? : null
+  ..idCsc = json['idCsc'] != null ? json['idCsc'] as String? : null
+  ..serie = json['serie'] != null ? (json['serie'] as num).toInt() : null
+  ..numeroNotaFiscal = json['numeroNotaFiscal'] != null
+      ? (json['numeroNotaFiscal'] as num).toInt()
+      : null
+  ..numeroNotaFiscalHomologacao = json['numeroNotaFiscalHomologacao'] != null
+      ? (json['numeroNotaFiscalHomologacao'] as num).toInt()
+      : null
+  ..cnpj = json['cnpj'] != null ? json['cnpj'] as String? : null
+  ..razaoSocial =
+      json['razaoSocial'] != null ? json['razaoSocial'] as String? : null
+  ..municipio = json['municipio'] != null ? json['municipio'] as String? : null
+  ..estado = json['estado'] != null ? json['estado'] as String? : null
+  ..cep = json['cep'] != null ? json['cep'] as String? : null
+  ..bairro = json['bairro'] != null ? json['bairro'] as String? : null
+  ..logradouro =
+      json['logradouro'] != null ? json['logradouro'] as String? : null
+  ..numeroCasa =
+      json['numeroCasa'] != null ? json['numeroCasa'] as String? : null
+  ..inscricaoEstadual = json['inscricaoEstadual'] != null
+      ? json['inscricaoEstadual'] as String?
+      : null
+  ..regimeTributario = json['regimeTributario'] != null
+      ? json['regimeTributario'] as String?
+      : null
+  ..nsu = json['nsu'] != null ? json['nsu'] as String? : null;
 
 Map<String, dynamic> _$EmpresaToJson(Empresa instance) => <String, dynamic>{
       'id': instance.id,
@@ -108,10 +132,6 @@ Map<String, dynamic> _$EmpresaToJson(Empresa instance) => <String, dynamic>{
       'regimeTributario': instance.regimeTributario,
       'nsu': instance.nsu,
     };
-
-// **************************************************************************
-// MyCustomGenerator
-// **************************************************************************
 
 mixin _$Serial {
   Map<String, dynamic> classToMap() {

@@ -1,17 +1,16 @@
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
 import '../coluna.dart';
 import '../entidade.dart';
+import '../usuario/usuario.dart';
 
 part 'imagem.g.dart';
 part 'imagem.reflection.g.dart';
 
-@JsonSerializable(explicitToJson: true, anyMap: true)
 @EnableReflection()
 @reflector
 @SerialAnnotation()

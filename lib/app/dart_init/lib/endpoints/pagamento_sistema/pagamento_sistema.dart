@@ -9,7 +9,6 @@ import '../../daos/hasura_dao.dart';
 import '../../entidades/pagamento_sistema/pagamento_sistema.dart';
 
 part 'pagamento_sistema.g.dart';
-
 part 'pagamento_sistema.reflection.g.dart';
 @EnableReflection()
 @routerAnnotation
@@ -34,7 +33,7 @@ class PagamentoSistemaEndpoint extends RouterMethods {
     PagamentoSistema pagamentoSistema = await selectByIdHasura(id, PagamentoSistema());
     pagamentoSistema.pago = true;
     pagamentoSistema.dataConfirmado = DateTime.now();
-    pagamentoSistema = await updateHasura(pagamentoSistema, "pago dataConfirmado");
+    pagamentoSistema = await updateHasura(pagamentoSistema, updateFields: "pago dataConfirmado");
     resposta["ok"] = "ok";
     return Response.ok(json.encode(resposta));
   }

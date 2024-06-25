@@ -11,7 +11,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart' as sqflite_ffi;
 import 'package:uuid/uuid.dart';
 
 import '../entidades/entidade.dart';
-import '../outros/config.dart';
+import '../outros/config/config.dart';
 import '../outros/excecoes.dart';
 
 Map mapStore = {};

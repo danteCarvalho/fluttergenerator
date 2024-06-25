@@ -2,27 +2,27 @@ import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:http/http.dart';
+import 'package:reflection_factory/reflection_factory.dart';
 
 import '../entidades/entidade.dart';
-import '../outros/config.dart';
+import '../outros/config/config.dart';
 import '../outros/entidade_helper.dart';
 import '../outros/excecoes.dart';
 
-
-String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<String> selectList,{List<Map>? orderByList, int? inicio, int? maximo}) {
+String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<String> selectList, {List<Map>? orderByList, int? inicio, int? maximo}) {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
   String whereString = where(whereList);
   String selectString = select(selectList);
   String orderByString = "";
   String inicioString = "";
   String maximoString = "";
-  if(orderByList != null){
+  if (orderByList != null) {
     orderByString = orderBy(orderByList);
   }
-  if(inicio != null){
+  if (inicio != null) {
     inicioString = ", offset: $inicio";
   }
-  if(maximo != null){
+  if (maximo != null) {
     maximoString = ", limit: $maximo";
   }
 
@@ -36,19 +36,19 @@ String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<Strin
   return sql;
 }
 
-String customSelectHasura(String campo, List<Map> whereList, List<String> selectList,{List<Map>? orderByList, int? inicio, int? maximo}) {
+String customSelectHasura(String campo, List<Map> whereList, List<String> selectList, {List<Map>? orderByList, int? inicio, int? maximo}) {
   String whereString = where(whereList);
   String selectString = select(selectList);
   String orderByString = "";
   String inicioString = "";
   String maximoString = "";
-  if(orderByList != null){
+  if (orderByList != null) {
     orderByString = orderBy(orderByList);
   }
-  if(inicio != null){
+  if (inicio != null) {
     inicioString = ", offset: $inicio";
   }
-  if(maximo != null){
+  if (maximo != null) {
     maximoString = ", limit: $maximo";
   }
   String sql = """
@@ -177,7 +177,7 @@ String where(List<Map> list) {
   for (var obj in list) {
     map.addAll(obj);
   }
-  return "(where: $map )";
+  return " where: $map ";
 }
 
 String orderBy(List<Map> list) {
@@ -197,6 +197,19 @@ Map expr(String path, String operator, dynamic value) {
   return currentValue;
 }
 
+Map orderExpr(String path, String order) {
+  List split = path.split(".");
+  Map currentValue = {};
+  for (var obj in split.reversed) {
+    if (currentValue.isEmpty) {
+      currentValue = {obj: order};
+    } else {
+      currentValue = {obj: currentValue};
+    }
+  }
+  return currentValue;
+}
+
 String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
   var reflection = entidade.reflect();
   var allFields = reflection.allFields();
@@ -210,17 +223,13 @@ String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
         campos += "${obj.name.toLowerCase()}{ id }";
       }
     } else {
-      var type = obj.type.toString();
-      if (type == "String" || type == "int" || type == "double" || type == "bool" || type == "DateTime") {
-        campos += "${obj.name.toLowerCase()} ";
-      }
+      campos += "${obj.name.toLowerCase()} ";
     }
   }
   return campos;
 }
 
-
-Future<T> insertHasura<T extends Entidade>(T entidade, {String? returning, bool subFields = false}) async {
+Future<T> insertHasura<T extends Entidade>(T entidade, {String? insertFields, String? excludFields, String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
   if (entidade.id != null) {
     throw PararError("insert com id");
@@ -242,6 +251,14 @@ Future<T> insertHasura<T extends Entidade>(T entidade, {String? returning, bool 
   trocarStrings(obj);
 
   obj = fieldsToLowerCase(obj);
+
+  if (insertFields != null) {
+    obj = manterCampos(insertFields, obj, "dataCriacao dataEdicao ativa");
+  }
+
+  if (excludFields != null) {
+    excluirCampos(excludFields, obj);
+  }
 
   var sql = """
 mutation MyMutation {
@@ -278,7 +295,7 @@ mutation MyMutation {
   return retorno;
 }
 
-Future<T> updateHasura<T extends Entidade>(T entidade, String updateFields, {String? returning, bool subFields = false}) async {
+Future<T> updateHasura<T extends Entidade>(T entidade, {String? updateFields, String? excludFields, String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
 
   if (entidade.id == null) {
@@ -295,7 +312,14 @@ Future<T> updateHasura<T extends Entidade>(T entidade, String updateFields, {Str
 
   obj = fieldsToLowerCase(obj);
   String id = obj["id"];
-  obj = manterCamposUpdate(updateFields, obj);
+
+  if (updateFields != null) {
+    obj = manterCampos(updateFields, obj, "dataEdicao");
+  }
+
+  if (excludFields != null) {
+    excluirCampos(excludFields, obj);
+  }
 
   var sql = """
 mutation MyMutation {
@@ -332,7 +356,6 @@ mutation MyMutation {
   return retorno;
 }
 
-
 trocarNomeEntidades(Entidade entidade, Map map) {
   var reflection = entidade.reflect();
   var allFields = reflection.allFields();
@@ -360,16 +383,19 @@ fieldsToLowerCase(Map obj) {
   return obj2;
 }
 
-manterCamposUpdate(String campos, Map obj) {
+manterCampos(String campos, Map obj, String obrigatorios) {
   Map obj2 = {};
-
+  campos += " $obrigatorios";
   var split = campos.trim().toLowerCase().split(" ");
   for (var campo in split) {
     obj2[campo] = obj[campo];
   }
-  if (!obj2.containsKey("dataedicao")) {
-    obj2["dataedicao"] = obj["dataedicao"];
-  }
-
   return obj2;
+}
+
+excluirCampos(String campos, Map obj) {
+  var split = campos.trim().toLowerCase().split(" ");
+  for (var campo in split) {
+    obj.remove(campo);
+  }
 }

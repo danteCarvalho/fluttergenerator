@@ -125,7 +125,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
   }
 
   static const List<Object> _classAnnotations = const [
-    JsonSerializable(explicitToJson: true, anyMap: true),
     reflector,
     SerialAnnotation()
   ];

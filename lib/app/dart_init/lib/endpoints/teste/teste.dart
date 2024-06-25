@@ -4,8 +4,6 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 part 'teste.g.dart';
-
-
 part 'teste.reflection.g.dart';
 @EnableReflection()
 @routerAnnotation

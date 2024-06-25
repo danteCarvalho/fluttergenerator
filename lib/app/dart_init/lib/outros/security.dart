@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 
 import '../entidades/usuario/usuario.dart';
-import '../outros/config.dart';
+import 'config/config.dart';
 
 class Security {
   static verificarJwt(String? jwt) {
