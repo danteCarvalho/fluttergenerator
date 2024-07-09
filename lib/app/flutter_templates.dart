@@ -4,7 +4,6 @@ class FlutterTemplates {
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';  
-import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
@@ -13,7 +12,6 @@ import '../../outros/entidade_helper.dart';
 part 'wwww_view.g.dart';
 part 'wwww_view.reflection.g.dart';
 
-@JsonSerializable(explicitToJson: true,anyMap: true)
 @EnableReflection()
 @reflector
 @SerialAnnotation()
@@ -36,7 +34,6 @@ abstract class _WWWWViewBase  with Store {
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';  
-import 'package:json_annotation/json_annotation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
@@ -47,7 +44,6 @@ import '../entidade.dart';
 part 'wwww.g.dart';
 part 'wwww.reflection.g.dart';
 
-@JsonSerializable(explicitToJson: true,anyMap: true)
 @EnableReflection()
 @reflector
 @SerialAnnotation()
@@ -73,7 +69,7 @@ import 'package:flutter/material.dart';
 
 class WWWWWidget extends StatefulWidget {
 
-  const WWWWWidget({Key? key}) : super(key: key);
+  const WWWWWidget({super.key});
 
   @override
   WWWWWidgetState createState() => WWWWWidgetState();
@@ -101,6 +97,8 @@ import 'wwww_store.dart';
 
 
 class WWWWWidget extends StatefulWidget {
+  const WWWWWidget({Key? key}) : super(key: key);
+
   @override
   WWWWWidgetState createState() => WWWWWidgetState();
 }
@@ -150,6 +148,18 @@ class WWWWPageState extends State<WWWWPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: columnWidgets,
     );
+     sessao(Widget widget) {
+      return Container(
+        width: responsiveSize(context, mobile: col_11(context), desktop3: col_5(context)),
+        margin: const EdgeInsets.all(10),
+        child: widget,
+      );
+    }
+    List<Widget> wrapWidgets = [];
+    var wrap = Wrap(
+      children: wrapWidgets,
+    );
+    columnWidgets.add(wrap);
     return Scaffold(
       body: SingleChildScrollView(
           child: Card(

@@ -1,6 +1,6 @@
 import 'package:postgres/postgres.dart';
 
-import '../outros/config.dart';
+import '../outros/config/config.dart';
 
 Connection? connection;
 

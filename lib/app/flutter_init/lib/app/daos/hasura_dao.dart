@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:http/http.dart';
+import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
@@ -245,6 +246,7 @@ Map orderExpr(String path, String order) {
 }
 
 String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
+  var reflectionFactory = ReflectionFactory();
   var reflection = entidade.reflect();
   var allFields = reflection.allFields();
   String campos = "";
@@ -257,7 +259,10 @@ String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
         campos += "${obj.name.toLowerCase()}{ id }";
       }
     } else {
+      var typeString = obj.type.toString();
+      if (obj.type.isPrimitiveType || typeString == "DateTime" || reflectionFactory.hasRegisterEnumReflection(obj.type.type)) {
         campos += "${obj.name.toLowerCase()} ";
+      }
     }
   }
   return campos;

@@ -22,6 +22,10 @@ abstract class AppStoreBase with Store {
   @observable
   Usuario? usuario;
   List<BuildContext> contexts = [];
+  @observable
+  bool esperar = false;
+  @observable
+  bool bloquear = false;
 
   init(AppWidgetState appWidgetState) async {
     Modular.setObservers([Asuka.asukaHeroController, NavigationHistoryObserver()]);
@@ -32,6 +36,18 @@ abstract class AppStoreBase with Store {
     iniciado = true;
     appWidgetState.refresh();
   }
+
+  startWait({bool close = false})async{
+    esperar = true;
+    bloquear = true;
+    Timer(const Duration(seconds: 3), () {
+      bloquear = false;
+      if(close){
+        esperar = false;
+      }
+    },);
+  }
+
 
   printLog(String msg, e) {
     log(msg, error: e);

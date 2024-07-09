@@ -5,7 +5,6 @@ class DartTemplates {
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';  
-import 'package:json_annotation/json_annotation.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
@@ -16,7 +15,6 @@ part 'wwww.g.dart';
 part 'wwww.reflection.g.dart';
 
 
-@JsonSerializable(explicitToJson: true, anyMap: true)
 @EnableReflection()
 @reflector
 @SerialAnnotation()

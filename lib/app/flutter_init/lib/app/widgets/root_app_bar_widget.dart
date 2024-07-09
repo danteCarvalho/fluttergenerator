@@ -41,11 +41,13 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
           },
           itemBuilder: (BuildContext context) {
             List<PopupMenuItem> list = [];
-
             if (usuario == null) {
-              list.add(const PopupMenuItem(
-                value: googleLogin,
-                child: Text("Google Login"),
+              list.add(PopupMenuItem(
+                child: const Text("Início"),
+                value: () {
+                  Modular.to.popUntil((p0) => false);
+                  Modular.to.pushReplacementNamed("/home/");
+                },
               ));
               list.add(PopupMenuItem(
                 child: const Text("Login"),
@@ -54,7 +56,28 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
                   Modular.to.pushReplacementNamed("/login/");
                 },
               ));
+              list.add(const PopupMenuItem(
+                value: googleLogin,
+                child: Text("Google Login"),
+              ));
+              list.add(PopupMenuItem(
+                child: const Text("Cadastro"),
+                value: () {
+                  Modular.to.popUntil((p0) => false);
+                  Modular.to.pushReplacementNamed("/cadastro/");
+                },
+              ));
             } else {
+              list.add(PopupMenuItem(
+                child: Text(usuario.nome!),
+              ));
+              list.add(PopupMenuItem(
+                child: const Text("Início"),
+                value: () {
+                  Modular.to.popUntil((p0) => false);
+                  Modular.to.pushReplacementNamed("/logado/");
+                },
+              ));
               if (usuario.admin == true) {
                 list.add(PopupMenuItem(
                   child: const Text("Mensalidades"),
@@ -64,9 +87,6 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
                   },
                 ));
               }
-              list.add(PopupMenuItem(
-                child: Text(usuario.nome!),
-              ));
               list.add(PopupMenuItem(
                 value: app.sair,
                 child: const Text("Sair"),

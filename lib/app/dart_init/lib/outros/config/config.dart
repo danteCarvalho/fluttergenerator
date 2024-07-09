@@ -21,13 +21,13 @@ class Config  with _$Serial{
   bool sslBanco =  const bool.fromEnvironment('sslBanco', defaultValue: false);
   String ipBanco = const String.fromEnvironment('ipBanco', defaultValue: 'localhost');
   int portaBanco = const int.fromEnvironment('portaBanco', defaultValue: 5431);
-  String banco = const String.fromEnvironment('banco', defaultValue: 'teste');
+  String banco = const String.fromEnvironment('banco', defaultValue: 'postgres');
   String usuario = const String.fromEnvironment('usuario', defaultValue: 'postgres');
   String senha = const String.fromEnvironment('senha', defaultValue: 'postgrespassword');
   String schemeHasura = const String.fromEnvironment('schemeHasura', defaultValue: 'http');
   String ipHasura =  const String.fromEnvironment('ipHasura', defaultValue: 'localhost');
   int portaHasura = const int.fromEnvironment('portaHasura', defaultValue: 6001);
-  String hasuraSource = const String.fromEnvironment('hasuraSource', defaultValue: 'defailt');
+  String hasuraSource = const String.fromEnvironment('hasuraSource', defaultValue: 'default');
   String hasuraSufix = const String.fromEnvironment('hasuraSufix', defaultValue: '');
   String hasuraSharedSecret = const String.fromEnvironment('hasuraSharedSecret', defaultValue: 'tkGStmgfm6h8MV8IJNB60amcRZ93GHo8');
   String hasuraAdminSecret = const String.fromEnvironment('hasuraAdminSecret', defaultValue: 'myadminsecretkey');

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:postgres/postgres.dart';
-import 'package:reflection_factory/builder.dart';
+import 'package:reflection_factory/reflection_factory.dart';
 
 import '../daos/hasura_dao.dart';
 import '../daos/postgres_dao.dart';
@@ -259,7 +259,6 @@ addCampos(Entidade entidade) async {
     Coluna? coluna = anotacaoColuna(obj.annotations);
     String tipo;
     try {
-      ReflectionFactory().hasRegisterEnumReflection(obj.type.type);
       instancia(obj.type.type);
       nomeColuna = "${nomeColuna.toLowerCase()}_id";
       tipo = "uuid";
