@@ -123,6 +123,8 @@ class WWWWWidgetState extends State<WWWWWidget> {
 
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterutils/flutterutils.dart';
+
 import 'wwww_store.dart';
 
 class WWWWPage extends StatefulWidget {
@@ -148,13 +150,17 @@ class WWWWPageState extends State<WWWWPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: columnWidgets,
     );
-     sessao(Widget widget) {
+    
+    sessao(Widget widget, {double? width, double? height}) {
       return Container(
-        width: responsiveSize(context, mobile: col_11(context), desktop3: col_5(context)),
-        margin: const EdgeInsets.all(10),
+        width: width ?? responsiveSize(context, mobile: col_12(context), desktop3: col_6(context)),
+        height: height,
+        padding: const EdgeInsets.all(10),
+        alignment: Alignment.center,
         child: widget,
       );
     }
+
     List<Widget> wrapWidgets = [];
     var wrap = Wrap(
       children: wrapWidgets,
