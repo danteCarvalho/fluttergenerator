@@ -91,11 +91,6 @@ class CadastroPageState extends State<CadastroPage> {
       () => store.usuario.nome,
       (v) => store.usuario.nome = v,
     );
-    var prefNome = MyTextFormField(
-      "Como prefere ser chamado?",
-      () => store.usuario.preferenciaNome,
-      (v) => store.usuario.preferenciaNome = v,
-    );
     var email = MyTextFormField(
       "Email",
       () => store.usuario.email,
@@ -163,7 +158,6 @@ class CadastroPageState extends State<CadastroPage> {
     columnWidgets.add(const Center(child: Text("Foto de perfil")));
     columnWidgets.add(Center(child: imagem));
     columnWidgets.add(nome);
-    columnWidgets.add(prefNome);
     columnWidgets.add(email);
     columnWidgets.add(senha);
     columnWidgets.add(textSenha);

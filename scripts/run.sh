@@ -4,4 +4,4 @@ appDir="$(cd "$scriptDir/.." && pwd)"
 cd $appDir
 ./scripts/gerarArquivos.sh
 cd $initDir
-dart --no-sound-null-safety "$appDir"/lib/main.dart
+dart "$appDir"/lib/main.dart

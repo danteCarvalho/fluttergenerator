@@ -166,14 +166,13 @@ class WWWWPageState extends State<WWWWPage> {
       children: wrapWidgets,
     );
     columnWidgets.add(wrap);
-    return Scaffold(
-      body: SingleChildScrollView(
-          child: Card(
-        child: column,
-      )),
+    
+     return Scaffold(
+      body: SingleChildScrollView(child: column),
     );
   }
 }
+
 
 
 """;

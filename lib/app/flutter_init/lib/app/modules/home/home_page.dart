@@ -1,10 +1,6 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutterutils/flutterutils.dart';
 
-import '../../entidades/show/show.dart';
 import 'home_store.dart';
 
 class HomePage extends StatefulWidget {
