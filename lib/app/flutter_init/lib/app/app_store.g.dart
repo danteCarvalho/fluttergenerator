@@ -41,11 +41,45 @@ mixin _$AppStore on AppStoreBase, Store {
     });
   }
 
+  late final _$esperarAtom =
+      Atom(name: 'AppStoreBase.esperar', context: context);
+
+  @override
+  bool get esperar {
+    _$esperarAtom.reportRead();
+    return super.esperar;
+  }
+
+  @override
+  set esperar(bool value) {
+    _$esperarAtom.reportWrite(value, super.esperar, () {
+      super.esperar = value;
+    });
+  }
+
+  late final _$bloquearAtom =
+      Atom(name: 'AppStoreBase.bloquear', context: context);
+
+  @override
+  bool get bloquear {
+    _$bloquearAtom.reportRead();
+    return super.bloquear;
+  }
+
+  @override
+  set bloquear(bool value) {
+    _$bloquearAtom.reportWrite(value, super.bloquear, () {
+      super.bloquear = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 iniciado: ${iniciado},
-usuario: ${usuario}
+usuario: ${usuario},
+esperar: ${esperar},
+bloquear: ${bloquear}
     ''';
   }
 }

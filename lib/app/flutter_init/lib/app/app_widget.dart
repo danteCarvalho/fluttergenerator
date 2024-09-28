@@ -2,8 +2,9 @@ import 'dart:ui';
 
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 
 import 'app_store.dart';
 import 'widgets/root_app_bar_widget.dart';
@@ -32,6 +33,8 @@ class AppWidgetState extends State<AppWidget> {
 
   @override
   Widget build(BuildContext context) {
+    Intl.defaultLocale = 'pt_BR';
+    var colorScheme = ColorScheme.fromSeed(seedColor: Colors.green);
     return MaterialApp.router(
       builder: (context, child) {
         child = Scaffold(
@@ -43,24 +46,20 @@ class AppWidgetState extends State<AppWidget> {
           alignment: Alignment.center,
           children: [child, const WaitWidget()],
         );
-        return store.iniciado?child:const SplashWidget();
+        return store.iniciado ? child : const SplashWidget();
       },
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('pt', 'BR'),
-        Locale('en', 'US')
-      ],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      supportedLocales: const [Locale('pt', 'BR'), Locale('en', 'US')],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           buttonTheme: const ButtonThemeData(
             alignedDropdown: true,
           ),
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-          useMaterial3: true
-      ),
+          colorScheme: colorScheme,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.black, foregroundColor: Colors.white),
+          ),
+          useMaterial3: true),
       routerConfig: Modular.routerConfig,
       scrollBehavior: ScrollConfiguration.of(context).copyWith(
         dragDevices: PointerDeviceKind.values.toSet(),

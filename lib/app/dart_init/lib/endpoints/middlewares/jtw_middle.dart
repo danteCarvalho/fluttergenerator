@@ -4,8 +4,17 @@ import 'package:shelf/shelf.dart';
 import '../../outros/security.dart';
 
 Middleware jwtMiddleware() {
+  // CORS Settings
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': '*',
+    'Access-Control-Allow-Headers': '*',
+  };
   return createMiddleware(
     requestHandler: (Request request) {
+      if (request.method == "OPTIONS") {
+        return Response.ok("", headers: corsHeaders);
+      }
       var path = request.url.path;
       if (!excecoes.contains(path)) {
         try {
@@ -20,4 +29,17 @@ Middleware jwtMiddleware() {
   );
 }
 
-List<String> excecoes = ["", "favicon.ico", "api/teste", "api/login", "api/googleLogin", "api/verificaAtualizaJwt","api/addUsuario"];
+List<String> excecoes = [
+  "",
+  "favicon.ico",
+  "api/teste",
+  "api/login",
+  "api/googleLogin",
+  "api/verificaAtualizaJwt",
+  "api/addUsuario",
+  "api/getImagem",
+  "api/listarAgendamentos",
+  "api/verificaEmail2",
+  "api/esqueciSenha",
+  "api/esqueciSenha2",
+];

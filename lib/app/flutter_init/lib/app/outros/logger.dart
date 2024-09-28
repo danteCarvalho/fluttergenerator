@@ -6,10 +6,10 @@ import 'package:sentry/sentry.dart';
 
 myLog(Object error, StackTrace stack) async {
   await Sentry.captureException(error, stackTrace: stack);
-  String stack2 = "$error\n";
+  String stack1 = error.toString();
+  String stack2 = "";
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   LineSplitter.split(stack.toString()).forEach((linha) {
-    print(linha);
     if (linha.contains("${packageInfo.appName}/")) {
       if (linha.startsWith("../packages/")) {
         var split = linha.split(" ");
@@ -22,6 +22,7 @@ myLog(Object error, StackTrace stack) async {
       }
     }
   });
-  debugPrint(stack2);
-  return stack2;
+  var retorno = "$stack1\n$stack2";
+  debugPrint(retorno);
+  return retorno;
 }

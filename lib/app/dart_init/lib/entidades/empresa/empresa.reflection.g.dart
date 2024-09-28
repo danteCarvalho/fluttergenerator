@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.2.8
+// BUILDER: reflection_factory/2.4.4
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -9,6 +9,8 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: camel_case_types
 // ignore_for_file: camel_case_extensions
+// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: unnecessary_const
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
@@ -20,7 +22,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.2.8');
+  static final Version _version = Version.parse('2.4.4');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -43,7 +45,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
     return _objectReflections[object] ??= Empresa$reflection._(object);
   }
 
-  Empresa$reflection._([Empresa? object]) : super(Empresa, 'Empresa', object);
+  Empresa$reflection._([Empresa? object]) : super(Empresa, r'Empresa', object);
 
   static bool _registered = false;
   @override
@@ -98,8 +100,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
   @override
   List<String> get constructorsNames => _constructorsNames;
 
-  static final Map<String, ConstructorReflection<Empresa>> _constructors =
-      <String, ConstructorReflection<Empresa>>{};
+  static final Map<String, ConstructorReflection<Empresa>> _constructors = {};
 
   @override
   ConstructorReflection<Empresa>? constructor(String constructorName) {
@@ -196,10 +197,9 @@ class Empresa$reflection extends ClassReflection<Empresa>
   List<String> get fieldsNames => _fieldsNames;
 
   static final Map<String, FieldReflection<Empresa, dynamic>> _fieldsNoObject =
-      <String, FieldReflection<Empresa, dynamic>>{};
+      {};
 
-  final Map<String, FieldReflection<Empresa, dynamic>> _fieldsObject =
-      <String, FieldReflection<Empresa, dynamic>>{};
+  final Map<String, FieldReflection<Empresa, dynamic>> _fieldsObject = {};
 
   @override
   FieldReflection<Empresa, T>? field<T>(String fieldName, [Empresa? obj]) {
@@ -256,7 +256,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.nome = v,
           obj,
           false,
-          false,
           const [Coluna(nullable: false)],
         );
       case 'valorpagamento':
@@ -269,7 +268,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.valorPagamento,
           (o) => (v) => o!.valorPagamento = v,
           obj,
-          false,
           false,
           const [Coluna(nullable: false)],
         );
@@ -284,7 +282,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.telefone = v,
           obj,
           false,
-          false,
         );
       case 'anydesk':
         return FieldReflection<Empresa, String?>(
@@ -296,7 +293,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.anydesk,
           (o) => (v) => o!.anydesk = v,
           obj,
-          false,
           false,
         );
       case 'whatsapp':
@@ -310,7 +306,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.whatsapp = v,
           obj,
           false,
-          false,
         );
       case 'latitude':
         return FieldReflection<Empresa, double?>(
@@ -322,7 +317,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.latitude,
           (o) => (v) => o!.latitude = v,
           obj,
-          false,
           false,
         );
       case 'longitude':
@@ -336,7 +330,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.longitude = v,
           obj,
           false,
-          false,
         );
       case 'datapagamento':
         return FieldReflection<Empresa, DateTime?>(
@@ -348,7 +341,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.dataPagamento,
           (o) => (v) => o!.dataPagamento = v,
           obj,
-          false,
           false,
           const [Coluna(nullable: false)],
         );
@@ -363,7 +355,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.lastUpdate = v,
           obj,
           false,
-          false,
         );
       case 'lasttry':
         return FieldReflection<Empresa, DateTime?>(
@@ -375,7 +366,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.lastTry,
           (o) => (v) => o!.lastTry = v,
           obj,
-          false,
           false,
         );
       case 'ultimopagamentocompleto':
@@ -389,7 +379,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.ultimoPagamentoCompleto = v,
           obj,
           false,
-          false,
         );
       case 'ultimopagamentogerado':
         return FieldReflection<Empresa, DateTime?>(
@@ -401,7 +390,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.ultimoPagamentoGerado,
           (o) => (v) => o!.ultimoPagamentoGerado = v,
           obj,
-          false,
           false,
         );
       case 'ambienteproducao':
@@ -415,7 +403,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.ambienteProducao = v,
           obj,
           false,
-          false,
         );
       case 'emissaonormal':
         return FieldReflection<Empresa, bool?>(
@@ -427,7 +414,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.emissaoNormal,
           (o) => (v) => o!.emissaoNormal = v,
           obj,
-          false,
           false,
         );
       case 'impressaonfce':
@@ -441,7 +427,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.impressaoNfce = v,
           obj,
           false,
-          false,
         );
       case 'contingenciaaodemorar':
         return FieldReflection<Empresa, bool?>(
@@ -453,7 +438,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.contingenciaAoDemorar,
           (o) => (v) => o!.contingenciaAoDemorar = v,
           obj,
-          false,
           false,
         );
       case 'justificativacontingencia':
@@ -467,7 +451,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.justificativaContingencia = v,
           obj,
           false,
-          false,
         );
       case 'tipogeracaonota':
         return FieldReflection<Empresa, String?>(
@@ -479,7 +462,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.tipoGeracaoNota,
           (o) => (v) => o!.tipoGeracaoNota = v,
           obj,
-          false,
           false,
         );
       case 'csc':
@@ -493,7 +475,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.csc = v,
           obj,
           false,
-          false,
         );
       case 'idcsc':
         return FieldReflection<Empresa, String?>(
@@ -505,7 +486,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.idCsc,
           (o) => (v) => o!.idCsc = v,
           obj,
-          false,
           false,
         );
       case 'serie':
@@ -519,7 +499,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.serie = v,
           obj,
           false,
-          false,
         );
       case 'numeronotafiscal':
         return FieldReflection<Empresa, int?>(
@@ -531,7 +510,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.numeroNotaFiscal,
           (o) => (v) => o!.numeroNotaFiscal = v,
           obj,
-          false,
           false,
         );
       case 'numeronotafiscalhomologacao':
@@ -545,7 +523,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.numeroNotaFiscalHomologacao = v,
           obj,
           false,
-          false,
         );
       case 'cnpj':
         return FieldReflection<Empresa, String?>(
@@ -557,7 +534,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.cnpj,
           (o) => (v) => o!.cnpj = v,
           obj,
-          false,
           false,
         );
       case 'razaosocial':
@@ -571,7 +547,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.razaoSocial = v,
           obj,
           false,
-          false,
         );
       case 'municipio':
         return FieldReflection<Empresa, String?>(
@@ -583,7 +558,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.municipio,
           (o) => (v) => o!.municipio = v,
           obj,
-          false,
           false,
         );
       case 'estado':
@@ -597,7 +571,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.estado = v,
           obj,
           false,
-          false,
         );
       case 'cep':
         return FieldReflection<Empresa, String?>(
@@ -609,7 +582,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.cep,
           (o) => (v) => o!.cep = v,
           obj,
-          false,
           false,
         );
       case 'bairro':
@@ -623,7 +595,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.bairro = v,
           obj,
           false,
-          false,
         );
       case 'logradouro':
         return FieldReflection<Empresa, String?>(
@@ -635,7 +606,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.logradouro,
           (o) => (v) => o!.logradouro = v,
           obj,
-          false,
           false,
         );
       case 'numerocasa':
@@ -649,7 +619,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.numeroCasa = v,
           obj,
           false,
-          false,
         );
       case 'inscricaoestadual':
         return FieldReflection<Empresa, String?>(
@@ -661,7 +630,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.inscricaoEstadual,
           (o) => (v) => o!.inscricaoEstadual = v,
           obj,
-          false,
           false,
         );
       case 'regimetributario':
@@ -675,7 +643,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.regimeTributario = v,
           obj,
           false,
-          false,
         );
       case 'nsu':
         return FieldReflection<Empresa, String?>(
@@ -688,7 +655,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.nsu = v,
           obj,
           false,
-          false,
         );
       case 'id':
         return FieldReflection<Empresa, String?>(
@@ -700,7 +666,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
-          false,
           false,
           const [
             Coluna(
@@ -721,7 +686,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.id2 = v,
           obj,
           false,
-          false,
           const [Coluna(tipo: "bigint", defaultValue: "sequence")],
         );
       case 'ativa':
@@ -735,7 +699,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.ativa = v,
           obj,
           false,
-          false,
         );
       case 'datacriacao':
         return FieldReflection<Empresa, DateTime?>(
@@ -747,7 +710,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => () => o!.dataCriacao,
           (o) => (v) => o!.dataCriacao = v,
           obj,
-          false,
           false,
         );
       case 'dataedicao':
@@ -761,7 +723,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.dataEdicao = v,
           obj,
           false,
-          false,
         );
       case 'datadelecao':
         return FieldReflection<Empresa, DateTime?>(
@@ -774,11 +735,59 @@ class Empresa$reflection extends ClassReflection<Empresa>
           (o) => (v) => o!.dataDelecao = v,
           obj,
           false,
-          false,
         );
       default:
         return null;
     }
+  }
+
+  @override
+  Map<String, dynamic> getFieldsValues(Empresa? obj,
+      {bool withHashCode = false}) {
+    obj ??= object;
+    return <String, dynamic>{
+      'nome': obj?.nome,
+      'valorPagamento': obj?.valorPagamento,
+      'telefone': obj?.telefone,
+      'anydesk': obj?.anydesk,
+      'whatsapp': obj?.whatsapp,
+      'latitude': obj?.latitude,
+      'longitude': obj?.longitude,
+      'dataPagamento': obj?.dataPagamento,
+      'lastUpdate': obj?.lastUpdate,
+      'lastTry': obj?.lastTry,
+      'ultimoPagamentoCompleto': obj?.ultimoPagamentoCompleto,
+      'ultimoPagamentoGerado': obj?.ultimoPagamentoGerado,
+      'ambienteProducao': obj?.ambienteProducao,
+      'emissaoNormal': obj?.emissaoNormal,
+      'impressaoNfce': obj?.impressaoNfce,
+      'contingenciaAoDemorar': obj?.contingenciaAoDemorar,
+      'justificativaContingencia': obj?.justificativaContingencia,
+      'tipoGeracaoNota': obj?.tipoGeracaoNota,
+      'csc': obj?.csc,
+      'idCsc': obj?.idCsc,
+      'serie': obj?.serie,
+      'numeroNotaFiscal': obj?.numeroNotaFiscal,
+      'numeroNotaFiscalHomologacao': obj?.numeroNotaFiscalHomologacao,
+      'cnpj': obj?.cnpj,
+      'razaoSocial': obj?.razaoSocial,
+      'municipio': obj?.municipio,
+      'estado': obj?.estado,
+      'cep': obj?.cep,
+      'bairro': obj?.bairro,
+      'logradouro': obj?.logradouro,
+      'numeroCasa': obj?.numeroCasa,
+      'inscricaoEstadual': obj?.inscricaoEstadual,
+      'regimeTributario': obj?.regimeTributario,
+      'nsu': obj?.nsu,
+      'id': obj?.id,
+      'id2': obj?.id2,
+      'ativa': obj?.ativa,
+      'dataCriacao': obj?.dataCriacao,
+      'dataEdicao': obj?.dataEdicao,
+      'dataDelecao': obj?.dataDelecao,
+      if (withHashCode) 'hashCode': obj?.hashCode,
+    };
   }
 
   static const List<String> _staticFieldsNames = const <String>[];
@@ -787,7 +796,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  FieldReflection<Empresa, T>? staticField<T>(String fieldName) => null;
+  StaticFieldReflection<Empresa, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'classToMap',
@@ -806,10 +815,9 @@ class Empresa$reflection extends ClassReflection<Empresa>
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Empresa, dynamic>>
-      _methodsNoObject = <String, MethodReflection<Empresa, dynamic>>{};
+      _methodsNoObject = {};
 
-  final Map<String, MethodReflection<Empresa, dynamic>> _methodsObject =
-      <String, MethodReflection<Empresa, dynamic>>{};
+  final Map<String, MethodReflection<Empresa, dynamic>> _methodsObject = {};
 
   @override
   MethodReflection<Empresa, R>? method<R>(String methodName, [Empresa? obj]) {
@@ -865,7 +873,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.reflect,
             obj,
-            false,
             null,
             null,
             null,
@@ -879,7 +886,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.classToMap,
             obj,
-            false,
             null,
             null,
             null,
@@ -893,7 +899,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.toJson,
             obj,
-            false,
             null,
             null,
             null,
@@ -907,7 +912,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.dbMaptoClassMap,
             obj,
-            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -928,7 +932,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.classToString,
             obj,
-            false,
             null,
             null,
             null,
@@ -942,7 +945,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.listClassToString,
             obj,
-            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -956,7 +958,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.stringToClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tString, 'string', false, true)],
             null,
             null,
@@ -970,7 +971,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.mapToClass,
             obj,
-            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -991,7 +991,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.listMapToListClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -1005,7 +1004,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
             false,
             (o) => o!.listStringToListClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tString, 'listString', false, true)],
             null,
             null,
@@ -1020,35 +1018,34 @@ class Empresa$reflection extends ClassReflection<Empresa>
   @override
   List<String> get staticMethodsNames => _staticMethodsNames;
 
-  static final Map<String, MethodReflection<Empresa, dynamic>> _staticMethods =
-      <String, MethodReflection<Empresa, dynamic>>{};
+  static final Map<String, StaticMethodReflection<Empresa, dynamic>>
+      _staticMethods = {};
 
   @override
-  MethodReflection<Empresa, R>? staticMethod<R>(String methodName) {
+  StaticMethodReflection<Empresa, R>? staticMethod<R>(String methodName) {
     var m = _staticMethods[methodName];
     if (m != null) {
-      return m as MethodReflection<Empresa, R>;
+      return m as StaticMethodReflection<Empresa, R>;
     }
     m = _staticMethodImpl(methodName);
     if (m == null) return null;
     _staticMethods[methodName] = m;
-    return m as MethodReflection<Empresa, R>;
+    return m as StaticMethodReflection<Empresa, R>;
   }
 
-  MethodReflection<Empresa, dynamic>? _staticMethodImpl(String methodName) {
+  StaticMethodReflection<Empresa, dynamic>? _staticMethodImpl(
+      String methodName) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
-        return MethodReflection<Empresa, Empresa>(
+        return StaticMethodReflection<Empresa, Empresa>(
             this,
             Empresa,
             'fromJson',
             __TR<Empresa>(Empresa),
             false,
-            (o) => Empresa.fromJson,
-            null,
-            true,
+            () => Empresa.fromJson,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(

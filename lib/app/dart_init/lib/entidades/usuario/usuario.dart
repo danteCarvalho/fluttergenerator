@@ -23,7 +23,10 @@ class Usuario extends Entidade with _$Serial {
 
   @Coluna(nullable: false)
   String nome = "";
+  @Coluna(tipo: "character varying")
   String senha = "";
+  @Coluna(unique: true)
+  String? username;
   @Coluna(unique: true)
   String email = "";
   String? cpfCnpj;
@@ -42,6 +45,9 @@ class Usuario extends Entidade with _$Serial {
   DateTime? dataPagamento;
   DateTime? ultimoPagamentoCompleto;
   DateTime? ultimoPagamentoGerado;
+  String preferenciaNome = "";
   Imagem? imagem;
+  double latitude = 0;
+  double longitude = 0;
+  bool emailVerificado = false;
 }
-

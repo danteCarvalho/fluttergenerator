@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.2.8
+// BUILDER: reflection_factory/2.4.4
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -9,6 +9,8 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: camel_case_types
 // ignore_for_file: camel_case_extensions
+// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: unnecessary_const
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
@@ -20,7 +22,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.2.8');
+  static final Version _version = Version.parse('2.4.4');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -45,7 +47,7 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
   }
 
   UsuarioEndpoint$reflection._([UsuarioEndpoint? object])
-      : super(UsuarioEndpoint, 'UsuarioEndpoint', object);
+      : super(UsuarioEndpoint, r'UsuarioEndpoint', object);
 
   static bool _registered = false;
   @override
@@ -101,7 +103,7 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
   List<String> get constructorsNames => _constructorsNames;
 
   static final Map<String, ConstructorReflection<UsuarioEndpoint>>
-      _constructors = <String, ConstructorReflection<UsuarioEndpoint>>{};
+      _constructors = {};
 
   @override
   ConstructorReflection<UsuarioEndpoint>? constructor(String constructorName) {
@@ -151,29 +153,44 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
   FieldReflection<UsuarioEndpoint, T>? field<T>(String fieldName,
           [UsuarioEndpoint? obj]) =>
       null;
+
+  @override
+  Map<String, dynamic> getFieldsValues(UsuarioEndpoint? obj,
+          {bool withHashCode = false}) =>
+      {
+        if (withHashCode) 'hashCode': obj?.hashCode,
+      };
+
   static const List<String> _staticFieldsNames = const <String>[];
 
   @override
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  FieldReflection<UsuarioEndpoint, T>? staticField<T>(String fieldName) => null;
+  StaticFieldReflection<UsuarioEndpoint, T>? staticField<T>(String fieldName) =>
+      null;
 
   static const List<String> _methodsNames = const <String>[
     'addUsuario',
+    'buildMessage',
     'editUsuario',
+    'enviarEmail',
+    'esqueciSenha',
+    'esqueciSenha2',
     'getRouter',
-    'reflect'
+    'reflect',
+    'verificaEmail',
+    'verificaEmail2'
   ];
 
   @override
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<UsuarioEndpoint, dynamic>>
-      _methodsNoObject = <String, MethodReflection<UsuarioEndpoint, dynamic>>{};
+      _methodsNoObject = {};
 
   final Map<String, MethodReflection<UsuarioEndpoint, dynamic>> _methodsObject =
-      <String, MethodReflection<UsuarioEndpoint, dynamic>>{};
+      {};
 
   @override
   MethodReflection<UsuarioEndpoint, R>? method<R>(String methodName,
@@ -231,7 +248,6 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             false,
             (o) => o!.addUsuario,
             obj,
-            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
@@ -245,11 +261,92 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             false,
             (o) => o!.editUsuario,
             obj,
-            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
             const [Route.post('/editUsuario')]);
+      case 'verificaemail':
+        return MethodReflection<UsuarioEndpoint, Future<Response>>(
+            this,
+            UsuarioEndpoint,
+            'verificaEmail',
+            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            false,
+            (o) => o!.verificaEmail,
+            obj,
+            const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
+            null,
+            null,
+            const [Route.post('/verificaEmail')]);
+      case 'verificaemail2':
+        return MethodReflection<UsuarioEndpoint, Future<Response>>(
+            this,
+            UsuarioEndpoint,
+            'verificaEmail2',
+            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            false,
+            (o) => o!.verificaEmail2,
+            obj,
+            const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
+            null,
+            null,
+            const [Route.post('/verificaEmail2')]);
+      case 'buildmessage':
+        return MethodReflection<UsuarioEndpoint, Message>(
+            this,
+            UsuarioEndpoint,
+            'buildMessage',
+            __TR<Message>(Message),
+            false,
+            (o) => o!.buildMessage,
+            obj,
+            const <__PR>[
+              __PR(__TR.tString, 'msg', false, true),
+              __PR(__TR.tString, 'to', false, true),
+              __PR(__TR.tString, 'subject', false, true)
+            ],
+            null,
+            null,
+            null);
+      case 'enviaremail':
+        return MethodReflection<UsuarioEndpoint, dynamic>(
+            this,
+            UsuarioEndpoint,
+            'enviarEmail',
+            __TR.tDynamic,
+            false,
+            (o) => o!.enviarEmail,
+            obj,
+            const <__PR>[__PR(__TR<Message>(Message), 'message', false, true)],
+            null,
+            null,
+            null);
+      case 'esquecisenha':
+        return MethodReflection<UsuarioEndpoint, Future<Response>>(
+            this,
+            UsuarioEndpoint,
+            'esqueciSenha',
+            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            false,
+            (o) => o!.esqueciSenha,
+            obj,
+            const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
+            null,
+            null,
+            const [Route.post('/esqueciSenha')]);
+      case 'esquecisenha2':
+        return MethodReflection<UsuarioEndpoint, Future<Response>>(
+            this,
+            UsuarioEndpoint,
+            'esqueciSenha2',
+            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            false,
+            (o) => o!.esqueciSenha2,
+            obj,
+            const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
+            null,
+            null,
+            const [Route.post('/esqueciSenha2')]);
       case 'getrouter':
         return MethodReflection<UsuarioEndpoint, Router>(
             this,
@@ -259,7 +356,6 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             false,
             (o) => o!.getRouter,
             obj,
-            false,
             null,
             null,
             null,
@@ -274,7 +370,6 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             false,
             (o) => o!.reflect,
             obj,
-            false,
             null,
             null,
             null,
@@ -290,7 +385,8 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   @override
-  MethodReflection<UsuarioEndpoint, R>? staticMethod<R>(String methodName) =>
+  StaticMethodReflection<UsuarioEndpoint, R>? staticMethod<R>(
+          String methodName) =>
       null;
 }
 

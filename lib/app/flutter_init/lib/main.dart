@@ -8,15 +8,15 @@ import 'package:url_strategy/url_strategy.dart';
 import 'app/app_module.dart';
 import 'app/app_store.dart';
 import 'app/app_widget.dart';
-import 'app/outros/config.dart';
+import 'app/outros/config/config.dart';
 import 'app/outros/logger.dart';
 import 'main.reflectable.dart';
 
 main() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    configurar();
     initializeReflectable();
+    await configurar();
     setPathUrlStrategy();
     await initSentry();
     runApp(ModularApp(module: AppModule(), child: const AppWidget()));

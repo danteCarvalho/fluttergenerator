@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bcrypt/bcrypt.dart';
 import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shelf/shelf.dart';
@@ -27,15 +28,17 @@ class LoginEndpoint extends RouterMethods {
     List<Map> wheres = [];
     wheres.add(expr("ativa", "_eq", true));
     wheres.add(expr("email", "_eq", email));
-    wheres.add(expr("senha", "_eq", senha));
     var sql = sqlHasura(Usuario(), wheres, [selectFields(Usuario())]);
     Usuario usuario;
     try {
       usuario = await selectOneHasura(sql, Usuario());
     } on NaoEncontrado {
-      return Response.unauthorized(json.encode({"mensagem": "Usuário não encontrado"}));
+      return Response.unauthorized(json.encode({"mensagem": "Usuário ou senha incorretos"}));
     }
-
+    final bool checkPassword = BCrypt.checkpw(senha, usuario.senha);
+    if(!checkPassword){
+      return Response.unauthorized(json.encode({"mensagem": "Usuário ou senha incorretos"}));
+    }
     String jwt = Security.criarJwt(usuario);
     Map map = {};
     map["usuario"] = usuario.classToMap();

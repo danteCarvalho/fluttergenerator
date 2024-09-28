@@ -38,12 +38,12 @@ abstract class AppStoreBase with Store {
     appWidgetState.refresh();
   }
 
-  startWait({bool close = false})async{
+  startWait({bool autoClose = false})async{
     esperar = true;
     bloquear = true;
     Timer(const Duration(seconds: 3), () {
       bloquear = false;
-      if(close){
+      if(autoClose){
         esperar = false;
       }
     },);

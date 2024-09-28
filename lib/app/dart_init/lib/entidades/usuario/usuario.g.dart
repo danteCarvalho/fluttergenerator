@@ -21,6 +21,7 @@ Usuario _$UsuarioFromJson(Map json) => Usuario()
       : null
   ..nome = json['nome'] != null ? json['nome'] as String : ""
   ..senha = json['senha'] != null ? json['senha'] as String : ""
+  ..username = json['username'] != null ? json['username'] as String? : null
   ..email = json['email'] != null ? json['email'] as String : ""
   ..cpfCnpj = json['cpfCnpj'] != null ? json['cpfCnpj'] as String? : null
   ..dataNascimento = json['dataNascimento'] != null
@@ -57,9 +58,12 @@ Usuario _$UsuarioFromJson(Map json) => Usuario()
       json['preferenciaNome'] != null ? json['preferenciaNome'] as String : ""
   ..imagem =
       json['imagem'] != null ? Imagem.fromJson(json['imagem'] as Map) : null
-  ..tipoPerfil = json['tipoPerfil'] != null
-      ? TipoPerfil.values.byName(json['tipoPerfil'] as String)
-      : TipoPerfil.nenhum;
+  ..latitude =
+      json['latitude'] != null ? (json['latitude'] as num).toDouble() : 0
+  ..longitude =
+      json['longitude'] != null ? (json['longitude'] as num).toDouble() : 0
+  ..emailVerificado =
+      json['emailVerificado'] != null ? json['emailVerificado'] as bool : false;
 
 Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'id': instance.id,
@@ -70,6 +74,7 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'dataDelecao': instance.dataDelecao?.toIso8601String(),
       'nome': instance.nome,
       'senha': instance.senha,
+      'username': instance.username,
       'email': instance.email,
       'cpfCnpj': instance.cpfCnpj,
       'dataNascimento': instance.dataNascimento.toIso8601String(),
@@ -91,7 +96,9 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
           instance.ultimoPagamentoGerado?.toIso8601String(),
       'preferenciaNome': instance.preferenciaNome,
       'imagem': instance.imagem?.toJson(),
-      'tipoPerfil': instance.tipoPerfil.name,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'emailVerificado': instance.emailVerificado,
     };
 
 mixin _$Serial {

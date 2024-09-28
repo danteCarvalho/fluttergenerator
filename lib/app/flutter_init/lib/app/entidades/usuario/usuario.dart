@@ -46,6 +46,11 @@ abstract class _UsuarioBase extends Entidade with Store {
   DateTime? ultimoPagamentoCompleto;
   DateTime? ultimoPagamentoGerado;
   Imagem? imagem ;
+  @observable
+  double latitude = 0;
+  @observable
+  double longitude = 0;
+  bool emailVerificado = false;
 }
 
 

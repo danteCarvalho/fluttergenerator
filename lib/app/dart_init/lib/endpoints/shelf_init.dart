@@ -9,7 +9,7 @@ import 'middlewares/headers_middle.dart';
 import 'middlewares/jtw_middle.dart';
 
 startShelfServer() async {
-  var pipeline = const Pipeline().addMiddleware(logRequests()).addMiddleware(exceptionMiddleware()).addMiddleware( jwtMiddleware()).addMiddleware(headersMiddleware());
+  var pipeline = const Pipeline().addMiddleware(logRequests()).addMiddleware(exceptionMiddleware()).addMiddleware( headersMiddleware()).addMiddleware(jwtMiddleware());
   var annotatedClasses = routerAnnotation.annotatedClasses;
   List<Type> routeClasses = [];
   for (var classMirror in annotatedClasses) {

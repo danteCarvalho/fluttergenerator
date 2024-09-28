@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.2.8
+// BUILDER: reflection_factory/2.4.4
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -9,6 +9,8 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: camel_case_types
 // ignore_for_file: camel_case_extensions
+// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: unnecessary_const
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
@@ -20,7 +22,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.2.8');
+  static final Version _version = Version.parse('2.4.4');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -44,7 +46,7 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   }
 
   TesteEndpoint$reflection._([TesteEndpoint? object])
-      : super(TesteEndpoint, 'TesteEndpoint', object);
+      : super(TesteEndpoint, r'TesteEndpoint', object);
 
   static bool _registered = false;
   @override
@@ -100,7 +102,7 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   List<String> get constructorsNames => _constructorsNames;
 
   static final Map<String, ConstructorReflection<TesteEndpoint>> _constructors =
-      <String, ConstructorReflection<TesteEndpoint>>{};
+      {};
 
   @override
   ConstructorReflection<TesteEndpoint>? constructor(String constructorName) {
@@ -150,13 +152,22 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   FieldReflection<TesteEndpoint, T>? field<T>(String fieldName,
           [TesteEndpoint? obj]) =>
       null;
+
+  @override
+  Map<String, dynamic> getFieldsValues(TesteEndpoint? obj,
+          {bool withHashCode = false}) =>
+      {
+        if (withHashCode) 'hashCode': obj?.hashCode,
+      };
+
   static const List<String> _staticFieldsNames = const <String>[];
 
   @override
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  FieldReflection<TesteEndpoint, T>? staticField<T>(String fieldName) => null;
+  StaticFieldReflection<TesteEndpoint, T>? staticField<T>(String fieldName) =>
+      null;
 
   static const List<String> _methodsNames = const <String>[
     'getRouter',
@@ -168,10 +179,10 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<TesteEndpoint, dynamic>>
-      _methodsNoObject = <String, MethodReflection<TesteEndpoint, dynamic>>{};
+      _methodsNoObject = {};
 
   final Map<String, MethodReflection<TesteEndpoint, dynamic>> _methodsObject =
-      <String, MethodReflection<TesteEndpoint, dynamic>>{};
+      {};
 
   @override
   MethodReflection<TesteEndpoint, R>? method<R>(String methodName,
@@ -228,7 +239,6 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             false,
             (o) => o!.teste,
             obj,
-            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
@@ -242,7 +252,6 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             false,
             (o) => o!.getRouter,
             obj,
-            false,
             null,
             null,
             null,
@@ -257,7 +266,6 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             false,
             (o) => o!.reflect,
             obj,
-            false,
             null,
             null,
             null,
@@ -273,7 +281,8 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   @override
-  MethodReflection<TesteEndpoint, R>? staticMethod<R>(String methodName) =>
+  StaticMethodReflection<TesteEndpoint, R>? staticMethod<R>(
+          String methodName) =>
       null;
 }
 

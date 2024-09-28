@@ -36,6 +36,17 @@ class CadastroPageState extends State<CadastroPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: columnWidgets,
     );
+
+    sessao(Widget widget, {double? width, double? height, Alignment? alignment = Alignment.center}) {
+      return Container(
+        width: width,
+        height: height,
+        padding: EdgeInsets.all(porcentagemMenorLado(context, 2)),
+        alignment: alignment,
+        child: widget,
+      );
+    }
+
     var imagem = Observer(
       builder: (BuildContext context) {
         var imagem = store.imagem;
@@ -46,7 +57,7 @@ class CadastroPageState extends State<CadastroPage> {
             height: porcentagemMenorLado(context, 20),
             child: FloatingActionButton(
               backgroundColor: Colors.grey,
-              onPressed: () {
+              onPressed: () async{
                 store.selectFoto();
               },
               child: Stack(
@@ -75,7 +86,7 @@ class CadastroPageState extends State<CadastroPage> {
           );
           widget = GestureDetector(
             child: extendedImage,
-            onTap: () {
+            onTap: () async{
               store.selectFoto();
             },
           );
@@ -96,40 +107,28 @@ class CadastroPageState extends State<CadastroPage> {
       () => store.usuario.email,
       (v) => store.usuario.email = v,
     );
-    String textoSenha = """
-    - 8 caracteres incluindo pelo menos:
-    - 1 maiúscula
-    - 1 caractere especial
-    - 1 número
-    """;
-    var textSenha = Text(textoSenha);
-    const String pattern = r'^(?=.*[A-Z])(?=.*[!@#\$&*~])(?=.*[0-9]).{8,}$';
-    final RegExp regex = RegExp(pattern);
-
+    List<Function> senhaValidations = [];
+    senhaValidations.add((String? v) => defaultValidator(v));
+    senhaValidations.add((String? v) => sizeValidator(v, 8));
+    senhaValidations.add((String? v) => upperCaseValidator(v));
+    senhaValidations.add((String? v) => spetialCharacterValidator(v));
+    senhaValidations.add((String? v) => numberValidator(v));
     var senha = MyTextFormField(
       "Senha",
       () => store.usuario.senha,
       (v) => store.usuario.senha = v,
       obscure: true,
-      validator: (v) => nuloOuvazio([v])
-          ? "^"
-          : !regex.hasMatch(v!)
-              ? "Senha não segura"
-              : null,
+      validator: (v) => processValidations(v, senhaValidations),
     );
     var repetir = MyTextFormField(
-      "Rpetir senha",
+      "Repetir senha",
       () => store.repetir,
       (v) => store.repetir = v,
       obscure: true,
-      validator: (String? v) => nuloOuvazio([v])
-          ? "^"
-          : v != store.usuario.senha
-              ? "Senhas diferentes"
-              : null,
+      validator: (String? v) => defaultValidator(v) ?? differentValidator(v, store.usuario.senha, "Senhas diferentes"),
     );
     var elevatedButton = ElevatedButton(
-      onPressed: () {
+      onPressed: () async{
         if (!formKey.currentState!.validate()) {
           return;
         }
@@ -150,20 +149,19 @@ class CadastroPageState extends State<CadastroPage> {
         );
         return Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [checkbox, const Text("Li e aceito os termos de uso etc etc")],
+          children: [checkbox, const Text("Li e aceito os termos de uso.")],
         );
       },
     );
 
     columnWidgets.add(const Center(child: Text("Foto de perfil")));
     columnWidgets.add(Center(child: imagem));
-    columnWidgets.add(nome);
-    columnWidgets.add(email);
-    columnWidgets.add(senha);
-    columnWidgets.add(textSenha);
-    columnWidgets.add(repetir);
-    columnWidgets.add(checkbox);
-    columnWidgets.add(elevatedButton);
+    columnWidgets.add(sessao(nome));
+    columnWidgets.add(sessao(email));
+    columnWidgets.add(sessao(senha));
+    columnWidgets.add(sessao(repetir));
+    columnWidgets.add(sessao(checkbox));
+    columnWidgets.add(sessao(elevatedButton));
 
     return Scaffold(
       body: SingleChildScrollView(

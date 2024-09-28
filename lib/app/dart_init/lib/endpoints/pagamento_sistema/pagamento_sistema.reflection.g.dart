@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.2.8
+// BUILDER: reflection_factory/2.4.4
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -9,6 +9,8 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: camel_case_types
 // ignore_for_file: camel_case_extensions
+// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: unnecessary_const
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
@@ -20,7 +22,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.2.8');
+  static final Version _version = Version.parse('2.4.4');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -50,7 +52,7 @@ class PagamentoSistemaEndpoint$reflection
   }
 
   PagamentoSistemaEndpoint$reflection._([PagamentoSistemaEndpoint? object])
-      : super(PagamentoSistemaEndpoint, 'PagamentoSistemaEndpoint', object);
+      : super(PagamentoSistemaEndpoint, r'PagamentoSistemaEndpoint', object);
 
   static bool _registered = false;
   @override
@@ -109,8 +111,7 @@ class PagamentoSistemaEndpoint$reflection
   List<String> get constructorsNames => _constructorsNames;
 
   static final Map<String, ConstructorReflection<PagamentoSistemaEndpoint>>
-      _constructors =
-      <String, ConstructorReflection<PagamentoSistemaEndpoint>>{};
+      _constructors = {};
 
   @override
   ConstructorReflection<PagamentoSistemaEndpoint>? constructor(
@@ -168,13 +169,21 @@ class PagamentoSistemaEndpoint$reflection
   FieldReflection<PagamentoSistemaEndpoint, T>? field<T>(String fieldName,
           [PagamentoSistemaEndpoint? obj]) =>
       null;
+
+  @override
+  Map<String, dynamic> getFieldsValues(PagamentoSistemaEndpoint? obj,
+          {bool withHashCode = false}) =>
+      {
+        if (withHashCode) 'hashCode': obj?.hashCode,
+      };
+
   static const List<String> _staticFieldsNames = const <String>[];
 
   @override
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  FieldReflection<PagamentoSistemaEndpoint, T>? staticField<T>(
+  StaticFieldReflection<PagamentoSistemaEndpoint, T>? staticField<T>(
           String fieldName) =>
       null;
 
@@ -189,12 +198,10 @@ class PagamentoSistemaEndpoint$reflection
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<PagamentoSistemaEndpoint, dynamic>>
-      _methodsNoObject =
-      <String, MethodReflection<PagamentoSistemaEndpoint, dynamic>>{};
+      _methodsNoObject = {};
 
   final Map<String, MethodReflection<PagamentoSistemaEndpoint, dynamic>>
-      _methodsObject =
-      <String, MethodReflection<PagamentoSistemaEndpoint, dynamic>>{};
+      _methodsObject = {};
 
   @override
   MethodReflection<PagamentoSistemaEndpoint, R>? method<R>(String methodName,
@@ -252,7 +259,6 @@ class PagamentoSistemaEndpoint$reflection
             false,
             (o) => o!.addPagamentoSistema,
             obj,
-            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
@@ -266,7 +272,6 @@ class PagamentoSistemaEndpoint$reflection
             false,
             (o) => o!.finalizarPagamentoSistema,
             obj,
-            false,
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
@@ -280,7 +285,6 @@ class PagamentoSistemaEndpoint$reflection
             false,
             (o) => o!.getRouter,
             obj,
-            false,
             null,
             null,
             null,
@@ -296,7 +300,6 @@ class PagamentoSistemaEndpoint$reflection
             false,
             (o) => o!.reflect,
             obj,
-            false,
             null,
             null,
             null,
@@ -312,7 +315,7 @@ class PagamentoSistemaEndpoint$reflection
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   @override
-  MethodReflection<PagamentoSistemaEndpoint, R>? staticMethod<R>(
+  StaticMethodReflection<PagamentoSistemaEndpoint, R>? staticMethod<R>(
           String methodName) =>
       null;
 }

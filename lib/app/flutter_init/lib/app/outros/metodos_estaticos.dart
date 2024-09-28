@@ -4,16 +4,27 @@ import 'dart:io';
 import 'package:dartutils/dartutils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../app_store.dart';
+import '../entidades/imagem/imagem.dart';
 import '../entidades/usuario/usuario.dart';
 import '../requests/server_requets.dart';
 import 'config/config.dart';
+import 'logger.dart';
 
-void errorTest(){
-  print(1~/0);
+void errorTest() {
+  print(1 ~/ 0);
+}
+
+String getImageLink(Imagem imagem) {
+  if (config.imageStorage == "servidor") {
+    return "${config.schemeServidor}://${config.ipServidor}:${config.portaServidor}/api/getImagem?id=${imagem.id}";
+  } else {
+    return "https://danteteste.s3.amazonaws.com/images/${imagem.id}";
+  }
 }
 
 void uriTest() {
@@ -44,7 +55,7 @@ void uriTest() {
   Uri.base.queryParameters;
 }
 
-googleLogin(){
+googleLogin() {
   if (kIsWeb) {
     googleLoginWeb();
   } else {
@@ -110,15 +121,18 @@ googleLoginOs() async {
 }
 
 verificaJwt() async {
-  AppStore app = Modular.get<AppStore>();
-  var shared = await SharedPreferences.getInstance();
-  var jwt = shared.getString("jwt");
-  if (jwt != null) {
+  try {
+    var shared = await SharedPreferences.getInstance();
+    var jwt = shared.getString("jwt");
+    if (jwt == null) {
+      return;
+    }
+    AppStore app = Modular.get<AppStore>();
     Map map = {};
     map["jwt"] = jwt;
     map["usuarioId"] = app.usuario?.id;
     var responseBody = await serverPost(map, "api/verificaAtualizaJwt");
-    if (!nuloOuvazio([responseBody])) {
+    if (responseBody.isNotEmpty) {
       Map responseMap = json.decode(responseBody);
       if (responseMap.containsKey("jwt")) {
         await shared.setString("jwt", responseMap["jwt"]);
@@ -126,5 +140,7 @@ verificaJwt() async {
         app.mostrarSnackBar(responseMap["mensagem"]);
       }
     }
+  } on ClientException catch (e, s) {
+    myLog(e, s);
   }
 }

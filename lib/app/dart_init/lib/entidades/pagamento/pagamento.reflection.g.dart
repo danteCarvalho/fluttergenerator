@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.2.8
+// BUILDER: reflection_factory/2.4.4
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -9,6 +9,8 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: camel_case_types
 // ignore_for_file: camel_case_extensions
+// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: unnecessary_const
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
@@ -20,7 +22,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.2.8');
+  static final Version _version = Version.parse('2.4.4');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -44,7 +46,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
   }
 
   Pagamento$reflection._([Pagamento? object])
-      : super(Pagamento, 'Pagamento', object);
+      : super(Pagamento, r'Pagamento', object);
 
   static bool _registered = false;
   @override
@@ -99,8 +101,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
   @override
   List<String> get constructorsNames => _constructorsNames;
 
-  static final Map<String, ConstructorReflection<Pagamento>> _constructors =
-      <String, ConstructorReflection<Pagamento>>{};
+  static final Map<String, ConstructorReflection<Pagamento>> _constructors = {};
 
   @override
   ConstructorReflection<Pagamento>? constructor(String constructorName) {
@@ -171,10 +172,9 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
   List<String> get fieldsNames => _fieldsNames;
 
   static final Map<String, FieldReflection<Pagamento, dynamic>>
-      _fieldsNoObject = <String, FieldReflection<Pagamento, dynamic>>{};
+      _fieldsNoObject = {};
 
-  final Map<String, FieldReflection<Pagamento, dynamic>> _fieldsObject =
-      <String, FieldReflection<Pagamento, dynamic>>{};
+  final Map<String, FieldReflection<Pagamento, dynamic>> _fieldsObject = {};
 
   @override
   FieldReflection<Pagamento, T>? field<T>(String fieldName, [Pagamento? obj]) {
@@ -231,7 +231,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.referencia = v,
           obj,
           false,
-          false,
           const [Coluna(nullable: false)],
         );
       case 'qrcode':
@@ -245,7 +244,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.qrCode = v,
           obj,
           false,
-          false,
         );
       case 'pago':
         return FieldReflection<Pagamento, bool?>(
@@ -257,7 +255,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => () => o!.pago,
           (o) => (v) => o!.pago = v,
           obj,
-          false,
           false,
         );
       case 'dataconfirmado':
@@ -271,7 +268,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.dataConfirmado = v,
           obj,
           false,
-          false,
         );
       case 'link':
         return FieldReflection<Pagamento, String?>(
@@ -283,7 +279,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => () => o!.link,
           (o) => (v) => o!.link = v,
           obj,
-          false,
           false,
         );
       case 'empresa':
@@ -297,7 +292,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.empresa = v,
           obj,
           false,
-          false,
         );
       case 'usuario':
         return FieldReflection<Pagamento, Usuario?>(
@@ -309,7 +303,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => () => o!.usuario,
           (o) => (v) => o!.usuario = v,
           obj,
-          false,
           false,
         );
       case 'valor':
@@ -323,7 +316,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.valor = v,
           obj,
           false,
-          false,
           const [Coluna(nullable: false)],
         );
       case 'id':
@@ -336,7 +328,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
-          false,
           false,
           const [
             Coluna(
@@ -357,7 +348,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.id2 = v,
           obj,
           false,
-          false,
           const [Coluna(tipo: "bigint", defaultValue: "sequence")],
         );
       case 'ativa':
@@ -371,7 +361,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.ativa = v,
           obj,
           false,
-          false,
         );
       case 'datacriacao':
         return FieldReflection<Pagamento, DateTime?>(
@@ -383,7 +372,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => () => o!.dataCriacao,
           (o) => (v) => o!.dataCriacao = v,
           obj,
-          false,
           false,
         );
       case 'dataedicao':
@@ -397,7 +385,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.dataEdicao = v,
           obj,
           false,
-          false,
         );
       case 'datadelecao':
         return FieldReflection<Pagamento, DateTime?>(
@@ -410,11 +397,33 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           (o) => (v) => o!.dataDelecao = v,
           obj,
           false,
-          false,
         );
       default:
         return null;
     }
+  }
+
+  @override
+  Map<String, dynamic> getFieldsValues(Pagamento? obj,
+      {bool withHashCode = false}) {
+    obj ??= object;
+    return <String, dynamic>{
+      'referencia': obj?.referencia,
+      'qrCode': obj?.qrCode,
+      'pago': obj?.pago,
+      'dataConfirmado': obj?.dataConfirmado,
+      'link': obj?.link,
+      'empresa': obj?.empresa,
+      'usuario': obj?.usuario,
+      'valor': obj?.valor,
+      'id': obj?.id,
+      'id2': obj?.id2,
+      'ativa': obj?.ativa,
+      'dataCriacao': obj?.dataCriacao,
+      'dataEdicao': obj?.dataEdicao,
+      'dataDelecao': obj?.dataDelecao,
+      if (withHashCode) 'hashCode': obj?.hashCode,
+    };
   }
 
   static const List<String> _staticFieldsNames = const <String>[];
@@ -423,7 +432,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  FieldReflection<Pagamento, T>? staticField<T>(String fieldName) => null;
+  StaticFieldReflection<Pagamento, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'classToMap',
@@ -442,10 +451,9 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Pagamento, dynamic>>
-      _methodsNoObject = <String, MethodReflection<Pagamento, dynamic>>{};
+      _methodsNoObject = {};
 
-  final Map<String, MethodReflection<Pagamento, dynamic>> _methodsObject =
-      <String, MethodReflection<Pagamento, dynamic>>{};
+  final Map<String, MethodReflection<Pagamento, dynamic>> _methodsObject = {};
 
   @override
   MethodReflection<Pagamento, R>? method<R>(String methodName,
@@ -502,7 +510,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.reflect,
             obj,
-            false,
             null,
             null,
             null,
@@ -516,7 +523,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.classToMap,
             obj,
-            false,
             null,
             null,
             null,
@@ -530,7 +536,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.toJson,
             obj,
-            false,
             null,
             null,
             null,
@@ -544,7 +549,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.dbMaptoClassMap,
             obj,
-            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -565,7 +569,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.classToString,
             obj,
-            false,
             null,
             null,
             null,
@@ -579,7 +582,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.listClassToString,
             obj,
-            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -593,7 +595,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.stringToClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tString, 'string', false, true)],
             null,
             null,
@@ -607,7 +608,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.mapToClass,
             obj,
-            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -628,7 +628,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.listMapToListClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -642,7 +641,6 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             false,
             (o) => o!.listStringToListClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tString, 'listString', false, true)],
             null,
             null,
@@ -657,35 +655,34 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
   @override
   List<String> get staticMethodsNames => _staticMethodsNames;
 
-  static final Map<String, MethodReflection<Pagamento, dynamic>>
-      _staticMethods = <String, MethodReflection<Pagamento, dynamic>>{};
+  static final Map<String, StaticMethodReflection<Pagamento, dynamic>>
+      _staticMethods = {};
 
   @override
-  MethodReflection<Pagamento, R>? staticMethod<R>(String methodName) {
+  StaticMethodReflection<Pagamento, R>? staticMethod<R>(String methodName) {
     var m = _staticMethods[methodName];
     if (m != null) {
-      return m as MethodReflection<Pagamento, R>;
+      return m as StaticMethodReflection<Pagamento, R>;
     }
     m = _staticMethodImpl(methodName);
     if (m == null) return null;
     _staticMethods[methodName] = m;
-    return m as MethodReflection<Pagamento, R>;
+    return m as StaticMethodReflection<Pagamento, R>;
   }
 
-  MethodReflection<Pagamento, dynamic>? _staticMethodImpl(String methodName) {
+  StaticMethodReflection<Pagamento, dynamic>? _staticMethodImpl(
+      String methodName) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
-        return MethodReflection<Pagamento, Pagamento>(
+        return StaticMethodReflection<Pagamento, Pagamento>(
             this,
             Pagamento,
             'fromJson',
             __TR<Pagamento>(Pagamento),
             false,
-            (o) => Pagamento.fromJson,
-            null,
-            true,
+            () => Pagamento.fromJson,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(

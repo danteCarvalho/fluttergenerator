@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:bcrypt/bcrypt.dart';
 import 'package:http/http.dart';
 import 'package:postgres/postgres.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../daos/hasura_dao.dart';
 import '../daos/postgres_dao.dart';
+import '../entidades/app_link/app_link.dart';
 import '../entidades/coluna.dart';
 import '../entidades/empresa/empresa.dart';
 import '../entidades/entidade.dart';
@@ -23,6 +25,7 @@ criarBanco() async {
   entidades.add(Empresa());
   entidades.add(Pagamento());
   entidades.add(PagamentoSistema());
+  entidades.add(AppLink());
   await checkPostgres();
   await checkHasura();
   await processaEntidades(entidades);
@@ -164,7 +167,8 @@ verificaAdmin() async {
   if (results.isEmpty) {
     Usuario usuario = Usuario();
     usuario.nome = "admin";
-    usuario.senha = "a";
+    String hashed = BCrypt.hashpw("a", BCrypt.gensalt(logRounds: 10));
+    usuario.senha = hashed;
     usuario.email = "admin@teste.com.br";
     usuario.admin = true;
     await insertHasura(usuario);

@@ -14,6 +14,11 @@ Router _$ImagemEndpointRouter(ImagemEndpoint service) {
     service.addImagem,
   );
   router.add(
+    'POST',
+    r'/editImagem',
+    service.editImagem,
+  );
+  router.add(
     'GET',
     r'/getImagem',
     service.getImagem,

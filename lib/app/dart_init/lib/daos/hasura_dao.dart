@@ -189,7 +189,7 @@ String orderBy(List<Map> list) {
 }
 
 Map expr(String path, String operator, dynamic value) {
-  List split = path.split(".");
+  List split = path.toLowerCase().split(".");
   Map currentValue = {operator: (value is String || value is DateTime) ? "\"$value\"" : value};
   for (var obj in split.reversed) {
     currentValue = {obj: currentValue};
@@ -198,7 +198,7 @@ Map expr(String path, String operator, dynamic value) {
 }
 
 Map orderExpr(String path, String order) {
-  List split = path.split(".");
+  List split = path.toLowerCase().split(".");
   Map currentValue = {};
   for (var obj in split.reversed) {
     if (currentValue.isEmpty) {
@@ -370,7 +370,8 @@ trocarNomeEntidades(Entidade entidade, Map map) {
 trocarStrings(Map obj) {
   obj.forEach((key, value) {
     if (value is String || value is DateTime) {
-      obj[key] = "\"$value\"";
+      String value2 = value.toString().replaceAll(r'"', r'\"').replaceAll('\n', r'\n');
+      obj[key] = '"$value2"';
     }
   });
 }

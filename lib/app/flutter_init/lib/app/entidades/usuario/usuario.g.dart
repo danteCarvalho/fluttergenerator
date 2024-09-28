@@ -53,13 +53,14 @@ Usuario _$UsuarioFromJson(Map json) => Usuario()
   ..ultimoPagamentoGerado = json['ultimoPagamentoGerado'] != null
       ? DateTime.parse(json['ultimoPagamentoGerado'] as String)
       : null
-  ..preferenciaNome =
-      json['preferenciaNome'] != null ? json['preferenciaNome'] as String : ""
   ..imagem =
       json['imagem'] != null ? Imagem.fromJson(json['imagem'] as Map) : null
-  ..tipoPerfil = json['tipoPerfil'] != null
-      ? TipoPerfil.values.byName(json['tipoPerfil'] as String)
-      : TipoPerfil.nenhum;
+  ..latitude =
+      json['latitude'] != null ? (json['latitude'] as num).toDouble() : 0
+  ..longitude =
+      json['longitude'] != null ? (json['longitude'] as num).toDouble() : 0
+  ..emailVerificado =
+      json['emailVerificado'] != null ? json['emailVerificado'] as bool : false;
 
 Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'id': instance.id,
@@ -89,9 +90,10 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
           instance.ultimoPagamentoCompleto?.toIso8601String(),
       'ultimoPagamentoGerado':
           instance.ultimoPagamentoGerado?.toIso8601String(),
-      'preferenciaNome': instance.preferenciaNome,
       'imagem': instance.imagem?.toJson(),
-      'tipoPerfil': instance.tipoPerfil.name,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'emailVerificado': instance.emailVerificado,
     };
 
 mixin _$Serial {
@@ -206,35 +208,35 @@ mixin _$Usuario on _UsuarioBase, Store {
     });
   }
 
-  late final _$preferenciaNomeAtom =
-      Atom(name: '_UsuarioBase.preferenciaNome', context: context);
+  late final _$latitudeAtom =
+      Atom(name: '_UsuarioBase.latitude', context: context);
 
   @override
-  String get preferenciaNome {
-    _$preferenciaNomeAtom.reportRead();
-    return super.preferenciaNome;
+  double get latitude {
+    _$latitudeAtom.reportRead();
+    return super.latitude;
   }
 
   @override
-  set preferenciaNome(String value) {
-    _$preferenciaNomeAtom.reportWrite(value, super.preferenciaNome, () {
-      super.preferenciaNome = value;
+  set latitude(double value) {
+    _$latitudeAtom.reportWrite(value, super.latitude, () {
+      super.latitude = value;
     });
   }
 
-  late final _$tipoPerfilAtom =
-      Atom(name: '_UsuarioBase.tipoPerfil', context: context);
+  late final _$longitudeAtom =
+      Atom(name: '_UsuarioBase.longitude', context: context);
 
   @override
-  TipoPerfil get tipoPerfil {
-    _$tipoPerfilAtom.reportRead();
-    return super.tipoPerfil;
+  double get longitude {
+    _$longitudeAtom.reportRead();
+    return super.longitude;
   }
 
   @override
-  set tipoPerfil(TipoPerfil value) {
-    _$tipoPerfilAtom.reportWrite(value, super.tipoPerfil, () {
-      super.tipoPerfil = value;
+  set longitude(double value) {
+    _$longitudeAtom.reportWrite(value, super.longitude, () {
+      super.longitude = value;
     });
   }
 
@@ -244,8 +246,8 @@ mixin _$Usuario on _UsuarioBase, Store {
 nome: ${nome},
 senha: ${senha},
 email: ${email},
-preferenciaNome: ${preferenciaNome},
-tipoPerfil: ${tipoPerfil}
+latitude: ${latitude},
+longitude: ${longitude}
     ''';
   }
 }

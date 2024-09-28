@@ -224,16 +224,38 @@ String orderBy(List<Map> list) {
 }
 
 Map expr(String path, String operator, dynamic value) {
-  List split = path.split(".");
-  Map currentValue = {operator: (value is String || value is DateTime) ? "\"$value\"" : value};
+  List split = path.toLowerCase().split(".");
+  Map currentValue = {
+    operator: (value is String || value is DateTime)
+        ? '"$value"'
+        : value is List
+            ? listValue(value)
+            : value
+  };
   for (var obj in split.reversed) {
     currentValue = {obj: currentValue};
   }
   return currentValue;
 }
 
+Map orExpr(List<Map> list) {
+  return {"_or": list};
+}
+
+Map andExpr(List<Map> list) {
+  return {"_or": list};
+}
+
+String listValue(List values) {
+  if (values.runtimeType.toString() == "List<String>") {
+    return '["${values.join('","')}"]';
+  } else {
+    return values.join(",");
+  }
+}
+
 Map orderExpr(String path, String order) {
-  List split = path.split(".");
+  List split = path.toLowerCase().split(".");
   Map currentValue = {};
   for (var obj in split.reversed) {
     if (currentValue.isEmpty) {
@@ -276,7 +298,7 @@ subscriptionHasura(String sql) async {
 {
    "type":"connection_init",
    "payload":{
-      "lazy":true
+      "lazy":true,
    }
 }      
       """;
@@ -286,23 +308,50 @@ subscriptionHasura(String sql) async {
    "id":"${const Uuid().v4()}",
    "type":"start",
    "payload":{
-      "query":"${sql.replaceAll("\n", "")}"
+      "query":"subscription ${sql.replaceAll(r'"', r'\"').replaceAll('\n', " ")}"
    }
 }      
       """;
 
   Map<String, String> headers = {};
   headers["Authorization"] = "Bearer ${jwt!}";
-  WebSocket webSocket;
-  try {
-    webSocket = await WebSocket.connect("${config.schemeHasura == "http" ? "ws" : "wss"}://${config.ipHasura}:${config.portaHasura}/v1/graphql", headers: headers);
-  } on Exception catch (e) {
-    throw e.toString();
-  } catch (e) {
-    throw e.toString();
-  }
 
+  var uri = Uri.parse("${config.schemeHasura == "http" ? "ws" : "wss"}://${config.ipHasura}:${config.portaHasura}/v1/graphql");
+  WebSocket webSocket = await WebSocket.connect(uri.toString(), headers: headers);
   webSocket.add(init);
   webSocket.add(start);
   return webSocket;
+}
+
+T? eventAsOneHasura<T extends Entidade>(String event, T entidade) {
+  var decode = json.decode(event);
+  if (decode["type"] == "data" && decode["payload"] != null) {
+    var nomeTabela = entidade.runtimeType.toString().toLowerCase();
+    List dados = decode["payload"]["data"][nomeTabela + config.hasuraSufix];
+    if (dados.isEmpty) {
+      return null;
+    } else if (dados.length > 1) {
+      throw PararError("Mais de uma entidade");
+    }
+    T retorno = entidade.mapToClass(dados[0]);
+    return retorno;
+  }
+  return null;
+}
+
+List<T>? eventAsListHasura<T extends Entidade>(String event, T entidade) {
+  var decode = json.decode(event);
+  if (decode["type"] == "data" && decode["payload"] != null) {
+    var nomeTabela = entidade.runtimeType.toString().toLowerCase();
+    List dados = decode["payload"]["data"][nomeTabela + config.hasuraSufix];
+    if (dados.isEmpty) {
+      return null;
+    }
+    List<T> retorno = [];
+    for (var obj in dados) {
+      retorno.add(entidade.mapToClass(obj));
+    }
+    return retorno;
+  }
+  return null;
 }

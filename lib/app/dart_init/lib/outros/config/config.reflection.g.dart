@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.2.8
+// BUILDER: reflection_factory/2.4.4
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -9,6 +9,8 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 // ignore_for_file: camel_case_types
 // ignore_for_file: camel_case_extensions
+// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: unnecessary_const
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
@@ -20,7 +22,7 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.2.8');
+  static final Version _version = Version.parse('2.4.4');
 
   Version get reflectionFactoryVersion => _version;
 
@@ -42,7 +44,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
     return _objectReflections[object] ??= Config$reflection._(object);
   }
 
-  Config$reflection._([Config? object]) : super(Config, 'Config', object);
+  Config$reflection._([Config? object]) : super(Config, r'Config', object);
 
   static bool _registered = false;
   @override
@@ -97,8 +99,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   @override
   List<String> get constructorsNames => _constructorsNames;
 
-  static final Map<String, ConstructorReflection<Config>> _constructors =
-      <String, ConstructorReflection<Config>>{};
+  static final Map<String, ConstructorReflection<Config>> _constructors = {};
 
   @override
   ConstructorReflection<Config>? constructor(String constructorName) {
@@ -147,12 +148,18 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   static const List<String> _fieldsNames = const <String>[
     'arquivoConf',
     'banco',
+    'email',
+    'emailPassword',
+    'emailServer',
     'googleSecretOS',
     'googleSecretWeb',
     'hasuraAdminSecret',
     'hasuraSharedSecret',
     'hasuraSource',
     'hasuraSufix',
+    'imageAccessKey',
+    'imageSecretKey',
+    'imageStorage',
     'ipBanco',
     'ipHasura',
     'portaBanco',
@@ -169,10 +176,9 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   List<String> get fieldsNames => _fieldsNames;
 
   static final Map<String, FieldReflection<Config, dynamic>> _fieldsNoObject =
-      <String, FieldReflection<Config, dynamic>>{};
+      {};
 
-  final Map<String, FieldReflection<Config, dynamic>> _fieldsObject =
-      <String, FieldReflection<Config, dynamic>>{};
+  final Map<String, FieldReflection<Config, dynamic>> _fieldsObject = {};
 
   @override
   FieldReflection<Config, T>? field<T>(String fieldName, [Config? obj]) {
@@ -228,7 +234,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.arquivoConf = v,
           obj,
           false,
-          false,
         );
       case 'portaservidor':
         return FieldReflection<Config, int>(
@@ -240,7 +245,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => () => o!.portaServidor,
           (o) => (v) => o!.portaServidor = v,
           obj,
-          false,
           false,
         );
       case 'sembastdbname':
@@ -254,7 +258,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.sembastDbName = v,
           obj,
           false,
-          false,
         );
       case 'sslbanco':
         return FieldReflection<Config, bool>(
@@ -266,7 +269,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => () => o!.sslBanco,
           (o) => (v) => o!.sslBanco = v,
           obj,
-          false,
           false,
         );
       case 'ipbanco':
@@ -280,7 +282,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.ipBanco = v,
           obj,
           false,
-          false,
         );
       case 'portabanco':
         return FieldReflection<Config, int>(
@@ -292,7 +293,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => () => o!.portaBanco,
           (o) => (v) => o!.portaBanco = v,
           obj,
-          false,
           false,
         );
       case 'banco':
@@ -306,7 +306,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.banco = v,
           obj,
           false,
-          false,
         );
       case 'usuario':
         return FieldReflection<Config, String>(
@@ -318,7 +317,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => () => o!.usuario,
           (o) => (v) => o!.usuario = v,
           obj,
-          false,
           false,
         );
       case 'senha':
@@ -332,7 +330,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.senha = v,
           obj,
           false,
-          false,
         );
       case 'schemehasura':
         return FieldReflection<Config, String>(
@@ -344,7 +341,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => () => o!.schemeHasura,
           (o) => (v) => o!.schemeHasura = v,
           obj,
-          false,
           false,
         );
       case 'iphasura':
@@ -358,7 +354,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.ipHasura = v,
           obj,
           false,
-          false,
         );
       case 'portahasura':
         return FieldReflection<Config, int>(
@@ -370,7 +365,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => () => o!.portaHasura,
           (o) => (v) => o!.portaHasura = v,
           obj,
-          false,
           false,
         );
       case 'hasurasource':
@@ -384,7 +378,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.hasuraSource = v,
           obj,
           false,
-          false,
         );
       case 'hasurasufix':
         return FieldReflection<Config, String>(
@@ -396,7 +389,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => () => o!.hasuraSufix,
           (o) => (v) => o!.hasuraSufix = v,
           obj,
-          false,
           false,
         );
       case 'hasurasharedsecret':
@@ -410,7 +402,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.hasuraSharedSecret = v,
           obj,
           false,
-          false,
         );
       case 'hasuraadminsecret':
         return FieldReflection<Config, String>(
@@ -422,7 +413,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => () => o!.hasuraAdminSecret,
           (o) => (v) => o!.hasuraAdminSecret = v,
           obj,
-          false,
           false,
         );
       case 'googlesecretweb':
@@ -436,7 +426,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.googleSecretWeb = v,
           obj,
           false,
-          false,
         );
       case 'googlesecretos':
         return FieldReflection<Config, String>(
@@ -449,11 +438,115 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           (o) => (v) => o!.googleSecretOS = v,
           obj,
           false,
+        );
+      case 'imagestorage':
+        return FieldReflection<Config, String>(
+          this,
+          Config,
+          __TR.tString,
+          'imageStorage',
+          false,
+          (o) => () => o!.imageStorage,
+          (o) => (v) => o!.imageStorage = v,
+          obj,
+          false,
+        );
+      case 'imageaccesskey':
+        return FieldReflection<Config, String>(
+          this,
+          Config,
+          __TR.tString,
+          'imageAccessKey',
+          false,
+          (o) => () => o!.imageAccessKey,
+          (o) => (v) => o!.imageAccessKey = v,
+          obj,
+          false,
+        );
+      case 'imagesecretkey':
+        return FieldReflection<Config, String>(
+          this,
+          Config,
+          __TR.tString,
+          'imageSecretKey',
+          false,
+          (o) => () => o!.imageSecretKey,
+          (o) => (v) => o!.imageSecretKey = v,
+          obj,
+          false,
+        );
+      case 'emailserver':
+        return FieldReflection<Config, String>(
+          this,
+          Config,
+          __TR.tString,
+          'emailServer',
+          false,
+          (o) => () => o!.emailServer,
+          (o) => (v) => o!.emailServer = v,
+          obj,
+          false,
+        );
+      case 'email':
+        return FieldReflection<Config, String>(
+          this,
+          Config,
+          __TR.tString,
+          'email',
+          false,
+          (o) => () => o!.email,
+          (o) => (v) => o!.email = v,
+          obj,
+          false,
+        );
+      case 'emailpassword':
+        return FieldReflection<Config, String>(
+          this,
+          Config,
+          __TR.tString,
+          'emailPassword',
+          false,
+          (o) => () => o!.emailPassword,
+          (o) => (v) => o!.emailPassword = v,
+          obj,
           false,
         );
       default:
         return null;
     }
+  }
+
+  @override
+  Map<String, dynamic> getFieldsValues(Config? obj,
+      {bool withHashCode = false}) {
+    obj ??= object;
+    return <String, dynamic>{
+      'arquivoConf': obj?.arquivoConf,
+      'portaServidor': obj?.portaServidor,
+      'sembastDbName': obj?.sembastDbName,
+      'sslBanco': obj?.sslBanco,
+      'ipBanco': obj?.ipBanco,
+      'portaBanco': obj?.portaBanco,
+      'banco': obj?.banco,
+      'usuario': obj?.usuario,
+      'senha': obj?.senha,
+      'schemeHasura': obj?.schemeHasura,
+      'ipHasura': obj?.ipHasura,
+      'portaHasura': obj?.portaHasura,
+      'hasuraSource': obj?.hasuraSource,
+      'hasuraSufix': obj?.hasuraSufix,
+      'hasuraSharedSecret': obj?.hasuraSharedSecret,
+      'hasuraAdminSecret': obj?.hasuraAdminSecret,
+      'googleSecretWeb': obj?.googleSecretWeb,
+      'googleSecretOS': obj?.googleSecretOS,
+      'imageStorage': obj?.imageStorage,
+      'imageAccessKey': obj?.imageAccessKey,
+      'imageSecretKey': obj?.imageSecretKey,
+      'emailServer': obj?.emailServer,
+      'email': obj?.email,
+      'emailPassword': obj?.emailPassword,
+      if (withHashCode) 'hashCode': obj?.hashCode,
+    };
   }
 
   static const List<String> _staticFieldsNames = const <String>[];
@@ -462,7 +555,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  FieldReflection<Config, T>? staticField<T>(String fieldName) => null;
+  StaticFieldReflection<Config, T>? staticField<T>(String fieldName) => null;
 
   static const List<String> _methodsNames = const <String>[
     'classToMap',
@@ -481,10 +574,9 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Config, dynamic>> _methodsNoObject =
-      <String, MethodReflection<Config, dynamic>>{};
+      {};
 
-  final Map<String, MethodReflection<Config, dynamic>> _methodsObject =
-      <String, MethodReflection<Config, dynamic>>{};
+  final Map<String, MethodReflection<Config, dynamic>> _methodsObject = {};
 
   @override
   MethodReflection<Config, R>? method<R>(String methodName, [Config? obj]) {
@@ -539,7 +631,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.classToMap,
             obj,
-            false,
             null,
             null,
             null,
@@ -553,7 +644,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.toJson,
             obj,
-            false,
             null,
             null,
             null,
@@ -567,7 +657,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.classToString,
             obj,
-            false,
             null,
             null,
             null,
@@ -581,7 +670,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.listClassToString,
             obj,
-            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -595,7 +683,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.dbMaptoClassMap,
             obj,
-            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -616,7 +703,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.stringToClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tString, 'string', false, true)],
             null,
             null,
@@ -630,7 +716,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.mapToClass,
             obj,
-            false,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(
@@ -651,7 +736,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.listMapToListClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
             null,
             null,
@@ -665,7 +749,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.listStringToListClass,
             obj,
-            false,
             const <__PR>[__PR(__TR.tString, 'listString', false, true)],
             null,
             null,
@@ -680,7 +763,6 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             false,
             (o) => o!.reflect,
             obj,
-            false,
             null,
             null,
             null,
@@ -695,35 +777,34 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   @override
   List<String> get staticMethodsNames => _staticMethodsNames;
 
-  static final Map<String, MethodReflection<Config, dynamic>> _staticMethods =
-      <String, MethodReflection<Config, dynamic>>{};
+  static final Map<String, StaticMethodReflection<Config, dynamic>>
+      _staticMethods = {};
 
   @override
-  MethodReflection<Config, R>? staticMethod<R>(String methodName) {
+  StaticMethodReflection<Config, R>? staticMethod<R>(String methodName) {
     var m = _staticMethods[methodName];
     if (m != null) {
-      return m as MethodReflection<Config, R>;
+      return m as StaticMethodReflection<Config, R>;
     }
     m = _staticMethodImpl(methodName);
     if (m == null) return null;
     _staticMethods[methodName] = m;
-    return m as MethodReflection<Config, R>;
+    return m as StaticMethodReflection<Config, R>;
   }
 
-  MethodReflection<Config, dynamic>? _staticMethodImpl(String methodName) {
+  StaticMethodReflection<Config, dynamic>? _staticMethodImpl(
+      String methodName) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
-        return MethodReflection<Config, dynamic>(
+        return StaticMethodReflection<Config, dynamic>(
             this,
             Config,
             'fromJson',
             __TR.tDynamic,
             false,
-            (o) => Config.fromJson,
-            null,
-            true,
+            () => Config.fromJson,
             const <__PR>[
               __PR(
                   __TR<Map<dynamic, dynamic>>(

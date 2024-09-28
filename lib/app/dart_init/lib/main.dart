@@ -6,11 +6,13 @@ import 'package:sentry/sentry.dart';
 
 import 'endpoints/shelf_init.dart';
 import 'main.reflectable.dart';
+import 'outros/config/config.dart';
 import 'outros/criar_banco.dart';
 import 'outros/logger.dart';
 import 'routers.g.dart';
 main() async {
   initializeReflectable();
+  await configurar(showConfig: true);
   int numberOfProcessors = Platform.numberOfProcessors;
   await criarBanco();
   print("processadores: $numberOfProcessors");
@@ -27,6 +29,7 @@ main() async {
 serverStart(Map map) async {
   runZonedGuarded(() async {
     initializeReflectable();
+    await configurar();
     await initSentry();
     if (map.containsKey("schedules")) {
       Function init = map["schedules"];

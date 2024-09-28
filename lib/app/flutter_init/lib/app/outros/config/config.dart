@@ -28,6 +28,7 @@ class Config with _$Serial{
   int portaHasura = const int.fromEnvironment("portaHasura", defaultValue: 6001);
   String hasuraSource = const String.fromEnvironment('hasuraSource', defaultValue: 'default');
   String hasuraSufix = const String.fromEnvironment('hasuraSufix', defaultValue: '');
+  String imageStorage = const String.fromEnvironment('imageStorage', defaultValue: 'server');
 
 
   static fromJson(Map map) {
@@ -37,6 +38,12 @@ class Config with _$Serial{
 }
 
 configurar() async {
+
+  var classToMap = config.classToMap();
+  for (var obj in classToMap.entries) {
+    print("${obj.key}: ${obj.value}");
+  }
+
   if(config.arquivoConf == false){
     return;
   }

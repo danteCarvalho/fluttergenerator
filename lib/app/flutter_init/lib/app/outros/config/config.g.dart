@@ -6,9 +6,59 @@ part of 'config.dart';
 // MyCustomGenerator
 // **************************************************************************
 
-Config _$ConfigFromJson(Map json) => Config();
+Config _$ConfigFromJson(Map json) => Config()
+  ..arquivoConf = json['arquivoConf'] != null
+      ? json['arquivoConf'] as bool
+      : const bool.fromEnvironment('arquivoConf', defaultValue: false)
+  ..portaApp = json['portaApp'] != null
+      ? (json['portaApp'] as num).toInt()
+      : const int.fromEnvironment("portaApp", defaultValue: 8001)
+  ..sembastDbName = json['sembastDbName'] != null
+      ? json['sembastDbName'] as String
+      : const String.fromEnvironment("sembastDbName",
+          defaultValue: "testeSembast.db")
+  ..schemeServidor = json['schemeServidor'] != null
+      ? json['schemeServidor'] as String
+      : const String.fromEnvironment('schemeServidor', defaultValue: 'http')
+  ..ipServidor = json['ipServidor'] != null
+      ? json['ipServidor'] as String
+      : const String.fromEnvironment('ipServidor', defaultValue: 'localhost')
+  ..portaServidor = json['portaServidor'] != null
+      ? (json['portaServidor'] as num).toInt()
+      : const int.fromEnvironment("portaServidor", defaultValue: 7001)
+  ..schemeHasura = json['schemeHasura'] != null
+      ? json['schemeHasura'] as String
+      : const String.fromEnvironment('schemeHasura', defaultValue: 'http')
+  ..ipHasura = json['ipHasura'] != null
+      ? json['ipHasura'] as String
+      : const String.fromEnvironment('ipHasura', defaultValue: 'localhost')
+  ..portaHasura = json['portaHasura'] != null
+      ? (json['portaHasura'] as num).toInt()
+      : const int.fromEnvironment("portaHasura", defaultValue: 6001)
+  ..hasuraSource = json['hasuraSource'] != null
+      ? json['hasuraSource'] as String
+      : const String.fromEnvironment('hasuraSource', defaultValue: 'default')
+  ..hasuraSufix = json['hasuraSufix'] != null
+      ? json['hasuraSufix'] as String
+      : const String.fromEnvironment('hasuraSufix', defaultValue: '')
+  ..imageStorage = json['imageStorage'] != null
+      ? json['imageStorage'] as String
+      : const String.fromEnvironment('imageStorage', defaultValue: 'server');
 
-Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{};
+Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
+      'arquivoConf': instance.arquivoConf,
+      'portaApp': instance.portaApp,
+      'sembastDbName': instance.sembastDbName,
+      'schemeServidor': instance.schemeServidor,
+      'ipServidor': instance.ipServidor,
+      'portaServidor': instance.portaServidor,
+      'schemeHasura': instance.schemeHasura,
+      'ipHasura': instance.ipHasura,
+      'portaHasura': instance.portaHasura,
+      'hasuraSource': instance.hasuraSource,
+      'hasuraSufix': instance.hasuraSufix,
+      'imageStorage': instance.imageStorage,
+    };
 
 mixin _$Serial {
   Map<String, dynamic> classToMap() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutterutils/flutterutils.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 
 import '../app_store.dart';
@@ -13,7 +14,6 @@ class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   RootAppBarWidgetState createState() => RootAppBarWidgetState();
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
@@ -41,6 +41,7 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
           },
           itemBuilder: (BuildContext context) {
             List<PopupMenuItem> list = [];
+
             if (usuario == null) {
               list.add(PopupMenuItem(
                 child: const Text("Início"),
@@ -101,7 +102,7 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
 
     List<DropdownMenuItem<String>> list = [];
     for (Route route in historyObserver.history.reversed) {
-      if(route.settings.name == null){
+      if (route.settings.name == null) {
         continue;
       }
       String nome = route.settings.name!;
@@ -117,13 +118,29 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
     var dropdownButton = DropdownButton<String>(
       items: list,
       onChanged: (Object? value) {},
-      value: list.isEmpty?null: list.first.value,
+      value: list.isEmpty ? null : list.first.value,
     );
 
     Widget? leading;
     if (list.length > 1) {
       leading = IconButton(onPressed: () => Modular.to.pop(), icon: const Icon(Icons.arrow_back));
     }
+
+    var home = GestureDetector(
+      onTap: () {
+        if (app.usuario == null) {
+          Modular.to.popUntil((p0) => false);
+          Modular.to.pushReplacementNamed("/home/");
+        } else {
+          Modular.to.popUntil((p0) => false);
+          Modular.to.pushReplacementNamed("/logado/");
+        }
+      },
+      child: Image.asset(
+        "assets/feshow_texto.png",
+        width: porcentagemMenorLado(context, 20),
+      ),
+    );
 
     return AppBar(
       title: Row(
