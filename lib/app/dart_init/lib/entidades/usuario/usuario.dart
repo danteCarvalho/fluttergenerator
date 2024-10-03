@@ -23,7 +23,7 @@ class Usuario extends Entidade with _$Serial {
 
   @Coluna(nullable: false)
   String nome = "";
-  @Coluna(tipo: "character varying")
+  @Coluna(tipo: "character varying",selectable: false)
   String senha = "";
   @Coluna(unique: true)
   String? username;

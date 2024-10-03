@@ -30,7 +30,7 @@ abstract class EsqueciSenhaStoreBase with Store {
         "email": email,
         "origin": Uri.base.origin,
       };
-      var responseBody = await serverPost(map, "api/esqueciSenha");
+      var responseBody = await serverPost(map, "esqueciSenha");
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {

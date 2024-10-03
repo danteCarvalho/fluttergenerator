@@ -21,7 +21,7 @@ void errorTest() {
 
 String getImageLink(Imagem imagem) {
   if (config.imageStorage == "servidor") {
-    return "${config.schemeServidor}://${config.ipServidor}:${config.portaServidor}/api/getImagem?id=${imagem.id}";
+    return "${config.schemeServidor}://${config.ipServidor}:${config.portaServidor}/getImagem?id=${imagem.id}";
   } else {
     return "https://danteteste.s3.amazonaws.com/images/${imagem.id}";
   }
@@ -96,7 +96,7 @@ googleLoginOs() async {
     map["client_id"] = "44265153130-ifekhq2splh4lcf25tuvhrikaha73dhf.apps.googleusercontent.com";
     map["redirect_uri"] = "http://localhost:${config.portaApp}";
     map["tipo"] = "OS";
-    var responseBody = await serverPost(map, "api/googleLogin");
+    var responseBody = await serverPost(map, "googleLogin");
     if (nuloOuvazio([responseBody])) {
       return;
     }
@@ -131,7 +131,7 @@ verificaJwt() async {
     Map map = {};
     map["jwt"] = jwt;
     map["usuarioId"] = app.usuario?.id;
-    var responseBody = await serverPost(map, "api/verificaAtualizaJwt");
+    var responseBody = await serverPost(map, "verificaAtualizaJwt");
     if (responseBody.isNotEmpty) {
       Map responseMap = json.decode(responseBody);
       if (responseMap.containsKey("jwt")) {

@@ -33,7 +33,7 @@ abstract class VerificaEmail2StoreBase with Store {
     try {
       app.startWait();
       Map map = {"id": id};
-      var responseBody = await serverPost(map, "api/verificaEmail2");
+      var responseBody = await serverPost(map, "verificaEmail2");
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {

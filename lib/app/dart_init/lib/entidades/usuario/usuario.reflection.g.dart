@@ -260,7 +260,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
           (o) => (v) => o!.senha = v,
           obj,
           false,
-          const [Coluna(tipo: "character varying")],
+          const [Coluna(tipo: "character varying", selectable: false)],
         );
       case 'username':
         return FieldReflection<Usuario, String?>(

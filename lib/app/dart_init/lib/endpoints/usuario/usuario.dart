@@ -48,6 +48,7 @@ class UsuarioEndpoint extends RouterMethods {
   }
 
   @Route.post('/editUsuario')
+  @RouterMethodAnnotation(authorization: true)
   Future<Response> editUsuario(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);
@@ -60,6 +61,7 @@ class UsuarioEndpoint extends RouterMethods {
   }
 
   @Route.post('/verificaEmail')
+  @RouterMethodAnnotation(authorization: true)
   Future<Response> verificaEmail(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);

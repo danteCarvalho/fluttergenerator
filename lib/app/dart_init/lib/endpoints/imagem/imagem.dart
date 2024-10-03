@@ -19,6 +19,7 @@ part 'imagem.reflection.g.dart';
 @routerAnnotation
 class ImagemEndpoint extends RouterMethods {
   @Route.post('/addImagem')
+  @RouterMethodAnnotation(authorization: true)
   Future<Response> addImagem(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);
@@ -30,6 +31,7 @@ class ImagemEndpoint extends RouterMethods {
   }
 
   @Route.post('/editImagem')
+  @RouterMethodAnnotation(authorization: true)
   Future<Response> editImagem(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);

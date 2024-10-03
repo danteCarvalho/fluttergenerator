@@ -26,7 +26,7 @@ abstract class GoogleLoginStoreBase with Store {
     map["client_id"] = "44265153130-1i4ub5c40hjq8i6420j5d71dc601ump1.apps.googleusercontent.com";
     map["redirect_uri"] = "${Uri.base.origin}/googleLogin/";
     map["tipo"] = "web";
-    var responseBody = await serverPost(map, "api/googleLogin");
+    var responseBody = await serverPost(map, "googleLogin");
     if (nuloOuvazio([responseBody])) {
       return;
     }

@@ -264,7 +264,10 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
-            const [Route.post('/editUsuario')]);
+            const [
+              Route.post('/editUsuario'),
+              RouterMethodAnnotation(authorization: true)
+            ]);
       case 'verificaemail':
         return MethodReflection<UsuarioEndpoint, Future<Response>>(
             this,
@@ -277,7 +280,10 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
-            const [Route.post('/verificaEmail')]);
+            const [
+              Route.post('/verificaEmail'),
+              RouterMethodAnnotation(authorization: true)
+            ]);
       case 'verificaemail2':
         return MethodReflection<UsuarioEndpoint, Future<Response>>(
             this,

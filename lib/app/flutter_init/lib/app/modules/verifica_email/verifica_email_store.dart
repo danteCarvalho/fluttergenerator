@@ -59,7 +59,7 @@ abstract class VerificaEmailStoreBase with Store {
         "usuario": app.usuario?.id,
         "origin": Uri.base.origin,
       };
-      var responseBody = await serverJwtPost(map, "api/verificaEmail");
+      var responseBody = await serverJwtPost(map, "verificaEmail");
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {

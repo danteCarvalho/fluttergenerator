@@ -70,7 +70,7 @@ abstract class ListaMensalidadesStoreBase with Store {
     pagamentoSistema.referencia = id;
     Map map = {};
     map["pagamentoSistema"] = pagamentoSistema;
-    var responseBody = await serverJwtPost(map, "api/addPagamentoSistema");
+    var responseBody = await serverJwtPost(map, "addPagamentoSistema");
     if (!nuloOuvazio([responseBody])) {
       Map responseMap = json.decode(responseBody);
       if (responseMap.containsKey("pagamentoSistema")) {
@@ -98,7 +98,7 @@ abstract class ListaMensalidadesStoreBase with Store {
     debugPrint(status);
     if (status == "approved") {
       Map map = {"pagamentoSistema": pagamentoSistema};
-      var responseBody = await serverJwtPost(map, "api/finalizarPagamentoSistema");
+      var responseBody = await serverJwtPost(map, "finalizarPagamentoSistema");
       if (!nuloOuvazio([responseBody])) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {

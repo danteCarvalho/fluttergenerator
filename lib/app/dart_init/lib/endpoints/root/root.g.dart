@@ -1,22 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'teste.dart';
+part of 'root.dart';
 
 // **************************************************************************
 // ShelfRouterGenerator
 // **************************************************************************
 
-Router _$TesteEndpointRouter(TesteEndpoint service) {
+Router _$RootEndpointRouter(RootEndpoint service) {
   final router = Router();
   router.add(
     'GET',
-    r'/teste',
+    r'/',
     service.teste,
-  );
-  router.add(
-    'GET',
-    r'/teste2',
-    service.teste2,
   );
   return router;
 }

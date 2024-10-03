@@ -262,7 +262,10 @@ class PagamentoSistemaEndpoint$reflection
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
-            const [Route.post('/addPagamentoSistema')]);
+            const [
+              Route.post('/addPagamentoSistema'),
+              RouterMethodAnnotation(authorization: true)
+            ]);
       case 'finalizarpagamentosistema':
         return MethodReflection<PagamentoSistemaEndpoint, Future<Response>>(
             this,
@@ -275,7 +278,10 @@ class PagamentoSistemaEndpoint$reflection
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
-            const [Route.post('/finalizarPagamentoSistema')]);
+            const [
+              Route.post('/finalizarPagamentoSistema'),
+              RouterMethodAnnotation(authorization: true)
+            ]);
       case 'getrouter':
         return MethodReflection<PagamentoSistemaEndpoint, Router>(
             this,

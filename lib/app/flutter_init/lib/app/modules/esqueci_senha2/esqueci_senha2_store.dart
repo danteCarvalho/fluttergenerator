@@ -42,7 +42,7 @@ abstract class EsqueciSenha2StoreBase with Store {
         "id": id,
         "senha":senha
       };
-      var responseBody = await serverPost(map, "api/esqueciSenha2");
+      var responseBody = await serverPost(map, "esqueciSenha2");
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {

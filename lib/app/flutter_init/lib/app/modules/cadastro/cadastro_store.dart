@@ -59,7 +59,7 @@ abstract class CadastroStoreBase with Store {
         return;
       }
       Map map = {"usuario": usuario, "imagem": imagem};
-      var responseBody = await serverPost(map, "api/addUsuario");
+      var responseBody = await serverPost(map, "addUsuario");
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("usuario")) {

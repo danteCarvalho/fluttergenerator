@@ -2,6 +2,7 @@
 
 import 'package:teste/endpoints/usuario/usuario.dart';
 import 'package:teste/endpoints/teste/teste.dart';
+import 'package:teste/endpoints/root/root.dart';
 import 'package:teste/endpoints/pagamento_sistema/pagamento_sistema.dart';
 import 'package:teste/endpoints/login/login.dart';
 import 'package:teste/endpoints/jwt/jwt.dart';

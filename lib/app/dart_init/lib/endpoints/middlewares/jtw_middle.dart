@@ -3,8 +3,7 @@ import 'package:shelf/shelf.dart';
 
 import '../../outros/security.dart';
 
-Middleware jwtMiddleware() {
-  // CORS Settings
+Middleware jwtMiddleware(List<String> excecoes) {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': '*',
@@ -28,18 +27,3 @@ Middleware jwtMiddleware() {
     },
   );
 }
-
-List<String> excecoes = [
-  "",
-  "favicon.ico",
-  "api/teste",
-  "api/login",
-  "api/googleLogin",
-  "api/verificaAtualizaJwt",
-  "api/addUsuario",
-  "api/getImagem",
-  "api/listarAgendamentos",
-  "api/verificaEmail2",
-  "api/esqueciSenha",
-  "api/esqueciSenha2",
-];

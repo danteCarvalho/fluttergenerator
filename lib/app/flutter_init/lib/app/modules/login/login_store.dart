@@ -28,7 +28,7 @@ abstract class LoginStoreBase with Store {
     try {
       app.startWait();
       Map map = {"email": login, "senha": senha};
-      var responseBody = await serverPost(map, "api/login");
+      var responseBody = await serverPost(map, "login");
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("usuario")) {

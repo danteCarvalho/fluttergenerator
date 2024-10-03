@@ -14,6 +14,7 @@ part 'pagamento_sistema.reflection.g.dart';
 @routerAnnotation
 class PagamentoSistemaEndpoint extends RouterMethods {
   @Route.post('/addPagamentoSistema')
+  @RouterMethodAnnotation(authorization: true)
   Future<Response> addPagamentoSistema(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);
@@ -25,6 +26,7 @@ class PagamentoSistemaEndpoint extends RouterMethods {
   }
 
   @Route.post('/finalizarPagamentoSistema')
+  @RouterMethodAnnotation(authorization: true)
   Future<Response> finalizarPagamentoSistema(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);

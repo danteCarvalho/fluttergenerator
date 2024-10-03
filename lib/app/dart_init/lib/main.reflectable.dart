@@ -2,12 +2,13 @@
 // https://github.com/dart-lang/reflectable.
 import 'dart:core';
 import 'package:dartutils/src/generators/router/router.dart' as prefix9;
-import 'package:teste/endpoints/google_login/google_login.dart' as prefix16;
-import 'package:teste/endpoints/imagem/imagem.dart' as prefix15;
-import 'package:teste/endpoints/jwt/jwt.dart' as prefix14;
-import 'package:teste/endpoints/login/login.dart' as prefix13;
+import 'package:teste/endpoints/google_login/google_login.dart' as prefix17;
+import 'package:teste/endpoints/imagem/imagem.dart' as prefix16;
+import 'package:teste/endpoints/jwt/jwt.dart' as prefix15;
+import 'package:teste/endpoints/login/login.dart' as prefix14;
 import 'package:teste/endpoints/pagamento_sistema/pagamento_sistema.dart'
-    as prefix12;
+    as prefix13;
+import 'package:teste/endpoints/root/root.dart' as prefix12;
 import 'package:teste/endpoints/teste/teste.dart' as prefix11;
 import 'package:teste/endpoints/usuario/usuario.dart' as prefix10;
 import 'package:teste/entidades/app_link/app_link.dart' as prefix2;
@@ -392,8 +393,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null,
             null),
         r.NonGenericClassMirrorImpl(
-            r'PagamentoSistemaEndpoint',
-            r'.PagamentoSistemaEndpoint',
+            r'RootEndpoint',
+            r'.RootEndpoint',
             134217735,
             2,
             const prefix9.RouterAnnotation(),
@@ -403,9 +404,27 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1,
             {},
             {},
+            {r'': (bool b) => () => b ? prefix12.RootEndpoint() : null},
+            -1,
+            -1,
+            const <int>[-1],
+            null,
+            null),
+        r.NonGenericClassMirrorImpl(
+            r'PagamentoSistemaEndpoint',
+            r'.PagamentoSistemaEndpoint',
+            134217735,
+            3,
+            const prefix9.RouterAnnotation(),
+            const <int>[3],
+            const <int>[],
+            const <int>[],
+            -1,
+            {},
+            {},
             {
               r'': (bool b) =>
-                  () => b ? prefix12.PagamentoSistemaEndpoint() : null
+                  () => b ? prefix13.PagamentoSistemaEndpoint() : null
             },
             -1,
             -1,
@@ -416,15 +435,15 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'LoginEndpoint',
             r'.LoginEndpoint',
             134217735,
-            3,
+            4,
             const prefix9.RouterAnnotation(),
-            const <int>[3],
+            const <int>[4],
             const <int>[],
             const <int>[],
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix13.LoginEndpoint() : null},
+            {r'': (bool b) => () => b ? prefix14.LoginEndpoint() : null},
             -1,
             -1,
             const <int>[-1],
@@ -434,15 +453,15 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'JwtEndpoint',
             r'.JwtEndpoint',
             134217735,
-            4,
+            5,
             const prefix9.RouterAnnotation(),
-            const <int>[4],
+            const <int>[5],
             const <int>[],
             const <int>[],
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix14.JwtEndpoint() : null},
+            {r'': (bool b) => () => b ? prefix15.JwtEndpoint() : null},
             -1,
             -1,
             const <int>[-1],
@@ -452,15 +471,15 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'ImagemEndpoint',
             r'.ImagemEndpoint',
             134217735,
-            5,
+            6,
             const prefix9.RouterAnnotation(),
-            const <int>[5],
+            const <int>[6],
             const <int>[],
             const <int>[],
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix15.ImagemEndpoint() : null},
+            {r'': (bool b) => () => b ? prefix16.ImagemEndpoint() : null},
             -1,
             -1,
             const <int>[-1],
@@ -470,15 +489,15 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'GoogleLoginEndpoint',
             r'.GoogleLoginEndpoint',
             134217735,
-            6,
+            7,
             const prefix9.RouterAnnotation(),
-            const <int>[6],
+            const <int>[7],
             const <int>[],
             const <int>[],
             -1,
             {},
             {},
-            {r'': (bool b) => () => b ? prefix16.GoogleLoginEndpoint() : null},
+            {r'': (bool b) => () => b ? prefix17.GoogleLoginEndpoint() : null},
             -1,
             -1,
             const <int>[-1],
@@ -499,19 +518,22 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.MethodMirrorImpl(r'', 64, 5, -1, 5, 5, null, const <int>[],
             const prefix9.RouterAnnotation(), null),
         r.MethodMirrorImpl(r'', 64, 6, -1, 6, 6, null, const <int>[],
+            const prefix9.RouterAnnotation(), null),
+        r.MethodMirrorImpl(r'', 64, 7, -1, 7, 7, null, const <int>[],
             const prefix9.RouterAnnotation(), null)
       ],
       <m.ParameterMirror>[],
       <Type>[
         prefix10.UsuarioEndpoint,
         prefix11.TesteEndpoint,
-        prefix12.PagamentoSistemaEndpoint,
-        prefix13.LoginEndpoint,
-        prefix14.JwtEndpoint,
-        prefix15.ImagemEndpoint,
-        prefix16.GoogleLoginEndpoint
+        prefix12.RootEndpoint,
+        prefix13.PagamentoSistemaEndpoint,
+        prefix14.LoginEndpoint,
+        prefix15.JwtEndpoint,
+        prefix16.ImagemEndpoint,
+        prefix17.GoogleLoginEndpoint
       ],
-      7,
+      8,
       {},
       {},
       null,

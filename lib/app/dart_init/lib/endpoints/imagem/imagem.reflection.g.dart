@@ -245,7 +245,10 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
-            const [Route.post('/addImagem')]);
+            const [
+              Route.post('/addImagem'),
+              RouterMethodAnnotation(authorization: true)
+            ]);
       case 'editimagem':
         return MethodReflection<ImagemEndpoint, Future<Response>>(
             this,
@@ -258,7 +261,10 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
-            const [Route.post('/editImagem')]);
+            const [
+              Route.post('/editImagem'),
+              RouterMethodAnnotation(authorization: true)
+            ]);
       case 'getimagem':
         return MethodReflection<ImagemEndpoint, Future<Response>>(
             this,

@@ -15,7 +15,7 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_type_check
 
-part of 'teste.dart';
+part of 'root.dart';
 
 typedef __TR<T> = TypeReflection<T>;
 typedef __TI<T> = TypeInfo<T>;
@@ -30,23 +30,23 @@ mixin __ReflectionMixin {
 }
 
 // ignore: non_constant_identifier_names
-TesteEndpoint TesteEndpoint$fromJson(Map<String, Object?> map) =>
-    TesteEndpoint$reflection.staticInstance.fromJson(map);
+RootEndpoint RootEndpoint$fromJson(Map<String, Object?> map) =>
+    RootEndpoint$reflection.staticInstance.fromJson(map);
 // ignore: non_constant_identifier_names
-TesteEndpoint TesteEndpoint$fromJsonEncoded(String jsonEncoded) =>
-    TesteEndpoint$reflection.staticInstance.fromJsonEncoded(jsonEncoded);
+RootEndpoint RootEndpoint$fromJsonEncoded(String jsonEncoded) =>
+    RootEndpoint$reflection.staticInstance.fromJsonEncoded(jsonEncoded);
 
-class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
+class RootEndpoint$reflection extends ClassReflection<RootEndpoint>
     with __ReflectionMixin {
-  static final Expando<TesteEndpoint$reflection> _objectReflections = Expando();
+  static final Expando<RootEndpoint$reflection> _objectReflections = Expando();
 
-  factory TesteEndpoint$reflection([TesteEndpoint? object]) {
+  factory RootEndpoint$reflection([RootEndpoint? object]) {
     if (object == null) return staticInstance;
-    return _objectReflections[object] ??= TesteEndpoint$reflection._(object);
+    return _objectReflections[object] ??= RootEndpoint$reflection._(object);
   }
 
-  TesteEndpoint$reflection._([TesteEndpoint? object])
-      : super(TesteEndpoint, r'TesteEndpoint', object);
+  RootEndpoint$reflection._([RootEndpoint? object])
+      : super(RootEndpoint, r'RootEndpoint', object);
 
   static bool _registered = false;
   @override
@@ -62,50 +62,50 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   Version get languageVersion => Version.parse('3.4.0');
 
   @override
-  TesteEndpoint$reflection withObject([TesteEndpoint? obj]) =>
-      TesteEndpoint$reflection(obj)..setupInternalsWith(this);
+  RootEndpoint$reflection withObject([RootEndpoint? obj]) =>
+      RootEndpoint$reflection(obj)..setupInternalsWith(this);
 
-  static TesteEndpoint$reflection? _withoutObjectInstance;
+  static RootEndpoint$reflection? _withoutObjectInstance;
   @override
-  TesteEndpoint$reflection withoutObjectInstance() => staticInstance;
+  RootEndpoint$reflection withoutObjectInstance() => staticInstance;
 
-  static TesteEndpoint$reflection get staticInstance =>
-      _withoutObjectInstance ??= TesteEndpoint$reflection._();
+  static RootEndpoint$reflection get staticInstance =>
+      _withoutObjectInstance ??= RootEndpoint$reflection._();
 
   @override
-  TesteEndpoint$reflection getStaticInstance() => staticInstance;
+  RootEndpoint$reflection getStaticInstance() => staticInstance;
 
   static bool _boot = false;
   static void boot() {
     if (_boot) return;
     _boot = true;
-    TesteEndpoint$reflection.staticInstance;
+    RootEndpoint$reflection.staticInstance;
   }
 
   @override
   bool get hasDefaultConstructor => true;
   @override
-  TesteEndpoint? createInstanceWithDefaultConstructor() => TesteEndpoint();
+  RootEndpoint? createInstanceWithDefaultConstructor() => RootEndpoint();
 
   @override
   bool get hasEmptyConstructor => false;
   @override
-  TesteEndpoint? createInstanceWithEmptyConstructor() => null;
+  RootEndpoint? createInstanceWithEmptyConstructor() => null;
   @override
   bool get hasNoRequiredArgsConstructor => false;
   @override
-  TesteEndpoint? createInstanceWithNoRequiredArgsConstructor() => null;
+  RootEndpoint? createInstanceWithNoRequiredArgsConstructor() => null;
 
   static const List<String> _constructorsNames = const <String>[''];
 
   @override
   List<String> get constructorsNames => _constructorsNames;
 
-  static final Map<String, ConstructorReflection<TesteEndpoint>> _constructors =
+  static final Map<String, ConstructorReflection<RootEndpoint>> _constructors =
       {};
 
   @override
-  ConstructorReflection<TesteEndpoint>? constructor(String constructorName) {
+  ConstructorReflection<RootEndpoint>? constructor(String constructorName) {
     var c = _constructors[constructorName];
     if (c != null) return c;
     c = _constructorImpl(constructorName);
@@ -114,14 +114,14 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
     return c;
   }
 
-  ConstructorReflection<TesteEndpoint>? _constructorImpl(
+  ConstructorReflection<RootEndpoint>? _constructorImpl(
       String constructorName) {
     var lc = constructorName.trim().toLowerCase();
 
     switch (lc) {
       case '':
-        return ConstructorReflection<TesteEndpoint>(this, TesteEndpoint, '',
-            () => () => TesteEndpoint(), null, null, null, null);
+        return ConstructorReflection<RootEndpoint>(this, RootEndpoint, '',
+            () => () => RootEndpoint(), null, null, null, null);
       default:
         return null;
     }
@@ -141,7 +141,7 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   bool get hasMethodToJson => false;
 
   @override
-  Object? callMethodToJson([TesteEndpoint? obj]) => null;
+  Object? callMethodToJson([RootEndpoint? obj]) => null;
 
   static const List<String> _fieldsNames = const <String>[];
 
@@ -149,12 +149,12 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   List<String> get fieldsNames => _fieldsNames;
 
   @override
-  FieldReflection<TesteEndpoint, T>? field<T>(String fieldName,
-          [TesteEndpoint? obj]) =>
+  FieldReflection<RootEndpoint, T>? field<T>(String fieldName,
+          [RootEndpoint? obj]) =>
       null;
 
   @override
-  Map<String, dynamic> getFieldsValues(TesteEndpoint? obj,
+  Map<String, dynamic> getFieldsValues(RootEndpoint? obj,
           {bool withHashCode = false}) =>
       {
         if (withHashCode) 'hashCode': obj?.hashCode,
@@ -166,28 +166,27 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   List<String> get staticFieldsNames => _staticFieldsNames;
 
   @override
-  StaticFieldReflection<TesteEndpoint, T>? staticField<T>(String fieldName) =>
+  StaticFieldReflection<RootEndpoint, T>? staticField<T>(String fieldName) =>
       null;
 
   static const List<String> _methodsNames = const <String>[
     'getRouter',
     'reflect',
-    'teste',
-    'teste2'
+    'teste'
   ];
 
   @override
   List<String> get methodsNames => _methodsNames;
 
-  static final Map<String, MethodReflection<TesteEndpoint, dynamic>>
+  static final Map<String, MethodReflection<RootEndpoint, dynamic>>
       _methodsNoObject = {};
 
-  final Map<String, MethodReflection<TesteEndpoint, dynamic>> _methodsObject =
+  final Map<String, MethodReflection<RootEndpoint, dynamic>> _methodsObject =
       {};
 
   @override
-  MethodReflection<TesteEndpoint, R>? method<R>(String methodName,
-      [TesteEndpoint? obj]) {
+  MethodReflection<RootEndpoint, R>? method<R>(String methodName,
+      [RootEndpoint? obj]) {
     if (obj == null) {
       if (object != null) {
         return _methodObjectImpl<R>(methodName);
@@ -200,22 +199,21 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
     return _methodNoObjectImpl<R>(methodName)?.withObject(obj);
   }
 
-  MethodReflection<TesteEndpoint, R>? _methodNoObjectImpl<R>(
-      String methodName) {
+  MethodReflection<RootEndpoint, R>? _methodNoObjectImpl<R>(String methodName) {
     final m = _methodsNoObject[methodName];
     if (m != null) {
-      return m as MethodReflection<TesteEndpoint, R>;
+      return m as MethodReflection<RootEndpoint, R>;
     }
     final m2 = _methodImpl(methodName, null);
     if (m2 == null) return null;
     _methodsNoObject[methodName] = m2;
-    return m2 as MethodReflection<TesteEndpoint, R>;
+    return m2 as MethodReflection<RootEndpoint, R>;
   }
 
-  MethodReflection<TesteEndpoint, R>? _methodObjectImpl<R>(String methodName) {
+  MethodReflection<RootEndpoint, R>? _methodObjectImpl<R>(String methodName) {
     final m = _methodsObject[methodName];
     if (m != null) {
-      return m as MethodReflection<TesteEndpoint, R>;
+      return m as MethodReflection<RootEndpoint, R>;
     }
     var m2 = _methodNoObjectImpl<R>(methodName);
     if (m2 == null) return null;
@@ -224,17 +222,17 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
     return m2;
   }
 
-  MethodReflection<TesteEndpoint, dynamic>? _methodImpl(
-      String methodName, TesteEndpoint? obj) {
+  MethodReflection<RootEndpoint, dynamic>? _methodImpl(
+      String methodName, RootEndpoint? obj) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'teste':
-        return MethodReflection<TesteEndpoint, Future<Response>>(
+        return MethodReflection<RootEndpoint, Future<Response>>(
             this,
-            TesteEndpoint,
+            RootEndpoint,
             'teste',
             __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
             false,
@@ -243,27 +241,11 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
-            const [Route.get('/teste')]);
-      case 'teste2':
-        return MethodReflection<TesteEndpoint, Future<Response>>(
-            this,
-            TesteEndpoint,
-            'teste2',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
-            false,
-            (o) => o!.teste2,
-            obj,
-            const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
-            null,
-            null,
-            const [
-              Route.get('/teste2'),
-              RouterMethodAnnotation(authorization: true)
-            ]);
+            const [Route.get('/')]);
       case 'getrouter':
-        return MethodReflection<TesteEndpoint, Router>(
+        return MethodReflection<RootEndpoint, Router>(
             this,
-            TesteEndpoint,
+            RootEndpoint,
             'getRouter',
             __TR<Router>(Router),
             false,
@@ -274,9 +256,9 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             null,
             const [override]);
       case 'reflect':
-        return MethodReflection<TesteEndpoint, ClassReflection<dynamic>>(
+        return MethodReflection<RootEndpoint, ClassReflection<dynamic>>(
             this,
-            TesteEndpoint,
+            RootEndpoint,
             'reflect',
             __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
@@ -298,37 +280,35 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   @override
-  StaticMethodReflection<TesteEndpoint, R>? staticMethod<R>(
-          String methodName) =>
+  StaticMethodReflection<RootEndpoint, R>? staticMethod<R>(String methodName) =>
       null;
 }
 
-extension TesteEndpoint$reflectionExtension on TesteEndpoint {
-  /// Returns a [ClassReflection] for type [TesteEndpoint]. (Generated by [ReflectionFactory])
-  ClassReflection<TesteEndpoint> get reflection =>
-      TesteEndpoint$reflection(this);
+extension RootEndpoint$reflectionExtension on RootEndpoint {
+  /// Returns a [ClassReflection] for type [RootEndpoint]. (Generated by [ReflectionFactory])
+  ClassReflection<RootEndpoint> get reflection => RootEndpoint$reflection(this);
 
-  /// Returns a JSON for type [TesteEndpoint]. (Generated by [ReflectionFactory])
+  /// Returns a JSON for type [RootEndpoint]. (Generated by [ReflectionFactory])
   Object? toJson({bool duplicatedEntitiesAsID = false}) =>
       reflection.toJson(null, null, duplicatedEntitiesAsID);
 
-  /// Returns a JSON [Map] for type [TesteEndpoint]. (Generated by [ReflectionFactory])
+  /// Returns a JSON [Map] for type [RootEndpoint]. (Generated by [ReflectionFactory])
   Map<String, dynamic>? toJsonMap({bool duplicatedEntitiesAsID = false}) =>
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
-  /// Returns an encoded JSON [String] for type [TesteEndpoint]. (Generated by [ReflectionFactory])
+  /// Returns an encoded JSON [String] for type [RootEndpoint]. (Generated by [ReflectionFactory])
   String toJsonEncoded(
           {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
       reflection.toJsonEncoded(
           pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
-  /// Returns a JSON for type [TesteEndpoint] using the class fields. (Generated by [ReflectionFactory])
+  /// Returns a JSON for type [RootEndpoint] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
       .toJsonFromFields(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 }
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
-      TesteEndpoint$reflection(),
+      RootEndpoint$reflection(),
     ];
 
 List<Reflection>? _siblingsReflectionList;
