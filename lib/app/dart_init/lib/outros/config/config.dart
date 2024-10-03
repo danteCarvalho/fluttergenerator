@@ -35,8 +35,8 @@ class Config with _$Serial {
   String googleSecretWeb = const String.fromEnvironment('googleSecretWeb', defaultValue: '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');
   String googleSecretOS = const String.fromEnvironment('googleSecretOS', defaultValue: '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');
   String imageStorage = const String.fromEnvironment('imageStorage', defaultValue: 'server');
-  String imageAccessKey = const String.fromEnvironment('imageAccessKey', defaultValue: 'AKIARXTC5FOTVKH4GMFA');
-  String imageSecretKey = const String.fromEnvironment('imageSecretKey', defaultValue: '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');
+  String imageAccessKey = const String.fromEnvironment('imageAccessKey', defaultValue: 'jhs2JSYsVzQTMuusp5eqWiRdcCZMLA1+TmKnpCZUkXqfToHj12xx/5W1W9JaDu1a');
+  String imageSecretKey = const String.fromEnvironment('imageSecretKey', defaultValue: 'Exy69hLnQ25XcVzTs5xfMfpbHJ/MbmuPKfL0f8cOG1cLobBd/vN/MVWlgIDdB1PWzH3xohnHLgtMoXkq8NA6+Q==');
   String emailServer = const String.fromEnvironment('emailServer', defaultValue: 'microsoft');
   String email = const String.fromEnvironment('email', defaultValue: 'myappteste@outlook.com');
   String emailPassword = const String.fromEnvironment('emailPassword', defaultValue: 'XWZ%L5dY!!Q9nrg');

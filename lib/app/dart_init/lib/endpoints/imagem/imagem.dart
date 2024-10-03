@@ -95,7 +95,7 @@ Future<Imagem> saveImage(Imagem imagem) async {
     imagem = await saveImage2(imagem);
     var s3 = amazon.S3(
       region: "us-east-1",
-      credentials: amazon.AwsClientCredentials(accessKey: config.imageAccessKey, secretKey: config.imageSecretKey),
+      credentials: amazon.AwsClientCredentials(accessKey: decryptString(config.imageAccessKey), secretKey: decryptString(config.imageSecretKey)),
     );
     String key = 'images/${imagem.id}';
     var decode = base64.decode(value);

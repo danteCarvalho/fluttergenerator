@@ -14,8 +14,8 @@ dart compile exe \
 -Dusuario=postgres \
 -Dsenha=fkd8 \
 -DimageStorage=amazon \
--DimageAccessKey=AKIARXTC5FOTVKH4GMFA \
--DimageSecretKey=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 \
+-DimageAccessKey=jhs2JSYsVzQTMuusp5eqWiRdcCZMLA1+TmKnpCZUkXqfToHj12xx \
+-DimageSecretKey=Exy69hLnQ25XcVzTs5xfMfpbHJ/MbmuPKfL0f8cOG1cLobBd/vN/MVWlgIDdB1PWzH3xohnHLgtMoXkq8NA6+Q== \
 -DemailServer=microsoft \
 -Demail=myappteste@outlook.com \
 -DemailPassword=XWZ%L5dY!!Q9nrg \
