@@ -79,6 +79,12 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
                   Modular.to.pushReplacementNamed("/logado/");
                 },
               ));
+              list.add(PopupMenuItem(
+                child: const Text("Minhas informações"),
+                value: () {
+                  Modular.to.pushNamed("minhasInformacoes/");
+                },
+              ));
               if (usuario.admin == true) {
                 list.add(PopupMenuItem(
                   child: const Text("Mensalidades"),

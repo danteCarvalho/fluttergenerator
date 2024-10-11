@@ -23,6 +23,12 @@ class EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
   }
 
   @override
+  void dispose() {
+    store.server?.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     List<Widget> columnWidgets = [];
     var column = Column(

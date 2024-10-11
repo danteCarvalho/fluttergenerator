@@ -116,11 +116,14 @@ class UsuarioEndpoint extends RouterMethods {
 
   enviarEmail(Message message) async {
     String email = config.email;
-    String password = config.emailPassword;
+    String password = decryptString(config.emailPassword);
     if (config.emailServer == "microsoft") {
       var smtpServer = SmtpServer('smtp-mail.outlook.com', username: email, password: password);
       await send(message, smtpServer);
-    } else if (config.emailServer == "google") {}
+    } else if (config.emailServer == "google") {
+      var smtpServer =  gmailSaslXoauth2(email, password);
+      await send(message, smtpServer);
+    }
   }
 
   @Route.post('/esqueciSenha')
@@ -178,7 +181,6 @@ class UsuarioEndpoint extends RouterMethods {
     }
     return Response.ok(json.encode(resposta));
   }
-
 
   @override
   Router getRouter() {

@@ -32,14 +32,15 @@ class Config with _$Serial {
   String hasuraSufix = const String.fromEnvironment('hasuraSufix', defaultValue: '');
   String hasuraSharedSecret = const String.fromEnvironment('hasuraSharedSecret', defaultValue: 'tkGStmgfm6h8MV8IJNB60amcRZ93GHo8');
   String hasuraAdminSecret = const String.fromEnvironment('hasuraAdminSecret', defaultValue: 'myadminsecretkey');
-  String googleSecretWeb = const String.fromEnvironment('googleSecretWeb', defaultValue: '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');
-  String googleSecretOS = const String.fromEnvironment('googleSecretOS', defaultValue: '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');
-  String imageStorage = const String.fromEnvironment('imageStorage', defaultValue: 'server');
+  String googleSecretWeb = const String.fromEnvironment('googleSecretWeb', defaultValue: 'DkW+Fa/vG2s0wcECx0vjSrPkbKOfMEd86SS9tXAxT6+SO3iPGsaGIbPhrlcdeci7Hpo0s28vfiB4dhkA28tSRg==');
+  String googleSecretOS = const String.fromEnvironment('googleSecretOS', defaultValue: 'RqaJs+kJxK+tKHw1NtrmwdeG0fuPK28CQvaIskZoO8A48Zqh/pe391V0EQruxiFBy4e39NeAdxyLZ1vpJbFZmg==');
+  String googleClientIdOS = const String.fromEnvironment('googleClientIdOS', defaultValue: '44265153130-ifekhq2splh4lcf25tuvhrikaha73dhf.apps.googleusercontent.com');
+  String imageStorage = const String.fromEnvironment('imageStorage', defaultValue: 'amazon');
   String imageAccessKey = const String.fromEnvironment('imageAccessKey', defaultValue: 'hgVG0yGhI3ELhjU7ZwnRU2LiZWtkxCv90hKbL+IDdyYoe+0Z6/qf2jciVEP1yCu7');
   String imageSecretKey = const String.fromEnvironment('imageSecretKey', defaultValue: '/clI8ca/I1M8aUFnH7zt+EM+fKJEDxJ7NMJhCGoneZPexkno8sQEvtjgETV2vggGbGV+6rpbXEK8en2wDbTuCw==');
-  String emailServer = const String.fromEnvironment('emailServer', defaultValue: 'microsoft');
-  String email = const String.fromEnvironment('email', defaultValue: 'myappteste@outlook.com');
-  String emailPassword = const String.fromEnvironment('emailPassword', defaultValue: 'XWZ%L5dY!!Q9nrg');
+  String emailServer = const String.fromEnvironment('emailServer', defaultValue: 'google');
+  String email = const String.fromEnvironment('email', defaultValue: 'dantecarvalhocosta@gmail.com');
+  String emailPassword = const String.fromEnvironment('emailPassword', defaultValue: 'jep6+SmgYxNTbsQo+FysUy4lol1+97CNTevy0kwAkiby9gQxjhvxtG4bFluhjbPXRBK+7aZpWmZ2ZIzmzgaXgEzr9Mx+ChCSRbqk8RC226Ed4axBVsO9vQL/lwmRRpkRuoS7RfVthdqNnqzv7o9CEf30zm61mPhzvKYXaqzd3cqJwaWYfVY5Aw9qMnRu5aql9kPaGDVzFZCrQ+C4SHPPsLPTee9PKb+5ghNihnh8hEMOF2MdPgIEjhWLCUL5btCp4qqilmRswUYQ4OufYMXsF58LpZaY/iebL1hyRu3KVxis/X+J4mShLRlMD1KmpS06');
 
   static fromJson(Map map) {
     return _$ConfigFromJson(map);

@@ -28,7 +28,7 @@ class Config with _$Serial{
   int portaHasura = const int.fromEnvironment("portaHasura", defaultValue: 6001);
   String hasuraSource = const String.fromEnvironment('hasuraSource', defaultValue: 'default');
   String hasuraSufix = const String.fromEnvironment('hasuraSufix', defaultValue: '');
-  String imageStorage = const String.fromEnvironment('imageStorage', defaultValue: 'server');
+  String imageStorage = const String.fromEnvironment('imageStorage', defaultValue: 'amazon');
 
 
   static fromJson(Map map) {

@@ -10,6 +10,7 @@ import 'modules/home/home_module.dart';
 import 'modules/lista_mensalidades/lista_mensalidades_module.dart';
 import 'modules/logado/logado_module.dart';
 import 'modules/login/login_module.dart';
+import 'modules/minhas_informacoes/minhas_informacoes_module.dart';
 import 'modules/root/root_module.dart';
 import 'modules/verifica_email/verifica_email_module.dart';
 import 'modules/verifica_email2/verifica_email2_module.dart';
@@ -35,5 +36,6 @@ class AppModule extends Module {
     r.module("/esqueciSenha", module: EsqueciSenhaModule());
     r.module("/esqueciSenha2", module: EsqueciSenha2Module());
     r.module("/logado", module: LogadoModule(), guards: [LoginGuard()]);
+    r.module("/logado/minhasInformacoes", module: MinhasInformacoesModule());
   }
 }

@@ -183,6 +183,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
     'telefone',
     'ultimoPagamentoCompleto',
     'ultimoPagamentoGerado',
+    'username',
     'valorPagamento'
   ];
 
@@ -263,6 +264,18 @@ class Usuario$reflection extends ClassReflection<Usuario>
           obj,
           false,
           const [observable],
+        );
+      case 'username':
+        return FieldReflection<Usuario, String?>(
+          this,
+          _UsuarioBase,
+          __TR.tString,
+          'username',
+          true,
+          (o) => () => o!.username,
+          (o) => (v) => o!.username = v,
+          obj,
+          false,
         );
       case 'email':
         return FieldReflection<Usuario, String>(
@@ -615,6 +628,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
     return <String, dynamic>{
       'nome': obj?.nome,
       'senha': obj?.senha,
+      'username': obj?.username,
       'email': obj?.email,
       'cpfCnpj': obj?.cpfCnpj,
       'dataNascimento': obj?.dataNascimento,

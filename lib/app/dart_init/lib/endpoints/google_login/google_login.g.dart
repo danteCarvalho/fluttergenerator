@@ -13,5 +13,10 @@ Router _$GoogleLoginEndpointRouter(GoogleLoginEndpoint service) {
     r'/googleLogin',
     service.googleLogin,
   );
+  router.add(
+    'GET',
+    r'/googleToken',
+    service.googleToken,
+  );
   return router;
 }

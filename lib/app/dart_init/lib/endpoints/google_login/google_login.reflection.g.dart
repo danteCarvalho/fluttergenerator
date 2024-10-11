@@ -184,6 +184,8 @@ class GoogleLoginEndpoint$reflection
   static const List<String> _methodsNames = const <String>[
     'getRouter',
     'googleLogin',
+    'googleToken',
+    'obtainAccessCredentials',
     'reflect'
   ];
 
@@ -256,6 +258,32 @@ class GoogleLoginEndpoint$reflection
             null,
             null,
             const [Route.post('/googleLogin')]);
+      case 'googletoken':
+        return MethodReflection<GoogleLoginEndpoint, Future<Response>>(
+            this,
+            GoogleLoginEndpoint,
+            'googleToken',
+            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            false,
+            (o) => o!.googleToken,
+            obj,
+            const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
+            null,
+            null,
+            const [Route.get('/googleToken')]);
+      case 'obtainaccesscredentials':
+        return MethodReflection<GoogleLoginEndpoint, Future<String>>(
+            this,
+            GoogleLoginEndpoint,
+            'obtainAccessCredentials',
+            __TR.tFutureString,
+            false,
+            (o) => o!.obtainAccessCredentials,
+            obj,
+            null,
+            null,
+            null,
+            null);
       case 'getrouter':
         return MethodReflection<GoogleLoginEndpoint, Router>(
             this,

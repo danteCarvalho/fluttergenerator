@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
@@ -25,7 +26,7 @@ abstract class EsqueciSenha2StoreBase with Store {
 
 
   init(EsqueciSenha2PageState state) async {
-    Map queryParameters = Uri.base.queryParameters;
+    Map queryParameters = kIsWeb ? Uri.base.queryParameters : Modular.args.queryParams;
     String? id = queryParameters["id"];
     if (id == null) {
       Modular.to.popUntil((p0) => false);

@@ -66,28 +66,36 @@ Config _$ConfigFromJson(Map json) => Config()
       ? json['googleSecretOS'] as String
       : const String.fromEnvironment('googleSecretOS',
           defaultValue: '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')
+  ..googleClientIdOS = json['googleClientIdOS'] != null
+      ? json['googleClientIdOS'] as String
+      : const String.fromEnvironment('googleClientIdOS',
+          defaultValue:
+              '44265153130-ifekhq2splh4lcf25tuvhrikaha73dhf.apps.googleusercontent.com')
   ..imageStorage = json['imageStorage'] != null
       ? json['imageStorage'] as String
-      : const String.fromEnvironment('imageStorage', defaultValue: 'server')
+      : const String.fromEnvironment('imageStorage', defaultValue: 'amazon')
   ..imageAccessKey = json['imageAccessKey'] != null
       ? json['imageAccessKey'] as String
       : const String.fromEnvironment('imageAccessKey',
-          defaultValue: 'AKIARXTC5FOTVKH4GMFA')
+          defaultValue:
+              'hgVG0yGhI3ELhjU7ZwnRU2LiZWtkxCv90hKbL+IDdyYoe+0Z6/qf2jciVEP1yCu7')
   ..imageSecretKey = json['imageSecretKey'] != null
       ? json['imageSecretKey'] as String
       : const String.fromEnvironment('imageSecretKey',
-          defaultValue: 'RE3fT4JXhBihweOqvRomPs8KUq6LB5yQl57ZA4KM')
+          defaultValue:
+              '/clI8ca/I1M8aUFnH7zt+EM+fKJEDxJ7NMJhCGoneZPexkno8sQEvtjgETV2vggGbGV+6rpbXEK8en2wDbTuCw==')
   ..emailServer = json['emailServer'] != null
       ? json['emailServer'] as String
-      : const String.fromEnvironment('emailServer', defaultValue: 'microsoft')
+      : const String.fromEnvironment('emailServer', defaultValue: 'google')
   ..email = json['email'] != null
       ? json['email'] as String
       : const String.fromEnvironment('email',
-          defaultValue: 'myappteste@outlook.com')
+          defaultValue: 'dantecarvalhocosta@gmail.com')
   ..emailPassword = json['emailPassword'] != null
       ? json['emailPassword'] as String
       : const String.fromEnvironment('emailPassword',
-          defaultValue: 'XWZ%L5dY!!Q9nrg');
+          defaultValue:
+              'ya29.a0AcM612zNywRogmB4RZXBT_8pV8igC30opoOiFNMCP2ceRrUBPQOlGmTba2LFo0KbYsvrxMOaAYAGLvbBFtlVXjX6TtCyjtp_fgRnVaFmy9mFvcahC7waOFYc3OQh6bL7ESHzrlDKdorezQRp38vHcFA_Fq0di8-0YcrdOsXwaCgYKAQkSARESFQHGX2Mi3WELh7nx_cZMsTlavZJhbQ0175');
 
 Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'arquivoConf': instance.arquivoConf,
@@ -108,6 +116,7 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'hasuraAdminSecret': instance.hasuraAdminSecret,
       'googleSecretWeb': instance.googleSecretWeb,
       'googleSecretOS': instance.googleSecretOS,
+      'googleClientIdOS': instance.googleClientIdOS,
       'imageStorage': instance.imageStorage,
       'imageAccessKey': instance.imageAccessKey,
       'imageSecretKey': instance.imageSecretKey,

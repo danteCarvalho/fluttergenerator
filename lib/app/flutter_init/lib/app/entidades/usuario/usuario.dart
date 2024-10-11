@@ -27,6 +27,7 @@ abstract class _UsuarioBase extends Entidade with Store {
   String nome = "";
   @observable
   String senha = "";
+  String? username;
   @observable
   String email = "";
   String? cpfCnpj;

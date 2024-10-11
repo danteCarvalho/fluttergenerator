@@ -151,6 +151,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
     'email',
     'emailPassword',
     'emailServer',
+    'googleClientIdOS',
     'googleSecretOS',
     'googleSecretWeb',
     'hasuraAdminSecret',
@@ -439,6 +440,18 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           obj,
           false,
         );
+      case 'googleclientidos':
+        return FieldReflection<Config, String>(
+          this,
+          Config,
+          __TR.tString,
+          'googleClientIdOS',
+          false,
+          (o) => () => o!.googleClientIdOS,
+          (o) => (v) => o!.googleClientIdOS = v,
+          obj,
+          false,
+        );
       case 'imagestorage':
         return FieldReflection<Config, String>(
           this,
@@ -539,6 +552,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
       'hasuraAdminSecret': obj?.hasuraAdminSecret,
       'googleSecretWeb': obj?.googleSecretWeb,
       'googleSecretOS': obj?.googleSecretOS,
+      'googleClientIdOS': obj?.googleClientIdOS,
       'imageStorage': obj?.imageStorage,
       'imageAccessKey': obj?.imageAccessKey,
       'imageSecretKey': obj?.imageSecretKey,

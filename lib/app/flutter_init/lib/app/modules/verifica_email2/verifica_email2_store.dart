@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
@@ -19,7 +20,7 @@ abstract class VerificaEmail2StoreBase with Store {
   bool verificado = false;
 
   init(VerificaEmail2PageState state) async {
-    Map queryParameters = Uri.base.queryParameters;
+    Map queryParameters = kIsWeb ? Uri.base.queryParameters : Modular.args.queryParams;
     String? id = queryParameters["id"];
     if (id == null) {
       Modular.to.popUntil((p0) => false);
@@ -33,7 +34,7 @@ abstract class VerificaEmail2StoreBase with Store {
     try {
       app.startWait();
       Map map = {"id": id};
-      var responseBody = await serverPost(map, "verificaEmail2");
+      var responseBody = await serverPost(map,"verificaEmail2");
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {

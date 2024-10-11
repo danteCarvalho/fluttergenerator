@@ -43,7 +43,7 @@ Config _$ConfigFromJson(Map json) => Config()
       : const String.fromEnvironment('hasuraSufix', defaultValue: '')
   ..imageStorage = json['imageStorage'] != null
       ? json['imageStorage'] as String
-      : const String.fromEnvironment('imageStorage', defaultValue: 'server');
+      : const String.fromEnvironment('imageStorage', defaultValue: 'amazon');
 
 Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'arquivoConf': instance.arquivoConf,

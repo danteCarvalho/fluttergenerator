@@ -21,6 +21,7 @@ Usuario _$UsuarioFromJson(Map json) => Usuario()
       : null
   ..nome = json['nome'] != null ? json['nome'] as String : ""
   ..senha = json['senha'] != null ? json['senha'] as String : ""
+  ..username = json['username'] != null ? json['username'] as String? : null
   ..email = json['email'] != null ? json['email'] as String : ""
   ..cpfCnpj = json['cpfCnpj'] != null ? json['cpfCnpj'] as String? : null
   ..dataNascimento = json['dataNascimento'] != null
@@ -71,6 +72,7 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
       'dataDelecao': instance.dataDelecao?.toIso8601String(),
       'nome': instance.nome,
       'senha': instance.senha,
+      'username': instance.username,
       'email': instance.email,
       'cpfCnpj': instance.cpfCnpj,
       'dataNascimento': instance.dataNascimento.toIso8601String(),

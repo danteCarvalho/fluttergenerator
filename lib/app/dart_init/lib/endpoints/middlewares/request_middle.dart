@@ -3,12 +3,12 @@ import 'package:shelf/shelf.dart';
 
 import '../../outros/security.dart';
 
-Middleware jwtMiddleware(List<String> excecoes) {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': '*',
     'Access-Control-Allow-Headers': '*',
   };
+Middleware requestMiddleware(List<String> excecoes) {
   return createMiddleware(
     requestHandler: (Request request) {
       if (request.method == "OPTIONS") {

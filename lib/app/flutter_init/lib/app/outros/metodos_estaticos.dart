@@ -29,6 +29,10 @@ String getImageLink(Imagem imagem) {
 
 void uriTest() {
   Modular.to.path;
+  Modular.args.params;
+  Modular.args.fragment;
+  Modular.args.data;
+  Modular.args.queryParams;
   Modular.args.uri.scheme;
   Modular.args.uri.path;
   Modular.args.uri.host;

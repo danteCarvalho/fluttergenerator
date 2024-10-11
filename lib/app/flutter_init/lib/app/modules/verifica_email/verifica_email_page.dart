@@ -25,6 +25,7 @@ class VerificaEmailPageState extends State<VerificaEmailPage> {
   @override
   void dispose() {
     store.timer?.cancel();
+    store.server?.close();
     super.dispose();
   }
 
