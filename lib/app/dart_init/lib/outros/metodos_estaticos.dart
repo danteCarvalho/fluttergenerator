@@ -1,4 +1,6 @@
 
+final DateTime initialTime = DateTime( 1);
+
 void uriTest() {
   Uri.base.scheme;
   Uri.base.path;

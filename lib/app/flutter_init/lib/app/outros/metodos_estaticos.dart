@@ -15,8 +15,12 @@ import '../requests/server_requets.dart';
 import 'config/config.dart';
 import 'logger.dart';
 
+final DateTime initialTime = DateTime( 1);
+
 void errorTest() {
-  print(1 ~/ 0);
+  if (kDebugMode) {
+    print(1 ~/ 0);
+  }
 }
 
 String getImageLink(Imagem imagem) {

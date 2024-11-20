@@ -231,9 +231,6 @@ String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
 
 Future<T> insertHasura<T extends Entidade>(T entidade, {String? insertFields, String? excludFields, String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
-  if (entidade.id != null) {
-    throw PararError("insert com id");
-  }
 
   var data = DateTime.now();
 
@@ -298,7 +295,7 @@ mutation MyMutation {
 Future<T> updateHasura<T extends Entidade>(T entidade, {String? updateFields, String? excludFields, String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
 
-  if (entidade.id == null) {
+  if (entidade.id.isNotEmpty) {
     throw PararError("update sem id");
   }
 

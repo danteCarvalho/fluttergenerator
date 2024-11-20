@@ -42,36 +42,35 @@ class PagamentoSistemaUtil {
     return result;
   }
 
-  static mostarQrcode(Map result) async{
+  static mostarQrcode(String qrcodeString, double valor) async{
     AppStore app = Modular.get();
 
-    var pix = result["response"]["point_of_interaction"]["transaction_data"];
 
     var qrcode = LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         var texto = SizedBox(
           width: porcentagemMenorLado(context, 70),
-          child: Text(pix["qr_code"]),
+          child: Text(qrcodeString),
         );
         var copiar = ElevatedButton(
           child: const Text("Pix copia e cola"),
           onPressed: () {
-            FlutterClipboard.copy(pix["qr_code"]);
+            FlutterClipboard.copy(qrcodeString);
             app.mostrarSnackBar("Texto copiado");
           },
         );
-        var qrImage = QrImageView(data: pix["qr_code"],);
+        var qrImage = QrImageView(data: qrcodeString,);
         var qrcode = Dialog(
           child: qrImage,
         );
-        var valor = Text("Valor: ${result["response"]["transaction_amount"]} R\$");
+        var valorText = Text("Valor: $valor R\$");
         List<Widget> columnWidgets = [];
         var column = Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: columnWidgets,
         );
-        columnWidgets.add(valor);
+        columnWidgets.add(valorText);
         columnWidgets.add(Expanded(child: qrcode));
         columnWidgets.add(copiar);
         columnWidgets.add(texto);

@@ -7,7 +7,6 @@ import 'package:mailer/smtp_server.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../daos/hasura_dao.dart';
 import '../../entidades/app_link/app_link.dart';
@@ -19,7 +18,6 @@ import '../../outros/security.dart';
 import '../imagem/imagem.dart';
 
 part 'usuario.g.dart';
-
 part 'usuario.reflection.g.dart';
 
 @EnableReflection()
@@ -42,7 +40,7 @@ class UsuarioEndpoint extends RouterMethods {
       resposta["usuario"] = usuario;
       resposta["jwt"] = jwt;
       return Response.ok(json.encode(resposta));
-    } on ConstraintError catch (e) {
+    } on ConstraintError catch (_) {
       return Response.ok(json.encode({"mensagem": "Usuário já cadastrado"}));
     }
   }
@@ -99,7 +97,7 @@ class UsuarioEndpoint extends RouterMethods {
       await updateHasura(usuario, updateFields: "emailVerificado");
       await updateHasura(appLink);
       resposta["ok"] = "ok";
-    } on NaoEncontrado catch (e, s) {
+    } on NaoEncontrado catch (e, _) {
       resposta["mensagem"] = "Link não encontrado";
     }
     return Response.ok(json.encode(resposta));
@@ -140,7 +138,7 @@ class UsuarioEndpoint extends RouterMethods {
     Usuario usuario;
     try {
       usuario = await selectOneHasura(sql, Usuario());
-    } on NaoEncontrado catch (e, s) {
+    } on NaoEncontrado catch (e, _) {
       resposta["mensagem"] = "Email não encontrado";
       return Response.ok(json.encode(resposta));
     }
@@ -176,7 +174,7 @@ class UsuarioEndpoint extends RouterMethods {
       await updateHasura(usuario, updateFields: "senha");
       await updateHasura(appLink);
       resposta["ok"] = "ok";
-    } on NaoEncontrado catch (e, s) {
+    } on NaoEncontrado catch (e, _) {
       resposta["mensagem"] = "Link não encontrado";
     }
     return Response.ok(json.encode(resposta));

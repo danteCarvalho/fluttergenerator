@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:core';
+import '../../outros/metodos_estaticos.dart';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';
@@ -20,41 +21,22 @@ class Empresa extends Entidade with _$Serial {
     return _$EmpresaFromJson(map2);
   }
 
-  @Coluna(nullable: false)
-  String? nome;
-  @Coluna(nullable: false)
-  double? valorPagamento;
-  String? telefone;
-  String? anydesk;
-  String? whatsapp;
-  double? latitude;
-  double? longitude;
-  @Coluna(nullable: false)
-  DateTime? dataPagamento;
-  DateTime? lastUpdate;
-  DateTime? lastTry;
-  DateTime? ultimoPagamentoCompleto;
-  DateTime? ultimoPagamentoGerado;
-  bool? ambienteProducao;
-  bool? emissaoNormal;
-  bool? impressaoNfce;
-  bool? contingenciaAoDemorar;
-  String? justificativaContingencia;
-  String? tipoGeracaoNota;
-  String? csc;
-  String? idCsc;
-  int? serie;
-  int? numeroNotaFiscal;
-  int? numeroNotaFiscalHomologacao;
-  String? cnpj;
-  String? razaoSocial;
-  String? municipio;
-  String? estado;
-  String? cep;
-  String? bairro;
-  String? logradouro;
-  String? numeroCasa;
-  String? inscricaoEstadual;
-  String? regimeTributario;
-  String? nsu;
+  String nome = "";
+  double valorPagamento = 0;
+  String telefone = "";
+  String anydesk = "";
+  String whatsapp = "";
+  double latitude = 0;
+  double longitude = 0;
+  DateTime dataPagamento = initialTime;
+  DateTime ultimoPagamentoCompleto = initialTime;
+  DateTime ultimoPagamentoGerado = initialTime;
+  String cnpj = "";
+  String razaoSocial = "";
+  String municipio = "";
+  String estado = "";
+  String cep = "";
+  String bairro = "";
+  String logradouro = "";
+  String numeroCasa = "";
 }

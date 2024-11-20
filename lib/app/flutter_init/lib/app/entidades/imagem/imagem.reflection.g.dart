@@ -57,7 +57,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   }
 
   @override
-  Version get languageVersion => Version.parse('3.4.0');
+  Version get languageVersion => Version.parse('3.5.0');
 
   @override
   Imagem$reflection withObject([Imagem? obj]) =>
@@ -267,72 +267,72 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           false,
         );
       case 'id':
-        return FieldReflection<Imagem, String?>(
+        return FieldReflection<Imagem, String>(
           this,
           Entidade,
           __TR.tString,
           'id',
-          true,
+          false,
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
           false,
         );
       case 'id2':
-        return FieldReflection<Imagem, int?>(
+        return FieldReflection<Imagem, int>(
           this,
           Entidade,
           __TR.tInt,
           'id2',
-          true,
+          false,
           (o) => () => o!.id2,
           (o) => (v) => o!.id2 = v,
           obj,
           false,
         );
       case 'ativa':
-        return FieldReflection<Imagem, bool?>(
+        return FieldReflection<Imagem, bool>(
           this,
           Entidade,
           __TR.tBool,
           'ativa',
-          true,
+          false,
           (o) => () => o!.ativa,
           (o) => (v) => o!.ativa = v,
           obj,
           false,
         );
       case 'datacriacao':
-        return FieldReflection<Imagem, DateTime?>(
+        return FieldReflection<Imagem, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataCriacao',
-          true,
+          false,
           (o) => () => o!.dataCriacao,
           (o) => (v) => o!.dataCriacao = v,
           obj,
           false,
         );
       case 'dataedicao':
-        return FieldReflection<Imagem, DateTime?>(
+        return FieldReflection<Imagem, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataEdicao',
-          true,
+          false,
           (o) => () => o!.dataEdicao,
           (o) => (v) => o!.dataEdicao = v,
           obj,
           false,
         );
       case 'datadelecao':
-        return FieldReflection<Imagem, DateTime?>(
+        return FieldReflection<Imagem, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataDelecao',
-          true,
+          false,
           (o) => () => o!.dataDelecao,
           (o) => (v) => o!.dataDelecao = v,
           obj,

@@ -23,7 +23,6 @@ abstract class ListaMensalidadesStoreBase with Store {
   AppStore app = Modular.get();
   @observable
   List<PagamentoSistema> mensalidades = [];
-  String? id;
   Timer? timer;
   CancelableOperation? cancelableOperation;
   PagamentoSistema? pagamentoSistema;
@@ -66,7 +65,7 @@ abstract class ListaMensalidadesStoreBase with Store {
     pagamentoSistema.qrCode = pix["qr_code"];
     pagamentoSistema.pago = false;
     pagamentoSistema.valor = 5;
-    id = result["response"]?["id"].toString();
+    String id = result["response"]["id"].toString();
     pagamentoSistema.referencia = id;
     Map map = {};
     map["pagamentoSistema"] = pagamentoSistema;
@@ -80,16 +79,20 @@ abstract class ListaMensalidadesStoreBase with Store {
         return;
       }
     }
+    mostrarQrcode(pagamentoSistema);
+  }
 
+  mostrarQrcode(PagamentoSistema pagamentoSistema )async{
+    this.pagamentoSistema = pagamentoSistema;
     timer = Timer(const Duration(seconds: 10), verificaPix);
-    await PagamentoSistemaUtil.mostarQrcode(result);
+    await PagamentoSistemaUtil.mostarQrcode(pagamentoSistema.qrCode, pagamentoSistema.valor);
     cancelableOperation?.cancel();
     timer?.cancel();
   }
 
   verificaPix() async {
     debugPrint("Verificando pix");
-    cancelableOperation = CancelableOperation.fromFuture(PagamentoSistemaUtil.buscarPagamento(id!));
+    cancelableOperation = CancelableOperation.fromFuture(PagamentoSistemaUtil.buscarPagamento(pagamentoSistema!.referencia));
     Map result = await cancelableOperation?.value;
     if (result["response"]?["status"] == null) {
       return;

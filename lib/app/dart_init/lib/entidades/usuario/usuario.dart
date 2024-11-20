@@ -4,6 +4,7 @@ import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
+import '../../outros/metodos_estaticos.dart';
 import '../coluna.dart';
 import '../empresa/empresa.dart';
 import '../entidade.dart';
@@ -30,7 +31,7 @@ class Usuario extends Entidade with _$Serial {
   @Coluna(unique: true)
   String email = "";
   String? cpfCnpj;
-  DateTime dataNascimento = DateTime.now();
+  DateTime dataNascimento = initialTime;
   String enderecoLogradouroRua = "";
   String numeroEndereco = "";
   String bairro = "";
@@ -42,9 +43,9 @@ class Usuario extends Entidade with _$Serial {
   bool admin = false;
   Empresa? empresa;
   double? valorPagamento;
-  DateTime? dataPagamento;
-  DateTime? ultimoPagamentoCompleto;
-  DateTime? ultimoPagamentoGerado;
+  DateTime dataPagamento = initialTime;
+  DateTime ultimoPagamentoCompleto = initialTime;
+  DateTime ultimoPagamentoGerado = initialTime;
   String preferenciaNome = "";
   Imagem? imagem;
   double latitude = 0;

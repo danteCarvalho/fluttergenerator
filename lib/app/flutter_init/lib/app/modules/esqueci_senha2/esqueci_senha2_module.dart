@@ -1,7 +1,8 @@
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'esqueci_senha2_store.dart';
+
 import 'esqueci_senha2_page.dart';
+import 'esqueci_senha2_store.dart';
 
 class EsqueciSenha2Module extends Module {
   @override

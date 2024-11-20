@@ -1,5 +1,5 @@
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
 
 import 'verifica_email_store.dart';
@@ -48,10 +48,7 @@ class VerificaEmailPageState extends State<VerificaEmailPage> {
       );
     }
 
-    List<Widget> wrapWidgets = [];
-    var wrap = Wrap(
-      children: wrapWidgets,
-    );
+
     var botao = ElevatedButton(
       onPressed: () => store.enviar(),
       style: ElevatedButton.styleFrom(),

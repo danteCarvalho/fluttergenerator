@@ -68,7 +68,6 @@ class EsqueciSenha2PageState extends State<EsqueciSenha2Page> {
             validator: (v) => processValidations(v, senhaValidations),
           );
 
-          ;
 
           var repita = MyTextFormField(
             "Repita a senha",

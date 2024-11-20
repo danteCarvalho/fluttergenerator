@@ -7,18 +7,18 @@ part of 'app_link.dart';
 // **************************************************************************
 
 AppLink _$AppLinkFromJson(Map json) => AppLink()
-  ..id = json['id'] != null ? json['id'] as String? : null
-  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : null
-  ..ativa = json['ativa'] != null ? json['ativa'] as bool? : null
+  ..id = json['id'] != null ? json['id'] as String : ""
+  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : 0
+  ..ativa = json['ativa'] != null ? json['ativa'] as bool : false
   ..dataCriacao = json['dataCriacao'] != null
       ? DateTime.parse(json['dataCriacao'] as String)
-      : null
+      : initialTime
   ..dataEdicao = json['dataEdicao'] != null
       ? DateTime.parse(json['dataEdicao'] as String)
-      : null
+      : initialTime
   ..dataDelecao = json['dataDelecao'] != null
       ? DateTime.parse(json['dataDelecao'] as String)
-      : null
+      : initialTime
   ..usuario =
       json['usuario'] != null ? Usuario.fromJson(json['usuario'] as Map) : null
   ..service = json['service'] != null ? json['service'] as String : "";
@@ -27,9 +27,9 @@ Map<String, dynamic> _$AppLinkToJson(AppLink instance) => <String, dynamic>{
       'id': instance.id,
       'id2': instance.id2,
       'ativa': instance.ativa,
-      'dataCriacao': instance.dataCriacao?.toIso8601String(),
-      'dataEdicao': instance.dataEdicao?.toIso8601String(),
-      'dataDelecao': instance.dataDelecao?.toIso8601String(),
+      'dataCriacao': instance.dataCriacao.toIso8601String(),
+      'dataEdicao': instance.dataEdicao.toIso8601String(),
+      'dataDelecao': instance.dataDelecao.toIso8601String(),
       'usuario': instance.usuario?.toJson(),
       'service': instance.service,
     };

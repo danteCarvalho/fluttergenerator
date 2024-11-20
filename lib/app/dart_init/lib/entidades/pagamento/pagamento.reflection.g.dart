@@ -221,12 +221,12 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
 
     switch (lc) {
       case 'referencia':
-        return FieldReflection<Pagamento, String?>(
+        return FieldReflection<Pagamento, String>(
           this,
           Pagamento,
           __TR.tString,
           'referencia',
-          true,
+          false,
           (o) => () => o!.referencia,
           (o) => (v) => o!.referencia = v,
           obj,
@@ -234,48 +234,48 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           const [Coluna(nullable: false)],
         );
       case 'qrcode':
-        return FieldReflection<Pagamento, String?>(
+        return FieldReflection<Pagamento, String>(
           this,
           Pagamento,
           __TR.tString,
           'qrCode',
-          true,
+          false,
           (o) => () => o!.qrCode,
           (o) => (v) => o!.qrCode = v,
           obj,
           false,
         );
       case 'pago':
-        return FieldReflection<Pagamento, bool?>(
+        return FieldReflection<Pagamento, bool>(
           this,
           Pagamento,
           __TR.tBool,
           'pago',
-          true,
+          false,
           (o) => () => o!.pago,
           (o) => (v) => o!.pago = v,
           obj,
           false,
         );
       case 'dataconfirmado':
-        return FieldReflection<Pagamento, DateTime?>(
+        return FieldReflection<Pagamento, DateTime>(
           this,
           Pagamento,
           __TR<DateTime>(DateTime),
           'dataConfirmado',
-          true,
+          false,
           (o) => () => o!.dataConfirmado,
           (o) => (v) => o!.dataConfirmado = v,
           obj,
           false,
         );
       case 'link':
-        return FieldReflection<Pagamento, String?>(
+        return FieldReflection<Pagamento, String>(
           this,
           Pagamento,
           __TR.tString,
           'link',
-          true,
+          false,
           (o) => () => o!.link,
           (o) => (v) => o!.link = v,
           obj,
@@ -306,12 +306,12 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           false,
         );
       case 'valor':
-        return FieldReflection<Pagamento, double?>(
+        return FieldReflection<Pagamento, double>(
           this,
           Pagamento,
           __TR.tDouble,
           'valor',
-          true,
+          false,
           (o) => () => o!.valor,
           (o) => (v) => o!.valor = v,
           obj,
@@ -319,12 +319,12 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           const [Coluna(nullable: false)],
         );
       case 'id':
-        return FieldReflection<Pagamento, String?>(
+        return FieldReflection<Pagamento, String>(
           this,
           Entidade,
           __TR.tString,
           'id',
-          true,
+          false,
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
@@ -338,12 +338,12 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           ],
         );
       case 'id2':
-        return FieldReflection<Pagamento, int?>(
+        return FieldReflection<Pagamento, int>(
           this,
           Entidade,
           __TR.tInt,
           'id2',
-          true,
+          false,
           (o) => () => o!.id2,
           (o) => (v) => o!.id2 = v,
           obj,
@@ -351,48 +351,48 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
           const [Coluna(tipo: "bigint", defaultValue: "sequence")],
         );
       case 'ativa':
-        return FieldReflection<Pagamento, bool?>(
+        return FieldReflection<Pagamento, bool>(
           this,
           Entidade,
           __TR.tBool,
           'ativa',
-          true,
+          false,
           (o) => () => o!.ativa,
           (o) => (v) => o!.ativa = v,
           obj,
           false,
         );
       case 'datacriacao':
-        return FieldReflection<Pagamento, DateTime?>(
+        return FieldReflection<Pagamento, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataCriacao',
-          true,
+          false,
           (o) => () => o!.dataCriacao,
           (o) => (v) => o!.dataCriacao = v,
           obj,
           false,
         );
       case 'dataedicao':
-        return FieldReflection<Pagamento, DateTime?>(
+        return FieldReflection<Pagamento, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataEdicao',
-          true,
+          false,
           (o) => () => o!.dataEdicao,
           (o) => (v) => o!.dataEdicao = v,
           obj,
           false,
         );
       case 'datadelecao':
-        return FieldReflection<Pagamento, DateTime?>(
+        return FieldReflection<Pagamento, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataDelecao',
-          true,
+          false,
           (o) => () => o!.dataDelecao,
           (o) => (v) => o!.dataDelecao = v,
           obj,

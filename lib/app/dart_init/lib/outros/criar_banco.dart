@@ -171,6 +171,7 @@ verificaAdmin() async {
     usuario.senha = hashed;
     usuario.email = "admin@teste.com.br";
     usuario.admin = true;
+    usuario.emailVerificado = true;
     await insertHasura(usuario);
   }
 }

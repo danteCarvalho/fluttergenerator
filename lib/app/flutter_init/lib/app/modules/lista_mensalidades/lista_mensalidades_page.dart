@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
 
+import '../../outros/metodos_estaticos.dart';
 import 'lista_mensalidades_store.dart';
 
 class ListaMensalidadesPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class ListaMensalidadesPageState extends State<ListaMensalidadesPage> {
         }
         Function()? function;
         var dataPagamento = usuario.dataPagamento;
-        if (dataPagamento == null || dataPagamento.differenceInDays(DateTime.now()) <= 5) {
+        if (dataPagamento == initialTime || dataPagamento.differenceInDays(DateTime.now()) <= 5) {
           function = store.iniciarPagamento;
         }
         var elevatedButton = ElevatedButton(
@@ -65,12 +66,14 @@ class ListaMensalidadesPageState extends State<ListaMensalidadesPage> {
         List<DataRow> rows = [];
         for (var pagamentoSistema in objs) {
           List<DataCell> cells = [];
-          var dataRow = DataRow(cells: cells);
+          var dataRow = DataRow(cells: cells,onSelectChanged: (value) {
+            store.mostrarQrcode(pagamentoSistema);
+          },);
           var valor = DataCell(Text(pagamentoSistema.valor.toString()));
-          var dataCriacao = DataCell(Text(aQuantoTempo(pagamentoSistema.dataCriacao!)));
+          var dataCriacao = DataCell(Text(aQuantoTempo(pagamentoSistema.dataCriacao)));
           var dataConfirmado = pagamentoSistema.dataConfirmado;
-          var dataConfirmado2 = DataCell(Text(dataConfirmado == null ? "" : aQuantoTempo(dataConfirmado)));
-          var pago = DataCell(Text(pagamentoSistema.pago! ? "Sim" : "Não"));
+          var dataConfirmado2 = DataCell(Text(dataConfirmado == initialTime ? "" : aQuantoTempo(dataConfirmado)));
+          var pago = DataCell(Text(pagamentoSistema.pago ? "Sim" : "Não"));
           cells.add(valor);
           cells.add(dataCriacao);
           cells.add(dataConfirmado2);

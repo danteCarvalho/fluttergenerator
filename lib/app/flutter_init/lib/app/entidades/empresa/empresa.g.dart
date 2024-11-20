@@ -7,94 +7,55 @@ part of 'empresa.dart';
 // **************************************************************************
 
 Empresa _$EmpresaFromJson(Map json) => Empresa()
-  ..id = json['id'] != null ? json['id'] as String? : null
-  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : null
-  ..ativa = json['ativa'] != null ? json['ativa'] as bool? : null
+  ..id = json['id'] != null ? json['id'] as String : ""
+  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : 0
+  ..ativa = json['ativa'] != null ? json['ativa'] as bool : false
   ..dataCriacao = json['dataCriacao'] != null
       ? DateTime.parse(json['dataCriacao'] as String)
-      : null
+      : initialTime
   ..dataEdicao = json['dataEdicao'] != null
       ? DateTime.parse(json['dataEdicao'] as String)
-      : null
+      : initialTime
   ..dataDelecao = json['dataDelecao'] != null
       ? DateTime.parse(json['dataDelecao'] as String)
-      : null
-  ..nome = json['nome'] != null ? json['nome'] as String? : null
+      : initialTime
+  ..nome = json['nome'] != null ? json['nome'] as String : ""
   ..valorPagamento = json['valorPagamento'] != null
       ? (json['valorPagamento'] as num).toDouble()
-      : null
-  ..telefone = json['telefone'] != null ? json['telefone'] as String? : null
-  ..anydesk = json['anydesk'] != null ? json['anydesk'] as String? : null
-  ..whatsapp = json['whatsapp'] != null ? json['whatsapp'] as String? : null
+      : 0
+  ..telefone = json['telefone'] != null ? json['telefone'] as String : ""
+  ..anydesk = json['anydesk'] != null ? json['anydesk'] as String : ""
+  ..whatsapp = json['whatsapp'] != null ? json['whatsapp'] as String : ""
   ..latitude =
-      json['latitude'] != null ? (json['latitude'] as num).toDouble() : null
+      json['latitude'] != null ? (json['latitude'] as num).toDouble() : 0
   ..longitude =
-      json['longitude'] != null ? (json['longitude'] as num).toDouble() : null
+      json['longitude'] != null ? (json['longitude'] as num).toDouble() : 0
   ..dataPagamento = json['dataPagamento'] != null
       ? DateTime.parse(json['dataPagamento'] as String)
-      : null
-  ..lastUpdate = json['lastUpdate'] != null
-      ? DateTime.parse(json['lastUpdate'] as String)
-      : null
-  ..lastTry =
-      json['lastTry'] != null ? DateTime.parse(json['lastTry'] as String) : null
+      : initialTime
   ..ultimoPagamentoCompleto = json['ultimoPagamentoCompleto'] != null
       ? DateTime.parse(json['ultimoPagamentoCompleto'] as String)
-      : null
+      : initialTime
   ..ultimoPagamentoGerado = json['ultimoPagamentoGerado'] != null
       ? DateTime.parse(json['ultimoPagamentoGerado'] as String)
-      : null
-  ..ambienteProducao = json['ambienteProducao'] != null
-      ? json['ambienteProducao'] as bool?
-      : null
-  ..emissaoNormal =
-      json['emissaoNormal'] != null ? json['emissaoNormal'] as bool? : null
-  ..impressaoNfce =
-      json['impressaoNfce'] != null ? json['impressaoNfce'] as bool? : null
-  ..contingenciaAoDemorar = json['contingenciaAoDemorar'] != null
-      ? json['contingenciaAoDemorar'] as bool?
-      : null
-  ..justificativaContingencia = json['justificativaContingencia'] != null
-      ? json['justificativaContingencia'] as String?
-      : null
-  ..tipoGeracaoNota = json['tipoGeracaoNota'] != null
-      ? json['tipoGeracaoNota'] as String?
-      : null
-  ..csc = json['csc'] != null ? json['csc'] as String? : null
-  ..idCsc = json['idCsc'] != null ? json['idCsc'] as String? : null
-  ..serie = json['serie'] != null ? (json['serie'] as num).toInt() : null
-  ..numeroNotaFiscal = json['numeroNotaFiscal'] != null
-      ? (json['numeroNotaFiscal'] as num).toInt()
-      : null
-  ..numeroNotaFiscalHomologacao = json['numeroNotaFiscalHomologacao'] != null
-      ? (json['numeroNotaFiscalHomologacao'] as num).toInt()
-      : null
-  ..cnpj = json['cnpj'] != null ? json['cnpj'] as String? : null
+      : initialTime
+  ..cnpj = json['cnpj'] != null ? json['cnpj'] as String : ""
   ..razaoSocial =
-      json['razaoSocial'] != null ? json['razaoSocial'] as String? : null
-  ..municipio = json['municipio'] != null ? json['municipio'] as String? : null
-  ..estado = json['estado'] != null ? json['estado'] as String? : null
-  ..cep = json['cep'] != null ? json['cep'] as String? : null
-  ..bairro = json['bairro'] != null ? json['bairro'] as String? : null
-  ..logradouro =
-      json['logradouro'] != null ? json['logradouro'] as String? : null
-  ..numeroCasa =
-      json['numeroCasa'] != null ? json['numeroCasa'] as String? : null
-  ..inscricaoEstadual = json['inscricaoEstadual'] != null
-      ? json['inscricaoEstadual'] as String?
-      : null
-  ..regimeTributario = json['regimeTributario'] != null
-      ? json['regimeTributario'] as String?
-      : null
-  ..nsu = json['nsu'] != null ? json['nsu'] as String? : null;
+      json['razaoSocial'] != null ? json['razaoSocial'] as String : ""
+  ..municipio = json['municipio'] != null ? json['municipio'] as String : ""
+  ..estado = json['estado'] != null ? json['estado'] as String : ""
+  ..cep = json['cep'] != null ? json['cep'] as String : ""
+  ..bairro = json['bairro'] != null ? json['bairro'] as String : ""
+  ..logradouro = json['logradouro'] != null ? json['logradouro'] as String : ""
+  ..numeroCasa = json['numeroCasa'] != null ? json['numeroCasa'] as String : "";
 
 Map<String, dynamic> _$EmpresaToJson(Empresa instance) => <String, dynamic>{
       'id': instance.id,
       'id2': instance.id2,
       'ativa': instance.ativa,
-      'dataCriacao': instance.dataCriacao?.toIso8601String(),
-      'dataEdicao': instance.dataEdicao?.toIso8601String(),
-      'dataDelecao': instance.dataDelecao?.toIso8601String(),
+      'dataCriacao': instance.dataCriacao.toIso8601String(),
+      'dataEdicao': instance.dataEdicao.toIso8601String(),
+      'dataDelecao': instance.dataDelecao.toIso8601String(),
       'nome': instance.nome,
       'valorPagamento': instance.valorPagamento,
       'telefone': instance.telefone,
@@ -102,24 +63,10 @@ Map<String, dynamic> _$EmpresaToJson(Empresa instance) => <String, dynamic>{
       'whatsapp': instance.whatsapp,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
-      'dataPagamento': instance.dataPagamento?.toIso8601String(),
-      'lastUpdate': instance.lastUpdate?.toIso8601String(),
-      'lastTry': instance.lastTry?.toIso8601String(),
+      'dataPagamento': instance.dataPagamento.toIso8601String(),
       'ultimoPagamentoCompleto':
-          instance.ultimoPagamentoCompleto?.toIso8601String(),
-      'ultimoPagamentoGerado':
-          instance.ultimoPagamentoGerado?.toIso8601String(),
-      'ambienteProducao': instance.ambienteProducao,
-      'emissaoNormal': instance.emissaoNormal,
-      'impressaoNfce': instance.impressaoNfce,
-      'contingenciaAoDemorar': instance.contingenciaAoDemorar,
-      'justificativaContingencia': instance.justificativaContingencia,
-      'tipoGeracaoNota': instance.tipoGeracaoNota,
-      'csc': instance.csc,
-      'idCsc': instance.idCsc,
-      'serie': instance.serie,
-      'numeroNotaFiscal': instance.numeroNotaFiscal,
-      'numeroNotaFiscalHomologacao': instance.numeroNotaFiscalHomologacao,
+          instance.ultimoPagamentoCompleto.toIso8601String(),
+      'ultimoPagamentoGerado': instance.ultimoPagamentoGerado.toIso8601String(),
       'cnpj': instance.cnpj,
       'razaoSocial': instance.razaoSocial,
       'municipio': instance.municipio,
@@ -128,9 +75,6 @@ Map<String, dynamic> _$EmpresaToJson(Empresa instance) => <String, dynamic>{
       'bairro': instance.bairro,
       'logradouro': instance.logradouro,
       'numeroCasa': instance.numeroCasa,
-      'inscricaoEstadual': instance.inscricaoEstadual,
-      'regimeTributario': instance.regimeTributario,
-      'nsu': instance.nsu,
     };
 
 mixin _$Serial {

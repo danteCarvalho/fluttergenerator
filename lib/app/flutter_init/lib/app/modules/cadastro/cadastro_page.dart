@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dartutils/dartutils.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

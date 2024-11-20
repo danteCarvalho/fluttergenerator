@@ -5,6 +5,7 @@ import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
+import '../../outros/metodos_estaticos.dart';
 import '../entidade.dart';
 
 part 'imagem.g.dart';

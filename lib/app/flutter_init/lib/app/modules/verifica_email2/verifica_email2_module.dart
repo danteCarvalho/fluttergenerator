@@ -1,7 +1,8 @@
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'verifica_email2_store.dart';
+
 import 'verifica_email2_page.dart';
+import 'verifica_email2_store.dart';
 
 class VerificaEmail2Module extends Module {
   @override

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../app_store.dart';
-import '../entidades/usuario/usuario.dart';
 
 class LoginGuard extends RouteGuard {
   String? redirect;

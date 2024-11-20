@@ -59,7 +59,7 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.4.0');
+  Version get languageVersion => Version.parse('3.5.0');
 
   @override
   LocalConfig$reflection withObject([LocalConfig? obj]) =>

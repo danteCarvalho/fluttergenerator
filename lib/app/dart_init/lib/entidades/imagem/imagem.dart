@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../../outros/metodos_estaticos.dart';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';
@@ -6,7 +7,6 @@ import 'package:reflection_factory/reflection_factory.dart';
 import '../../outros/entidade_helper.dart';
 import '../coluna.dart';
 import '../entidade.dart';
-import '../usuario/usuario.dart';
 
 part 'imagem.g.dart';
 part 'imagem.reflection.g.dart';

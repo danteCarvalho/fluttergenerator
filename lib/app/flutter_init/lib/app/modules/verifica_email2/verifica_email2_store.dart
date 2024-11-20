@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
+
 import '../../app_store.dart';
 import '../../outros/logger.dart';
-import '../../outros/metodos_estaticos.dart';
 import '../../requests/server_requets.dart';
 import 'verifica_email2_page.dart';
 

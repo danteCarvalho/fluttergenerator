@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dartutils/dartutils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:sembast_sqflite/sembast_sqflite.dart';
 import 'package:sembast_web/sembast_web.dart';
@@ -99,7 +98,7 @@ updateSembast<T extends Entidade>(T entidade) async {
 _insertUpdate<T extends Entidade>(T entidade) async {
   var store = getStore(entidade);
   var classToMap = entidade.classToMap();
-  await store.record(entidade.id!).put(db!, classToMap);
+  await store.record(entidade.id).put(db!, classToMap);
 }
 
 Future<T> selectByIdSembast<T extends Entidade>(id, T entidade) async {
@@ -147,5 +146,5 @@ Future<List<T>> selectListSembast<T extends Entidade>(Finder finder, T entidade,
 
 deleteSembast<T extends Entidade>(T entidade) async {
   var store = getStore(entidade);
-  await store.record(entidade.id!).delete(db!);
+  await store.record(entidade.id).delete(db!);
 }

@@ -56,13 +56,6 @@ class LoginPageState extends State<LoginPage> {
       ),
     );
 
-    var esqueci = GestureDetector(
-      child: const Text(
-        "Esqueci a senha",
-        style: TextStyle(decoration: TextDecoration.underline),
-      ),
-      onTap: () {},
-    );
     var ainda = GestureDetector(
       child: const Text(
         "Ainda não sou cadastrado",
@@ -88,11 +81,11 @@ class LoginPageState extends State<LoginPage> {
     columnWidgets.add(sessao(ainda));
     columnWidgets.add(sessao(esqueciSenha));
 
-    return Scaffold(
+    return store.app.popScope(Scaffold(
       body: SingleChildScrollView(
           child: Center(
-        child: column,
-      )),
-    );
+            child: column,
+          )),
+    ), context);
   }
 }

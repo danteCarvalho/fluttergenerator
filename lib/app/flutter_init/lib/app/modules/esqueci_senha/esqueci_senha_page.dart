@@ -1,5 +1,5 @@
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
 
 import 'esqueci_senha_store.dart';
@@ -58,14 +58,6 @@ class EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
       ),
     );
 
-    var sair = ElevatedButton(
-      onPressed: () => store.app.sair(),
-      style: ElevatedButton.styleFrom(),
-      child: const Text(
-        "Sair",
-        style: TextStyle(),
-      ),
-    );
 
     columnWidgets.add(sessao(const Text(("Didite o seu email"))));
     columnWidgets.add(sessao(const Text(("Enviaremos um link para redefinir a sua senha"))));

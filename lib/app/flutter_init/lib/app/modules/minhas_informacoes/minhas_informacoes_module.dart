@@ -1,7 +1,8 @@
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'minhas_informacoes_store.dart';
+
 import 'minhas_informacoes_page.dart';
+import 'minhas_informacoes_store.dart';
 
 class MinhasInformacoesModule extends Module {
   @override

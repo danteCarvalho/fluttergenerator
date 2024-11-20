@@ -41,7 +41,7 @@ class ImagemEndpoint extends RouterMethods {
     if (config.imageStorage == "server") {
       Directory imagens = Directory("${Directory.systemTemp.path}/imagens");
       imagens.createSync();
-      File file = File("${imagens.path}/${imagem.id!}.${imagem.extension}");
+      File file = File("${imagens.path}/${imagem.id}.${imagem.extension}");
       var decode = base64.decode(imagem.value);
       file.writeAsBytesSync(decode);
     }
@@ -56,7 +56,7 @@ class ImagemEndpoint extends RouterMethods {
     Imagem imagem = await selectByIdHasura(id, Imagem(), returning: "id extension");
     Directory imagens = Directory("${Directory.systemTemp.path}/imagens");
     imagens.createSync();
-    File file = File("${imagens.path}/${imagem.id!}.${imagem.extension}");
+    File file = File("${imagens.path}/${imagem.id}.${imagem.extension}");
     if (!file.existsSync()) {
       Imagem imagem = await selectByIdHasura(id, Imagem());
       var decode = base64.decode(imagem.value);
@@ -79,7 +79,7 @@ class ImagemEndpoint extends RouterMethods {
 }
 
 saveImage2(Imagem imagem) async {
-  if (imagem.id == null) {
+  if (imagem.id.isEmpty) {
     return await insertHasura(imagem);
   } else {
     return await updateHasura(imagem);
@@ -101,7 +101,7 @@ Future<Imagem> saveImage(Imagem imagem) async {
     var decode = base64.decode(value);
     String contentType = "image/${imagem.extension}";
 
-    amazon.PutObjectOutput output = await s3.putObject(
+    await s3.putObject(
       bucket: "danteteste",
       key: key,
       body: decode,

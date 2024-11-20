@@ -28,17 +28,17 @@ buscarPagamentosSistema() async {
     }
     var mp = getMp();
     for (var obj in pagamentos) {
-      var differenceInDays = obj.dataCriacao!.differenceInDays(DateTime.now());
+      var differenceInDays = obj.dataCriacao.differenceInDays(DateTime.now());
       if (differenceInDays > 1) {
         obj.ativa = false;
         await updateHasura(obj, updateFields: "ativa");
         continue;
       }
       Map<String, dynamic> result;
-      if (obj.qrCode != null) {
-        result = await mp.getPayment(obj.referencia!);
+      if (obj.qrCode.isNotEmpty) {
+        result = await mp.getPayment(obj.referencia);
       } else {
-        result = await mp.getPreference(obj.referencia!);
+        result = await mp.getPreference(obj.referencia);
       }
       var status = result["response"]?["status"];
       if (status == "approved") {

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartutils/dartutils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../entidade_helper.dart';
@@ -41,7 +42,9 @@ configurar() async {
 
   var classToMap = config.classToMap();
   for (var obj in classToMap.entries) {
-    print("${obj.key}: ${obj.value}");
+    if (kDebugMode) {
+      print("${obj.key}: ${obj.value}");
+    }
   }
 
   if(config.arquivoConf == false){

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../../outros/metodos_estaticos.dart';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';
@@ -10,6 +11,7 @@ import '../entidade.dart';
 import '../usuario/usuario.dart';
 
 part 'pagamento_sistema.g.dart';
+
 part 'pagamento_sistema.reflection.g.dart';
 
 @EnableReflection()
@@ -22,13 +24,13 @@ class PagamentoSistema extends Entidade with _$Serial {
   }
 
   @Coluna(nullable: false)
-  String? referencia;
-  String? qrCode;
-  bool? pago;
-  DateTime? dataConfirmado;
-  String? link;
+  String referencia = "";
+  String qrCode = "";
+  bool pago = false;
+  DateTime dataConfirmado = initialTime;
+  String link = "";
   Empresa? empresa;
   Usuario? usuario;
   @Coluna(nullable: false)
-  double? valor;
+  double valor = 0;
 }

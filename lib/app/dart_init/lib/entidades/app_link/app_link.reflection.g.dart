@@ -238,12 +238,12 @@ class AppLink$reflection extends ClassReflection<AppLink>
           false,
         );
       case 'id':
-        return FieldReflection<AppLink, String?>(
+        return FieldReflection<AppLink, String>(
           this,
           Entidade,
           __TR.tString,
           'id',
-          true,
+          false,
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
@@ -257,12 +257,12 @@ class AppLink$reflection extends ClassReflection<AppLink>
           ],
         );
       case 'id2':
-        return FieldReflection<AppLink, int?>(
+        return FieldReflection<AppLink, int>(
           this,
           Entidade,
           __TR.tInt,
           'id2',
-          true,
+          false,
           (o) => () => o!.id2,
           (o) => (v) => o!.id2 = v,
           obj,
@@ -270,48 +270,48 @@ class AppLink$reflection extends ClassReflection<AppLink>
           const [Coluna(tipo: "bigint", defaultValue: "sequence")],
         );
       case 'ativa':
-        return FieldReflection<AppLink, bool?>(
+        return FieldReflection<AppLink, bool>(
           this,
           Entidade,
           __TR.tBool,
           'ativa',
-          true,
+          false,
           (o) => () => o!.ativa,
           (o) => (v) => o!.ativa = v,
           obj,
           false,
         );
       case 'datacriacao':
-        return FieldReflection<AppLink, DateTime?>(
+        return FieldReflection<AppLink, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataCriacao',
-          true,
+          false,
           (o) => () => o!.dataCriacao,
           (o) => (v) => o!.dataCriacao = v,
           obj,
           false,
         );
       case 'dataedicao':
-        return FieldReflection<AppLink, DateTime?>(
+        return FieldReflection<AppLink, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataEdicao',
-          true,
+          false,
           (o) => () => o!.dataEdicao,
           (o) => (v) => o!.dataEdicao = v,
           obj,
           false,
         );
       case 'datadelecao':
-        return FieldReflection<AppLink, DateTime?>(
+        return FieldReflection<AppLink, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataDelecao',
-          true,
+          false,
           (o) => () => o!.dataDelecao,
           (o) => (v) => o!.dataDelecao = v,
           obj,

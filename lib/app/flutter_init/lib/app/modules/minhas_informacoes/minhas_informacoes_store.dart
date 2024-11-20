@@ -28,7 +28,7 @@ abstract class MinhasInformacoesStoreBase with Store {
   Imagem imagem = Imagem();
 
   init(MinhasInformacoesPageState state) async {
-    usuario = await selectByIdHasura(app.usuario!.id!, Usuario());
+    usuario = await selectByIdHasura(app.usuario!.id, Usuario());
     if (usuario.imagem != null) {
       imagem = usuario.imagem!;
     }

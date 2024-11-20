@@ -61,11 +61,13 @@ Config _$ConfigFromJson(Map json) => Config()
   ..googleSecretWeb = json['googleSecretWeb'] != null
       ? json['googleSecretWeb'] as String
       : const String.fromEnvironment('googleSecretWeb',
-          defaultValue: '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')
+          defaultValue:
+              'DkW+Fa/vG2s0wcECx0vjSrPkbKOfMEd86SS9tXAxT6+SO3iPGsaGIbPhrlcdeci7Hpo0s28vfiB4dhkA28tSRg==')
   ..googleSecretOS = json['googleSecretOS'] != null
       ? json['googleSecretOS'] as String
       : const String.fromEnvironment('googleSecretOS',
-          defaultValue: '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')
+          defaultValue:
+              'RqaJs+kJxK+tKHw1NtrmwdeG0fuPK28CQvaIskZoO8A48Zqh/pe391V0EQruxiFBy4e39NeAdxyLZ1vpJbFZmg==')
   ..googleClientIdOS = json['googleClientIdOS'] != null
       ? json['googleClientIdOS'] as String
       : const String.fromEnvironment('googleClientIdOS',
@@ -95,7 +97,7 @@ Config _$ConfigFromJson(Map json) => Config()
       ? json['emailPassword'] as String
       : const String.fromEnvironment('emailPassword',
           defaultValue:
-              'ya29.a0AcM612zNywRogmB4RZXBT_8pV8igC30opoOiFNMCP2ceRrUBPQOlGmTba2LFo0KbYsvrxMOaAYAGLvbBFtlVXjX6TtCyjtp_fgRnVaFmy9mFvcahC7waOFYc3OQh6bL7ESHzrlDKdorezQRp38vHcFA_Fq0di8-0YcrdOsXwaCgYKAQkSARESFQHGX2Mi3WELh7nx_cZMsTlavZJhbQ0175');
+              'jep6+SmgYxNTbsQo+FysUy4lol1+97CNTevy0kwAkiby9gQxjhvxtG4bFluhjbPXRBK+7aZpWmZ2ZIzmzgaXgEzr9Mx+ChCSRbqk8RC226Ed4axBVsO9vQL/lwmRRpkRuoS7RfVthdqNnqzv7o9CEf30zm61mPhzvKYXaqzd3cqJwaWYfVY5Aw9qMnRu5aql9kPaGDVzFZCrQ+C4SHPPsLPTee9PKb+5ghNihnh8hEMOF2MdPgIEjhWLCUL5btCp4qqilmRswUYQ4OufYMXsF58LpZaY/iebL1hyRu3KVxis/X+J4mShLRlMD1KmpS06');
 
 Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'arquivoConf': instance.arquivoConf,

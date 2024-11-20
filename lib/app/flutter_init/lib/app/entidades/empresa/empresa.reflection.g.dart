@@ -58,7 +58,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.4.0');
+  Version get languageVersion => Version.parse('3.5.0');
 
   @override
   Empresa$reflection withObject([Empresa? obj]) =>
@@ -154,43 +154,27 @@ class Empresa$reflection extends ClassReflection<Empresa>
   }
 
   static const List<String> _fieldsNames = const <String>[
-    'ambienteProducao',
     'anydesk',
     'ativa',
     'bairro',
     'cep',
     'cnpj',
     'context',
-    'contingenciaAoDemorar',
-    'csc',
     'dataCriacao',
     'dataDelecao',
     'dataEdicao',
     'dataPagamento',
-    'emissaoNormal',
     'estado',
     'id',
     'id2',
-    'idCsc',
-    'impressaoNfce',
-    'inscricaoEstadual',
-    'justificativaContingencia',
-    'lastTry',
-    'lastUpdate',
     'latitude',
     'logradouro',
     'longitude',
     'municipio',
     'nome',
-    'nsu',
     'numeroCasa',
-    'numeroNotaFiscal',
-    'numeroNotaFiscalHomologacao',
     'razaoSocial',
-    'regimeTributario',
-    'serie',
     'telefone',
-    'tipoGeracaoNota',
     'ultimoPagamentoCompleto',
     'ultimoPagamentoGerado',
     'valorPagamento',
@@ -250,480 +234,288 @@ class Empresa$reflection extends ClassReflection<Empresa>
 
     switch (lc) {
       case 'nome':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'nome',
-          true,
+          false,
           (o) => () => o!.nome,
           (o) => (v) => o!.nome = v,
           obj,
           false,
         );
       case 'valorpagamento':
-        return FieldReflection<Empresa, double?>(
+        return FieldReflection<Empresa, double>(
           this,
           _EmpresaBase,
           __TR.tDouble,
           'valorPagamento',
-          true,
+          false,
           (o) => () => o!.valorPagamento,
           (o) => (v) => o!.valorPagamento = v,
           obj,
           false,
         );
       case 'telefone':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'telefone',
-          true,
+          false,
           (o) => () => o!.telefone,
           (o) => (v) => o!.telefone = v,
           obj,
           false,
         );
       case 'anydesk':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'anydesk',
-          true,
+          false,
           (o) => () => o!.anydesk,
           (o) => (v) => o!.anydesk = v,
           obj,
           false,
         );
       case 'whatsapp':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'whatsapp',
-          true,
+          false,
           (o) => () => o!.whatsapp,
           (o) => (v) => o!.whatsapp = v,
           obj,
           false,
         );
       case 'latitude':
-        return FieldReflection<Empresa, double?>(
+        return FieldReflection<Empresa, double>(
           this,
           _EmpresaBase,
           __TR.tDouble,
           'latitude',
-          true,
+          false,
           (o) => () => o!.latitude,
           (o) => (v) => o!.latitude = v,
           obj,
           false,
         );
       case 'longitude':
-        return FieldReflection<Empresa, double?>(
+        return FieldReflection<Empresa, double>(
           this,
           _EmpresaBase,
           __TR.tDouble,
           'longitude',
-          true,
+          false,
           (o) => () => o!.longitude,
           (o) => (v) => o!.longitude = v,
           obj,
           false,
         );
       case 'datapagamento':
-        return FieldReflection<Empresa, DateTime?>(
+        return FieldReflection<Empresa, DateTime>(
           this,
           _EmpresaBase,
           __TR<DateTime>(DateTime),
           'dataPagamento',
-          true,
+          false,
           (o) => () => o!.dataPagamento,
           (o) => (v) => o!.dataPagamento = v,
           obj,
           false,
         );
-      case 'lastupdate':
-        return FieldReflection<Empresa, DateTime?>(
-          this,
-          _EmpresaBase,
-          __TR<DateTime>(DateTime),
-          'lastUpdate',
-          true,
-          (o) => () => o!.lastUpdate,
-          (o) => (v) => o!.lastUpdate = v,
-          obj,
-          false,
-        );
-      case 'lasttry':
-        return FieldReflection<Empresa, DateTime?>(
-          this,
-          _EmpresaBase,
-          __TR<DateTime>(DateTime),
-          'lastTry',
-          true,
-          (o) => () => o!.lastTry,
-          (o) => (v) => o!.lastTry = v,
-          obj,
-          false,
-        );
       case 'ultimopagamentocompleto':
-        return FieldReflection<Empresa, DateTime?>(
+        return FieldReflection<Empresa, DateTime>(
           this,
           _EmpresaBase,
           __TR<DateTime>(DateTime),
           'ultimoPagamentoCompleto',
-          true,
+          false,
           (o) => () => o!.ultimoPagamentoCompleto,
           (o) => (v) => o!.ultimoPagamentoCompleto = v,
           obj,
           false,
         );
       case 'ultimopagamentogerado':
-        return FieldReflection<Empresa, DateTime?>(
+        return FieldReflection<Empresa, DateTime>(
           this,
           _EmpresaBase,
           __TR<DateTime>(DateTime),
           'ultimoPagamentoGerado',
-          true,
+          false,
           (o) => () => o!.ultimoPagamentoGerado,
           (o) => (v) => o!.ultimoPagamentoGerado = v,
           obj,
           false,
         );
-      case 'ambienteproducao':
-        return FieldReflection<Empresa, bool?>(
-          this,
-          _EmpresaBase,
-          __TR.tBool,
-          'ambienteProducao',
-          true,
-          (o) => () => o!.ambienteProducao,
-          (o) => (v) => o!.ambienteProducao = v,
-          obj,
-          false,
-        );
-      case 'emissaonormal':
-        return FieldReflection<Empresa, bool?>(
-          this,
-          _EmpresaBase,
-          __TR.tBool,
-          'emissaoNormal',
-          true,
-          (o) => () => o!.emissaoNormal,
-          (o) => (v) => o!.emissaoNormal = v,
-          obj,
-          false,
-        );
-      case 'impressaonfce':
-        return FieldReflection<Empresa, bool?>(
-          this,
-          _EmpresaBase,
-          __TR.tBool,
-          'impressaoNfce',
-          true,
-          (o) => () => o!.impressaoNfce,
-          (o) => (v) => o!.impressaoNfce = v,
-          obj,
-          false,
-        );
-      case 'contingenciaaodemorar':
-        return FieldReflection<Empresa, bool?>(
-          this,
-          _EmpresaBase,
-          __TR.tBool,
-          'contingenciaAoDemorar',
-          true,
-          (o) => () => o!.contingenciaAoDemorar,
-          (o) => (v) => o!.contingenciaAoDemorar = v,
-          obj,
-          false,
-        );
-      case 'justificativacontingencia':
-        return FieldReflection<Empresa, String?>(
-          this,
-          _EmpresaBase,
-          __TR.tString,
-          'justificativaContingencia',
-          true,
-          (o) => () => o!.justificativaContingencia,
-          (o) => (v) => o!.justificativaContingencia = v,
-          obj,
-          false,
-        );
-      case 'tipogeracaonota':
-        return FieldReflection<Empresa, String?>(
-          this,
-          _EmpresaBase,
-          __TR.tString,
-          'tipoGeracaoNota',
-          true,
-          (o) => () => o!.tipoGeracaoNota,
-          (o) => (v) => o!.tipoGeracaoNota = v,
-          obj,
-          false,
-        );
-      case 'csc':
-        return FieldReflection<Empresa, String?>(
-          this,
-          _EmpresaBase,
-          __TR.tString,
-          'csc',
-          true,
-          (o) => () => o!.csc,
-          (o) => (v) => o!.csc = v,
-          obj,
-          false,
-        );
-      case 'idcsc':
-        return FieldReflection<Empresa, String?>(
-          this,
-          _EmpresaBase,
-          __TR.tString,
-          'idCsc',
-          true,
-          (o) => () => o!.idCsc,
-          (o) => (v) => o!.idCsc = v,
-          obj,
-          false,
-        );
-      case 'serie':
-        return FieldReflection<Empresa, int?>(
-          this,
-          _EmpresaBase,
-          __TR.tInt,
-          'serie',
-          true,
-          (o) => () => o!.serie,
-          (o) => (v) => o!.serie = v,
-          obj,
-          false,
-        );
-      case 'numeronotafiscal':
-        return FieldReflection<Empresa, int?>(
-          this,
-          _EmpresaBase,
-          __TR.tInt,
-          'numeroNotaFiscal',
-          true,
-          (o) => () => o!.numeroNotaFiscal,
-          (o) => (v) => o!.numeroNotaFiscal = v,
-          obj,
-          false,
-        );
-      case 'numeronotafiscalhomologacao':
-        return FieldReflection<Empresa, int?>(
-          this,
-          _EmpresaBase,
-          __TR.tInt,
-          'numeroNotaFiscalHomologacao',
-          true,
-          (o) => () => o!.numeroNotaFiscalHomologacao,
-          (o) => (v) => o!.numeroNotaFiscalHomologacao = v,
-          obj,
-          false,
-        );
       case 'cnpj':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'cnpj',
-          true,
+          false,
           (o) => () => o!.cnpj,
           (o) => (v) => o!.cnpj = v,
           obj,
           false,
         );
       case 'razaosocial':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'razaoSocial',
-          true,
+          false,
           (o) => () => o!.razaoSocial,
           (o) => (v) => o!.razaoSocial = v,
           obj,
           false,
         );
       case 'municipio':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'municipio',
-          true,
+          false,
           (o) => () => o!.municipio,
           (o) => (v) => o!.municipio = v,
           obj,
           false,
         );
       case 'estado':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'estado',
-          true,
+          false,
           (o) => () => o!.estado,
           (o) => (v) => o!.estado = v,
           obj,
           false,
         );
       case 'cep':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'cep',
-          true,
+          false,
           (o) => () => o!.cep,
           (o) => (v) => o!.cep = v,
           obj,
           false,
         );
       case 'bairro':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'bairro',
-          true,
+          false,
           (o) => () => o!.bairro,
           (o) => (v) => o!.bairro = v,
           obj,
           false,
         );
       case 'logradouro':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'logradouro',
-          true,
+          false,
           (o) => () => o!.logradouro,
           (o) => (v) => o!.logradouro = v,
           obj,
           false,
         );
       case 'numerocasa':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           _EmpresaBase,
           __TR.tString,
           'numeroCasa',
-          true,
+          false,
           (o) => () => o!.numeroCasa,
           (o) => (v) => o!.numeroCasa = v,
           obj,
           false,
         );
-      case 'inscricaoestadual':
-        return FieldReflection<Empresa, String?>(
-          this,
-          _EmpresaBase,
-          __TR.tString,
-          'inscricaoEstadual',
-          true,
-          (o) => () => o!.inscricaoEstadual,
-          (o) => (v) => o!.inscricaoEstadual = v,
-          obj,
-          false,
-        );
-      case 'regimetributario':
-        return FieldReflection<Empresa, String?>(
-          this,
-          _EmpresaBase,
-          __TR.tString,
-          'regimeTributario',
-          true,
-          (o) => () => o!.regimeTributario,
-          (o) => (v) => o!.regimeTributario = v,
-          obj,
-          false,
-        );
-      case 'nsu':
-        return FieldReflection<Empresa, String?>(
-          this,
-          _EmpresaBase,
-          __TR.tString,
-          'nsu',
-          true,
-          (o) => () => o!.nsu,
-          (o) => (v) => o!.nsu = v,
-          obj,
-          false,
-        );
       case 'id':
-        return FieldReflection<Empresa, String?>(
+        return FieldReflection<Empresa, String>(
           this,
           Entidade,
           __TR.tString,
           'id',
-          true,
+          false,
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
           false,
         );
       case 'id2':
-        return FieldReflection<Empresa, int?>(
+        return FieldReflection<Empresa, int>(
           this,
           Entidade,
           __TR.tInt,
           'id2',
-          true,
+          false,
           (o) => () => o!.id2,
           (o) => (v) => o!.id2 = v,
           obj,
           false,
         );
       case 'ativa':
-        return FieldReflection<Empresa, bool?>(
+        return FieldReflection<Empresa, bool>(
           this,
           Entidade,
           __TR.tBool,
           'ativa',
-          true,
+          false,
           (o) => () => o!.ativa,
           (o) => (v) => o!.ativa = v,
           obj,
           false,
         );
       case 'datacriacao':
-        return FieldReflection<Empresa, DateTime?>(
+        return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataCriacao',
-          true,
+          false,
           (o) => () => o!.dataCriacao,
           (o) => (v) => o!.dataCriacao = v,
           obj,
           false,
         );
       case 'dataedicao':
-        return FieldReflection<Empresa, DateTime?>(
+        return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataEdicao',
-          true,
+          false,
           (o) => () => o!.dataEdicao,
           (o) => (v) => o!.dataEdicao = v,
           obj,
           false,
         );
       case 'datadelecao':
-        return FieldReflection<Empresa, DateTime?>(
+        return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataDelecao',
-          true,
+          false,
           (o) => () => o!.dataDelecao,
           (o) => (v) => o!.dataDelecao = v,
           obj,
@@ -759,21 +551,8 @@ class Empresa$reflection extends ClassReflection<Empresa>
       'latitude': obj?.latitude,
       'longitude': obj?.longitude,
       'dataPagamento': obj?.dataPagamento,
-      'lastUpdate': obj?.lastUpdate,
-      'lastTry': obj?.lastTry,
       'ultimoPagamentoCompleto': obj?.ultimoPagamentoCompleto,
       'ultimoPagamentoGerado': obj?.ultimoPagamentoGerado,
-      'ambienteProducao': obj?.ambienteProducao,
-      'emissaoNormal': obj?.emissaoNormal,
-      'impressaoNfce': obj?.impressaoNfce,
-      'contingenciaAoDemorar': obj?.contingenciaAoDemorar,
-      'justificativaContingencia': obj?.justificativaContingencia,
-      'tipoGeracaoNota': obj?.tipoGeracaoNota,
-      'csc': obj?.csc,
-      'idCsc': obj?.idCsc,
-      'serie': obj?.serie,
-      'numeroNotaFiscal': obj?.numeroNotaFiscal,
-      'numeroNotaFiscalHomologacao': obj?.numeroNotaFiscalHomologacao,
       'cnpj': obj?.cnpj,
       'razaoSocial': obj?.razaoSocial,
       'municipio': obj?.municipio,
@@ -782,9 +561,6 @@ class Empresa$reflection extends ClassReflection<Empresa>
       'bairro': obj?.bairro,
       'logradouro': obj?.logradouro,
       'numeroCasa': obj?.numeroCasa,
-      'inscricaoEstadual': obj?.inscricaoEstadual,
-      'regimeTributario': obj?.regimeTributario,
-      'nsu': obj?.nsu,
       'id': obj?.id,
       'id2': obj?.id2,
       'ativa': obj?.ativa,

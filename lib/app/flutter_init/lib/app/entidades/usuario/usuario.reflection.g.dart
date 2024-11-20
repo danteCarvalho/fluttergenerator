@@ -58,7 +58,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.4.0');
+  Version get languageVersion => Version.parse('3.5.0');
 
   @override
   Usuario$reflection withObject([Usuario? obj]) =>
@@ -447,36 +447,36 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'datapagamento':
-        return FieldReflection<Usuario, DateTime?>(
+        return FieldReflection<Usuario, DateTime>(
           this,
           _UsuarioBase,
           __TR<DateTime>(DateTime),
           'dataPagamento',
-          true,
+          false,
           (o) => () => o!.dataPagamento,
           (o) => (v) => o!.dataPagamento = v,
           obj,
           false,
         );
       case 'ultimopagamentocompleto':
-        return FieldReflection<Usuario, DateTime?>(
+        return FieldReflection<Usuario, DateTime>(
           this,
           _UsuarioBase,
           __TR<DateTime>(DateTime),
           'ultimoPagamentoCompleto',
-          true,
+          false,
           (o) => () => o!.ultimoPagamentoCompleto,
           (o) => (v) => o!.ultimoPagamentoCompleto = v,
           obj,
           false,
         );
       case 'ultimopagamentogerado':
-        return FieldReflection<Usuario, DateTime?>(
+        return FieldReflection<Usuario, DateTime>(
           this,
           _UsuarioBase,
           __TR<DateTime>(DateTime),
           'ultimoPagamentoGerado',
-          true,
+          false,
           (o) => () => o!.ultimoPagamentoGerado,
           (o) => (v) => o!.ultimoPagamentoGerado = v,
           obj,
@@ -533,72 +533,72 @@ class Usuario$reflection extends ClassReflection<Usuario>
           false,
         );
       case 'id':
-        return FieldReflection<Usuario, String?>(
+        return FieldReflection<Usuario, String>(
           this,
           Entidade,
           __TR.tString,
           'id',
-          true,
+          false,
           (o) => () => o!.id,
           (o) => (v) => o!.id = v,
           obj,
           false,
         );
       case 'id2':
-        return FieldReflection<Usuario, int?>(
+        return FieldReflection<Usuario, int>(
           this,
           Entidade,
           __TR.tInt,
           'id2',
-          true,
+          false,
           (o) => () => o!.id2,
           (o) => (v) => o!.id2 = v,
           obj,
           false,
         );
       case 'ativa':
-        return FieldReflection<Usuario, bool?>(
+        return FieldReflection<Usuario, bool>(
           this,
           Entidade,
           __TR.tBool,
           'ativa',
-          true,
+          false,
           (o) => () => o!.ativa,
           (o) => (v) => o!.ativa = v,
           obj,
           false,
         );
       case 'datacriacao':
-        return FieldReflection<Usuario, DateTime?>(
+        return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataCriacao',
-          true,
+          false,
           (o) => () => o!.dataCriacao,
           (o) => (v) => o!.dataCriacao = v,
           obj,
           false,
         );
       case 'dataedicao':
-        return FieldReflection<Usuario, DateTime?>(
+        return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataEdicao',
-          true,
+          false,
           (o) => () => o!.dataEdicao,
           (o) => (v) => o!.dataEdicao = v,
           obj,
           false,
         );
       case 'datadelecao':
-        return FieldReflection<Usuario, DateTime?>(
+        return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
           __TR<DateTime>(DateTime),
           'dataDelecao',
-          true,
+          false,
           (o) => () => o!.dataDelecao,
           (o) => (v) => o!.dataDelecao = v,
           obj,

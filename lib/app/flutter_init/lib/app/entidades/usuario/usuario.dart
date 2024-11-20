@@ -5,6 +5,7 @@ import 'package:mobx/mobx.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
+import '../../outros/metodos_estaticos.dart';
 import '../empresa/empresa.dart';
 import '../entidade.dart';
 import '../imagem/imagem.dart';
@@ -31,7 +32,7 @@ abstract class _UsuarioBase extends Entidade with Store {
   @observable
   String email = "";
   String? cpfCnpj;
-  DateTime dataNascimento = DateTime.now();
+  DateTime dataNascimento = initialTime;
   String enderecoLogradouroRua = "";
   String numeroEndereco = "";
   String bairro = "";
@@ -43,9 +44,9 @@ abstract class _UsuarioBase extends Entidade with Store {
   bool admin = false;
   Empresa? empresa;
   double? valorPagamento;
-  DateTime? dataPagamento;
-  DateTime? ultimoPagamentoCompleto;
-  DateTime? ultimoPagamentoGerado;
+  DateTime dataPagamento = initialTime;
+  DateTime ultimoPagamentoCompleto = initialTime;
+  DateTime ultimoPagamentoGerado = initialTime;
   Imagem? imagem ;
   @observable
   double latitude = 0;
@@ -53,5 +54,3 @@ abstract class _UsuarioBase extends Entidade with Store {
   double longitude = 0;
   bool emailVerificado = false;
 }
-
-

@@ -57,7 +57,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   }
 
   @override
-  Version get languageVersion => Version.parse('3.4.0');
+  Version get languageVersion => Version.parse('3.5.0');
 
   @override
   Config$reflection withObject([Config? obj]) =>

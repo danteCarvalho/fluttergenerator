@@ -50,7 +50,7 @@ abstract class VerificaEmailStoreBase with Store {
       app.usuario = usuario;
       Modular.to.popUntil((p0) => false);
       Modular.to.pushReplacementNamed("/logado/");
-    } on NaoEncontrado catch (e, s) {
+    } on NaoEncontrado catch (e, _) {
       //nada
     } on Exception catch (e, s) {
       myLog(e, s);

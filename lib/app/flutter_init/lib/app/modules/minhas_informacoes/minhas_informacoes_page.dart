@@ -70,7 +70,7 @@ class MinhasInformacoesPageState extends State<MinhasInformacoesPage> {
               store.selectFoto();
             },
           );
-        } else if (imagem.id == null) {
+        } else if (imagem.id.isEmpty) {
           widget = SizedBox(
             width: porcentagemMenorLado(context, 20),
             height: porcentagemMenorLado(context, 20),

@@ -22,11 +22,11 @@ abstract class AppStoreBase with Store {
   bool menuLateral = true;
   @observable
   Usuario? usuario;
-  List<BuildContext> contexts = [];
   @observable
   bool esperar = false;
   @observable
   bool bloquear = false;
+  Set<BuildContext> contexts = {};
 
   init(AppWidgetState appWidgetState) async {
     Modular.setObservers([Asuka.asukaHeroController, NavigationHistoryObserver()]);
@@ -38,17 +38,19 @@ abstract class AppStoreBase with Store {
     appWidgetState.refresh();
   }
 
-  startWait({bool autoClose = false})async{
+  startWait({bool autoClose = false}) async {
     esperar = true;
     bloquear = true;
-    Timer(const Duration(seconds: 3), () {
-      bloquear = false;
-      if(autoClose){
-        esperar = false;
-      }
-    },);
+    Timer(
+      const Duration(seconds: 3),
+          () {
+        bloquear = false;
+        if (autoClose) {
+          esperar = false;
+        }
+      },
+    );
   }
-
 
   printLog(String msg, e) {
     log(msg, error: e);
@@ -65,27 +67,56 @@ abstract class AppStoreBase with Store {
   }
 
   dialog(Widget dialog) async {
-    await Asuka.showDialog(
-      builder: (context) {
-        contexts.add(context);
-        return dialog;
+    BuildContext? context2;
+    await Asuka.showDialog(builder: (context) {
+      contexts.add(context);
+      context2 = context;
+      return dialog;
+    });
+    contexts.remove(context2);
+  }
+
+  menu(BuildContext context, List<PopupMenuItem> items) async {
+    contexts.add(context);
+    await showMenu(
+      context: context,
+      position: RelativeRect.fill,
+      items: items,
+    );
+    contexts.remove(context);
+  }
+
+  popScope(Widget child, BuildContext context) {
+    contexts.add(context);
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) {
+          pop();
+        } else {
+            contexts.remove(context);
+        }
       },
+      child: child,
     );
   }
 
-  pop() async {
-    var list = [];
+  pop() {
+    var toRemove = [];
     for (var obj in contexts) {
       try {
         obj.size;
       } catch (e) {
-        list.add(obj);
+        toRemove.add(obj);
       }
     }
-    for (var obj in list) {
+    for (var obj in toRemove) {
       contexts.remove(obj);
     }
-    Navigator.of(contexts.removeLast()).pop();
+    if (contexts.isNotEmpty) {
+      var last = contexts.last;
+      Navigator.pop(last,last);
+    }
   }
 
   sair() async {

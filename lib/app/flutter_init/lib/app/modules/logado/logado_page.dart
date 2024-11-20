@@ -1,6 +1,7 @@
 
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import 'logado_store.dart';
 
 class LogadoPage extends StatefulWidget {
