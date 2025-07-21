@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:url_strategy/url_strategy.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'app/app_module.dart';
 import 'app/app_store.dart';
@@ -14,10 +14,10 @@ import 'main.reflectable.dart';
 
 main() async {
   runZonedGuarded(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+    SentryWidgetsFlutterBinding.ensureInitialized();
     initializeReflectable();
     await configurar();
-    setPathUrlStrategy();
+    usePathUrlStrategy();
     await initSentry();
     runApp(ModularApp(module: AppModule(), child: const AppWidget()));
   }, (Object error, StackTrace stack) async {
@@ -29,7 +29,7 @@ main() async {
 
 initSentry() async {
   await SentryFlutter.init(
-    (options) {
+        (options) {
       options.dsn = 'https://aba016e0191e4aa095b4600d80cae295@o1251549.ingest.sentry.io/6417106';
       options.tracesSampleRate = 1.0;
     },

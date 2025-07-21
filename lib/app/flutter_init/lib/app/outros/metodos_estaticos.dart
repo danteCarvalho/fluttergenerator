@@ -15,7 +15,6 @@ import '../requests/server_requets.dart';
 import 'config/config.dart';
 import 'logger.dart';
 
-final DateTime initialTime = DateTime( 1);
 
 void errorTest() {
   if (kDebugMode) {

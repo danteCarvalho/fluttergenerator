@@ -167,9 +167,14 @@ class WWWWPageState extends State<WWWWPage> {
     );
     columnWidgets.add(wrap);
     
-     return Scaffold(
-      body: SingleChildScrollView(child: column),
-    );
+     
+     return store.app.popScope(Scaffold(
+      body: SingleChildScrollView(
+          child: Center(
+            child: column,
+          )),
+    ), context);
+     
   }
 }
 

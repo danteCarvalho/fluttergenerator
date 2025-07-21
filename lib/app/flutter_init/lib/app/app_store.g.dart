@@ -73,13 +73,30 @@ mixin _$AppStore on AppStoreBase, Store {
     });
   }
 
+  late final _$localConfigAtom =
+      Atom(name: 'AppStoreBase.localConfig', context: context);
+
+  @override
+  LocalConfig get localConfig {
+    _$localConfigAtom.reportRead();
+    return super.localConfig;
+  }
+
+  @override
+  set localConfig(LocalConfig value) {
+    _$localConfigAtom.reportWrite(value, super.localConfig, () {
+      super.localConfig = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 iniciado: ${iniciado},
 usuario: ${usuario},
 esperar: ${esperar},
-bloquear: ${bloquear}
+bloquear: ${bloquear},
+localConfig: ${localConfig}
     ''';
   }
 }

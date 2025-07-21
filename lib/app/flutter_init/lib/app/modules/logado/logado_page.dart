@@ -5,8 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'logado_store.dart';
 
 class LogadoPage extends StatefulWidget {
-  final String title;
-  const LogadoPage({super.key, this.title = 'Logado'});
+  const LogadoPage({super.key});
   @override
   LogadoPageState createState() => LogadoPageState();
 }
@@ -27,12 +26,11 @@ class LogadoPageState extends State<LogadoPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: columnWidgets,
     );
-    return Scaffold(
+
+    return store.app.popScope(Scaffold(
       body: SingleChildScrollView(
-          child: Card(
-        child: column,
-      )),
-    );
+          child: column),
+    ), context);
   }
 }
 

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
@@ -10,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app_widget.dart';
 import 'entidades/usuario/usuario.dart';
+import 'local/local_config/local_config.dart';
 import 'outros/metodos_estaticos.dart';
 
 part 'app_store.g.dart';
@@ -28,28 +28,46 @@ abstract class AppStoreBase with Store {
   bool bloquear = false;
   Set<BuildContext> contexts = {};
 
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  @observable
+  LocalConfig localConfig = LocalConfig();
+
   init(AppWidgetState appWidgetState) async {
-    Modular.setObservers([Asuka.asukaHeroController, NavigationHistoryObserver()]);
+    Modular.setObservers([NavigationHistoryObserver()]);
     var shared = await SharedPreferences.getInstance();
-    usuario = shared.containsKey("usuario") ? Usuario().stringToClass(shared.getString("usuario")!) : null;
+    usuario =
+        shared.containsKey("usuario")
+            ? Usuario().stringToClass(shared.getString("usuario")!)
+            : null;
+    localConfig =
+        shared.containsKey("localConfig")
+            ? LocalConfig().stringToClass(shared.getString("localConfig")!)
+            : await newConfig();
     verificaJwt();
     await Future.delayed(const Duration(seconds: 3));
     iniciado = true;
     appWidgetState.refresh();
   }
 
+  newConfig() async {
+    return await salvarConfig();
+  }
+
+  salvarConfig() async {
+    var shared = await SharedPreferences.getInstance();
+    await shared.setString("localConfig", localConfig.classToString());
+    return localConfig;
+  }
+
   startWait({bool autoClose = false}) async {
     esperar = true;
     bloquear = true;
-    Timer(
-      const Duration(seconds: 3),
-          () {
-        bloquear = false;
-        if (autoClose) {
-          esperar = false;
-        }
-      },
-    );
+    Timer(const Duration(seconds: 3), () {
+      bloquear = false;
+      if (autoClose) {
+        esperar = false;
+      }
+    });
   }
 
   printLog(String msg, e) {
@@ -61,47 +79,58 @@ abstract class AppStoreBase with Store {
   }
 
   mostrarSnackBar(String texto) {
-    Asuka.showSnackBar(SnackBar(
+    removeInvalids();
+    var snackBar = SnackBar(
       content: Text(texto),
-    ));
+      duration: Duration(seconds: 3),
+    );
+    ScaffoldMessenger.of(contexts.last).showSnackBar(snackBar);
   }
 
-  dialog(Widget dialog) async {
+  dialog(
+    Widget dialog, {
+    bool barrierDismissible = true,
+    Color? barrierColor,
+  }) async {
+    removeInvalids();
     BuildContext? context2;
-    await Asuka.showDialog(builder: (context) {
-      contexts.add(context);
-      context2 = context;
-      return dialog;
-    });
+    await showDialog(
+      context: contexts.last,
+      builder: (context) {
+        contexts.add(context);
+        context2 = context;
+        return dialog;
+      },
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      useRootNavigator: false,
+    );
+
     contexts.remove(context2);
   }
 
   menu(BuildContext context, List<PopupMenuItem> items) async {
     contexts.add(context);
-    await showMenu(
-      context: context,
-      position: RelativeRect.fill,
-      items: items,
-    );
+    await showMenu(context: context, position: RelativeRect.fill, items: items);
     contexts.remove(context);
   }
 
-  popScope(Widget child, BuildContext context) {
+  popScope(Widget child, BuildContext context, {bool canPop = false}) {
     contexts.add(context);
     return PopScope(
-      canPop: false,
+      canPop: canPop,
       onPopInvokedWithResult: (didPop, result) {
         if (!didPop) {
           pop();
         } else {
-            contexts.remove(context);
+          contexts.remove(context);
         }
       },
       child: child,
     );
   }
 
-  pop() {
+  removeInvalids(){
     var toRemove = [];
     for (var obj in contexts) {
       try {
@@ -113,9 +142,15 @@ abstract class AppStoreBase with Store {
     for (var obj in toRemove) {
       contexts.remove(obj);
     }
+  }
+
+  pop() {
+    removeInvalids();
     if (contexts.isNotEmpty) {
       var last = contexts.last;
-      Navigator.pop(last,last);
+      if (Navigator.canPop(last)) {
+        Navigator.pop(last, last);
+      }
     }
   }
 

@@ -9,9 +9,8 @@ import '../../outros/metodos_estaticos.dart';
 import 'lista_mensalidades_store.dart';
 
 class ListaMensalidadesPage extends StatefulWidget {
-  final String title;
 
-  const ListaMensalidadesPage({super.key, this.title = 'ListaMensalidades'});
+  const ListaMensalidadesPage({super.key});
 
   @override
   ListaMensalidadesPageState createState() => ListaMensalidadesPageState();
@@ -104,12 +103,15 @@ class ListaMensalidadesPageState extends State<ListaMensalidadesPage> {
     columnWidgets.add(botao);
     columnWidgets.add(tabela);
 
-    return Scaffold(
+
+    return store.app.popScope(Scaffold(
       body: SingleChildScrollView(
           child: Card(
             color: Colors.red,
-        child: column,
-      )),
-    );
+            child: column,
+          )),
+    ), context);
+
+
   }
 }

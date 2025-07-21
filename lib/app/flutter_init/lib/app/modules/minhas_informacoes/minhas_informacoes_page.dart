@@ -10,9 +10,8 @@ import '../../outros/metodos_estaticos.dart';
 import 'minhas_informacoes_store.dart';
 
 class MinhasInformacoesPage extends StatefulWidget {
-  final String title;
 
-  const MinhasInformacoesPage({super.key, this.title = 'MinhasInformacoes'});
+  const MinhasInformacoesPage({super.key});
 
   @override
   MinhasInformacoesPageState createState() => MinhasInformacoesPageState();
@@ -145,8 +144,12 @@ class MinhasInformacoesPageState extends State<MinhasInformacoesPage> {
     columnWidgets.add(sessao(username));
     columnWidgets.add(sessao(salvar, width: col_12(context)));
 
-    return Scaffold(
-      body: SingleChildScrollView(child: column),
-    );
+
+
+    return store.app.popScope(Scaffold(
+      body: SingleChildScrollView(
+          child: column),
+    ), context);
+
   }
 }

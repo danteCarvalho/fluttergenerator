@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutterutils/flutterutils.dart';
 
 import 'home_store.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
 
-  const HomePage({super.key, this.title = "Home"});
+  const HomePage({super.key});
 
   @override
   HomePageState createState() => HomePageState();
@@ -23,19 +23,11 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> columnWidgets = [];
-    var column = Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: columnWidgets,
-    );
-
-
-    return Scaffold(
-      body: SingleChildScrollView(
-          child: Card(
-        child: column,
-      )),
+    return store.app.popScope(
+      Scaffold(
+        body: Container(),
+      ),
+      context,
     );
   }
 }

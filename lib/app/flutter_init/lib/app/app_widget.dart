@@ -37,11 +37,11 @@ class AppWidgetState extends State<AppWidget> {
     var colorScheme = ColorScheme.fromSeed(seedColor: Colors.green);
     return MaterialApp.router(
       builder: (context, child) {
-        child = Asuka.builder(context, child);
         child = Scaffold(
           appBar: const RootAppBarWidget(),
           body: child,
         );
+        child = Asuka.builder(context, child);
         child = Stack(
           alignment: Alignment.center,
           children: [child, const WaitWidget()],

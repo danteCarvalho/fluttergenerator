@@ -4,9 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'google_login_store.dart';
 
 class GoogleLoginPage extends StatefulWidget {
-  final String title;
 
-  const GoogleLoginPage({super.key, this.title = 'GoogleLogin'});
+  const GoogleLoginPage({super.key});
 
   @override
   GoogleLoginPageState createState() => GoogleLoginPageState();
@@ -29,11 +28,13 @@ class GoogleLoginPageState extends State<GoogleLoginPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: columnWidgets,
     );
-    return Scaffold(
+
+
+
+    return store.app.popScope(Scaffold(
       body: SingleChildScrollView(
-          child: Card(
-        child: column,
-      )),
-    );
+          child: column),
+    ), context);
+
   }
 }

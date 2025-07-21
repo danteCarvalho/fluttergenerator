@@ -7,9 +7,8 @@ import 'package:flutterutils/flutterutils.dart';
 import 'verifica_email2_store.dart';
 
 class VerificaEmail2Page extends StatefulWidget {
-  final String title;
 
-  const VerificaEmail2Page({super.key, this.title = 'VerificaEmail2'});
+  const VerificaEmail2Page({super.key});
 
   @override
   VerificaEmail2PageState createState() => VerificaEmail2PageState();
@@ -70,8 +69,10 @@ class VerificaEmail2PageState extends State<VerificaEmail2Page> {
     );
     columnWidgets.add(sessao(observer));
 
-    return Scaffold(
-      body: SingleChildScrollView(child: column),
-    );
+    return store.app.popScope(Scaffold(
+      body: SingleChildScrollView(
+          child: column),
+    ), context);
+
   }
 }

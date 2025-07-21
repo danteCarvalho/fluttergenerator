@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
+import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
 
 import 'login_store.dart';
 
 class LoginPage extends StatefulWidget {
-  final String title;
 
-  const LoginPage({super.key, this.title = 'Login'});
+  const LoginPage({super.key});
 
   @override
   LoginPageState createState() => LoginPageState();
@@ -21,7 +21,6 @@ class LoginPageState extends State<LoginPage> {
     super.initState();
     store.init(this);
   }
-
   @override
   Widget build(BuildContext context) {
     List<Widget> columnWidgets = [];
@@ -43,8 +42,8 @@ class LoginPageState extends State<LoginPage> {
     var login = MyTextFormField("Login", () => store.login, (v) => store.login = v);
     var senha = MyTextFormField(
       "Senha",
-      () => store.senha,
-      (v) => store.senha = v,
+          () => store.senha,
+          (v) => store.senha = v,
       obscure: true,
     );
     var botao = ElevatedButton(

@@ -9,9 +9,8 @@ import 'package:flutterutils/flutterutils.dart';
 import 'cadastro_store.dart';
 
 class CadastroPage extends StatefulWidget {
-  final String title;
 
-  const CadastroPage({super.key, this.title = 'Cadastro'});
+  const CadastroPage({super.key});
 
   @override
   CadastroPageState createState() => CadastroPageState();
@@ -162,14 +161,13 @@ class CadastroPageState extends State<CadastroPage> {
     columnWidgets.add(sessao(checkbox));
     columnWidgets.add(sessao(elevatedButton));
 
-    return Scaffold(
+    return store.app.popScope(Scaffold(
       body: SingleChildScrollView(
-          child: Card(
-        child: Form(
-          key: formKey,
-          child: column,
-        ),
-      )),
-    );
+          child: Form(
+            key: formKey,
+            child: column,
+          )),
+    ), context);
+
   }
 }

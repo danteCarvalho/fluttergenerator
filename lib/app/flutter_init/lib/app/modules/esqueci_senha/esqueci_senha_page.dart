@@ -5,9 +5,8 @@ import 'package:flutterutils/flutterutils.dart';
 import 'esqueci_senha_store.dart';
 
 class EsqueciSenhaPage extends StatefulWidget {
-  final String title;
 
-  const EsqueciSenhaPage({super.key, this.title = 'EsqueciSenha'});
+  const EsqueciSenhaPage({super.key});
 
   @override
   EsqueciSenhaPageState createState() => EsqueciSenhaPageState();
@@ -64,8 +63,10 @@ class EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
     columnWidgets.add(sessao(email,width: responsiveSize(context,mobile: col_12(context),desktop3: col_6(context))));
     columnWidgets.add(sessao(botao));
 
-    return Scaffold(
-      body: SingleChildScrollView(child: column),
-    );
+    return store.app.popScope(Scaffold(
+      body: SingleChildScrollView(
+          child: column),
+    ), context);
+
   }
 }

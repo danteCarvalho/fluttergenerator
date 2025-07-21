@@ -5,8 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'root_store.dart';
 
 class RootPage extends StatefulWidget {
-  final String title;
-  const RootPage({super.key, this.title = 'Root'});
+  const RootPage({super.key});
   @override
   RootPageState createState() => RootPageState();
 }
@@ -29,9 +28,7 @@ class RootPageState extends State<RootPage> {
     );
     return Scaffold(
       body: SingleChildScrollView(
-          child: Card(
-        child: column,
-      )),
+          child: column),
     );
   }
 }

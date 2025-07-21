@@ -7,9 +7,8 @@ import 'package:flutterutils/flutterutils.dart';
 import 'esqueci_senha2_store.dart';
 
 class EsqueciSenha2Page extends StatefulWidget {
-  final String title;
 
-  const EsqueciSenha2Page({super.key, this.title = 'EsqueciSenha2'});
+  const EsqueciSenha2Page({super.key});
 
   @override
   EsqueciSenha2PageState createState() => EsqueciSenha2PageState();
@@ -103,8 +102,11 @@ class EsqueciSenha2PageState extends State<EsqueciSenha2Page> {
         }
       },
     );
-    return Scaffold(
-      body: SingleChildScrollView(child: sessao(observer, center: true)),
-    );
+
+    return store.app.popScope(Scaffold(
+      body: SingleChildScrollView(
+          child: sessao(observer, center: true)),
+    ), context);
+
   }
 }

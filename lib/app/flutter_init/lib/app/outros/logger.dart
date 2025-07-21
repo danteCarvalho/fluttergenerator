@@ -15,7 +15,13 @@ myLog(Object error, StackTrace stack) async {
         var split = linha.split(" ");
         var package = split[0].replaceFirst("../packages/", "(package:");
         stack2 += "$package:${split[1]}) ${split[split.length - 1]}\n";
-      } else {
+      }
+      else if (linha.startsWith("packages/")){
+        var split = linha.split(" ");
+        var package = split[0].replaceFirst("packages/", "(package:");
+        stack2 += "$package:${split[1]}) ${split[split.length - 1]}\n";
+      }
+      else {
         var split = linha.split("      ");
         split = split[1].toString().split("(package:");
         stack2 += "(package:${split[1]} ${split[0]}\n";
