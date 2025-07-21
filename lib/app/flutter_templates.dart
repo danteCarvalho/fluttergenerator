@@ -128,8 +128,7 @@ import 'package:flutterutils/flutterutils.dart';
 import 'wwww_store.dart';
 
 class WWWWPage extends StatefulWidget {
-  final String title;
-  const WWWWPage({super.key, this.title = 'WWWW'});
+  const WWWWPage({super.key});
   @override
   WWWWPageState createState() => WWWWPageState();
 }
@@ -144,37 +143,12 @@ class WWWWPageState extends State<WWWWPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> columnWidgets = [];
-    var column = Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: columnWidgets,
+    return store.app.popScope(
+      Scaffold(
+        body: Container(),
+      ),
+      context,
     );
-    
-    sessao(Widget widget, {double? width, double? height}) {
-      return Container(
-        width: width ?? responsiveSize(context, mobile: col_12(context), desktop3: col_6(context)),
-        height: height,
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: widget,
-      );
-    }
-
-    List<Widget> wrapWidgets = [];
-    var wrap = Wrap(
-      children: wrapWidgets,
-    );
-    columnWidgets.add(wrap);
-    
-     
-     return store.app.popScope(Scaffold(
-      body: SingleChildScrollView(
-          child: Center(
-            child: column,
-          )),
-    ), context);
-     
   }
 }
 
