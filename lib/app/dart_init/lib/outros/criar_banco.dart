@@ -28,6 +28,7 @@ criarBanco() async {
   entidades.add(AppLink());
   await checkPostgres();
   await checkHasura();
+  await addHasuraSource();
   await processaEntidades(entidades);
   await refreshHarusa();
   await verificaAdmin();
@@ -44,7 +45,7 @@ checkPostgres() async {
     exit(0);
   }
   catch (e) {
-    print("Hasura desligado ou não alcançado");
+    print("Postgres desligado ou não alcançado");
     print(e);
     exit(0);
   }
@@ -58,6 +59,39 @@ checkHasura() async {
 
   try {
     var response = await get(uri, headers: headers);
+    print('Hasura: ${response.body}');
+  } on SocketException {
+    print("Hasura desligado ou não alcançado");
+    print(uri);
+    exit(0);
+  } catch (e) {
+    print(e);
+    exit(0);
+  }
+}
+
+addHasuraSource() async {
+  Map<String, String> headers = {};
+  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
+
+  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/metadata");
+
+String request = """
+{
+   "type":"postgres_add_source",
+   "args":{
+      "name":"${config.hasuraSource}",
+      "configuration":{
+         "connection_info":{
+            "database_url":"postgres://postgres:${config.senha}@${config.usuario}:5432/${config.banco}"
+         }
+      }
+   }
+}
+""";
+
+  try {
+    var response = await post(uri, headers: headers,body: request);
     print('Hasura: ${response.body}');
   } on SocketException {
     print("Hasura desligado ou não alcançado");
