@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.5
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.5');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Config Config$fromJson(Map<String, Object?> map) =>
     Config$reflection.staticInstance.fromJson(map);
@@ -57,7 +58,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   }
 
   @override
-  Version get languageVersion => Version.parse('3.7.0');
+  Version get languageVersion => Version.parse('3.9.0');
 
   @override
   Config$reflection withObject([Config? obj]) =>
@@ -66,6 +67,9 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   static Config$reflection? _withoutObjectInstance;
   @override
   Config$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Config$reflection get staticInstance =>
       _withoutObjectInstance ??= Config$reflection._();
@@ -117,7 +121,15 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
     switch (lc) {
       case '':
         return ConstructorReflection<Config>(
-            this, Config, '', () => () => Config(), null, null, null, null);
+          this,
+          Config,
+          '',
+          () => Config.new,
+          null,
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -125,7 +137,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
 
   static const List<Object> _classAnnotations = const [
     reflector,
-    SerialAnnotation()
+    SerialAnnotation(),
   ];
 
   @override
@@ -157,7 +169,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
     'portaServidor',
     'schemeHasura',
     'schemeServidor',
-    'sembastDbName'
+    'sembastDbName',
   ];
 
   @override
@@ -218,8 +230,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tBool,
           'arquivoConf',
           false,
-          (o) => () => o!.arquivoConf,
-          (o) => (v) => o!.arquivoConf = v,
+          (o) =>
+              () => o!.arquivoConf,
+          (o) =>
+              (v) => o!.arquivoConf = v,
           obj,
           false,
         );
@@ -230,8 +244,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tInt,
           'portaApp',
           false,
-          (o) => () => o!.portaApp,
-          (o) => (v) => o!.portaApp = v,
+          (o) =>
+              () => o!.portaApp,
+          (o) =>
+              (v) => o!.portaApp = v,
           obj,
           false,
         );
@@ -242,8 +258,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tString,
           'sembastDbName',
           false,
-          (o) => () => o!.sembastDbName,
-          (o) => (v) => o!.sembastDbName = v,
+          (o) =>
+              () => o!.sembastDbName,
+          (o) =>
+              (v) => o!.sembastDbName = v,
           obj,
           false,
         );
@@ -254,8 +272,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tString,
           'schemeServidor',
           false,
-          (o) => () => o!.schemeServidor,
-          (o) => (v) => o!.schemeServidor = v,
+          (o) =>
+              () => o!.schemeServidor,
+          (o) =>
+              (v) => o!.schemeServidor = v,
           obj,
           false,
         );
@@ -266,8 +286,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tString,
           'ipServidor',
           false,
-          (o) => () => o!.ipServidor,
-          (o) => (v) => o!.ipServidor = v,
+          (o) =>
+              () => o!.ipServidor,
+          (o) =>
+              (v) => o!.ipServidor = v,
           obj,
           false,
         );
@@ -278,8 +300,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tInt,
           'portaServidor',
           false,
-          (o) => () => o!.portaServidor,
-          (o) => (v) => o!.portaServidor = v,
+          (o) =>
+              () => o!.portaServidor,
+          (o) =>
+              (v) => o!.portaServidor = v,
           obj,
           false,
         );
@@ -290,8 +314,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tString,
           'schemeHasura',
           false,
-          (o) => () => o!.schemeHasura,
-          (o) => (v) => o!.schemeHasura = v,
+          (o) =>
+              () => o!.schemeHasura,
+          (o) =>
+              (v) => o!.schemeHasura = v,
           obj,
           false,
         );
@@ -302,8 +328,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tString,
           'ipHasura',
           false,
-          (o) => () => o!.ipHasura,
-          (o) => (v) => o!.ipHasura = v,
+          (o) =>
+              () => o!.ipHasura,
+          (o) =>
+              (v) => o!.ipHasura = v,
           obj,
           false,
         );
@@ -314,8 +342,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tInt,
           'portaHasura',
           false,
-          (o) => () => o!.portaHasura,
-          (o) => (v) => o!.portaHasura = v,
+          (o) =>
+              () => o!.portaHasura,
+          (o) =>
+              (v) => o!.portaHasura = v,
           obj,
           false,
         );
@@ -326,8 +356,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tString,
           'hasuraSource',
           false,
-          (o) => () => o!.hasuraSource,
-          (o) => (v) => o!.hasuraSource = v,
+          (o) =>
+              () => o!.hasuraSource,
+          (o) =>
+              (v) => o!.hasuraSource = v,
           obj,
           false,
         );
@@ -338,8 +370,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tString,
           'hasuraSufix',
           false,
-          (o) => () => o!.hasuraSufix,
-          (o) => (v) => o!.hasuraSufix = v,
+          (o) =>
+              () => o!.hasuraSufix,
+          (o) =>
+              (v) => o!.hasuraSufix = v,
           obj,
           false,
         );
@@ -350,8 +384,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           __TR.tString,
           'imageStorage',
           false,
-          (o) => () => o!.imageStorage,
-          (o) => (v) => o!.imageStorage = v,
+          (o) =>
+              () => o!.imageStorage,
+          (o) =>
+              (v) => o!.imageStorage = v,
           obj,
           false,
         );
@@ -361,8 +397,10 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   }
 
   @override
-  Map<String, dynamic> getFieldsValues(Config? obj,
-      {bool withHashCode = false}) {
+  Map<String, dynamic> getFieldsValues(
+    Config? obj, {
+    bool withHashCode = false,
+  }) {
     obj ??= object;
     return <String, dynamic>{
       'arquivoConf': obj?.arquivoConf,
@@ -399,7 +437,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
     'mapToClass',
     'reflect',
     'stringToClass',
-    'toJson'
+    'toJson',
   ];
 
   @override
@@ -448,7 +486,9 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   }
 
   MethodReflection<Config, dynamic>? _methodImpl(
-      String methodName, Config? obj) {
+    String methodName,
+    Config? obj,
+  ) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
@@ -456,149 +496,166 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
     switch (lc) {
       case 'classtomap':
         return MethodReflection<Config, Map<String, dynamic>>(
-            this,
-            _$Serial,
-            'classToMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.classToMap,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'classToMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.classToMap,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'tojson':
         return MethodReflection<Config, Map<String, dynamic>>(
-            this,
-            _$Serial,
-            'toJson',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.toJson,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'toJson',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.toJson,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'classtostring':
         return MethodReflection<Config, String>(
-            this,
-            _$Serial,
-            'classToString',
-            __TR.tString,
-            false,
-            (o) => o!.classToString,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'classToString',
+          __TR.tString,
+          false,
+          (o) => o!.classToString,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'listclasstostring':
         return MethodReflection<Config, String>(
-            this,
-            _$Serial,
-            'listClassToString',
-            __TR.tString,
-            false,
-            (o) => o!.listClassToString,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'listClassToString',
+          __TR.tString,
+          false,
+          (o) => o!.listClassToString,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'dbmaptoclassmap':
         return MethodReflection<Config, Map<String, dynamic>>(
-            this,
-            _$Serial,
-            'dbMaptoClassMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.dbMaptoClassMap,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'original',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'dbMaptoClassMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.dbMaptoClassMap,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'original',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'stringtoclass':
         return MethodReflection<Config, Config>(
-            this,
-            _$Serial,
-            'stringToClass',
-            __TR<Config>(Config),
-            false,
-            (o) => o!.stringToClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'string', false, true)],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'stringToClass',
+          const __TR<Config>(Config),
+          false,
+          (o) => o!.stringToClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'string', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'maptoclass':
         return MethodReflection<Config, Config>(
-            this,
-            _$Serial,
-            'mapToClass',
-            __TR<Config>(Config),
-            false,
-            (o) => o!.mapToClass,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'mapToClass',
+          const __TR<Config>(Config),
+          false,
+          (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'listmaptolistclass':
         return MethodReflection<Config, List<Config>>(
-            this,
-            _$Serial,
-            'listMapToListClass',
-            __TR<List<Config>>(List, <__TR>[__TR<Config>(Config)]),
-            false,
-            (o) => o!.listMapToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'listMapToListClass',
+          const __TR<List<Config>>(List, <__TR>[__TR<Config>(Config)]),
+          false,
+          (o) => o!.listMapToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'liststringtolistclass':
         return MethodReflection<Config, List<Config>>(
-            this,
-            _$Serial,
-            'listStringToListClass',
-            __TR<List<Config>>(List, <__TR>[__TR<Config>(Config)]),
-            false,
-            (o) => o!.listStringToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'listString', false, true)],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'listStringToListClass',
+          const __TR<List<Config>>(List, <__TR>[__TR<Config>(Config)]),
+          false,
+          (o) => o!.listStringToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'listString', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'reflect':
         return MethodReflection<Config, ClassReflection<Config>>(
-            this,
-            _$Serial,
-            'reflect',
-            __TR<ClassReflection<Config>>(
-                ClassReflection, <__TR>[__TR<Config>(Config)]),
-            false,
-            (o) => o!.reflect,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'reflect',
+          const __TR<ClassReflection<Config>>(ClassReflection, <__TR>[
+            __TR<Config>(Config),
+          ]),
+          false,
+          (o) => o!.reflect,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -610,7 +667,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   static final Map<String, StaticMethodReflection<Config, dynamic>>
-      _staticMethods = {};
+  _staticMethods = {};
 
   @override
   StaticMethodReflection<Config, R>? staticMethod<R>(String methodName) {
@@ -625,29 +682,34 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   }
 
   StaticMethodReflection<Config, dynamic>? _staticMethodImpl(
-      String methodName) {
+    String methodName,
+  ) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
         return StaticMethodReflection<Config, dynamic>(
-            this,
-            Config,
-            'fromJson',
-            __TR.tDynamic,
-            false,
-            () => Config.fromJson,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          Config,
+          'fromJson',
+          __TR.tDynamic,
+          false,
+          () => Config.fromJson,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -663,19 +725,20 @@ extension Config$reflectionExtension on Config {
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
   /// Returns an encoded JSON [String] for type [Config]. (Generated by [ReflectionFactory])
-  String toJsonEncoded(
-          {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
-      reflection.toJsonEncoded(
-          pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
+  String toJsonEncoded({
+    bool pretty = false,
+    bool duplicatedEntitiesAsID = false,
+  }) => reflection.toJsonEncoded(
+    pretty: pretty,
+    duplicatedEntitiesAsID: duplicatedEntitiesAsID,
+  );
 
   /// Returns a JSON for type [Config] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
       .toJsonFromFields(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 }
 
-List<Reflection> _listSiblingsReflection() => <Reflection>[
-      Config$reflection(),
-    ];
+List<Reflection> _listSiblingsReflection() => <Reflection>[Config$reflection()];
 
 List<Reflection>? _siblingsReflectionList;
 List<Reflection> _siblingsReflection() => _siblingsReflectionList ??=

@@ -5,7 +5,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
 
-import '../../outros/metodos_estaticos.dart';
 import 'lista_mensalidades_store.dart';
 
 class ListaMensalidadesPage extends StatefulWidget {

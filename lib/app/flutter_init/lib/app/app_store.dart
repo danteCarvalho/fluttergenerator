@@ -28,21 +28,21 @@ abstract class AppStoreBase with Store {
   bool bloquear = false;
   Set<BuildContext> contexts = {};
 
+  late AppWidgetState appWidgetState;
+
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @observable
   LocalConfig localConfig = LocalConfig();
 
   init(AppWidgetState appWidgetState) async {
+    this.appWidgetState = appWidgetState;
     Modular.setObservers([NavigationHistoryObserver()]);
     var shared = await SharedPreferences.getInstance();
-    usuario =
-        shared.containsKey("usuario")
-            ? Usuario().stringToClass(shared.getString("usuario")!)
-            : null;
+    usuario = shared.containsKey("usuario") ? Usuario().stringToClass(shared.getString("usuario")!) : null;
     localConfig =
-        shared.containsKey("localConfig")
-            ? LocalConfig().stringToClass(shared.getString("localConfig")!)
-            : await newConfig();
+    shared.containsKey("localConfig")
+        ? LocalConfig().stringToClass(shared.getString("localConfig")!)
+        : await newConfig();
     verificaJwt();
     await Future.delayed(const Duration(seconds: 3));
     iniciado = true;
@@ -78,20 +78,21 @@ abstract class AppStoreBase with Store {
     debugPrint(msg.toString());
   }
 
-  mostrarSnackBar(String texto) {
+  mostrarSnackBar(String texto, {SnackBarAction? action}) {
     removeInvalids();
     var snackBar = SnackBar(
       content: Text(texto),
       duration: Duration(seconds: 3),
+      action: action,
     );
     ScaffoldMessenger.of(contexts.last).showSnackBar(snackBar);
   }
 
   dialog(
-    Widget dialog, {
-    bool barrierDismissible = true,
-    Color? barrierColor,
-  }) async {
+      Widget dialog, {
+        bool barrierDismissible = true,
+        Color? barrierColor,
+      }) async {
     removeInvalids();
     BuildContext? context2;
     await showDialog(
@@ -103,6 +104,30 @@ abstract class AppStoreBase with Store {
       },
       barrierDismissible: barrierDismissible,
       barrierColor: barrierColor,
+      useRootNavigator: false,
+    );
+
+    contexts.remove(context2);
+  }
+
+  modalBottomSheetItems(List<Widget> items) {
+    ListView listView = ListView(
+      shrinkWrap: true,
+      children: items,
+    );
+    return listView;
+  }
+
+  modalBottomSheet(Widget dialog) async {
+    removeInvalids();
+    BuildContext? context2;
+    await showModalBottomSheet(
+      context: contexts.last,
+      builder: (context) {
+        contexts.add(context);
+        context2 = context;
+        return dialog;
+      },
       useRootNavigator: false,
     );
 
@@ -130,7 +155,7 @@ abstract class AppStoreBase with Store {
     );
   }
 
-  removeInvalids(){
+  removeInvalids() {
     var toRemove = [];
     for (var obj in contexts) {
       try {

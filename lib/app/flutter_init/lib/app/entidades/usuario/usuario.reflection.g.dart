@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.5
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.5');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Usuario Usuario$fromJson(Map<String, Object?> map) =>
     Usuario$reflection.staticInstance.fromJson(map);
@@ -58,7 +59,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.7.0');
+  Version get languageVersion => Version.parse('3.9.0');
 
   @override
   Usuario$reflection withObject([Usuario? obj]) =>
@@ -67,6 +68,9 @@ class Usuario$reflection extends ClassReflection<Usuario>
   static Usuario$reflection? _withoutObjectInstance;
   @override
   Usuario$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Usuario$reflection get staticInstance =>
       _withoutObjectInstance ??= Usuario$reflection._();
@@ -118,7 +122,15 @@ class Usuario$reflection extends ClassReflection<Usuario>
     switch (lc) {
       case '':
         return ConstructorReflection<Usuario>(
-            this, Usuario, '', () => () => Usuario(), null, null, null, null);
+          this,
+          Usuario,
+          '',
+          () => Usuario.new,
+          null,
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -126,7 +138,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
 
   static const List<Object> _classAnnotations = const [
     reflector,
-    SerialAnnotation()
+    SerialAnnotation(),
   ];
 
   @override
@@ -138,7 +150,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
     SerialMethods,
     Store,
     _$Usuario,
-    _$Serial
+    _$Serial,
   ];
 
   @override
@@ -184,7 +196,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
     'ultimoPagamentoCompleto',
     'ultimoPagamentoGerado',
     'username',
-    'valorPagamento'
+    'valorPagamento',
   ];
 
   @override
@@ -233,7 +245,9 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 
   FieldReflection<Usuario, dynamic>? _fieldImpl(
-      String fieldName, Usuario? obj) {
+    String fieldName,
+    Usuario? obj,
+  ) {
     obj ??= object;
 
     var lc = fieldName.trim().toLowerCase();
@@ -246,8 +260,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'nome',
           false,
-          (o) => () => o!.nome,
-          (o) => (v) => o!.nome = v,
+          (o) =>
+              () => o!.nome,
+          (o) =>
+              (v) => o!.nome = v,
           obj,
           false,
           const [observable],
@@ -259,8 +275,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'senha',
           false,
-          (o) => () => o!.senha,
-          (o) => (v) => o!.senha = v,
+          (o) =>
+              () => o!.senha,
+          (o) =>
+              (v) => o!.senha = v,
           obj,
           false,
           const [observable],
@@ -272,8 +290,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'username',
           true,
-          (o) => () => o!.username,
-          (o) => (v) => o!.username = v,
+          (o) =>
+              () => o!.username,
+          (o) =>
+              (v) => o!.username = v,
           obj,
           false,
         );
@@ -284,8 +304,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'email',
           false,
-          (o) => () => o!.email,
-          (o) => (v) => o!.email = v,
+          (o) =>
+              () => o!.email,
+          (o) =>
+              (v) => o!.email = v,
           obj,
           false,
           const [observable],
@@ -297,8 +319,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'cpfCnpj',
           true,
-          (o) => () => o!.cpfCnpj,
-          (o) => (v) => o!.cpfCnpj = v,
+          (o) =>
+              () => o!.cpfCnpj,
+          (o) =>
+              (v) => o!.cpfCnpj = v,
           obj,
           false,
         );
@@ -306,11 +330,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           _UsuarioBase,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataNascimento',
           false,
-          (o) => () => o!.dataNascimento,
-          (o) => (v) => o!.dataNascimento = v,
+          (o) =>
+              () => o!.dataNascimento,
+          (o) =>
+              (v) => o!.dataNascimento = v,
           obj,
           false,
         );
@@ -321,8 +347,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'enderecoLogradouroRua',
           false,
-          (o) => () => o!.enderecoLogradouroRua,
-          (o) => (v) => o!.enderecoLogradouroRua = v,
+          (o) =>
+              () => o!.enderecoLogradouroRua,
+          (o) =>
+              (v) => o!.enderecoLogradouroRua = v,
           obj,
           false,
         );
@@ -333,8 +361,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'numeroEndereco',
           false,
-          (o) => () => o!.numeroEndereco,
-          (o) => (v) => o!.numeroEndereco = v,
+          (o) =>
+              () => o!.numeroEndereco,
+          (o) =>
+              (v) => o!.numeroEndereco = v,
           obj,
           false,
         );
@@ -345,8 +375,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'bairro',
           false,
-          (o) => () => o!.bairro,
-          (o) => (v) => o!.bairro = v,
+          (o) =>
+              () => o!.bairro,
+          (o) =>
+              (v) => o!.bairro = v,
           obj,
           false,
         );
@@ -357,8 +389,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'cep',
           false,
-          (o) => () => o!.cep,
-          (o) => (v) => o!.cep = v,
+          (o) =>
+              () => o!.cep,
+          (o) =>
+              (v) => o!.cep = v,
           obj,
           false,
         );
@@ -369,8 +403,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'cidade',
           false,
-          (o) => () => o!.cidade,
-          (o) => (v) => o!.cidade = v,
+          (o) =>
+              () => o!.cidade,
+          (o) =>
+              (v) => o!.cidade = v,
           obj,
           false,
         );
@@ -381,8 +417,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'estado',
           false,
-          (o) => () => o!.estado,
-          (o) => (v) => o!.estado = v,
+          (o) =>
+              () => o!.estado,
+          (o) =>
+              (v) => o!.estado = v,
           obj,
           false,
         );
@@ -393,8 +431,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'complemento',
           false,
-          (o) => () => o!.complemento,
-          (o) => (v) => o!.complemento = v,
+          (o) =>
+              () => o!.complemento,
+          (o) =>
+              (v) => o!.complemento = v,
           obj,
           false,
         );
@@ -405,8 +445,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'telefone',
           false,
-          (o) => () => o!.telefone,
-          (o) => (v) => o!.telefone = v,
+          (o) =>
+              () => o!.telefone,
+          (o) =>
+              (v) => o!.telefone = v,
           obj,
           false,
         );
@@ -417,8 +459,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tBool,
           'admin',
           false,
-          (o) => () => o!.admin,
-          (o) => (v) => o!.admin = v,
+          (o) =>
+              () => o!.admin,
+          (o) =>
+              (v) => o!.admin = v,
           obj,
           false,
         );
@@ -426,11 +470,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, Empresa?>(
           this,
           _UsuarioBase,
-          __TR<Empresa>(Empresa),
+          const __TR<Empresa>(Empresa),
           'empresa',
           true,
-          (o) => () => o!.empresa,
-          (o) => (v) => o!.empresa = v,
+          (o) =>
+              () => o!.empresa,
+          (o) =>
+              (v) => o!.empresa = v,
           obj,
           false,
         );
@@ -441,8 +487,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tDouble,
           'valorPagamento',
           true,
-          (o) => () => o!.valorPagamento,
-          (o) => (v) => o!.valorPagamento = v,
+          (o) =>
+              () => o!.valorPagamento,
+          (o) =>
+              (v) => o!.valorPagamento = v,
           obj,
           false,
         );
@@ -450,11 +498,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           _UsuarioBase,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataPagamento',
           false,
-          (o) => () => o!.dataPagamento,
-          (o) => (v) => o!.dataPagamento = v,
+          (o) =>
+              () => o!.dataPagamento,
+          (o) =>
+              (v) => o!.dataPagamento = v,
           obj,
           false,
         );
@@ -462,11 +512,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           _UsuarioBase,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'ultimoPagamentoCompleto',
           false,
-          (o) => () => o!.ultimoPagamentoCompleto,
-          (o) => (v) => o!.ultimoPagamentoCompleto = v,
+          (o) =>
+              () => o!.ultimoPagamentoCompleto,
+          (o) =>
+              (v) => o!.ultimoPagamentoCompleto = v,
           obj,
           false,
         );
@@ -474,11 +526,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           _UsuarioBase,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'ultimoPagamentoGerado',
           false,
-          (o) => () => o!.ultimoPagamentoGerado,
-          (o) => (v) => o!.ultimoPagamentoGerado = v,
+          (o) =>
+              () => o!.ultimoPagamentoGerado,
+          (o) =>
+              (v) => o!.ultimoPagamentoGerado = v,
           obj,
           false,
         );
@@ -486,11 +540,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, Imagem?>(
           this,
           _UsuarioBase,
-          __TR<Imagem>(Imagem),
+          const __TR<Imagem>(Imagem),
           'imagem',
           true,
-          (o) => () => o!.imagem,
-          (o) => (v) => o!.imagem = v,
+          (o) =>
+              () => o!.imagem,
+          (o) =>
+              (v) => o!.imagem = v,
           obj,
           false,
         );
@@ -501,8 +557,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tDouble,
           'latitude',
           false,
-          (o) => () => o!.latitude,
-          (o) => (v) => o!.latitude = v,
+          (o) =>
+              () => o!.latitude,
+          (o) =>
+              (v) => o!.latitude = v,
           obj,
           false,
           const [observable],
@@ -514,8 +572,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tDouble,
           'longitude',
           false,
-          (o) => () => o!.longitude,
-          (o) => (v) => o!.longitude = v,
+          (o) =>
+              () => o!.longitude,
+          (o) =>
+              (v) => o!.longitude = v,
           obj,
           false,
           const [observable],
@@ -527,8 +587,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tBool,
           'emailVerificado',
           false,
-          (o) => () => o!.emailVerificado,
-          (o) => (v) => o!.emailVerificado = v,
+          (o) =>
+              () => o!.emailVerificado,
+          (o) =>
+              (v) => o!.emailVerificado = v,
           obj,
           false,
         );
@@ -539,8 +601,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tString,
           'id',
           false,
-          (o) => () => o!.id,
-          (o) => (v) => o!.id = v,
+          (o) =>
+              () => o!.id,
+          (o) =>
+              (v) => o!.id = v,
           obj,
           false,
         );
@@ -551,8 +615,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tInt,
           'id2',
           false,
-          (o) => () => o!.id2,
-          (o) => (v) => o!.id2 = v,
+          (o) =>
+              () => o!.id2,
+          (o) =>
+              (v) => o!.id2 = v,
           obj,
           false,
         );
@@ -563,8 +629,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
           __TR.tBool,
           'ativa',
           false,
-          (o) => () => o!.ativa,
-          (o) => (v) => o!.ativa = v,
+          (o) =>
+              () => o!.ativa,
+          (o) =>
+              (v) => o!.ativa = v,
           obj,
           false,
         );
@@ -572,11 +640,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
-          (o) => () => o!.dataCriacao,
-          (o) => (v) => o!.dataCriacao = v,
+          (o) =>
+              () => o!.dataCriacao,
+          (o) =>
+              (v) => o!.dataCriacao = v,
           obj,
           false,
         );
@@ -584,11 +654,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
-          (o) => () => o!.dataEdicao,
-          (o) => (v) => o!.dataEdicao = v,
+          (o) =>
+              () => o!.dataEdicao,
+          (o) =>
+              (v) => o!.dataEdicao = v,
           obj,
           false,
         );
@@ -596,11 +668,13 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
-          (o) => () => o!.dataDelecao,
-          (o) => (v) => o!.dataDelecao = v,
+          (o) =>
+              () => o!.dataDelecao,
+          (o) =>
+              (v) => o!.dataDelecao = v,
           obj,
           false,
         );
@@ -608,10 +682,11 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, ReactiveContext>(
           this,
           Store,
-          __TR<ReactiveContext>(ReactiveContext),
+          const __TR<ReactiveContext>(ReactiveContext),
           'context',
           false,
-          (o) => () => o!.context,
+          (o) =>
+              () => o!.context,
           null,
           obj,
           false,
@@ -622,8 +697,10 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 
   @override
-  Map<String, dynamic> getFieldsValues(Usuario? obj,
-      {bool withHashCode = false}) {
+  Map<String, dynamic> getFieldsValues(
+    Usuario? obj, {
+    bool withHashCode = false,
+  }) {
     obj ??= object;
     return <String, dynamic>{
       'nome': obj?.nome,
@@ -680,14 +757,14 @@ class Usuario$reflection extends ClassReflection<Usuario>
     'reflect',
     'stringToClass',
     'toJson',
-    'toString'
+    'toString',
   ];
 
   @override
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Usuario, dynamic>>
-      _methodsNoObject = {};
+  _methodsNoObject = {};
 
   final Map<String, MethodReflection<Usuario, dynamic>> _methodsObject = {};
 
@@ -729,7 +806,9 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 
   MethodReflection<Usuario, dynamic>? _methodImpl(
-      String methodName, Usuario? obj) {
+    String methodName,
+    Usuario? obj,
+  ) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
@@ -737,162 +816,180 @@ class Usuario$reflection extends ClassReflection<Usuario>
     switch (lc) {
       case 'reflect':
         return MethodReflection<Usuario, ClassReflection<dynamic>>(
-            this,
-            Entidade,
-            'reflect',
-            __TR<ClassReflection<dynamic>>(
-                ClassReflection, <__TR>[__TR.tDynamic]),
-            false,
-            (o) => o!.reflect,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          Entidade,
+          'reflect',
+          const __TR<ClassReflection<dynamic>>(ClassReflection, <__TR>[
+            __TR.tDynamic,
+          ]),
+          false,
+          (o) => o!.reflect,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'classtomap':
         return MethodReflection<Usuario, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'classToMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.classToMap,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.classToMap,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'tojson':
         return MethodReflection<Usuario, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'toJson',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.toJson,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'toJson',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.toJson,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'dbmaptoclassmap':
         return MethodReflection<Usuario, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'dbMaptoClassMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.dbMaptoClassMap,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'original',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'dbMaptoClassMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.dbMaptoClassMap,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'original',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'classtostring':
         return MethodReflection<Usuario, String>(
-            this,
-            SerialMethods,
-            'classToString',
-            __TR.tString,
-            false,
-            (o) => o!.classToString,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToString',
+          __TR.tString,
+          false,
+          (o) => o!.classToString,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'listclasstostring':
         return MethodReflection<Usuario, String>(
-            this,
-            SerialMethods,
-            'listClassToString',
-            __TR.tString,
-            false,
-            (o) => o!.listClassToString,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listClassToString',
+          __TR.tString,
+          false,
+          (o) => o!.listClassToString,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'stringtoclass':
         return MethodReflection<Usuario, dynamic>(
-            this,
-            SerialMethods,
-            'stringToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.stringToClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'string', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'stringToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.stringToClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'string', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'maptoclass':
         return MethodReflection<Usuario, dynamic>(
-            this,
-            SerialMethods,
-            'mapToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.mapToClass,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'mapToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'listmaptolistclass':
         return MethodReflection<Usuario, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listMapToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listMapToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listMapToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listMapToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'liststringtolistclass':
         return MethodReflection<Usuario, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listStringToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listStringToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'listString', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listStringToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listStringToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'listString', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'tostring':
         return MethodReflection<Usuario, String>(
-            this,
-            _$Usuario,
-            'toString',
-            __TR.tString,
-            false,
-            (o) => o!.toString,
-            obj,
-            null,
-            null,
-            null,
-            const [override]);
+          this,
+          _$Usuario,
+          'toString',
+          __TR.tString,
+          false,
+          (o) => o!.toString,
+          obj,
+          null,
+          null,
+          null,
+          const [override],
+        );
       default:
         return null;
     }
@@ -904,7 +1001,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   static final Map<String, StaticMethodReflection<Usuario, dynamic>>
-      _staticMethods = {};
+  _staticMethods = {};
 
   @override
   StaticMethodReflection<Usuario, R>? staticMethod<R>(String methodName) {
@@ -919,29 +1016,34 @@ class Usuario$reflection extends ClassReflection<Usuario>
   }
 
   StaticMethodReflection<Usuario, dynamic>? _staticMethodImpl(
-      String methodName) {
+    String methodName,
+  ) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
         return StaticMethodReflection<Usuario, dynamic>(
-            this,
-            Usuario,
-            'fromJson',
-            __TR.tDynamic,
-            false,
-            () => Usuario.fromJson,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          Usuario,
+          'fromJson',
+          __TR.tDynamic,
+          false,
+          () => Usuario.fromJson,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -957,10 +1059,13 @@ extension Usuario$reflectionExtension on Usuario {
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
   /// Returns an encoded JSON [String] for type [Usuario]. (Generated by [ReflectionFactory])
-  String toJsonEncoded(
-          {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
-      reflection.toJsonEncoded(
-          pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
+  String toJsonEncoded({
+    bool pretty = false,
+    bool duplicatedEntitiesAsID = false,
+  }) => reflection.toJsonEncoded(
+    pretty: pretty,
+    duplicatedEntitiesAsID: duplicatedEntitiesAsID,
+  );
 
   /// Returns a JSON for type [Usuario] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
@@ -968,8 +1073,11 @@ extension Usuario$reflectionExtension on Usuario {
 }
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
-      Usuario$reflection(),
-    ];
+  Usuario$reflection(),
+  // Dependency reflections:
+  Empresa$reflection(),
+  Imagem$reflection(),
+];
 
 List<Reflection>? _siblingsReflectionList;
 List<Reflection> _siblingsReflection() => _siblingsReflectionList ??=

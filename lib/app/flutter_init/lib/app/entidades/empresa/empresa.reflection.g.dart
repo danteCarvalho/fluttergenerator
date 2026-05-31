@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.5
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.5');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Empresa Empresa$fromJson(Map<String, Object?> map) =>
     Empresa$reflection.staticInstance.fromJson(map);
@@ -58,7 +59,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.7.0');
+  Version get languageVersion => Version.parse('3.9.0');
 
   @override
   Empresa$reflection withObject([Empresa? obj]) =>
@@ -67,6 +68,9 @@ class Empresa$reflection extends ClassReflection<Empresa>
   static Empresa$reflection? _withoutObjectInstance;
   @override
   Empresa$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Empresa$reflection get staticInstance =>
       _withoutObjectInstance ??= Empresa$reflection._();
@@ -118,7 +122,15 @@ class Empresa$reflection extends ClassReflection<Empresa>
     switch (lc) {
       case '':
         return ConstructorReflection<Empresa>(
-            this, Empresa, '', () => () => Empresa(), null, null, null, null);
+          this,
+          Empresa,
+          '',
+          () => Empresa.new,
+          null,
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -126,7 +138,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
 
   static const List<Object> _classAnnotations = const [
     reflector,
-    SerialAnnotation()
+    SerialAnnotation(),
   ];
 
   @override
@@ -138,7 +150,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
     SerialMethods,
     Store,
     _$Empresa,
-    _$Serial
+    _$Serial,
   ];
 
   @override
@@ -178,7 +190,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
     'ultimoPagamentoCompleto',
     'ultimoPagamentoGerado',
     'valorPagamento',
-    'whatsapp'
+    'whatsapp',
   ];
 
   @override
@@ -227,7 +239,9 @@ class Empresa$reflection extends ClassReflection<Empresa>
   }
 
   FieldReflection<Empresa, dynamic>? _fieldImpl(
-      String fieldName, Empresa? obj) {
+    String fieldName,
+    Empresa? obj,
+  ) {
     obj ??= object;
 
     var lc = fieldName.trim().toLowerCase();
@@ -240,8 +254,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'nome',
           false,
-          (o) => () => o!.nome,
-          (o) => (v) => o!.nome = v,
+          (o) =>
+              () => o!.nome,
+          (o) =>
+              (v) => o!.nome = v,
           obj,
           false,
         );
@@ -252,8 +268,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tDouble,
           'valorPagamento',
           false,
-          (o) => () => o!.valorPagamento,
-          (o) => (v) => o!.valorPagamento = v,
+          (o) =>
+              () => o!.valorPagamento,
+          (o) =>
+              (v) => o!.valorPagamento = v,
           obj,
           false,
         );
@@ -264,8 +282,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'telefone',
           false,
-          (o) => () => o!.telefone,
-          (o) => (v) => o!.telefone = v,
+          (o) =>
+              () => o!.telefone,
+          (o) =>
+              (v) => o!.telefone = v,
           obj,
           false,
         );
@@ -276,8 +296,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'anydesk',
           false,
-          (o) => () => o!.anydesk,
-          (o) => (v) => o!.anydesk = v,
+          (o) =>
+              () => o!.anydesk,
+          (o) =>
+              (v) => o!.anydesk = v,
           obj,
           false,
         );
@@ -288,8 +310,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'whatsapp',
           false,
-          (o) => () => o!.whatsapp,
-          (o) => (v) => o!.whatsapp = v,
+          (o) =>
+              () => o!.whatsapp,
+          (o) =>
+              (v) => o!.whatsapp = v,
           obj,
           false,
         );
@@ -300,8 +324,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tDouble,
           'latitude',
           false,
-          (o) => () => o!.latitude,
-          (o) => (v) => o!.latitude = v,
+          (o) =>
+              () => o!.latitude,
+          (o) =>
+              (v) => o!.latitude = v,
           obj,
           false,
         );
@@ -312,8 +338,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tDouble,
           'longitude',
           false,
-          (o) => () => o!.longitude,
-          (o) => (v) => o!.longitude = v,
+          (o) =>
+              () => o!.longitude,
+          (o) =>
+              (v) => o!.longitude = v,
           obj,
           false,
         );
@@ -321,11 +349,13 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           _EmpresaBase,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataPagamento',
           false,
-          (o) => () => o!.dataPagamento,
-          (o) => (v) => o!.dataPagamento = v,
+          (o) =>
+              () => o!.dataPagamento,
+          (o) =>
+              (v) => o!.dataPagamento = v,
           obj,
           false,
         );
@@ -333,11 +363,13 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           _EmpresaBase,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'ultimoPagamentoCompleto',
           false,
-          (o) => () => o!.ultimoPagamentoCompleto,
-          (o) => (v) => o!.ultimoPagamentoCompleto = v,
+          (o) =>
+              () => o!.ultimoPagamentoCompleto,
+          (o) =>
+              (v) => o!.ultimoPagamentoCompleto = v,
           obj,
           false,
         );
@@ -345,11 +377,13 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           _EmpresaBase,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'ultimoPagamentoGerado',
           false,
-          (o) => () => o!.ultimoPagamentoGerado,
-          (o) => (v) => o!.ultimoPagamentoGerado = v,
+          (o) =>
+              () => o!.ultimoPagamentoGerado,
+          (o) =>
+              (v) => o!.ultimoPagamentoGerado = v,
           obj,
           false,
         );
@@ -360,8 +394,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'cnpj',
           false,
-          (o) => () => o!.cnpj,
-          (o) => (v) => o!.cnpj = v,
+          (o) =>
+              () => o!.cnpj,
+          (o) =>
+              (v) => o!.cnpj = v,
           obj,
           false,
         );
@@ -372,8 +408,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'razaoSocial',
           false,
-          (o) => () => o!.razaoSocial,
-          (o) => (v) => o!.razaoSocial = v,
+          (o) =>
+              () => o!.razaoSocial,
+          (o) =>
+              (v) => o!.razaoSocial = v,
           obj,
           false,
         );
@@ -384,8 +422,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'municipio',
           false,
-          (o) => () => o!.municipio,
-          (o) => (v) => o!.municipio = v,
+          (o) =>
+              () => o!.municipio,
+          (o) =>
+              (v) => o!.municipio = v,
           obj,
           false,
         );
@@ -396,8 +436,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'estado',
           false,
-          (o) => () => o!.estado,
-          (o) => (v) => o!.estado = v,
+          (o) =>
+              () => o!.estado,
+          (o) =>
+              (v) => o!.estado = v,
           obj,
           false,
         );
@@ -408,8 +450,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'cep',
           false,
-          (o) => () => o!.cep,
-          (o) => (v) => o!.cep = v,
+          (o) =>
+              () => o!.cep,
+          (o) =>
+              (v) => o!.cep = v,
           obj,
           false,
         );
@@ -420,8 +464,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'bairro',
           false,
-          (o) => () => o!.bairro,
-          (o) => (v) => o!.bairro = v,
+          (o) =>
+              () => o!.bairro,
+          (o) =>
+              (v) => o!.bairro = v,
           obj,
           false,
         );
@@ -432,8 +478,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'logradouro',
           false,
-          (o) => () => o!.logradouro,
-          (o) => (v) => o!.logradouro = v,
+          (o) =>
+              () => o!.logradouro,
+          (o) =>
+              (v) => o!.logradouro = v,
           obj,
           false,
         );
@@ -444,8 +492,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'numeroCasa',
           false,
-          (o) => () => o!.numeroCasa,
-          (o) => (v) => o!.numeroCasa = v,
+          (o) =>
+              () => o!.numeroCasa,
+          (o) =>
+              (v) => o!.numeroCasa = v,
           obj,
           false,
         );
@@ -456,8 +506,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tString,
           'id',
           false,
-          (o) => () => o!.id,
-          (o) => (v) => o!.id = v,
+          (o) =>
+              () => o!.id,
+          (o) =>
+              (v) => o!.id = v,
           obj,
           false,
         );
@@ -468,8 +520,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tInt,
           'id2',
           false,
-          (o) => () => o!.id2,
-          (o) => (v) => o!.id2 = v,
+          (o) =>
+              () => o!.id2,
+          (o) =>
+              (v) => o!.id2 = v,
           obj,
           false,
         );
@@ -480,8 +534,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tBool,
           'ativa',
           false,
-          (o) => () => o!.ativa,
-          (o) => (v) => o!.ativa = v,
+          (o) =>
+              () => o!.ativa,
+          (o) =>
+              (v) => o!.ativa = v,
           obj,
           false,
         );
@@ -489,11 +545,13 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
-          (o) => () => o!.dataCriacao,
-          (o) => (v) => o!.dataCriacao = v,
+          (o) =>
+              () => o!.dataCriacao,
+          (o) =>
+              (v) => o!.dataCriacao = v,
           obj,
           false,
         );
@@ -501,11 +559,13 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
-          (o) => () => o!.dataEdicao,
-          (o) => (v) => o!.dataEdicao = v,
+          (o) =>
+              () => o!.dataEdicao,
+          (o) =>
+              (v) => o!.dataEdicao = v,
           obj,
           false,
         );
@@ -513,11 +573,13 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
-          (o) => () => o!.dataDelecao,
-          (o) => (v) => o!.dataDelecao = v,
+          (o) =>
+              () => o!.dataDelecao,
+          (o) =>
+              (v) => o!.dataDelecao = v,
           obj,
           false,
         );
@@ -525,10 +587,11 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, ReactiveContext>(
           this,
           Store,
-          __TR<ReactiveContext>(ReactiveContext),
+          const __TR<ReactiveContext>(ReactiveContext),
           'context',
           false,
-          (o) => () => o!.context,
+          (o) =>
+              () => o!.context,
           null,
           obj,
           false,
@@ -539,8 +602,10 @@ class Empresa$reflection extends ClassReflection<Empresa>
   }
 
   @override
-  Map<String, dynamic> getFieldsValues(Empresa? obj,
-      {bool withHashCode = false}) {
+  Map<String, dynamic> getFieldsValues(
+    Empresa? obj, {
+    bool withHashCode = false,
+  }) {
     obj ??= object;
     return <String, dynamic>{
       'nome': obj?.nome,
@@ -591,14 +656,14 @@ class Empresa$reflection extends ClassReflection<Empresa>
     'reflect',
     'stringToClass',
     'toJson',
-    'toString'
+    'toString',
   ];
 
   @override
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Empresa, dynamic>>
-      _methodsNoObject = {};
+  _methodsNoObject = {};
 
   final Map<String, MethodReflection<Empresa, dynamic>> _methodsObject = {};
 
@@ -640,7 +705,9 @@ class Empresa$reflection extends ClassReflection<Empresa>
   }
 
   MethodReflection<Empresa, dynamic>? _methodImpl(
-      String methodName, Empresa? obj) {
+    String methodName,
+    Empresa? obj,
+  ) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
@@ -648,162 +715,180 @@ class Empresa$reflection extends ClassReflection<Empresa>
     switch (lc) {
       case 'reflect':
         return MethodReflection<Empresa, ClassReflection<dynamic>>(
-            this,
-            Entidade,
-            'reflect',
-            __TR<ClassReflection<dynamic>>(
-                ClassReflection, <__TR>[__TR.tDynamic]),
-            false,
-            (o) => o!.reflect,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          Entidade,
+          'reflect',
+          const __TR<ClassReflection<dynamic>>(ClassReflection, <__TR>[
+            __TR.tDynamic,
+          ]),
+          false,
+          (o) => o!.reflect,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'classtomap':
         return MethodReflection<Empresa, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'classToMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.classToMap,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.classToMap,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'tojson':
         return MethodReflection<Empresa, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'toJson',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.toJson,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'toJson',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.toJson,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'dbmaptoclassmap':
         return MethodReflection<Empresa, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'dbMaptoClassMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.dbMaptoClassMap,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'original',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'dbMaptoClassMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.dbMaptoClassMap,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'original',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'classtostring':
         return MethodReflection<Empresa, String>(
-            this,
-            SerialMethods,
-            'classToString',
-            __TR.tString,
-            false,
-            (o) => o!.classToString,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToString',
+          __TR.tString,
+          false,
+          (o) => o!.classToString,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'listclasstostring':
         return MethodReflection<Empresa, String>(
-            this,
-            SerialMethods,
-            'listClassToString',
-            __TR.tString,
-            false,
-            (o) => o!.listClassToString,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listClassToString',
+          __TR.tString,
+          false,
+          (o) => o!.listClassToString,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'stringtoclass':
         return MethodReflection<Empresa, dynamic>(
-            this,
-            SerialMethods,
-            'stringToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.stringToClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'string', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'stringToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.stringToClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'string', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'maptoclass':
         return MethodReflection<Empresa, dynamic>(
-            this,
-            SerialMethods,
-            'mapToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.mapToClass,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'mapToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'listmaptolistclass':
         return MethodReflection<Empresa, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listMapToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listMapToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listMapToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listMapToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'liststringtolistclass':
         return MethodReflection<Empresa, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listStringToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listStringToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'listString', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listStringToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listStringToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'listString', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'tostring':
         return MethodReflection<Empresa, String>(
-            this,
-            _$Empresa,
-            'toString',
-            __TR.tString,
-            false,
-            (o) => o!.toString,
-            obj,
-            null,
-            null,
-            null,
-            const [override]);
+          this,
+          _$Empresa,
+          'toString',
+          __TR.tString,
+          false,
+          (o) => o!.toString,
+          obj,
+          null,
+          null,
+          null,
+          const [override],
+        );
       default:
         return null;
     }
@@ -815,7 +900,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   static final Map<String, StaticMethodReflection<Empresa, dynamic>>
-      _staticMethods = {};
+  _staticMethods = {};
 
   @override
   StaticMethodReflection<Empresa, R>? staticMethod<R>(String methodName) {
@@ -830,29 +915,34 @@ class Empresa$reflection extends ClassReflection<Empresa>
   }
 
   StaticMethodReflection<Empresa, dynamic>? _staticMethodImpl(
-      String methodName) {
+    String methodName,
+  ) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
         return StaticMethodReflection<Empresa, Empresa>(
-            this,
-            Empresa,
-            'fromJson',
-            __TR<Empresa>(Empresa),
-            false,
-            () => Empresa.fromJson,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          Empresa,
+          'fromJson',
+          const __TR<Empresa>(Empresa),
+          false,
+          () => Empresa.fromJson,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -868,10 +958,13 @@ extension Empresa$reflectionExtension on Empresa {
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
   /// Returns an encoded JSON [String] for type [Empresa]. (Generated by [ReflectionFactory])
-  String toJsonEncoded(
-          {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
-      reflection.toJsonEncoded(
-          pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
+  String toJsonEncoded({
+    bool pretty = false,
+    bool duplicatedEntitiesAsID = false,
+  }) => reflection.toJsonEncoded(
+    pretty: pretty,
+    duplicatedEntitiesAsID: duplicatedEntitiesAsID,
+  );
 
   /// Returns a JSON for type [Empresa] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
@@ -879,8 +972,8 @@ extension Empresa$reflectionExtension on Empresa {
 }
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
-      Empresa$reflection(),
-    ];
+  Empresa$reflection(),
+];
 
 List<Reflection>? _siblingsReflectionList;
 List<Reflection> _siblingsReflection() => _siblingsReflectionList ??=

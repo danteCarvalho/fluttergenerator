@@ -9,8 +9,10 @@ part of 'minhas_informacoes_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$MinhasInformacoesStore on MinhasInformacoesStoreBase, Store {
-  late final _$usuarioAtom =
-      Atom(name: 'MinhasInformacoesStoreBase.usuario', context: context);
+  late final _$usuarioAtom = Atom(
+    name: 'MinhasInformacoesStoreBase.usuario',
+    context: context,
+  );
 
   @override
   Usuario get usuario {
@@ -25,8 +27,10 @@ mixin _$MinhasInformacoesStore on MinhasInformacoesStoreBase, Store {
     });
   }
 
-  late final _$imagemAtom =
-      Atom(name: 'MinhasInformacoesStoreBase.imagem', context: context);
+  late final _$imagemAtom = Atom(
+    name: 'MinhasInformacoesStoreBase.imagem',
+    context: context,
+  );
 
   @override
   Imagem get imagem {

@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.5
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.5');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 PagamentoSistema PagamentoSistema$fromJson(Map<String, Object?> map) =>
     PagamentoSistema$reflection.staticInstance.fromJson(map);
@@ -47,7 +48,7 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   PagamentoSistema$reflection._([PagamentoSistema? object])
-      : super(PagamentoSistema, r'PagamentoSistema', object);
+    : super(PagamentoSistema, r'PagamentoSistema', object);
 
   static bool _registered = false;
   @override
@@ -60,7 +61,7 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.7.0');
+  Version get languageVersion => Version.parse('3.9.0');
 
   @override
   PagamentoSistema$reflection withObject([PagamentoSistema? obj]) =>
@@ -69,6 +70,9 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   static PagamentoSistema$reflection? _withoutObjectInstance;
   @override
   PagamentoSistema$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static PagamentoSistema$reflection get staticInstance =>
       _withoutObjectInstance ??= PagamentoSistema$reflection._();
@@ -104,7 +108,7 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   List<String> get constructorsNames => _constructorsNames;
 
   static final Map<String, ConstructorReflection<PagamentoSistema>>
-      _constructors = {};
+  _constructors = {};
 
   @override
   ConstructorReflection<PagamentoSistema>? constructor(String constructorName) {
@@ -117,13 +121,22 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   ConstructorReflection<PagamentoSistema>? _constructorImpl(
-      String constructorName) {
+    String constructorName,
+  ) {
     var lc = constructorName.trim().toLowerCase();
 
     switch (lc) {
       case '':
-        return ConstructorReflection<PagamentoSistema>(this, PagamentoSistema,
-            '', () => () => PagamentoSistema(), null, null, null, null);
+        return ConstructorReflection<PagamentoSistema>(
+          this,
+          PagamentoSistema,
+          '',
+          () => PagamentoSistema.new,
+          null,
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -131,7 +144,7 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
 
   static const List<Object> _classAnnotations = const [
     reflector,
-    SerialAnnotation()
+    SerialAnnotation(),
   ];
 
   @override
@@ -143,7 +156,7 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
     SerialMethods,
     Store,
     _$PagamentoSistema,
-    _$Serial
+    _$Serial,
   ];
 
   @override
@@ -173,21 +186,23 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
     'qrCode',
     'referencia',
     'usuario',
-    'valor'
+    'valor',
   ];
 
   @override
   List<String> get fieldsNames => _fieldsNames;
 
   static final Map<String, FieldReflection<PagamentoSistema, dynamic>>
-      _fieldsNoObject = {};
+  _fieldsNoObject = {};
 
   final Map<String, FieldReflection<PagamentoSistema, dynamic>> _fieldsObject =
       {};
 
   @override
-  FieldReflection<PagamentoSistema, T>? field<T>(String fieldName,
-      [PagamentoSistema? obj]) {
+  FieldReflection<PagamentoSistema, T>? field<T>(
+    String fieldName, [
+    PagamentoSistema? obj,
+  ]) {
     if (obj == null) {
       if (object != null) {
         return _fieldObjectImpl<T>(fieldName);
@@ -201,7 +216,8 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   FieldReflection<PagamentoSistema, T>? _fieldNoObjectImpl<T>(
-      String fieldName) {
+    String fieldName,
+  ) {
     final f = _fieldsNoObject[fieldName];
     if (f != null) {
       return f as FieldReflection<PagamentoSistema, T>;
@@ -225,7 +241,9 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   FieldReflection<PagamentoSistema, dynamic>? _fieldImpl(
-      String fieldName, PagamentoSistema? obj) {
+    String fieldName,
+    PagamentoSistema? obj,
+  ) {
     obj ??= object;
 
     var lc = fieldName.trim().toLowerCase();
@@ -238,8 +256,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
           __TR.tString,
           'referencia',
           false,
-          (o) => () => o!.referencia,
-          (o) => (v) => o!.referencia = v,
+          (o) =>
+              () => o!.referencia,
+          (o) =>
+              (v) => o!.referencia = v,
           obj,
           false,
         );
@@ -250,8 +270,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
           __TR.tString,
           'qrCode',
           false,
-          (o) => () => o!.qrCode,
-          (o) => (v) => o!.qrCode = v,
+          (o) =>
+              () => o!.qrCode,
+          (o) =>
+              (v) => o!.qrCode = v,
           obj,
           false,
         );
@@ -262,8 +284,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
           __TR.tBool,
           'pago',
           false,
-          (o) => () => o!.pago,
-          (o) => (v) => o!.pago = v,
+          (o) =>
+              () => o!.pago,
+          (o) =>
+              (v) => o!.pago = v,
           obj,
           false,
         );
@@ -271,11 +295,13 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
         return FieldReflection<PagamentoSistema, DateTime>(
           this,
           _PagamentoSistemaBase,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataConfirmado',
           false,
-          (o) => () => o!.dataConfirmado,
-          (o) => (v) => o!.dataConfirmado = v,
+          (o) =>
+              () => o!.dataConfirmado,
+          (o) =>
+              (v) => o!.dataConfirmado = v,
           obj,
           false,
         );
@@ -286,8 +312,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
           __TR.tString,
           'link',
           false,
-          (o) => () => o!.link,
-          (o) => (v) => o!.link = v,
+          (o) =>
+              () => o!.link,
+          (o) =>
+              (v) => o!.link = v,
           obj,
           false,
         );
@@ -295,11 +323,13 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
         return FieldReflection<PagamentoSistema, Empresa?>(
           this,
           _PagamentoSistemaBase,
-          __TR<Empresa>(Empresa),
+          const __TR<Empresa>(Empresa),
           'empresa',
           true,
-          (o) => () => o!.empresa,
-          (o) => (v) => o!.empresa = v,
+          (o) =>
+              () => o!.empresa,
+          (o) =>
+              (v) => o!.empresa = v,
           obj,
           false,
         );
@@ -307,11 +337,13 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
         return FieldReflection<PagamentoSistema, Usuario?>(
           this,
           _PagamentoSistemaBase,
-          __TR<Usuario>(Usuario),
+          const __TR<Usuario>(Usuario),
           'usuario',
           true,
-          (o) => () => o!.usuario,
-          (o) => (v) => o!.usuario = v,
+          (o) =>
+              () => o!.usuario,
+          (o) =>
+              (v) => o!.usuario = v,
           obj,
           false,
         );
@@ -322,8 +354,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
           __TR.tDouble,
           'valor',
           false,
-          (o) => () => o!.valor,
-          (o) => (v) => o!.valor = v,
+          (o) =>
+              () => o!.valor,
+          (o) =>
+              (v) => o!.valor = v,
           obj,
           false,
         );
@@ -334,8 +368,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
           __TR.tString,
           'id',
           false,
-          (o) => () => o!.id,
-          (o) => (v) => o!.id = v,
+          (o) =>
+              () => o!.id,
+          (o) =>
+              (v) => o!.id = v,
           obj,
           false,
         );
@@ -346,8 +382,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
           __TR.tInt,
           'id2',
           false,
-          (o) => () => o!.id2,
-          (o) => (v) => o!.id2 = v,
+          (o) =>
+              () => o!.id2,
+          (o) =>
+              (v) => o!.id2 = v,
           obj,
           false,
         );
@@ -358,8 +396,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
           __TR.tBool,
           'ativa',
           false,
-          (o) => () => o!.ativa,
-          (o) => (v) => o!.ativa = v,
+          (o) =>
+              () => o!.ativa,
+          (o) =>
+              (v) => o!.ativa = v,
           obj,
           false,
         );
@@ -367,11 +407,13 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
         return FieldReflection<PagamentoSistema, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
-          (o) => () => o!.dataCriacao,
-          (o) => (v) => o!.dataCriacao = v,
+          (o) =>
+              () => o!.dataCriacao,
+          (o) =>
+              (v) => o!.dataCriacao = v,
           obj,
           false,
         );
@@ -379,11 +421,13 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
         return FieldReflection<PagamentoSistema, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
-          (o) => () => o!.dataEdicao,
-          (o) => (v) => o!.dataEdicao = v,
+          (o) =>
+              () => o!.dataEdicao,
+          (o) =>
+              (v) => o!.dataEdicao = v,
           obj,
           false,
         );
@@ -391,11 +435,13 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
         return FieldReflection<PagamentoSistema, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
-          (o) => () => o!.dataDelecao,
-          (o) => (v) => o!.dataDelecao = v,
+          (o) =>
+              () => o!.dataDelecao,
+          (o) =>
+              (v) => o!.dataDelecao = v,
           obj,
           false,
         );
@@ -403,10 +449,11 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
         return FieldReflection<PagamentoSistema, ReactiveContext>(
           this,
           Store,
-          __TR<ReactiveContext>(ReactiveContext),
+          const __TR<ReactiveContext>(ReactiveContext),
           'context',
           false,
-          (o) => () => o!.context,
+          (o) =>
+              () => o!.context,
           null,
           obj,
           false,
@@ -417,8 +464,10 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   @override
-  Map<String, dynamic> getFieldsValues(PagamentoSistema? obj,
-      {bool withHashCode = false}) {
+  Map<String, dynamic> getFieldsValues(
+    PagamentoSistema? obj, {
+    bool withHashCode = false,
+  }) {
     obj ??= object;
     return <String, dynamic>{
       'referencia': obj?.referencia,
@@ -447,8 +496,8 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
 
   @override
   StaticFieldReflection<PagamentoSistema, T>? staticField<T>(
-          String fieldName) =>
-      null;
+    String fieldName,
+  ) => null;
 
   static const List<String> _methodsNames = const <String>[
     'classToMap',
@@ -461,21 +510,23 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
     'reflect',
     'stringToClass',
     'toJson',
-    'toString'
+    'toString',
   ];
 
   @override
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<PagamentoSistema, dynamic>>
-      _methodsNoObject = {};
+  _methodsNoObject = {};
 
   final Map<String, MethodReflection<PagamentoSistema, dynamic>>
-      _methodsObject = {};
+  _methodsObject = {};
 
   @override
-  MethodReflection<PagamentoSistema, R>? method<R>(String methodName,
-      [PagamentoSistema? obj]) {
+  MethodReflection<PagamentoSistema, R>? method<R>(
+    String methodName, [
+    PagamentoSistema? obj,
+  ]) {
     if (obj == null) {
       if (object != null) {
         return _methodObjectImpl<R>(methodName);
@@ -489,7 +540,8 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   MethodReflection<PagamentoSistema, R>? _methodNoObjectImpl<R>(
-      String methodName) {
+    String methodName,
+  ) {
     final m = _methodsNoObject[methodName];
     if (m != null) {
       return m as MethodReflection<PagamentoSistema, R>;
@@ -501,7 +553,8 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   MethodReflection<PagamentoSistema, R>? _methodObjectImpl<R>(
-      String methodName) {
+    String methodName,
+  ) {
     final m = _methodsObject[methodName];
     if (m != null) {
       return m as MethodReflection<PagamentoSistema, R>;
@@ -514,7 +567,9 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   MethodReflection<PagamentoSistema, dynamic>? _methodImpl(
-      String methodName, PagamentoSistema? obj) {
+    String methodName,
+    PagamentoSistema? obj,
+  ) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
@@ -522,162 +577,180 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
     switch (lc) {
       case 'reflect':
         return MethodReflection<PagamentoSistema, ClassReflection<dynamic>>(
-            this,
-            Entidade,
-            'reflect',
-            __TR<ClassReflection<dynamic>>(
-                ClassReflection, <__TR>[__TR.tDynamic]),
-            false,
-            (o) => o!.reflect,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          Entidade,
+          'reflect',
+          const __TR<ClassReflection<dynamic>>(ClassReflection, <__TR>[
+            __TR.tDynamic,
+          ]),
+          false,
+          (o) => o!.reflect,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'classtomap':
         return MethodReflection<PagamentoSistema, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'classToMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.classToMap,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.classToMap,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'tojson':
         return MethodReflection<PagamentoSistema, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'toJson',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.toJson,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'toJson',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.toJson,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'dbmaptoclassmap':
         return MethodReflection<PagamentoSistema, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'dbMaptoClassMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.dbMaptoClassMap,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'original',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'dbMaptoClassMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.dbMaptoClassMap,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'original',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'classtostring':
         return MethodReflection<PagamentoSistema, String>(
-            this,
-            SerialMethods,
-            'classToString',
-            __TR.tString,
-            false,
-            (o) => o!.classToString,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToString',
+          __TR.tString,
+          false,
+          (o) => o!.classToString,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'listclasstostring':
         return MethodReflection<PagamentoSistema, String>(
-            this,
-            SerialMethods,
-            'listClassToString',
-            __TR.tString,
-            false,
-            (o) => o!.listClassToString,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listClassToString',
+          __TR.tString,
+          false,
+          (o) => o!.listClassToString,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'stringtoclass':
         return MethodReflection<PagamentoSistema, dynamic>(
-            this,
-            SerialMethods,
-            'stringToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.stringToClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'string', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'stringToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.stringToClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'string', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'maptoclass':
         return MethodReflection<PagamentoSistema, dynamic>(
-            this,
-            SerialMethods,
-            'mapToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.mapToClass,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'mapToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'listmaptolistclass':
         return MethodReflection<PagamentoSistema, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listMapToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listMapToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listMapToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listMapToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'liststringtolistclass':
         return MethodReflection<PagamentoSistema, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listStringToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listStringToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'listString', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listStringToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listStringToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'listString', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'tostring':
         return MethodReflection<PagamentoSistema, String>(
-            this,
-            _$PagamentoSistema,
-            'toString',
-            __TR.tString,
-            false,
-            (o) => o!.toString,
-            obj,
-            null,
-            null,
-            null,
-            const [override]);
+          this,
+          _$PagamentoSistema,
+          'toString',
+          __TR.tString,
+          false,
+          (o) => o!.toString,
+          obj,
+          null,
+          null,
+          null,
+          const [override],
+        );
       default:
         return null;
     }
@@ -689,11 +762,12 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   static final Map<String, StaticMethodReflection<PagamentoSistema, dynamic>>
-      _staticMethods = {};
+  _staticMethods = {};
 
   @override
   StaticMethodReflection<PagamentoSistema, R>? staticMethod<R>(
-      String methodName) {
+    String methodName,
+  ) {
     var m = _staticMethods[methodName];
     if (m != null) {
       return m as StaticMethodReflection<PagamentoSistema, R>;
@@ -705,29 +779,34 @@ class PagamentoSistema$reflection extends ClassReflection<PagamentoSistema>
   }
 
   StaticMethodReflection<PagamentoSistema, dynamic>? _staticMethodImpl(
-      String methodName) {
+    String methodName,
+  ) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
         return StaticMethodReflection<PagamentoSistema, PagamentoSistema>(
-            this,
-            PagamentoSistema,
-            'fromJson',
-            __TR<PagamentoSistema>(PagamentoSistema),
-            false,
-            () => PagamentoSistema.fromJson,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          PagamentoSistema,
+          'fromJson',
+          const __TR<PagamentoSistema>(PagamentoSistema),
+          false,
+          () => PagamentoSistema.fromJson,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -744,10 +823,13 @@ extension PagamentoSistema$reflectionExtension on PagamentoSistema {
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
   /// Returns an encoded JSON [String] for type [PagamentoSistema]. (Generated by [ReflectionFactory])
-  String toJsonEncoded(
-          {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
-      reflection.toJsonEncoded(
-          pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
+  String toJsonEncoded({
+    bool pretty = false,
+    bool duplicatedEntitiesAsID = false,
+  }) => reflection.toJsonEncoded(
+    pretty: pretty,
+    duplicatedEntitiesAsID: duplicatedEntitiesAsID,
+  );
 
   /// Returns a JSON for type [PagamentoSistema] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
@@ -755,8 +837,11 @@ extension PagamentoSistema$reflectionExtension on PagamentoSistema {
 }
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
-      PagamentoSistema$reflection(),
-    ];
+  PagamentoSistema$reflection(),
+  // Dependency reflections:
+  Empresa$reflection(),
+  Usuario$reflection(),
+];
 
 List<Reflection>? _siblingsReflectionList;
 List<Reflection> _siblingsReflection() => _siblingsReflectionList ??=

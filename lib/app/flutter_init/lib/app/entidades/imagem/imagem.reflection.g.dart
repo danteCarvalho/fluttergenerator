@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.5
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.5');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Imagem Imagem$fromJson(Map<String, Object?> map) =>
     Imagem$reflection.staticInstance.fromJson(map);
@@ -57,7 +58,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   }
 
   @override
-  Version get languageVersion => Version.parse('3.7.0');
+  Version get languageVersion => Version.parse('3.9.0');
 
   @override
   Imagem$reflection withObject([Imagem? obj]) =>
@@ -66,6 +67,9 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   static Imagem$reflection? _withoutObjectInstance;
   @override
   Imagem$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Imagem$reflection get staticInstance =>
       _withoutObjectInstance ??= Imagem$reflection._();
@@ -117,7 +121,15 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
     switch (lc) {
       case '':
         return ConstructorReflection<Imagem>(
-            this, Imagem, '', () => () => Imagem(), null, null, null, null);
+          this,
+          Imagem,
+          '',
+          () => Imagem.new,
+          null,
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -125,7 +137,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
 
   static const List<Object> _classAnnotations = const [
     reflector,
-    SerialAnnotation()
+    SerialAnnotation(),
   ];
 
   @override
@@ -137,7 +149,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
     SerialMethods,
     Store,
     _$Imagem,
-    _$Serial
+    _$Serial,
   ];
 
   @override
@@ -163,7 +175,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
     'id2',
     'name',
     'size',
-    'value'
+    'value',
   ];
 
   @override
@@ -224,8 +236,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           __TR.tString,
           'value',
           false,
-          (o) => () => o!.value,
-          (o) => (v) => o!.value = v,
+          (o) =>
+              () => o!.value,
+          (o) =>
+              (v) => o!.value = v,
           obj,
           false,
           const [observable],
@@ -237,8 +251,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           __TR.tString,
           'name',
           false,
-          (o) => () => o!.name,
-          (o) => (v) => o!.name = v,
+          (o) =>
+              () => o!.name,
+          (o) =>
+              (v) => o!.name = v,
           obj,
           false,
         );
@@ -249,8 +265,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           __TR.tString,
           'extension',
           false,
-          (o) => () => o!.extension,
-          (o) => (v) => o!.extension = v,
+          (o) =>
+              () => o!.extension,
+          (o) =>
+              (v) => o!.extension = v,
           obj,
           false,
         );
@@ -261,8 +279,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           __TR.tInt,
           'size',
           false,
-          (o) => () => o!.size,
-          (o) => (v) => o!.size = v,
+          (o) =>
+              () => o!.size,
+          (o) =>
+              (v) => o!.size = v,
           obj,
           false,
         );
@@ -273,8 +293,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           __TR.tString,
           'id',
           false,
-          (o) => () => o!.id,
-          (o) => (v) => o!.id = v,
+          (o) =>
+              () => o!.id,
+          (o) =>
+              (v) => o!.id = v,
           obj,
           false,
         );
@@ -285,8 +307,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           __TR.tInt,
           'id2',
           false,
-          (o) => () => o!.id2,
-          (o) => (v) => o!.id2 = v,
+          (o) =>
+              () => o!.id2,
+          (o) =>
+              (v) => o!.id2 = v,
           obj,
           false,
         );
@@ -297,8 +321,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
           __TR.tBool,
           'ativa',
           false,
-          (o) => () => o!.ativa,
-          (o) => (v) => o!.ativa = v,
+          (o) =>
+              () => o!.ativa,
+          (o) =>
+              (v) => o!.ativa = v,
           obj,
           false,
         );
@@ -306,11 +332,13 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
         return FieldReflection<Imagem, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
-          (o) => () => o!.dataCriacao,
-          (o) => (v) => o!.dataCriacao = v,
+          (o) =>
+              () => o!.dataCriacao,
+          (o) =>
+              (v) => o!.dataCriacao = v,
           obj,
           false,
         );
@@ -318,11 +346,13 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
         return FieldReflection<Imagem, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
-          (o) => () => o!.dataEdicao,
-          (o) => (v) => o!.dataEdicao = v,
+          (o) =>
+              () => o!.dataEdicao,
+          (o) =>
+              (v) => o!.dataEdicao = v,
           obj,
           false,
         );
@@ -330,11 +360,13 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
         return FieldReflection<Imagem, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
-          (o) => () => o!.dataDelecao,
-          (o) => (v) => o!.dataDelecao = v,
+          (o) =>
+              () => o!.dataDelecao,
+          (o) =>
+              (v) => o!.dataDelecao = v,
           obj,
           false,
         );
@@ -342,10 +374,11 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
         return FieldReflection<Imagem, ReactiveContext>(
           this,
           Store,
-          __TR<ReactiveContext>(ReactiveContext),
+          const __TR<ReactiveContext>(ReactiveContext),
           'context',
           false,
-          (o) => () => o!.context,
+          (o) =>
+              () => o!.context,
           null,
           obj,
           false,
@@ -356,8 +389,10 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   }
 
   @override
-  Map<String, dynamic> getFieldsValues(Imagem? obj,
-      {bool withHashCode = false}) {
+  Map<String, dynamic> getFieldsValues(
+    Imagem? obj, {
+    bool withHashCode = false,
+  }) {
     obj ??= object;
     return <String, dynamic>{
       'value': obj?.value,
@@ -394,7 +429,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
     'reflect',
     'stringToClass',
     'toJson',
-    'toString'
+    'toString',
   ];
 
   @override
@@ -443,7 +478,9 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   }
 
   MethodReflection<Imagem, dynamic>? _methodImpl(
-      String methodName, Imagem? obj) {
+    String methodName,
+    Imagem? obj,
+  ) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
@@ -451,162 +488,180 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
     switch (lc) {
       case 'reflect':
         return MethodReflection<Imagem, ClassReflection<dynamic>>(
-            this,
-            Entidade,
-            'reflect',
-            __TR<ClassReflection<dynamic>>(
-                ClassReflection, <__TR>[__TR.tDynamic]),
-            false,
-            (o) => o!.reflect,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          Entidade,
+          'reflect',
+          const __TR<ClassReflection<dynamic>>(ClassReflection, <__TR>[
+            __TR.tDynamic,
+          ]),
+          false,
+          (o) => o!.reflect,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'classtomap':
         return MethodReflection<Imagem, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'classToMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.classToMap,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.classToMap,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'tojson':
         return MethodReflection<Imagem, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'toJson',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.toJson,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'toJson',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.toJson,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'dbmaptoclassmap':
         return MethodReflection<Imagem, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'dbMaptoClassMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.dbMaptoClassMap,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'original',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'dbMaptoClassMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.dbMaptoClassMap,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'original',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'classtostring':
         return MethodReflection<Imagem, String>(
-            this,
-            SerialMethods,
-            'classToString',
-            __TR.tString,
-            false,
-            (o) => o!.classToString,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToString',
+          __TR.tString,
+          false,
+          (o) => o!.classToString,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'listclasstostring':
         return MethodReflection<Imagem, String>(
-            this,
-            SerialMethods,
-            'listClassToString',
-            __TR.tString,
-            false,
-            (o) => o!.listClassToString,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listClassToString',
+          __TR.tString,
+          false,
+          (o) => o!.listClassToString,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'stringtoclass':
         return MethodReflection<Imagem, dynamic>(
-            this,
-            SerialMethods,
-            'stringToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.stringToClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'string', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'stringToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.stringToClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'string', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'maptoclass':
         return MethodReflection<Imagem, dynamic>(
-            this,
-            SerialMethods,
-            'mapToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.mapToClass,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'mapToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'listmaptolistclass':
         return MethodReflection<Imagem, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listMapToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listMapToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listMapToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listMapToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'liststringtolistclass':
         return MethodReflection<Imagem, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listStringToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listStringToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'listString', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listStringToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listStringToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'listString', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'tostring':
         return MethodReflection<Imagem, String>(
-            this,
-            _$Imagem,
-            'toString',
-            __TR.tString,
-            false,
-            (o) => o!.toString,
-            obj,
-            null,
-            null,
-            null,
-            const [override]);
+          this,
+          _$Imagem,
+          'toString',
+          __TR.tString,
+          false,
+          (o) => o!.toString,
+          obj,
+          null,
+          null,
+          null,
+          const [override],
+        );
       default:
         return null;
     }
@@ -618,7 +673,7 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   static final Map<String, StaticMethodReflection<Imagem, dynamic>>
-      _staticMethods = {};
+  _staticMethods = {};
 
   @override
   StaticMethodReflection<Imagem, R>? staticMethod<R>(String methodName) {
@@ -633,29 +688,34 @@ class Imagem$reflection extends ClassReflection<Imagem> with __ReflectionMixin {
   }
 
   StaticMethodReflection<Imagem, dynamic>? _staticMethodImpl(
-      String methodName) {
+    String methodName,
+  ) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
         return StaticMethodReflection<Imagem, Imagem>(
-            this,
-            Imagem,
-            'fromJson',
-            __TR<Imagem>(Imagem),
-            false,
-            () => Imagem.fromJson,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          Imagem,
+          'fromJson',
+          const __TR<Imagem>(Imagem),
+          false,
+          () => Imagem.fromJson,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -671,19 +731,20 @@ extension Imagem$reflectionExtension on Imagem {
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
   /// Returns an encoded JSON [String] for type [Imagem]. (Generated by [ReflectionFactory])
-  String toJsonEncoded(
-          {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
-      reflection.toJsonEncoded(
-          pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
+  String toJsonEncoded({
+    bool pretty = false,
+    bool duplicatedEntitiesAsID = false,
+  }) => reflection.toJsonEncoded(
+    pretty: pretty,
+    duplicatedEntitiesAsID: duplicatedEntitiesAsID,
+  );
 
   /// Returns a JSON for type [Imagem] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
       .toJsonFromFields(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 }
 
-List<Reflection> _listSiblingsReflection() => <Reflection>[
-      Imagem$reflection(),
-    ];
+List<Reflection> _listSiblingsReflection() => <Reflection>[Imagem$reflection()];
 
 List<Reflection>? _siblingsReflectionList;
 List<Reflection> _siblingsReflection() => _siblingsReflectionList ??=

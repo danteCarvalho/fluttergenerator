@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.5
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.5');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Entidade Entidade$fromJson(Map<String, Object?> map) =>
     Entidade$reflection.staticInstance.fromJson(map);
@@ -46,7 +47,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
   }
 
   Entidade$reflection._([Entidade? object])
-      : super(Entidade, r'Entidade', object);
+    : super(Entidade, r'Entidade', object);
 
   static bool _registered = false;
   @override
@@ -59,7 +60,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.7.0');
+  Version get languageVersion => Version.parse('3.9.0');
 
   @override
   Entidade$reflection withObject([Entidade? obj]) =>
@@ -68,6 +69,9 @@ class Entidade$reflection extends ClassReflection<Entidade>
   static Entidade$reflection? _withoutObjectInstance;
   @override
   Entidade$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Entidade$reflection get staticInstance =>
       _withoutObjectInstance ??= Entidade$reflection._();
@@ -142,7 +146,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
     'dataDelecao',
     'dataEdicao',
     'id',
-    'id2'
+    'id2',
   ];
 
   @override
@@ -191,7 +195,9 @@ class Entidade$reflection extends ClassReflection<Entidade>
   }
 
   FieldReflection<Entidade, dynamic>? _fieldImpl(
-      String fieldName, Entidade? obj) {
+    String fieldName,
+    Entidade? obj,
+  ) {
     obj ??= object;
 
     var lc = fieldName.trim().toLowerCase();
@@ -204,8 +210,10 @@ class Entidade$reflection extends ClassReflection<Entidade>
           __TR.tString,
           'id',
           false,
-          (o) => () => o!.id,
-          (o) => (v) => o!.id = v,
+          (o) =>
+              () => o!.id,
+          (o) =>
+              (v) => o!.id = v,
           obj,
           false,
         );
@@ -216,8 +224,10 @@ class Entidade$reflection extends ClassReflection<Entidade>
           __TR.tInt,
           'id2',
           false,
-          (o) => () => o!.id2,
-          (o) => (v) => o!.id2 = v,
+          (o) =>
+              () => o!.id2,
+          (o) =>
+              (v) => o!.id2 = v,
           obj,
           false,
         );
@@ -228,8 +238,10 @@ class Entidade$reflection extends ClassReflection<Entidade>
           __TR.tBool,
           'ativa',
           false,
-          (o) => () => o!.ativa,
-          (o) => (v) => o!.ativa = v,
+          (o) =>
+              () => o!.ativa,
+          (o) =>
+              (v) => o!.ativa = v,
           obj,
           false,
         );
@@ -237,11 +249,13 @@ class Entidade$reflection extends ClassReflection<Entidade>
         return FieldReflection<Entidade, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
-          (o) => () => o!.dataCriacao,
-          (o) => (v) => o!.dataCriacao = v,
+          (o) =>
+              () => o!.dataCriacao,
+          (o) =>
+              (v) => o!.dataCriacao = v,
           obj,
           false,
         );
@@ -249,11 +263,13 @@ class Entidade$reflection extends ClassReflection<Entidade>
         return FieldReflection<Entidade, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
-          (o) => () => o!.dataEdicao,
-          (o) => (v) => o!.dataEdicao = v,
+          (o) =>
+              () => o!.dataEdicao,
+          (o) =>
+              (v) => o!.dataEdicao = v,
           obj,
           false,
         );
@@ -261,11 +277,13 @@ class Entidade$reflection extends ClassReflection<Entidade>
         return FieldReflection<Entidade, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
-          (o) => () => o!.dataDelecao,
-          (o) => (v) => o!.dataDelecao = v,
+          (o) =>
+              () => o!.dataDelecao,
+          (o) =>
+              (v) => o!.dataDelecao = v,
           obj,
           false,
         );
@@ -275,8 +293,10 @@ class Entidade$reflection extends ClassReflection<Entidade>
   }
 
   @override
-  Map<String, dynamic> getFieldsValues(Entidade? obj,
-      {bool withHashCode = false}) {
+  Map<String, dynamic> getFieldsValues(
+    Entidade? obj, {
+    bool withHashCode = false,
+  }) {
     obj ??= object;
     return <String, dynamic>{
       'id': obj?.id,
@@ -307,14 +327,14 @@ class Entidade$reflection extends ClassReflection<Entidade>
     'mapToClass',
     'reflect',
     'stringToClass',
-    'toJson'
+    'toJson',
   ];
 
   @override
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<Entidade, dynamic>>
-      _methodsNoObject = {};
+  _methodsNoObject = {};
 
   final Map<String, MethodReflection<Entidade, dynamic>> _methodsObject = {};
 
@@ -356,7 +376,9 @@ class Entidade$reflection extends ClassReflection<Entidade>
   }
 
   MethodReflection<Entidade, dynamic>? _methodImpl(
-      String methodName, Entidade? obj) {
+    String methodName,
+    Entidade? obj,
+  ) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
@@ -364,149 +386,166 @@ class Entidade$reflection extends ClassReflection<Entidade>
     switch (lc) {
       case 'reflect':
         return MethodReflection<Entidade, ClassReflection<dynamic>>(
-            this,
-            Entidade,
-            'reflect',
-            __TR<ClassReflection<dynamic>>(
-                ClassReflection, <__TR>[__TR.tDynamic]),
-            false,
-            (o) => o!.reflect,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          Entidade,
+          'reflect',
+          const __TR<ClassReflection<dynamic>>(ClassReflection, <__TR>[
+            __TR.tDynamic,
+          ]),
+          false,
+          (o) => o!.reflect,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'classtomap':
         return MethodReflection<Entidade, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'classToMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.classToMap,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.classToMap,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'tojson':
         return MethodReflection<Entidade, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'toJson',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.toJson,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'toJson',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.toJson,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'dbmaptoclassmap':
         return MethodReflection<Entidade, Map<String, dynamic>>(
-            this,
-            SerialMethods,
-            'dbMaptoClassMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.dbMaptoClassMap,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'original',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'dbMaptoClassMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.dbMaptoClassMap,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'original',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'classtostring':
         return MethodReflection<Entidade, String>(
-            this,
-            SerialMethods,
-            'classToString',
-            __TR.tString,
-            false,
-            (o) => o!.classToString,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'classToString',
+          __TR.tString,
+          false,
+          (o) => o!.classToString,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'listclasstostring':
         return MethodReflection<Entidade, String>(
-            this,
-            SerialMethods,
-            'listClassToString',
-            __TR.tString,
-            false,
-            (o) => o!.listClassToString,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listClassToString',
+          __TR.tString,
+          false,
+          (o) => o!.listClassToString,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'stringtoclass':
         return MethodReflection<Entidade, dynamic>(
-            this,
-            SerialMethods,
-            'stringToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.stringToClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'string', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'stringToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.stringToClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'string', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'maptoclass':
         return MethodReflection<Entidade, dynamic>(
-            this,
-            SerialMethods,
-            'mapToClass',
-            __TR.tDynamic,
-            false,
-            (o) => o!.mapToClass,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'mapToClass',
+          __TR.tDynamic,
+          false,
+          (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'listmaptolistclass':
         return MethodReflection<Entidade, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listMapToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listMapToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listMapToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listMapToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'liststringtolistclass':
         return MethodReflection<Entidade, List<dynamic>>(
-            this,
-            SerialMethods,
-            'listStringToListClass',
-            __TR.tListDynamic,
-            false,
-            (o) => o!.listStringToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'listString', false, true)],
-            null,
-            null,
-            null);
+          this,
+          SerialMethods,
+          'listStringToListClass',
+          __TR.tListDynamic,
+          false,
+          (o) => o!.listStringToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'listString', false, true)],
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -531,10 +570,13 @@ extension Entidade$reflectionExtension on Entidade {
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
   /// Returns an encoded JSON [String] for type [Entidade]. (Generated by [ReflectionFactory])
-  String toJsonEncoded(
-          {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
-      reflection.toJsonEncoded(
-          pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
+  String toJsonEncoded({
+    bool pretty = false,
+    bool duplicatedEntitiesAsID = false,
+  }) => reflection.toJsonEncoded(
+    pretty: pretty,
+    duplicatedEntitiesAsID: duplicatedEntitiesAsID,
+  );
 
   /// Returns a JSON for type [Entidade] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
@@ -542,8 +584,8 @@ extension Entidade$reflectionExtension on Entidade {
 }
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
-      Entidade$reflection(),
-    ];
+  Entidade$reflection(),
+];
 
 List<Reflection>? _siblingsReflectionList;
 List<Reflection> _siblingsReflection() => _siblingsReflectionList ??=

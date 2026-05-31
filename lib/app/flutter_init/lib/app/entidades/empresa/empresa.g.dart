@@ -6,76 +6,9 @@ part of 'empresa.dart';
 // MyCustomGenerator
 // **************************************************************************
 
-Empresa _$EmpresaFromJson(Map json) => Empresa()
-  ..id = json['id'] != null ? json['id'] as String : ""
-  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : 0
-  ..ativa = json['ativa'] != null ? json['ativa'] as bool : false
-  ..dataCriacao = json['dataCriacao'] != null
-      ? DateTime.parse(json['dataCriacao'] as String)
-      : initialTime
-  ..dataEdicao = json['dataEdicao'] != null
-      ? DateTime.parse(json['dataEdicao'] as String)
-      : initialTime
-  ..dataDelecao = json['dataDelecao'] != null
-      ? DateTime.parse(json['dataDelecao'] as String)
-      : initialTime
-  ..nome = json['nome'] != null ? json['nome'] as String : ""
-  ..valorPagamento = json['valorPagamento'] != null
-      ? (json['valorPagamento'] as num).toDouble()
-      : 0
-  ..telefone = json['telefone'] != null ? json['telefone'] as String : ""
-  ..anydesk = json['anydesk'] != null ? json['anydesk'] as String : ""
-  ..whatsapp = json['whatsapp'] != null ? json['whatsapp'] as String : ""
-  ..latitude =
-      json['latitude'] != null ? (json['latitude'] as num).toDouble() : 0
-  ..longitude =
-      json['longitude'] != null ? (json['longitude'] as num).toDouble() : 0
-  ..dataPagamento = json['dataPagamento'] != null
-      ? DateTime.parse(json['dataPagamento'] as String)
-      : initialTime
-  ..ultimoPagamentoCompleto = json['ultimoPagamentoCompleto'] != null
-      ? DateTime.parse(json['ultimoPagamentoCompleto'] as String)
-      : initialTime
-  ..ultimoPagamentoGerado = json['ultimoPagamentoGerado'] != null
-      ? DateTime.parse(json['ultimoPagamentoGerado'] as String)
-      : initialTime
-  ..cnpj = json['cnpj'] != null ? json['cnpj'] as String : ""
-  ..razaoSocial =
-      json['razaoSocial'] != null ? json['razaoSocial'] as String : ""
-  ..municipio = json['municipio'] != null ? json['municipio'] as String : ""
-  ..estado = json['estado'] != null ? json['estado'] as String : ""
-  ..cep = json['cep'] != null ? json['cep'] as String : ""
-  ..bairro = json['bairro'] != null ? json['bairro'] as String : ""
-  ..logradouro = json['logradouro'] != null ? json['logradouro'] as String : ""
-  ..numeroCasa = json['numeroCasa'] != null ? json['numeroCasa'] as String : "";
+Empresa _$EmpresaFromJson(Map json) => Empresa();
 
-Map<String, dynamic> _$EmpresaToJson(Empresa instance) => <String, dynamic>{
-      'id': instance.id,
-      'id2': instance.id2,
-      'ativa': instance.ativa,
-      'dataCriacao': instance.dataCriacao.toIso8601String(),
-      'dataEdicao': instance.dataEdicao.toIso8601String(),
-      'dataDelecao': instance.dataDelecao.toIso8601String(),
-      'nome': instance.nome,
-      'valorPagamento': instance.valorPagamento,
-      'telefone': instance.telefone,
-      'anydesk': instance.anydesk,
-      'whatsapp': instance.whatsapp,
-      'latitude': instance.latitude,
-      'longitude': instance.longitude,
-      'dataPagamento': instance.dataPagamento.toIso8601String(),
-      'ultimoPagamentoCompleto':
-          instance.ultimoPagamentoCompleto.toIso8601String(),
-      'ultimoPagamentoGerado': instance.ultimoPagamentoGerado.toIso8601String(),
-      'cnpj': instance.cnpj,
-      'razaoSocial': instance.razaoSocial,
-      'municipio': instance.municipio,
-      'estado': instance.estado,
-      'cep': instance.cep,
-      'bairro': instance.bairro,
-      'logradouro': instance.logradouro,
-      'numeroCasa': instance.numeroCasa,
-    };
+Map<String, dynamic> _$EmpresaToJson(Empresa instance) => <String, dynamic>{};
 
 mixin _$Serial {
   Map<String, dynamic> classToMap() {

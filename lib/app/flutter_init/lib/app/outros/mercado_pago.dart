@@ -34,7 +34,7 @@ class PagamentoSistemaUtil {
       "description": "Mensalidade",
       "payment_method_id": "pix",
       "payer": {
-        "email": "test@test.com",
+        "email": "alguem@gmail.com",
       }
     };
 

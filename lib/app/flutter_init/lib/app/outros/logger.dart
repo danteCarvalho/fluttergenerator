@@ -1,16 +1,15 @@
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sentry/sentry.dart';
+
+import '../../pubspec.dart';
 
 myLog(Object error, StackTrace stack) async {
   await Sentry.captureException(error, stackTrace: stack);
   String stack1 = error.toString();
   String stack2 = "";
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
   LineSplitter.split(stack.toString()).forEach((linha) {
-    if (linha.contains("${packageInfo.appName}/")) {
+    if (linha.contains("${Pubspec.name}/")) {
       if (linha.startsWith("../packages/")) {
         var split = linha.split(" ");
         var package = split[0].replaceFirst("../packages/", "(package:");

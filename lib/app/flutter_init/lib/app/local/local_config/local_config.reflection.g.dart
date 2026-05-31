@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.5
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.5');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 LocalConfig LocalConfig$fromJson(Map<String, Object?> map) =>
     LocalConfig$reflection.staticInstance.fromJson(map);
@@ -46,7 +47,7 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   }
 
   LocalConfig$reflection._([LocalConfig? object])
-      : super(LocalConfig, r'LocalConfig', object);
+    : super(LocalConfig, r'LocalConfig', object);
 
   static bool _registered = false;
   @override
@@ -59,7 +60,7 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   }
 
   @override
-  Version get languageVersion => Version.parse('3.7.0');
+  Version get languageVersion => Version.parse('3.9.0');
 
   @override
   LocalConfig$reflection withObject([LocalConfig? obj]) =>
@@ -68,6 +69,9 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   static LocalConfig$reflection? _withoutObjectInstance;
   @override
   LocalConfig$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static LocalConfig$reflection get staticInstance =>
       _withoutObjectInstance ??= LocalConfig$reflection._();
@@ -119,8 +123,16 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
 
     switch (lc) {
       case '':
-        return ConstructorReflection<LocalConfig>(this, LocalConfig, '',
-            () => () => LocalConfig(), null, null, null, null);
+        return ConstructorReflection<LocalConfig>(
+          this,
+          LocalConfig,
+          '',
+          () => LocalConfig.new,
+          null,
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -128,7 +140,7 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
 
   static const List<Object> _classAnnotations = const [
     reflector,
-    SerialAnnotation()
+    SerialAnnotation(),
   ];
 
   @override
@@ -138,7 +150,7 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
     _LocalConfigBase,
     Store,
     _$LocalConfig,
-    _$Serial
+    _$Serial,
   ];
 
   @override
@@ -159,13 +171,15 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   List<String> get fieldsNames => _fieldsNames;
 
   static final Map<String, FieldReflection<LocalConfig, dynamic>>
-      _fieldsNoObject = {};
+  _fieldsNoObject = {};
 
   final Map<String, FieldReflection<LocalConfig, dynamic>> _fieldsObject = {};
 
   @override
-  FieldReflection<LocalConfig, T>? field<T>(String fieldName,
-      [LocalConfig? obj]) {
+  FieldReflection<LocalConfig, T>? field<T>(
+    String fieldName, [
+    LocalConfig? obj,
+  ]) {
     if (obj == null) {
       if (object != null) {
         return _fieldObjectImpl<T>(fieldName);
@@ -202,7 +216,9 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   }
 
   FieldReflection<LocalConfig, dynamic>? _fieldImpl(
-      String fieldName, LocalConfig? obj) {
+    String fieldName,
+    LocalConfig? obj,
+  ) {
     obj ??= object;
 
     var lc = fieldName.trim().toLowerCase();
@@ -212,10 +228,11 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
         return FieldReflection<LocalConfig, ReactiveContext>(
           this,
           Store,
-          __TR<ReactiveContext>(ReactiveContext),
+          const __TR<ReactiveContext>(ReactiveContext),
           'context',
           false,
-          (o) => () => o!.context,
+          (o) =>
+              () => o!.context,
           null,
           obj,
           false,
@@ -226,8 +243,10 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   }
 
   @override
-  Map<String, dynamic> getFieldsValues(LocalConfig? obj,
-      {bool withHashCode = false}) {
+  Map<String, dynamic> getFieldsValues(
+    LocalConfig? obj, {
+    bool withHashCode = false,
+  }) {
     obj ??= object;
     return <String, dynamic>{
       'context': obj?.context,
@@ -255,20 +274,22 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
     'reflect',
     'stringToClass',
     'toJson',
-    'toString'
+    'toString',
   ];
 
   @override
   List<String> get methodsNames => _methodsNames;
 
   static final Map<String, MethodReflection<LocalConfig, dynamic>>
-      _methodsNoObject = {};
+  _methodsNoObject = {};
 
   final Map<String, MethodReflection<LocalConfig, dynamic>> _methodsObject = {};
 
   @override
-  MethodReflection<LocalConfig, R>? method<R>(String methodName,
-      [LocalConfig? obj]) {
+  MethodReflection<LocalConfig, R>? method<R>(
+    String methodName, [
+    LocalConfig? obj,
+  ]) {
     if (obj == null) {
       if (object != null) {
         return _methodObjectImpl<R>(methodName);
@@ -305,7 +326,9 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   }
 
   MethodReflection<LocalConfig, dynamic>? _methodImpl(
-      String methodName, LocalConfig? obj) {
+    String methodName,
+    LocalConfig? obj,
+  ) {
     obj ??= object;
 
     var lc = methodName.trim().toLowerCase();
@@ -313,164 +336,184 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
     switch (lc) {
       case 'tostring':
         return MethodReflection<LocalConfig, String>(
-            this,
-            _$LocalConfig,
-            'toString',
-            __TR.tString,
-            false,
-            (o) => o!.toString,
-            obj,
-            null,
-            null,
-            null,
-            const [override]);
+          this,
+          _$LocalConfig,
+          'toString',
+          __TR.tString,
+          false,
+          (o) => o!.toString,
+          obj,
+          null,
+          null,
+          null,
+          const [override],
+        );
       case 'classtomap':
         return MethodReflection<LocalConfig, Map<String, dynamic>>(
-            this,
-            _$Serial,
-            'classToMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.classToMap,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'classToMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.classToMap,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'tojson':
         return MethodReflection<LocalConfig, Map<String, dynamic>>(
-            this,
-            _$Serial,
-            'toJson',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.toJson,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'toJson',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.toJson,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'classtostring':
         return MethodReflection<LocalConfig, String>(
-            this,
-            _$Serial,
-            'classToString',
-            __TR.tString,
-            false,
-            (o) => o!.classToString,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'classToString',
+          __TR.tString,
+          false,
+          (o) => o!.classToString,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       case 'listclasstostring':
         return MethodReflection<LocalConfig, String>(
-            this,
-            _$Serial,
-            'listClassToString',
-            __TR.tString,
-            false,
-            (o) => o!.listClassToString,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'listClassToString',
+          __TR.tString,
+          false,
+          (o) => o!.listClassToString,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'dbmaptoclassmap':
         return MethodReflection<LocalConfig, Map<String, dynamic>>(
-            this,
-            _$Serial,
-            'dbMaptoClassMap',
-            __TR.tMapStringDynamic,
-            false,
-            (o) => o!.dbMaptoClassMap,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'original',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'dbMaptoClassMap',
+          __TR.tMapStringDynamic,
+          false,
+          (o) => o!.dbMaptoClassMap,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'original',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'stringtoclass':
         return MethodReflection<LocalConfig, LocalConfig>(
-            this,
-            _$Serial,
-            'stringToClass',
-            __TR<LocalConfig>(LocalConfig),
-            false,
-            (o) => o!.stringToClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'string', false, true)],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'stringToClass',
+          const __TR<LocalConfig>(LocalConfig),
+          false,
+          (o) => o!.stringToClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'string', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'maptoclass':
         return MethodReflection<LocalConfig, LocalConfig>(
-            this,
-            _$Serial,
-            'mapToClass',
-            __TR<LocalConfig>(LocalConfig),
-            false,
-            (o) => o!.mapToClass,
-            obj,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'mapToClass',
+          const __TR<LocalConfig>(LocalConfig),
+          false,
+          (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       case 'listmaptolistclass':
         return MethodReflection<LocalConfig, List<LocalConfig>>(
-            this,
-            _$Serial,
-            'listMapToListClass',
-            __TR<List<LocalConfig>>(
-                List, <__TR>[__TR<LocalConfig>(LocalConfig)]),
-            false,
-            (o) => o!.listMapToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'listMapToListClass',
+          const __TR<List<LocalConfig>>(List, <__TR>[
+            __TR<LocalConfig>(LocalConfig),
+          ]),
+          false,
+          (o) => o!.listMapToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tListDynamic, 'list', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'liststringtolistclass':
         return MethodReflection<LocalConfig, List<LocalConfig>>(
-            this,
-            _$Serial,
-            'listStringToListClass',
-            __TR<List<LocalConfig>>(
-                List, <__TR>[__TR<LocalConfig>(LocalConfig)]),
-            false,
-            (o) => o!.listStringToListClass,
-            obj,
-            const <__PR>[__PR(__TR.tString, 'listString', false, true)],
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'listStringToListClass',
+          const __TR<List<LocalConfig>>(List, <__TR>[
+            __TR<LocalConfig>(LocalConfig),
+          ]),
+          false,
+          (o) => o!.listStringToListClass,
+          obj,
+          const <__PR>[__PR(__TR.tString, 'listString', false, true)],
+          null,
+          null,
+          null,
+        );
       case 'reflect':
         return MethodReflection<LocalConfig, ClassReflection<LocalConfig>>(
-            this,
-            _$Serial,
-            'reflect',
-            __TR<ClassReflection<LocalConfig>>(
-                ClassReflection, <__TR>[__TR<LocalConfig>(LocalConfig)]),
-            false,
-            (o) => o!.reflect,
-            obj,
-            null,
-            null,
-            null,
-            null);
+          this,
+          _$Serial,
+          'reflect',
+          const __TR<ClassReflection<LocalConfig>>(ClassReflection, <__TR>[
+            __TR<LocalConfig>(LocalConfig),
+          ]),
+          false,
+          (o) => o!.reflect,
+          obj,
+          null,
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -482,7 +525,7 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   List<String> get staticMethodsNames => _staticMethodsNames;
 
   static final Map<String, StaticMethodReflection<LocalConfig, dynamic>>
-      _staticMethods = {};
+  _staticMethods = {};
 
   @override
   StaticMethodReflection<LocalConfig, R>? staticMethod<R>(String methodName) {
@@ -497,29 +540,34 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   }
 
   StaticMethodReflection<LocalConfig, dynamic>? _staticMethodImpl(
-      String methodName) {
+    String methodName,
+  ) {
     var lc = methodName.trim().toLowerCase();
 
     switch (lc) {
       case 'fromjson':
         return StaticMethodReflection<LocalConfig, dynamic>(
-            this,
-            LocalConfig,
-            'fromJson',
-            __TR.tDynamic,
-            false,
-            () => LocalConfig.fromJson,
-            const <__PR>[
-              __PR(
-                  __TR<Map<dynamic, dynamic>>(
-                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
-                  'map',
-                  false,
-                  true)
-            ],
-            null,
-            null,
-            null);
+          this,
+          LocalConfig,
+          'fromJson',
+          __TR.tDynamic,
+          false,
+          () => LocalConfig.fromJson,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
       default:
         return null;
     }
@@ -535,10 +583,13 @@ extension LocalConfig$reflectionExtension on LocalConfig {
       reflection.toJsonMap(duplicatedEntitiesAsID: duplicatedEntitiesAsID);
 
   /// Returns an encoded JSON [String] for type [LocalConfig]. (Generated by [ReflectionFactory])
-  String toJsonEncoded(
-          {bool pretty = false, bool duplicatedEntitiesAsID = false}) =>
-      reflection.toJsonEncoded(
-          pretty: pretty, duplicatedEntitiesAsID: duplicatedEntitiesAsID);
+  String toJsonEncoded({
+    bool pretty = false,
+    bool duplicatedEntitiesAsID = false,
+  }) => reflection.toJsonEncoded(
+    pretty: pretty,
+    duplicatedEntitiesAsID: duplicatedEntitiesAsID,
+  );
 
   /// Returns a JSON for type [LocalConfig] using the class fields. (Generated by [ReflectionFactory])
   Object? toJsonFromFields({bool duplicatedEntitiesAsID = false}) => reflection
@@ -546,8 +597,8 @@ extension LocalConfig$reflectionExtension on LocalConfig {
 }
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
-      LocalConfig$reflection(),
-    ];
+  LocalConfig$reflection(),
+];
 
 List<Reflection>? _siblingsReflectionList;
 List<Reflection> _siblingsReflection() => _siblingsReflectionList ??=
