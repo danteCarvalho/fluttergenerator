@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:dartutils/dartutils.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../app_routes.dart';
 import '../../app_store.dart';
 import '../../entidades/usuario/usuario.dart';
 import '../../requests/server_requets.dart';
@@ -12,17 +13,20 @@ import 'google_login_page.dart';
 
 part 'google_login_store.g.dart';
 
-class GoogleLoginStore = GoogleLoginStoreBase with _$GoogleLoginStore;
+class GoogleLoginStore extends GoogleLoginStoreBase with _$GoogleLoginStore {
+  GoogleLoginStore();
+}
 
 abstract class GoogleLoginStoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
 
-  init(GoogleLoginPageState state) async {
+  Future<void> init(GoogleLoginPageState state) async {
+    app = state.context.read<AppStore>();
     Map queryParameters = Uri.base.queryParameters;
-    var state = queryParameters["state"];
+    String stateParam = queryParameters["state"];
     Map map = {};
     map["code"] = queryParameters["code"];
-    map["state"] = state;
+    map["state"] = stateParam;
     map["client_id"] = "44265153130-1i4ub5c40hjq8i6420j5d71dc601ump1.apps.googleusercontent.com";
     map["redirect_uri"] = "${Uri.base.origin}/googleLogin/";
     map["tipo"] = "web";
@@ -47,7 +51,6 @@ abstract class GoogleLoginStoreBase with Store {
 
     app.usuario = usuario;
     app.mostrarSnackBar("Logado com sucesso");
-    Modular.to.popUntil((p0) => false);
-    Modular.to.pushReplacementNamed(state);
+    router.go(stateParam);
   }
 }

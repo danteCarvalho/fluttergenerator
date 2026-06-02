@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
+import '../../app_routes.dart';
 import '../../app_store.dart';
 import '../../outros/logger.dart';
 import '../../requests/server_requets.dart';
@@ -12,19 +12,21 @@ import 'verifica_email2_page.dart';
 
 part 'verifica_email2_store.g.dart';
 
-class VerificaEmail2Store = VerificaEmail2StoreBase with _$VerificaEmail2Store;
+class VerificaEmail2Store extends VerificaEmail2StoreBase with _$VerificaEmail2Store {
+  VerificaEmail2Store();
+}
 
 abstract class VerificaEmail2StoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
+
   @observable
   bool verificado = false;
 
-  init(VerificaEmail2PageState state) async {
-    Map queryParameters = kIsWeb ? Uri.base.queryParameters : Modular.args.queryParams;
-    String? id = queryParameters["id"];
+  Future<void> init(VerificaEmail2PageState state) async {
+    app = state.context.read<AppStore>();
+    String? id = state.widget.id;
     if (id == null) {
-      Modular.to.popUntil((p0) => false);
-      Modular.to.pushReplacementNamed("/home/");
+      router.go("/home");
       return;
     }
     verificarEmail(id);

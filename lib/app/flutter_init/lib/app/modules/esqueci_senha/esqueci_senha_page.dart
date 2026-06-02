@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
+import 'package:provider/provider.dart';
 
 import 'esqueci_senha_store.dart';
 
@@ -13,11 +13,12 @@ class EsqueciSenhaPage extends StatefulWidget {
 }
 
 class EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
-  final EsqueciSenhaStore store = Modular.get();
+  late EsqueciSenhaStore store;
 
   @override
   void initState() {
     super.initState();
+    store = context.read<EsqueciSenhaStore>();
     store.init(this);
   }
 

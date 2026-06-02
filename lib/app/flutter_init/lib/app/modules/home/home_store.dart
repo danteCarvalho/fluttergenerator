@@ -1,19 +1,19 @@
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
 import '../../app_store.dart';
 import 'home_page.dart';
 
 part 'home_store.g.dart';
 
-class HomeStore = HomeStoreBase with _$HomeStore;
+class HomeStore extends HomeStoreBase with _$HomeStore {
+  HomeStore();
+}
 
 abstract class HomeStoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
 
-  init(HomePageState state) async {
-
+  Future<void> init(HomePageState state) async {
+    app = state.context.read<AppStore>();
   }
-
-
 }

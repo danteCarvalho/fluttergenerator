@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
+import '../../app_routes.dart';
 import '../../app_store.dart';
 import '../../outros/config/config.dart';
 import '../../outros/logger.dart';
@@ -14,15 +15,20 @@ import 'esqueci_senha_page.dart';
 
 part 'esqueci_senha_store.g.dart';
 
-class EsqueciSenhaStore = EsqueciSenhaStoreBase with _$EsqueciSenhaStore;
+class EsqueciSenhaStore extends EsqueciSenhaStoreBase with _$EsqueciSenhaStore {
+  EsqueciSenhaStore();
+}
 
 abstract class EsqueciSenhaStoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
+
   HttpServer? server;
   @observable
   String email = "";
 
-  init(EsqueciSenhaPageState state) async {}
+  Future<void> init(EsqueciSenhaPageState state) async {
+    app = state.context.read<AppStore>();
+  }
 
   enviar() async {
     try {
@@ -65,6 +71,6 @@ abstract class EsqueciSenhaStoreBase with Store {
     var id = queryParameters["id"];
     await request.response.close();
     server.close();
-    Modular.to.pushNamed("/esqueciSenha2/?id=$id");
+    router.go("/esqueciSenha2?id=$id");
   }
 }

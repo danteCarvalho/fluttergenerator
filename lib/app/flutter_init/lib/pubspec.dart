@@ -3,7 +3,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 mixin Pubspec {
-  static final buildDate = DateTime.utc(2026, 5, 31, 6, 28, 20);
+  static final buildDate = DateTime.utc(2026, 6, 2, 4, 51, 11);
 
   static const name = 'teste';
 
@@ -44,43 +44,44 @@ mixin Pubspec {
       'sdk': 'flutter',
     },
     'intl': '^0.20.2',
-    'async': '^2.13.0',
-    'crypto': '^3.0.6',
-    'http': '^1.3.0',
-    'flutter_modular': '^6.3.4',
+    'async': '^2.13.1',
+    'crypto': '^3.0.7',
+    'http': '^1.6.0',
+    'go_router': '^17.2.3',
+    'provider': '^6.1.5+1',
     'sembast': '^3.8.4+1',
-    'sembast_web': '^2.4.1',
-    'sembast_sqflite': '^2.2.1',
-    'sqflite_common_ffi': '^2.3.5',
-    'shared_preferences': '^2.5.2',
+    'sembast_web': '^2.4.4+1',
+    'sembast_sqflite': '^2.2.1+1',
+    'sqflite_common_ffi': '^2.4.0+3',
+    'shared_preferences': '^2.5.5',
     'shared_preferences_web': '^2.4.3',
-    'mobx': '^2.5.0',
+    'mobx': '^2.6.0',
     'flutter_mobx': '^2.3.0',
-    'uuid': '^4.5.1',
+    'uuid': '^4.5.3',
     'path_provider': '^2.1.5',
-    'dart_date': '^1.4.0',
+    'dart_date': '^1.5.3',
     'focus_widget': '^1.0.5+2',
     'dart_ping': '^9.0.1',
     'quiver': '^3.2.2',
-    'package_info_plus': '^8.3.0',
-    'url_launcher': '^6.3.1',
+    'package_info_plus': '^8.2.0',
+    'url_launcher': '^6.3.2',
     'cached_network_image': '^3.4.1',
     'latlng': '^2.0.7',
     'map': '^2.0.2',
     'navigation_history_observer': '^1.1.1',
     'reflection_factory': '^2.7.5',
     'reflectable': '^5.2.3',
-    'sentry_flutter': '^8.14.0',
-    'clipboard': '^0.1.3',
+    'sentry_flutter': '^9.21.0',
+    'clipboard': '3.0.0',
     'mercadopago_sdk': '^1.3.0',
     'qr_flutter': '^4.1.0',
-    'file_picker': '^9.2.1',
-    'extended_image': '^10.0.0',
+    'file_picker': '10.3.10',
+    'extended_image': '^10.0.1',
     'web': '^1.1.1',
-    'meta': '^1.16.0',
-    'osm_nominatim': '^3.0.1',
-    'geolocator': '^13.0.3',
-    'sentry': '^8.14.0',
+    'meta': '^1.18.2',
+    'osm_nominatim': '^4.0.1',
+    'geolocator': '^14.0.1',
+    'sentry': '^9.21.0',
     'pubspec_extract': '^2.1.1',
     'flutter_vector_icons': <dynamic, dynamic>{
       'git': <dynamic, dynamic>{
@@ -104,16 +105,16 @@ mixin Pubspec {
 
   static const dev_dependencies = <dynamic, dynamic>{
     'mobx_codegen': '^2.7.0',
-    'build_runner': '^2.15.0',
-    'flutter_lints': '^5.0.0',
+    'build_runner': '^2.4.9',
+    'flutter_lints': '^6.0.0',
     'asset_fill': '^2.0.0',
     'flutter_launcher_icons': '^0.13.1',
   };
 
   static const dependency_overrides = <dynamic, dynamic>{
     'analyzer': '13.0.0',
-    'http': '^1.3.0',
-    'meta': '1.18.0',
+    'http': '^1.6.0',
+    'meta': '^1.18.2',
   };
 
   static const flutter = <dynamic, dynamic>{

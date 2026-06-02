@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
+import 'package:provider/provider.dart';
 
 import 'verifica_email_store.dart';
 
@@ -13,11 +13,12 @@ class VerificaEmailPage extends StatefulWidget {
 }
 
 class VerificaEmailPageState extends State<VerificaEmailPage> {
-  final VerificaEmailStore store = Modular.get();
+  late VerificaEmailStore store;
 
   @override
   void initState() {
     super.initState();
+    store = context.read<VerificaEmailStore>();
     store.init(this);
   }
 

@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
+import '../../app_routes.dart';
 import '../../app_store.dart';
 import '../../outros/logger.dart';
 import '../../requests/server_requets.dart';
@@ -12,10 +12,13 @@ import 'esqueci_senha2_page.dart';
 
 part 'esqueci_senha2_store.g.dart';
 
-class EsqueciSenha2Store = EsqueciSenha2StoreBase with _$EsqueciSenha2Store;
+class EsqueciSenha2Store extends EsqueciSenha2StoreBase with _$EsqueciSenha2Store {
+  EsqueciSenha2Store();
+}
 
 abstract class EsqueciSenha2StoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
+
   late String id;
   @observable
   String senha = "";
@@ -25,12 +28,11 @@ abstract class EsqueciSenha2StoreBase with Store {
   bool alterada = false;
 
 
-  init(EsqueciSenha2PageState state) async {
-    Map queryParameters = kIsWeb ? Uri.base.queryParameters : Modular.args.queryParams;
-    String? id = queryParameters["id"];
+  Future<void> init(EsqueciSenha2PageState state) async {
+    app = state.context.read<AppStore>();
+    String? id = state.widget.id;
     if (id == null) {
-      Modular.to.popUntil((p0) => false);
-      Modular.to.pushReplacementNamed("/home/");
+      router.go("/home");
       return;
     }
     this.id = id;

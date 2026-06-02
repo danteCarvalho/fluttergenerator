@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:flutterutils/flutterutils.dart';
+import 'package:provider/provider.dart';
 
 import 'verifica_email2_store.dart';
 
 class VerificaEmail2Page extends StatefulWidget {
+  final String? id;
 
-  const VerificaEmail2Page({super.key});
+  const VerificaEmail2Page({super.key, this.id});
 
   @override
   VerificaEmail2PageState createState() => VerificaEmail2PageState();
 }
 
 class VerificaEmail2PageState extends State<VerificaEmail2Page> {
-  final VerificaEmail2Store store = Modular.get();
+  late VerificaEmail2Store store;
 
   @override
   void initState() {
     super.initState();
+    store = context.read<VerificaEmail2Store>();
     store.init(this);
   }
 

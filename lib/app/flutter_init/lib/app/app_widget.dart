@@ -3,9 +3,10 @@ import 'dart:ui';
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
+import 'app_routes.dart';
 import 'app_store.dart';
 import 'widgets/root_app_bar_widget.dart';
 import 'widgets/splash/splash_widget.dart';
@@ -19,11 +20,12 @@ class AppWidget extends StatefulWidget {
 }
 
 class AppWidgetState extends State<AppWidget> {
-  final AppStore store = Modular.get();
+  late AppStore store;
 
   @override
   void initState() {
     super.initState();
+    store = context.read<AppStore>();
     store.init(this);
   }
 
@@ -60,7 +62,7 @@ class AppWidgetState extends State<AppWidget> {
             style: ElevatedButton.styleFrom(backgroundColor: Colors.black, foregroundColor: Colors.white),
           ),
           useMaterial3: true),
-      routerConfig: Modular.routerConfig,
+      routerConfig: router,
       scrollBehavior: ScrollConfiguration.of(context).copyWith(
         dragDevices: PointerDeviceKind.values.toSet(),
       ),

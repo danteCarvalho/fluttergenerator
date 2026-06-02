@@ -8,7 +8,6 @@ import '../../outros/entidade_helper.dart';
 import '../entidade.dart';
 
 part 'empresa.g.dart';
-
 part 'empresa.reflection.g.dart';
 
 @EnableReflection()

@@ -1,16 +1,14 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'app_routes.dart';
 import 'app_widget.dart';
 import 'entidades/usuario/usuario.dart';
 import 'local/local_config/local_config.dart';
-import 'outros/metodos_estaticos.dart';
+import 'outros/estaticos_flutter.dart';
 
 part 'app_store.g.dart';
 
@@ -36,14 +34,13 @@ abstract class AppStoreBase with Store {
 
   init(AppWidgetState appWidgetState) async {
     this.appWidgetState = appWidgetState;
-    Modular.setObservers([NavigationHistoryObserver()]);
     var shared = await SharedPreferences.getInstance();
     usuario = shared.containsKey("usuario") ? Usuario().stringToClass(shared.getString("usuario")!) : null;
     localConfig =
     shared.containsKey("localConfig")
         ? LocalConfig().stringToClass(shared.getString("localConfig")!)
         : await newConfig();
-    verificaJwt();
+    verificaJwt(this);
     await Future.delayed(const Duration(seconds: 3));
     iniciado = true;
     appWidgetState.refresh();
@@ -70,13 +67,7 @@ abstract class AppStoreBase with Store {
     });
   }
 
-  printLog(String msg, e) {
-    log(msg, error: e);
-  }
 
-  printDebug(msg) {
-    debugPrint(msg.toString());
-  }
 
   mostrarSnackBar(String texto, {SnackBarAction? action}) {
     removeInvalids();
@@ -186,7 +177,6 @@ abstract class AppStoreBase with Store {
     shared.remove("jwt");
     shared.remove("usuario");
     usuario = null;
-    Modular.to.popUntil((p0) => false);
-    Modular.to.pushReplacementNamed("/home/");
+    router.go("/home");
   }
 }

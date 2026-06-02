@@ -27,16 +27,6 @@ mixin _$MenuLateralStore on MenuLateralStoreBase, Store {
     });
   }
 
-  late final _$initAsyncAction = AsyncAction(
-    'MenuLateralStoreBase.init',
-    context: context,
-  );
-
-  @override
-  Future init() {
-    return _$initAsyncAction.run(() => super.init());
-  }
-
   @override
   String toString() {
     return '''

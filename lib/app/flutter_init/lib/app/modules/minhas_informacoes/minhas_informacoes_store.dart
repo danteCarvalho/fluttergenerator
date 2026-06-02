@@ -3,31 +3,36 @@ import 'dart:convert';
 import 'package:extended_image/extended_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../app_routes.dart';
 import '../../app_store.dart';
 import '../../daos/hasura_dao.dart';
 import '../../entidades/imagem/imagem.dart';
 import '../../entidades/usuario/usuario.dart';
+import '../../outros/estaticos_flutter.dart';
 import '../../outros/logger.dart';
-import '../../outros/metodos_estaticos.dart';
 import '../../requests/server_requets.dart';
 import 'minhas_informacoes_page.dart';
 
 part 'minhas_informacoes_store.g.dart';
 
-class MinhasInformacoesStore = MinhasInformacoesStoreBase with _$MinhasInformacoesStore;
+class MinhasInformacoesStore extends MinhasInformacoesStoreBase with _$MinhasInformacoesStore {
+  MinhasInformacoesStore();
+}
 
 abstract class MinhasInformacoesStoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
+
   @observable
   Usuario usuario = Usuario();
   @observable
   Imagem imagem = Imagem();
 
-  init(MinhasInformacoesPageState state) async {
+  Future<void> init(MinhasInformacoesPageState state) async {
+    app = state.context.read<AppStore>();
     usuario = await selectByIdHasura(app.usuario!.id, Usuario());
     if (usuario.imagem != null) {
       imagem = usuario.imagem!;
@@ -73,7 +78,7 @@ abstract class MinhasInformacoesStoreBase with Store {
           app.mostrarSnackBar(responseMap["mensagem"]);
         }
       }
-    } on ClientException catch (e, s) {
+    } on Exception catch (e, s) {
       app.mostrarSnackBar("Não foi possivel conectar");
       myLog(e, s);
     } finally {
@@ -94,13 +99,12 @@ abstract class MinhasInformacoesStoreBase with Store {
           var shared = await SharedPreferences.getInstance();
           shared.setString("usuario", usuario.classToString());
           app.mostrarSnackBar("Dados salvos");
-          Modular.to.popUntil((p0) => false);
-          Modular.to.pushReplacementNamed("/logado/");
+          router.go("/logado");
         } else if (responseMap.containsKey("mensagem")) {
           app.mostrarSnackBar(responseMap["mensagem"]);
         }
       }
-    } on ClientException catch (e, s) {
+    } on Exception catch (e, s) {
       app.mostrarSnackBar("Não foi possivel conectar");
       myLog(e, s);
     } finally {

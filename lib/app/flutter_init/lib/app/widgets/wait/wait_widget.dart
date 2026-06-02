@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
+import 'package:provider/provider.dart';
 
 import '../../app_store.dart';
 
@@ -13,11 +13,12 @@ class WaitWidget extends StatefulWidget {
 }
 
 class WaitWidgetState extends State<WaitWidget> {
-  AppStore app = Modular.get();
+  late AppStore app;
 
   @override
   void initState() {
     super.initState();
+    app = context.read<AppStore>();
   }
 
   @override

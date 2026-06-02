@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../app_routes.dart';
 import '../../app_store.dart';
 import '../../daos/hasura_dao.dart';
 import '../../entidades/usuario/usuario.dart';
@@ -19,14 +20,18 @@ import 'verifica_email_page.dart';
 
 part 'verifica_email_store.g.dart';
 
-class VerificaEmailStore = VerificaEmailStoreBase with _$VerificaEmailStore;
+class VerificaEmailStore extends VerificaEmailStoreBase with _$VerificaEmailStore {
+  VerificaEmailStore();
+}
 
 abstract class VerificaEmailStoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
+
   Timer? timer;
   HttpServer? server;
 
-  init(VerificaEmailPageState state) async {
+  Future<void> init(VerificaEmailPageState state) async {
+    app = state.context.read<AppStore>();
     timer = Timer.periodic(
       const Duration(seconds: 3),
       (timer) async {
@@ -48,8 +53,7 @@ abstract class VerificaEmailStoreBase with Store {
       var shared = await SharedPreferences.getInstance();
       shared.setString("usuario", usuario.classToString());
       app.usuario = usuario;
-      Modular.to.popUntil((p0) => false);
-      Modular.to.pushReplacementNamed("/logado/");
+      router.go("/logado");
     } on NaoEncontrado catch (e, _) {
       //nada
     } on Exception catch (e, s) {
@@ -96,6 +100,6 @@ abstract class VerificaEmailStoreBase with Store {
     var id = queryParameters["id"];
     await request.response.close();
     server.close();
-    Modular.to.pushNamed("/verificaEmail2/?id=$id");
+    router.go("/verificaEmail2?id=$id");
   }
 }

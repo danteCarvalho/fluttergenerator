@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:provider/provider.dart';
 
 import 'google_login_store.dart';
 
@@ -12,11 +12,12 @@ class GoogleLoginPage extends StatefulWidget {
 }
 
 class GoogleLoginPageState extends State<GoogleLoginPage> {
-  final GoogleLoginStore store = Modular.get();
+  late GoogleLoginStore store;
 
   @override
   void initState() {
     super.initState();
+    store = context.read<GoogleLoginStore>();
     store.init(this);
   }
 

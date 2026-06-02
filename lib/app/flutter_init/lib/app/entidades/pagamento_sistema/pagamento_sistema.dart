@@ -10,7 +10,6 @@ import '../entidade.dart';
 import '../usuario/usuario.dart';
 
 part 'pagamento_sistema.g.dart';
-
 part 'pagamento_sistema.reflection.g.dart';
 
 @EnableReflection()

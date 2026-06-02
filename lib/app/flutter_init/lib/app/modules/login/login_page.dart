@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
+import 'package:provider/provider.dart';
 
+import '../../app_routes.dart';
 import 'login_store.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,11 +14,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
-  final LoginStore store = Modular.get();
+  late LoginStore store;
 
   @override
   void initState() {
     super.initState();
+    store = context.read<LoginStore>();
     store.init(this);
   }
   @override
@@ -60,7 +62,7 @@ class LoginPageState extends State<LoginPage> {
         style: TextStyle(decoration: TextDecoration.underline),
       ),
       onTap: () {
-        Modular.to.pushNamed("/cadastro/");
+        router.go("/cadastro");
       },
     );
     var esqueciSenha = GestureDetector(
@@ -69,7 +71,7 @@ class LoginPageState extends State<LoginPage> {
         style: TextStyle(decoration: TextDecoration.underline),
       ),
       onTap: () {
-        Modular.to.pushNamed("/esqueciSenha/");
+        router.go("/esqueciSenha");
       },
     );
 

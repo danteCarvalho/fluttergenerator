@@ -1,20 +1,22 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:provider/provider.dart';
 
 import 'root_store.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
+
   @override
   RootPageState createState() => RootPageState();
 }
+
 class RootPageState extends State<RootPage> {
-  final RootStore store = Modular.get();
-  
+  late RootStore store;
+
   @override
   void initState() {
     super.initState();
+    store = context.read<RootStore>();
     store.init(this);
   }
 
@@ -26,11 +28,6 @@ class RootPageState extends State<RootPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: columnWidgets,
     );
-    return Scaffold(
-      body: SingleChildScrollView(
-          child: column),
-    );
+    return Scaffold(body: SingleChildScrollView(child: column));
   }
 }
-
-

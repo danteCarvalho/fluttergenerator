@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../app_routes.dart';
 import '../../app_store.dart';
 import '../../entidades/imagem/imagem.dart';
 import '../../entidades/usuario/usuario.dart';
@@ -15,10 +16,13 @@ import 'cadastro_page.dart';
 
 part 'cadastro_store.g.dart';
 
-class CadastroStore = CadastroStoreBase with _$CadastroStore;
+class CadastroStore extends CadastroStoreBase with _$CadastroStore {
+  CadastroStore();
+}
 
 abstract class CadastroStoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
+  
   Usuario usuario = Usuario();
   Imagem imagem = Imagem();
   @observable
@@ -27,7 +31,9 @@ abstract class CadastroStoreBase with Store {
   @observable
   bool aceito = false;
 
-  init(CadastroPageState state) async {}
+  Future<void> init(CadastroPageState state) async {
+    app = state.context.read<AppStore>();
+  }
 
 
   selectFoto() async {
@@ -70,8 +76,7 @@ abstract class CadastroStoreBase with Store {
           shared.setString("usuario", usuario.classToString());
           app.usuario = usuario;
           app.mostrarSnackBar("Cadastrado com sucesso");
-          Modular.to.popUntil((p0) => false);
-          Modular.to.pushReplacementNamed("/logado/");
+          router.go("/logado");
         } else if (responseMap.containsKey("mensagem")) {
           app.mostrarSnackBar(responseMap["mensagem"]);
         }

@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
+import 'package:provider/provider.dart';
 
 import 'cadastro_store.dart';
 
@@ -17,12 +17,13 @@ class CadastroPage extends StatefulWidget {
 }
 
 class CadastroPageState extends State<CadastroPage> {
-  final CadastroStore store = Modular.get();
+  late CadastroStore store;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
+    store = context.read<CadastroStore>();
     store.init(this);
   }
 

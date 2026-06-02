@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
 
-import 'app/app_module.dart';
-import 'app/app_store.dart';
+import 'app/app_providers.dart';
 import 'app/app_widget.dart';
 import 'app/outros/config/config.dart';
+import 'app/outros/config/url_strategy_native.dart'
+    if (dart.library.js_util) 'app/outros/config/url_strategy_web.dart';
 import 'app/outros/logger.dart';
 import 'main.reflectable.dart';
 
@@ -17,13 +17,20 @@ main() async {
     SentryWidgetsFlutterBinding.ensureInitialized();
     initializeReflectable();
     await configurar();
-    usePathUrlStrategy();
+    configureUrlStrategy();
     await initSentry();
-    runApp(ModularApp(module: AppModule(), child: const AppWidget()));
+    FlutterError.onError = (FlutterErrorDetails details)async {
+      await myLog(details.exception, details.stack!);
+    };
+    runApp(
+      MultiProvider(
+        providers: providers,
+        child: const AppWidget(),
+      ),
+    );
   }, (Object error, StackTrace stack) async {
-    String stack2 = await myLog(error, stack);
-    AppStore app = Modular.get();
-    app.mostrarSnackBar(stack2);
+    await Sentry.captureException(error, stackTrace: stack);
+    await myLog(error, stack);
   });
 }
 

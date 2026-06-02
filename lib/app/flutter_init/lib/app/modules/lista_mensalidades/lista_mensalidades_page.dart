@@ -2,8 +2,8 @@ import 'package:dart_date/dart_date.dart';
 import 'package:dartutils/dartutils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
+import 'package:provider/provider.dart';
 
 import 'lista_mensalidades_store.dart';
 
@@ -16,11 +16,12 @@ class ListaMensalidadesPage extends StatefulWidget {
 }
 
 class ListaMensalidadesPageState extends State<ListaMensalidadesPage> {
-  final ListaMensalidadesStore store = Modular.get();
+  late ListaMensalidadesStore store;
 
   @override
   void initState() {
     super.initState();
+    store = context.read<ListaMensalidadesStore>();
     store.init(this);
   }
 

@@ -1,6 +1,5 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutterutils/flutterutils.dart';
 import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -42,8 +41,7 @@ class PagamentoSistemaUtil {
     return result;
   }
 
-  static mostarQrcode(String qrcodeString, double valor) async{
-    AppStore app = Modular.get();
+  static mostarQrcode(AppStore app, String qrcodeString, double valor) async{
 
 
     var qrcode = LayoutBuilder(

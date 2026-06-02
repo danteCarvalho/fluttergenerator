@@ -3,9 +3,8 @@ import 'dart:convert';
 
 import 'package:async/async.dart';
 import 'package:dartutils/dartutils.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
 import '../../app_store.dart';
 import '../../daos/hasura_dao.dart';
@@ -17,10 +16,13 @@ import 'lista_mensalidades_page.dart';
 
 part 'lista_mensalidades_store.g.dart';
 
-class ListaMensalidadesStore = ListaMensalidadesStoreBase with _$ListaMensalidadesStore;
+class ListaMensalidadesStore extends ListaMensalidadesStoreBase with _$ListaMensalidadesStore {
+  ListaMensalidadesStore();
+}
 
 abstract class ListaMensalidadesStoreBase with Store {
-  AppStore app = Modular.get();
+  late AppStore app;
+
   @observable
   List<PagamentoSistema> mensalidades = [];
   Timer? timer;
@@ -29,7 +31,8 @@ abstract class ListaMensalidadesStoreBase with Store {
   @observable
   bool existe = false;
 
-  init(ListaMensalidadesPageState state) async {
+  Future<void> init(ListaMensalidadesPageState state) async {
+    app = state.context.read<AppStore>();
     var usuario = app.usuario!;
     List<Map> list = [];
     list.add(expr("ativa", "_eq", true));
@@ -85,27 +88,27 @@ abstract class ListaMensalidadesStoreBase with Store {
   mostrarQrcode(PagamentoSistema pagamentoSistema )async{
     this.pagamentoSistema = pagamentoSistema;
     timer = Timer(const Duration(seconds: 10), verificaPix);
-    await PagamentoSistemaUtil.mostarQrcode(pagamentoSistema.qrCode, pagamentoSistema.valor);
+    await PagamentoSistemaUtil.mostarQrcode(app, pagamentoSistema.qrCode, pagamentoSistema.valor);
     cancelableOperation?.cancel();
     timer?.cancel();
   }
 
   verificaPix() async {
-    debugPrint("Verificando pix");
+    print("Verificando pix");
     cancelableOperation = CancelableOperation.fromFuture(PagamentoSistemaUtil.buscarPagamento(pagamentoSistema!.referencia));
     Map result = await cancelableOperation?.value;
     if (result["response"]?["status"] == null) {
       return;
     }
     var status = result["response"]?["status"];
-    debugPrint(status);
+    print(status);
     if (status == "approved") {
       Map map = {"pagamentoSistema": pagamentoSistema};
       var responseBody = await serverJwtPost(map, "finalizarPagamentoSistema");
       if (!nuloOuvazio([responseBody])) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {
-          debugPrint("salvo");
+          print("salvo");
         } else if (responseMap.containsKey("mensagem")) {
           app.mostrarSnackBar(responseMap["mensagem"]);
         }

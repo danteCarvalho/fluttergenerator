@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:provider/provider.dart';
 
 import 'logado_store.dart';
 
@@ -10,11 +10,12 @@ class LogadoPage extends StatefulWidget {
   LogadoPageState createState() => LogadoPageState();
 }
 class LogadoPageState extends State<LogadoPage> {
-  final LogadoStore store = Modular.get();
+  late LogadoStore store;
   
   @override
   void initState() {
     super.initState();
+    store = context.read<LogadoStore>();
     store.init(this);
   }
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:navigation_history_observer/navigation_history_observer.dart';
+import 'package:provider/provider.dart';
 
+import '../app_routes.dart';
 import '../app_store.dart';
-import '../outros/metodos_estaticos.dart';
+import '../outros/estaticos_flutter.dart';
 
 class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   const RootAppBarWidget({super.key});
@@ -17,13 +17,12 @@ class RootAppBarWidget extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class RootAppBarWidgetState extends State<RootAppBarWidget> {
-  AppStore app = Modular.get();
-  var historyObserver = NavigationHistoryObserver();
+  late AppStore app;
 
   @override
   void initState() {
     super.initState();
-    historyObserver.historyChangeStream.listen((_) => setState(() {}));
+    app = context.read<AppStore>();
   }
 
   @override
@@ -37,25 +36,23 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
           list.add(PopupMenuItem(
             child: const Text("Início"),
             value: () {
-              Modular.to.popUntil((p0) => false);
-              Modular.to.pushReplacementNamed("/home/");
+              router.go("/home");
             },
           ));
           list.add(PopupMenuItem(
             child: const Text("Login"),
             value: () {
-              Modular.to.pushNamed("/login/");
+              router.go("/login");
             },
           ));
-          list.add(const PopupMenuItem(
-            value: googleLogin,
-            child: Text("Google Login"),
+          list.add(PopupMenuItem(
+            value: () => googleLogin(app),
+            child: const Text("Google Login"),
           ));
           list.add(PopupMenuItem(
             child: const Text("Cadastro"),
             value: () {
-              Modular.to.popUntil((p0) => false);
-              Modular.to.pushReplacementNamed("/cadastro/");
+              router.go("/cadastro");
             },
           ));
         } else {
@@ -65,22 +62,20 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
           list.add(PopupMenuItem(
             child: const Text("Início"),
             value: () {
-              Modular.to.popUntil((p0) => false);
-              Modular.to.pushReplacementNamed("/logado/");
+              router.go("/logado");
             },
           ));
           list.add(PopupMenuItem(
             child: const Text("Minhas informações"),
             value: () {
-              Modular.to.pushNamed("minhasInformacoes/");
+              router.go("/logado/minhasInformacoes");
             },
           ));
           if (usuario.admin == true) {
             list.add(PopupMenuItem(
               child: const Text("Mensalidades"),
               value: () {
-                Modular.to.popUntil((p0) => false);
-                Modular.to.pushReplacementNamed("/mensalidades/");
+                router.go("/mensalidades");
               },
             ));
           }
@@ -110,48 +105,10 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
       },
     );
 
-    List<PopupMenuItem> listaHistorico = [];
-    for (Route route in historyObserver.history) {
-      if (route.settings.name == null) {
-        continue;
-      }
-      String nome = route.settings.name!;
-      if (nome.contains("?")) {
-        nome = nome.split("?")[0];
-      }
-      listaHistorico.add(PopupMenuItem(
-        value: nome,
-        child: Text(nome),
-      ));
-    }
-
     Widget? voltar;
-    if (listaHistorico.length > 1) {
-      voltar = LayoutBuilder(
-        builder: (context, constraints) {
-          var gestureDetector = GestureDetector(
-            child: IconButton(onPressed: () => Modular.to.pop(), icon: const Icon(Icons.arrow_back)),
-            onLongPress: () => app.menu(context, listaHistorico),
-          );
-          return gestureDetector;
-        },
-      );
+    if (router.canPop()) {
+      voltar = IconButton(onPressed: () => router.pop(), icon: const Icon(Icons.arrow_back));
     }
-
-    // var home = IconButton(
-    //   onPressed: () {
-    //     if (app.usuario == null) {
-    //       Modular.to.popUntil((p0) => false);
-    //       Modular.to.pushReplacementNamed("/home/");
-    //     } else {
-    //       Modular.to.popUntil((p0) => false);
-    //       Modular.to.pushReplacementNamed("/logado/");
-    //     }
-    //   },
-    //   icon: Image.asset(
-    //     "assets/icone.png",
-    //   ),
-    // );
 
     return AppBar(
       leading: voltar,

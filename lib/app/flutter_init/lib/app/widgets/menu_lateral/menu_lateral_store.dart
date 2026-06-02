@@ -1,21 +1,25 @@
 
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
 import '../../app_store.dart';
+import 'menu_lateral_widget.dart';
 
 part 'menu_lateral_store.g.dart';
 
-class MenuLateralStore = MenuLateralStoreBase with _$MenuLateralStore;
+class MenuLateralStore extends MenuLateralStoreBase with _$MenuLateralStore {
+  MenuLateralStore();
+}
+
 abstract class MenuLateralStoreBase with Store {
-  
-  AppStore app = Modular.get();
+  late AppStore app;
+
+
   @observable
   List? menuLinks;
   
-  @action
-  init()async{
-  
+  init(MenuLateralWidgetState state)async{
+    app = state.context.read<AppStore>();
   }
 
 }

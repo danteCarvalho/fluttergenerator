@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:provider/provider.dart';
 
 import 'home_store.dart';
 
 class HomePage extends StatefulWidget {
-
   const HomePage({super.key});
 
   @override
@@ -12,21 +11,17 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final HomeStore store = Modular.get();
+  late HomeStore store;
 
   @override
   void initState() {
     super.initState();
+    store = context.read<HomeStore>();
     store.init(this);
   }
 
   @override
   Widget build(BuildContext context) {
-    return store.app.popScope(
-      Scaffold(
-        body: Container(),
-      ),
-      context,
-    );
+    return store.app.popScope(Scaffold(body: Container()), context);
   }
 }

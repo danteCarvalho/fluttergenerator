@@ -15,8 +15,10 @@ linter:
     - avoid_relative_lib_imports
 
 
-
 analyzer:
+  errors:
+    avoid_print: ignore
+    strict_top_level_inference: ignore
   exclude:
     - lib/**.g.dart
     - lib/main.reflectable.dart

@@ -1,22 +1,29 @@
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 
+import '../../app_routes.dart';
 import '../../app_store.dart';
 import 'root_page.dart';
 
 part 'root_store.g.dart';
 
-class RootStore = RootStoreBase with _$RootStore;
+class RootStore extends RootStoreBase with _$RootStore {
+  RootStore();
+}
 
 abstract class RootStoreBase with Store {
-  AppStore app = Modular.get();
+   late AppStore app;
 
-  init(RootPageState state) async {
-    Modular.to.popUntil((p0) => false);
-    if (app.usuario != null) {
-      Modular.to.pushReplacementNamed("/logado/");
-    } else {
-      Modular.to.pushReplacementNamed("/home/");
-    }
+
+  Future<void> init(RootPageState state) async {
+    app = state.context.read<AppStore>();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (app.usuario != null) {
+        router.go("/logado");
+      } else {
+        router.go("/home");
+      }
+    });
   }
 }
