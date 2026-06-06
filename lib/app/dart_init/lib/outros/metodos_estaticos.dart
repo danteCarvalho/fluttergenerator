@@ -1,4 +1,6 @@
-
+void errorTest() {
+  print(1 ~/ 0);
+}
 
 void uriTest() {
   Uri.base.scheme;

@@ -4,7 +4,6 @@ import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';
 
 import '../../outros/entidade_helper.dart';
-import '../../outros/metodos_estaticos.dart';
 import '../coluna.dart';
 import '../empresa/empresa.dart';
 import '../entidade.dart';

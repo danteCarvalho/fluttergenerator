@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Config Config$fromJson(Map<String, Object?> map) =>
     Config$reflection.staticInstance.fromJson(map);
@@ -66,6 +67,9 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   static Config$reflection? _withoutObjectInstance;
   @override
   Config$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Config$reflection get staticInstance =>
       _withoutObjectInstance ??= Config$reflection._();
@@ -117,7 +121,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
     switch (lc) {
       case '':
         return ConstructorReflection<Config>(
-            this, Config, '', () => () => Config(), null, null, null, null);
+            this, Config, '', () => Config.new, null, null, null, null);
       default:
         return null;
     }
@@ -713,7 +717,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             this,
             _$Serial,
             'stringToClass',
-            __TR<Config>(Config),
+            const __TR<Config>(Config),
             false,
             (o) => o!.stringToClass,
             obj,
@@ -726,7 +730,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             this,
             _$Serial,
             'mapToClass',
-            __TR<Config>(Config),
+            const __TR<Config>(Config),
             false,
             (o) => o!.mapToClass,
             obj,
@@ -746,7 +750,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             this,
             _$Serial,
             'listMapToListClass',
-            __TR<List<Config>>(List, <__TR>[__TR<Config>(Config)]),
+            const __TR<List<Config>>(List, <__TR>[__TR<Config>(Config)]),
             false,
             (o) => o!.listMapToListClass,
             obj,
@@ -759,7 +763,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             this,
             _$Serial,
             'listStringToListClass',
-            __TR<List<Config>>(List, <__TR>[__TR<Config>(Config)]),
+            const __TR<List<Config>>(List, <__TR>[__TR<Config>(Config)]),
             false,
             (o) => o!.listStringToListClass,
             obj,
@@ -772,7 +776,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             this,
             _$Serial,
             'reflect',
-            __TR<ClassReflection<Config>>(
+            const __TR<ClassReflection<Config>>(
                 ClassReflection, <__TR>[__TR<Config>(Config)]),
             false,
             (o) => o!.reflect,

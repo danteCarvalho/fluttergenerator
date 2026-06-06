@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Usuario Usuario$fromJson(Map<String, Object?> map) =>
     Usuario$reflection.staticInstance.fromJson(map);
@@ -67,6 +68,9 @@ class Usuario$reflection extends ClassReflection<Usuario>
   static Usuario$reflection? _withoutObjectInstance;
   @override
   Usuario$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Usuario$reflection get staticInstance =>
       _withoutObjectInstance ??= Usuario$reflection._();
@@ -118,7 +122,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
     switch (lc) {
       case '':
         return ConstructorReflection<Usuario>(
-            this, Usuario, '', () => () => Usuario(), null, null, null, null);
+            this, Usuario, '', () => Usuario.new, null, null, null, null);
       default:
         return null;
     }
@@ -304,7 +308,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Usuario,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataNascimento',
           false,
           (o) => () => o!.dataNascimento,
@@ -424,7 +428,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, Empresa?>(
           this,
           Usuario,
-          __TR<Empresa>(Empresa),
+          const __TR<Empresa>(Empresa),
           'empresa',
           true,
           (o) => () => o!.empresa,
@@ -448,7 +452,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Usuario,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataPagamento',
           false,
           (o) => () => o!.dataPagamento,
@@ -460,7 +464,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Usuario,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'ultimoPagamentoCompleto',
           false,
           (o) => () => o!.ultimoPagamentoCompleto,
@@ -472,7 +476,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Usuario,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'ultimoPagamentoGerado',
           false,
           (o) => () => o!.ultimoPagamentoGerado,
@@ -496,7 +500,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, Imagem?>(
           this,
           Usuario,
-          __TR<Imagem>(Imagem),
+          const __TR<Imagem>(Imagem),
           'imagem',
           true,
           (o) => () => o!.imagem,
@@ -588,7 +592,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
           (o) => () => o!.dataCriacao,
@@ -600,7 +604,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
           (o) => () => o!.dataEdicao,
@@ -612,7 +616,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
         return FieldReflection<Usuario, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
           (o) => () => o!.dataDelecao,
@@ -743,7 +747,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
             this,
             Entidade,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,
@@ -918,7 +922,7 @@ class Usuario$reflection extends ClassReflection<Usuario>
             this,
             Usuario,
             'fromJson',
-            __TR<Usuario>(Usuario),
+            const __TR<Usuario>(Usuario),
             false,
             () => Usuario.fromJson,
             const <__PR>[
@@ -959,6 +963,9 @@ extension Usuario$reflectionExtension on Usuario {
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
       Usuario$reflection(),
+      // Dependency reflections:
+      Empresa$reflection(),
+      Imagem$reflection(),
     ];
 
 List<Reflection>? _siblingsReflectionList;

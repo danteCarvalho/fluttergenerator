@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 JwtEndpoint JwtEndpoint$fromJson(Map<String, Object?> map) =>
     JwtEndpoint$reflection.staticInstance.fromJson(map);
@@ -68,6 +69,9 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
   static JwtEndpoint$reflection? _withoutObjectInstance;
   @override
   JwtEndpoint$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static JwtEndpoint$reflection get staticInstance =>
       _withoutObjectInstance ??= JwtEndpoint$reflection._();
@@ -120,7 +124,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
     switch (lc) {
       case '':
         return ConstructorReflection<JwtEndpoint>(this, JwtEndpoint, '',
-            () => () => JwtEndpoint(), null, null, null, null);
+            () => JwtEndpoint.new, null, null, null, null);
       default:
         return null;
     }
@@ -232,7 +236,8 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
             this,
             JwtEndpoint,
             'verificaAtualizaJwt',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.verificaAtualizaJwt,
             obj,
@@ -245,7 +250,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
             this,
             JwtEndpoint,
             'getRouter',
-            __TR<Router>(Router),
+            const __TR<Router>(Router),
             false,
             (o) => o!.getRouter,
             obj,
@@ -258,7 +263,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
             this,
             JwtEndpoint,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,

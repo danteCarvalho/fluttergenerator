@@ -40,7 +40,7 @@ class AppWidgetState extends State<AppWidget> {
     return MaterialApp.router(
       builder: (context, child) {
         child = Scaffold(
-          appBar: const RootAppBarWidget(),
+          appBar: RootAppBarWidget(),
           body: child,
         );
         child = Asuka.builder(context, child);

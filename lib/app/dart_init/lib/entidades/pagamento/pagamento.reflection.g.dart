@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Pagamento Pagamento$fromJson(Map<String, Object?> map) =>
     Pagamento$reflection.staticInstance.fromJson(map);
@@ -68,6 +69,9 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
   static Pagamento$reflection? _withoutObjectInstance;
   @override
   Pagamento$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Pagamento$reflection get staticInstance =>
       _withoutObjectInstance ??= Pagamento$reflection._();
@@ -118,8 +122,8 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
 
     switch (lc) {
       case '':
-        return ConstructorReflection<Pagamento>(this, Pagamento, '',
-            () => () => Pagamento(), null, null, null, null);
+        return ConstructorReflection<Pagamento>(
+            this, Pagamento, '', () => Pagamento.new, null, null, null, null);
       default:
         return null;
     }
@@ -261,7 +265,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
         return FieldReflection<Pagamento, DateTime>(
           this,
           Pagamento,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataConfirmado',
           false,
           (o) => () => o!.dataConfirmado,
@@ -285,7 +289,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
         return FieldReflection<Pagamento, Empresa?>(
           this,
           Pagamento,
-          __TR<Empresa>(Empresa),
+          const __TR<Empresa>(Empresa),
           'empresa',
           true,
           (o) => () => o!.empresa,
@@ -297,7 +301,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
         return FieldReflection<Pagamento, Usuario?>(
           this,
           Pagamento,
-          __TR<Usuario>(Usuario),
+          const __TR<Usuario>(Usuario),
           'usuario',
           true,
           (o) => () => o!.usuario,
@@ -366,7 +370,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
         return FieldReflection<Pagamento, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
           (o) => () => o!.dataCriacao,
@@ -378,7 +382,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
         return FieldReflection<Pagamento, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
           (o) => () => o!.dataEdicao,
@@ -390,7 +394,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
         return FieldReflection<Pagamento, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
           (o) => () => o!.dataDelecao,
@@ -505,7 +509,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             this,
             Entidade,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,
@@ -680,7 +684,7 @@ class Pagamento$reflection extends ClassReflection<Pagamento>
             this,
             Pagamento,
             'fromJson',
-            __TR<Pagamento>(Pagamento),
+            const __TR<Pagamento>(Pagamento),
             false,
             () => Pagamento.fromJson,
             const <__PR>[
@@ -721,6 +725,9 @@ extension Pagamento$reflectionExtension on Pagamento {
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
       Pagamento$reflection(),
+      // Dependency reflections:
+      Empresa$reflection(),
+      Usuario$reflection(),
     ];
 
 List<Reflection>? _siblingsReflectionList;

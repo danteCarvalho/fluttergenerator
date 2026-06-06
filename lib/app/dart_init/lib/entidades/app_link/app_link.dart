@@ -1,5 +1,4 @@
 import 'dart:convert';
-import '../../outros/metodos_estaticos.dart';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';
@@ -10,7 +9,6 @@ import '../entidade.dart';
 import '../usuario/usuario.dart';
 
 part 'app_link.g.dart';
-
 part 'app_link.reflection.g.dart';
 
 @EnableReflection()

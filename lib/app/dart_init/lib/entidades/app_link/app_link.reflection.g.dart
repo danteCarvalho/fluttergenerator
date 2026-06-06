@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 AppLink AppLink$fromJson(Map<String, Object?> map) =>
     AppLink$reflection.staticInstance.fromJson(map);
@@ -67,6 +68,9 @@ class AppLink$reflection extends ClassReflection<AppLink>
   static AppLink$reflection? _withoutObjectInstance;
   @override
   AppLink$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static AppLink$reflection get staticInstance =>
       _withoutObjectInstance ??= AppLink$reflection._();
@@ -118,7 +122,7 @@ class AppLink$reflection extends ClassReflection<AppLink>
     switch (lc) {
       case '':
         return ConstructorReflection<AppLink>(
-            this, AppLink, '', () => () => AppLink(), null, null, null, null);
+            this, AppLink, '', () => AppLink.new, null, null, null, null);
       default:
         return null;
     }
@@ -217,7 +221,7 @@ class AppLink$reflection extends ClassReflection<AppLink>
         return FieldReflection<AppLink, Usuario?>(
           this,
           AppLink,
-          __TR<Usuario>(Usuario),
+          const __TR<Usuario>(Usuario),
           'usuario',
           true,
           (o) => () => o!.usuario,
@@ -285,7 +289,7 @@ class AppLink$reflection extends ClassReflection<AppLink>
         return FieldReflection<AppLink, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
           (o) => () => o!.dataCriacao,
@@ -297,7 +301,7 @@ class AppLink$reflection extends ClassReflection<AppLink>
         return FieldReflection<AppLink, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
           (o) => () => o!.dataEdicao,
@@ -309,7 +313,7 @@ class AppLink$reflection extends ClassReflection<AppLink>
         return FieldReflection<AppLink, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
           (o) => () => o!.dataDelecao,
@@ -417,7 +421,7 @@ class AppLink$reflection extends ClassReflection<AppLink>
             this,
             Entidade,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,
@@ -592,7 +596,7 @@ class AppLink$reflection extends ClassReflection<AppLink>
             this,
             AppLink,
             'fromJson',
-            __TR<AppLink>(AppLink),
+            const __TR<AppLink>(AppLink),
             false,
             () => AppLink.fromJson,
             const <__PR>[
@@ -633,6 +637,8 @@ extension AppLink$reflectionExtension on AppLink {
 
 List<Reflection> _listSiblingsReflection() => <Reflection>[
       AppLink$reflection(),
+      // Dependency reflections:
+      Usuario$reflection(),
     ];
 
 List<Reflection>? _siblingsReflectionList;

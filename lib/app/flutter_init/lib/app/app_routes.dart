@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:provider/provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'app_store.dart';
 import 'modules/cadastro/cadastro_page.dart';
@@ -29,6 +31,10 @@ import 'modules/verifica_email2/verifica_email2_store.dart';
 
 final router = GoRouter(
   initialLocation: '/',
+  observers: [
+    SentryNavigatorObserver(),
+    NavigationHistoryObserver(),
+  ],
   routes: [
     GoRoute(
       path: '/',
@@ -124,7 +130,7 @@ final router = GoRouter(
       },
       routes: [
         GoRoute(
-          path: 'minhasInformacoes',
+          path: '/minhasInformacoes',
           builder: (context, state) => Provider(
             create: (context) => MinhasInformacoesStore(),
             child: const MinhasInformacoesPage(),

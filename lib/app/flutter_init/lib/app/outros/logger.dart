@@ -11,7 +11,8 @@ myLog(Object error, StackTrace stack) async {
         stack2 += "$linha\n";
     }
   });
-  var retorno = "AAAAAAAAAAAAAAAA\n$stack1\n$stack2\nWWWWWWWWWWWWWWWWW";
+  var dateTime = DateTime.now();
+  var retorno = "AAAAAAAAAAAAAAAA\n$dateTime\n$stack1\n$stack2\nWWWWWWWWWWWWWWWWW";
   print(retorno);
   return retorno;
 }

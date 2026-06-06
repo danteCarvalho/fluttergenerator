@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:core';
-import '../../outros/metodos_estaticos.dart';
 
 import 'package:dartutils/dartutils.dart';
 import 'package:reflection_factory/reflection_factory.dart';

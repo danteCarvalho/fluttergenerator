@@ -49,7 +49,7 @@ class GoogleLoginEndpoint extends RouterMethods {
     response = await http.get(uri);
     Map tokenInfo = json.decode(response.body);
 
-    String returning = "id id2 nome email";
+    String returning = "id id2 nome email emailverificado";
 
     var sql = sqlHasura(Usuario(), [expr("email", "_eq", tokenInfo["email"])], [returning]);
 

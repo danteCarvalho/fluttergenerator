@@ -6,9 +6,36 @@ part of 'imagem.dart';
 // MyCustomGenerator
 // **************************************************************************
 
-Imagem _$ImagemFromJson(Map json) => Imagem();
+Imagem _$ImagemFromJson(Map json) => Imagem()
+  ..id = json['id'] != null ? json['id'] as String : ""
+  ..id2 = json['id2'] != null ? (json['id2'] as num).toInt() : 0
+  ..ativa = json['ativa'] != null ? json['ativa'] as bool : false
+  ..dataCriacao = json['dataCriacao'] != null
+      ? DateTime.parse(json['dataCriacao'] as String)
+      : initialTime
+  ..dataEdicao = json['dataEdicao'] != null
+      ? DateTime.parse(json['dataEdicao'] as String)
+      : initialTime
+  ..dataDelecao = json['dataDelecao'] != null
+      ? DateTime.parse(json['dataDelecao'] as String)
+      : initialTime
+  ..value = json['value'] != null ? json['value'] as String : ""
+  ..name = json['name'] != null ? json['name'] as String : ""
+  ..extension = json['extension'] != null ? json['extension'] as String : ""
+  ..size = json['size'] != null ? (json['size'] as num).toInt() : 0;
 
-Map<String, dynamic> _$ImagemToJson(Imagem instance) => <String, dynamic>{};
+Map<String, dynamic> _$ImagemToJson(Imagem instance) => <String, dynamic>{
+  'id': instance.id,
+  'id2': instance.id2,
+  'ativa': instance.ativa,
+  'dataCriacao': instance.dataCriacao.toIso8601String(),
+  'dataEdicao': instance.dataEdicao.toIso8601String(),
+  'dataDelecao': instance.dataDelecao.toIso8601String(),
+  'value': instance.value,
+  'name': instance.name,
+  'extension': instance.extension,
+  'size': instance.size,
+};
 
 mixin _$Serial {
   Map<String, dynamic> classToMap() {

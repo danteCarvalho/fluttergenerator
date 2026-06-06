@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Empresa Empresa$fromJson(Map<String, Object?> map) =>
     Empresa$reflection.staticInstance.fromJson(map);
@@ -67,6 +68,9 @@ class Empresa$reflection extends ClassReflection<Empresa>
   static Empresa$reflection? _withoutObjectInstance;
   @override
   Empresa$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Empresa$reflection get staticInstance =>
       _withoutObjectInstance ??= Empresa$reflection._();
@@ -118,7 +122,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
     switch (lc) {
       case '':
         return ConstructorReflection<Empresa>(
-            this, Empresa, '', () => () => Empresa(), null, null, null, null);
+            this, Empresa, '', () => Empresa.new, null, null, null, null);
       default:
         return null;
     }
@@ -317,7 +321,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Empresa,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataPagamento',
           false,
           (o) => () => o!.dataPagamento,
@@ -329,7 +333,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Empresa,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'ultimoPagamentoCompleto',
           false,
           (o) => () => o!.ultimoPagamentoCompleto,
@@ -341,7 +345,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Empresa,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'ultimoPagamentoGerado',
           false,
           (o) => () => o!.ultimoPagamentoGerado,
@@ -493,7 +497,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
           (o) => () => o!.dataCriacao,
@@ -505,7 +509,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
           (o) => () => o!.dataEdicao,
@@ -517,7 +521,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
         return FieldReflection<Empresa, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
           (o) => () => o!.dataDelecao,
@@ -641,7 +645,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
             this,
             Entidade,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,
@@ -816,7 +820,7 @@ class Empresa$reflection extends ClassReflection<Empresa>
             this,
             Empresa,
             'fromJson',
-            __TR<Empresa>(Empresa),
+            const __TR<Empresa>(Empresa),
             false,
             () => Empresa.fromJson,
             const <__PR>[

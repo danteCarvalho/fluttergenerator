@@ -295,7 +295,7 @@ mutation MyMutation {
 Future<T> updateHasura<T extends Entidade>(T entidade, {String? updateFields, String? excludFields, String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
 
-  if (entidade.id.isNotEmpty) {
+  if (entidade.id.isEmpty) {
     throw PararError("update sem id");
   }
 

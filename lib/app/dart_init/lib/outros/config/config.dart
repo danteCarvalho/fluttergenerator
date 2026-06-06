@@ -40,7 +40,7 @@ class Config with _$Serial {
   String imageSecretKey = const String.fromEnvironment('imageSecretKey', defaultValue: '/clI8ca/I1M8aUFnH7zt+EM+fKJEDxJ7NMJhCGoneZPexkno8sQEvtjgETV2vggGbGV+6rpbXEK8en2wDbTuCw==');
   String emailServer = const String.fromEnvironment('emailServer', defaultValue: 'google');
   String email = const String.fromEnvironment('email', defaultValue: 'dantecarvalhocosta@gmail.com');
-  String emailPassword = const String.fromEnvironment('emailPassword', defaultValue: 'jep6+SmgYxNTbsQo+FysUy4lol1+97CNTevy0kwAkiby9gQxjhvxtG4bFluhjbPXRBK+7aZpWmZ2ZIzmzgaXgEzr9Mx+ChCSRbqk8RC226Ed4axBVsO9vQL/lwmRRpkRuoS7RfVthdqNnqzv7o9CEf30zm61mPhzvKYXaqzd3cqJwaWYfVY5Aw9qMnRu5aql9kPaGDVzFZCrQ+C4SHPPsLPTee9PKb+5ghNihnh8hEMOF2MdPgIEjhWLCUL5btCp4qqilmRswUYQ4OufYMXsF58LpZaY/iebL1hyRu3KVxis/X+J4mShLRlMD1KmpS06');
+  String emailPassword = const String.fromEnvironment('emailPassword', defaultValue: '6ZdisprSCv2v+DxEZzM+devnBZJyi6HCSZVk3qxGkQcg/xbXRoLsxX8dF9ORC+rk');
 
   static fromJson(Map map) {
     return _$ConfigFromJson(map);

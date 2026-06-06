@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 Entidade Entidade$fromJson(Map<String, Object?> map) =>
     Entidade$reflection.staticInstance.fromJson(map);
@@ -68,6 +69,9 @@ class Entidade$reflection extends ClassReflection<Entidade>
   static Entidade$reflection? _withoutObjectInstance;
   @override
   Entidade$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static Entidade$reflection get staticInstance =>
       _withoutObjectInstance ??= Entidade$reflection._();
@@ -245,7 +249,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
         return FieldReflection<Entidade, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataCriacao',
           false,
           (o) => () => o!.dataCriacao,
@@ -257,7 +261,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
         return FieldReflection<Entidade, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataEdicao',
           false,
           (o) => () => o!.dataEdicao,
@@ -269,7 +273,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
         return FieldReflection<Entidade, DateTime>(
           this,
           Entidade,
-          __TR<DateTime>(DateTime),
+          const __TR<DateTime>(DateTime),
           'dataDelecao',
           false,
           (o) => () => o!.dataDelecao,
@@ -375,7 +379,7 @@ class Entidade$reflection extends ClassReflection<Entidade>
             this,
             Entidade,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,

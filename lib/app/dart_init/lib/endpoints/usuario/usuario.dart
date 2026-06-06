@@ -119,7 +119,7 @@ class UsuarioEndpoint extends RouterMethods {
       var smtpServer = SmtpServer('smtp-mail.outlook.com', username: email, password: password);
       await send(message, smtpServer);
     } else if (config.emailServer == "google") {
-      var smtpServer =  gmailSaslXoauth2(email, password);
+      var smtpServer = gmail(email, password);
       await send(message, smtpServer);
     }
   }

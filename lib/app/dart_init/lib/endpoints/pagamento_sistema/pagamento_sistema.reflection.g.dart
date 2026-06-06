@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 PagamentoSistemaEndpoint PagamentoSistemaEndpoint$fromJson(
         Map<String, Object?> map) =>
@@ -75,6 +76,9 @@ class PagamentoSistemaEndpoint$reflection
   static PagamentoSistemaEndpoint$reflection? _withoutObjectInstance;
   @override
   PagamentoSistemaEndpoint$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static PagamentoSistemaEndpoint$reflection get staticInstance =>
       _withoutObjectInstance ??= PagamentoSistemaEndpoint$reflection._();
@@ -134,7 +138,7 @@ class PagamentoSistemaEndpoint$reflection
             this,
             PagamentoSistemaEndpoint,
             '',
-            () => () => PagamentoSistemaEndpoint(),
+            () => PagamentoSistemaEndpoint.new,
             null,
             null,
             null,
@@ -255,7 +259,8 @@ class PagamentoSistemaEndpoint$reflection
             this,
             PagamentoSistemaEndpoint,
             'addPagamentoSistema',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.addPagamentoSistema,
             obj,
@@ -271,7 +276,8 @@ class PagamentoSistemaEndpoint$reflection
             this,
             PagamentoSistemaEndpoint,
             'finalizarPagamentoSistema',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.finalizarPagamentoSistema,
             obj,
@@ -287,7 +293,7 @@ class PagamentoSistemaEndpoint$reflection
             this,
             PagamentoSistemaEndpoint,
             'getRouter',
-            __TR<Router>(Router),
+            const __TR<Router>(Router),
             false,
             (o) => o!.getRouter,
             obj,
@@ -301,7 +307,7 @@ class PagamentoSistemaEndpoint$reflection
             this,
             PagamentoSistemaEndpoint,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,

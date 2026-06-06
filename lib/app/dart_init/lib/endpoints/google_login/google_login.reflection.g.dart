@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 GoogleLoginEndpoint GoogleLoginEndpoint$fromJson(Map<String, Object?> map) =>
     GoogleLoginEndpoint$reflection.staticInstance.fromJson(map);
@@ -70,6 +71,9 @@ class GoogleLoginEndpoint$reflection
   static GoogleLoginEndpoint$reflection? _withoutObjectInstance;
   @override
   GoogleLoginEndpoint$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static GoogleLoginEndpoint$reflection get staticInstance =>
       _withoutObjectInstance ??= GoogleLoginEndpoint$reflection._();
@@ -128,7 +132,7 @@ class GoogleLoginEndpoint$reflection
             this,
             GoogleLoginEndpoint,
             '',
-            () => () => GoogleLoginEndpoint(),
+            () => GoogleLoginEndpoint.new,
             null,
             null,
             null,
@@ -250,7 +254,8 @@ class GoogleLoginEndpoint$reflection
             this,
             GoogleLoginEndpoint,
             'googleLogin',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.googleLogin,
             obj,
@@ -263,7 +268,8 @@ class GoogleLoginEndpoint$reflection
             this,
             GoogleLoginEndpoint,
             'googleToken',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.googleToken,
             obj,
@@ -289,7 +295,7 @@ class GoogleLoginEndpoint$reflection
             this,
             GoogleLoginEndpoint,
             'getRouter',
-            __TR<Router>(Router),
+            const __TR<Router>(Router),
             false,
             (o) => o!.getRouter,
             obj,
@@ -302,7 +308,7 @@ class GoogleLoginEndpoint$reflection
             this,
             GoogleLoginEndpoint,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,

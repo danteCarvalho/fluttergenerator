@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 TesteEndpoint TesteEndpoint$fromJson(Map<String, Object?> map) =>
     TesteEndpoint$reflection.staticInstance.fromJson(map);
@@ -68,6 +69,9 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
   static TesteEndpoint$reflection? _withoutObjectInstance;
   @override
   TesteEndpoint$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static TesteEndpoint$reflection get staticInstance =>
       _withoutObjectInstance ??= TesteEndpoint$reflection._();
@@ -121,7 +125,7 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
     switch (lc) {
       case '':
         return ConstructorReflection<TesteEndpoint>(this, TesteEndpoint, '',
-            () => () => TesteEndpoint(), null, null, null, null);
+            () => TesteEndpoint.new, null, null, null, null);
       default:
         return null;
     }
@@ -236,7 +240,8 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             this,
             TesteEndpoint,
             'teste',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.teste,
             obj,
@@ -249,7 +254,8 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             this,
             TesteEndpoint,
             'teste2',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.teste2,
             obj,
@@ -265,7 +271,7 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             this,
             TesteEndpoint,
             'getRouter',
-            __TR<Router>(Router),
+            const __TR<Router>(Router),
             false,
             (o) => o!.getRouter,
             obj,
@@ -278,7 +284,7 @@ class TesteEndpoint$reflection extends ClassReflection<TesteEndpoint>
             this,
             TesteEndpoint,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,

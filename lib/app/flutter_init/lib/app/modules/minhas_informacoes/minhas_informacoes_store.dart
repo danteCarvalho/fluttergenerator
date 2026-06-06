@@ -69,11 +69,12 @@ abstract class MinhasInformacoesStoreBase with Store {
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("imagem")) {
+          imagem = Imagem.fromJson(responseMap["imagem"]);
+          usuario.imagem = imagem;
           clearMemoryImageCache(imagem.id);
           if (!kIsWeb) {
             await clearDiskCachedImage(getImageLink(imagem));
           }
-          app.mostrarSnackBar("Imagem salva");
         } else if (responseMap.containsKey("mensagem")) {
           app.mostrarSnackBar(responseMap["mensagem"]);
         }

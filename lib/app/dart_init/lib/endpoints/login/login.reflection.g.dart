@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 LoginEndpoint LoginEndpoint$fromJson(Map<String, Object?> map) =>
     LoginEndpoint$reflection.staticInstance.fromJson(map);
@@ -68,6 +69,9 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
   static LoginEndpoint$reflection? _withoutObjectInstance;
   @override
   LoginEndpoint$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static LoginEndpoint$reflection get staticInstance =>
       _withoutObjectInstance ??= LoginEndpoint$reflection._();
@@ -121,7 +125,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
     switch (lc) {
       case '':
         return ConstructorReflection<LoginEndpoint>(this, LoginEndpoint, '',
-            () => () => LoginEndpoint(), null, null, null, null);
+            () => LoginEndpoint.new, null, null, null, null);
       default:
         return null;
     }
@@ -235,7 +239,8 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
             this,
             LoginEndpoint,
             'login',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.login,
             obj,
@@ -248,7 +253,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
             this,
             LoginEndpoint,
             'getRouter',
-            __TR<Router>(Router),
+            const __TR<Router>(Router),
             false,
             (o) => o!.getRouter,
             obj,
@@ -261,7 +266,7 @@ class LoginEndpoint$reflection extends ClassReflection<LoginEndpoint>
             this,
             LoginEndpoint,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,

@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 UsuarioEndpoint UsuarioEndpoint$fromJson(Map<String, Object?> map) =>
     UsuarioEndpoint$reflection.staticInstance.fromJson(map);
@@ -69,6 +70,9 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
   static UsuarioEndpoint$reflection? _withoutObjectInstance;
   @override
   UsuarioEndpoint$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static UsuarioEndpoint$reflection get staticInstance =>
       _withoutObjectInstance ??= UsuarioEndpoint$reflection._();
@@ -122,7 +126,7 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
     switch (lc) {
       case '':
         return ConstructorReflection<UsuarioEndpoint>(this, UsuarioEndpoint, '',
-            () => () => UsuarioEndpoint(), null, null, null, null);
+            () => UsuarioEndpoint.new, null, null, null, null);
       default:
         return null;
     }
@@ -244,7 +248,8 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'addUsuario',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.addUsuario,
             obj,
@@ -257,7 +262,8 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'editUsuario',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.editUsuario,
             obj,
@@ -273,7 +279,8 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'verificaEmail',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.verificaEmail,
             obj,
@@ -289,7 +296,8 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'verificaEmail2',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.verificaEmail2,
             obj,
@@ -302,7 +310,7 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'buildMessage',
-            __TR<Message>(Message),
+            const __TR<Message>(Message),
             false,
             (o) => o!.buildMessage,
             obj,
@@ -332,7 +340,8 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'esqueciSenha',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.esqueciSenha,
             obj,
@@ -345,7 +354,8 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'esqueciSenha2',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.esqueciSenha2,
             obj,
@@ -358,7 +368,7 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'getRouter',
-            __TR<Router>(Router),
+            const __TR<Router>(Router),
             false,
             (o) => o!.getRouter,
             obj,
@@ -371,7 +381,7 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             this,
             UsuarioEndpoint,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,

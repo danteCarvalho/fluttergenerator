@@ -1,6 +1,6 @@
 //
 // GENERATED CODE - DO NOT MODIFY BY HAND!
-// BUILDER: reflection_factory/2.4.4
+// BUILDER: reflection_factory/2.7.5
 // BUILD COMMAND: dart run build_runner build
 //
 
@@ -22,13 +22,14 @@ typedef __TI<T> = TypeInfo<T>;
 typedef __PR = ParameterReflection;
 
 mixin __ReflectionMixin {
-  static final Version _version = Version.parse('2.4.4');
+  static final Version _version = Version.parse('2.7.5');
 
   Version get reflectionFactoryVersion => _version;
 
   List<Reflection> siblingsReflection() => _siblingsReflection();
 }
 
+Symbol? _getSymbol(String? key) => null;
 // ignore: non_constant_identifier_names
 ImagemEndpoint ImagemEndpoint$fromJson(Map<String, Object?> map) =>
     ImagemEndpoint$reflection.staticInstance.fromJson(map);
@@ -69,6 +70,9 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
   static ImagemEndpoint$reflection? _withoutObjectInstance;
   @override
   ImagemEndpoint$reflection withoutObjectInstance() => staticInstance;
+
+  @override
+  Symbol? getSymbol(String? key) => _getSymbol(key);
 
   static ImagemEndpoint$reflection get staticInstance =>
       _withoutObjectInstance ??= ImagemEndpoint$reflection._();
@@ -122,7 +126,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
     switch (lc) {
       case '':
         return ConstructorReflection<ImagemEndpoint>(this, ImagemEndpoint, '',
-            () => () => ImagemEndpoint(), null, null, null, null);
+            () => ImagemEndpoint.new, null, null, null, null);
       default:
         return null;
     }
@@ -238,7 +242,8 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             this,
             ImagemEndpoint,
             'addImagem',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.addImagem,
             obj,
@@ -254,7 +259,8 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             this,
             ImagemEndpoint,
             'editImagem',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.editImagem,
             obj,
@@ -270,7 +276,8 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             this,
             ImagemEndpoint,
             'getImagem',
-            __TR<Future<Response>>(Future, <__TR>[__TR<Response>(Response)]),
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
             false,
             (o) => o!.getImagem,
             obj,
@@ -283,7 +290,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             this,
             ImagemEndpoint,
             'getRouter',
-            __TR<Router>(Router),
+            const __TR<Router>(Router),
             false,
             (o) => o!.getRouter,
             obj,
@@ -296,7 +303,7 @@ class ImagemEndpoint$reflection extends ClassReflection<ImagemEndpoint>
             this,
             ImagemEndpoint,
             'reflect',
-            __TR<ClassReflection<dynamic>>(
+            const __TR<ClassReflection<dynamic>>(
                 ClassReflection, <__TR>[__TR.tDynamic]),
             false,
             (o) => o!.reflect,
