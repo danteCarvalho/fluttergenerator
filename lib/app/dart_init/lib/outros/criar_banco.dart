@@ -196,7 +196,7 @@ addHasuraForeignKeys(Entidade tabela, Entidade campo, String nomeCampo) async {
 }
 
 verificaAdmin() async {
-  String sql = "select * from usuario limit 1 ";
+  String sql = "select * from usuario where admin = true limit 1 ";
   List results = await selectPostgues(sql);
   if (results.isEmpty) {
     Usuario usuario = Usuario();

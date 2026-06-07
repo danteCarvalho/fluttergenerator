@@ -49,9 +49,8 @@ class GoogleLoginEndpoint extends RouterMethods {
     response = await http.get(uri);
     Map tokenInfo = json.decode(response.body);
 
-    String returning = "id id2 nome email emailverificado";
 
-    var sql = sqlHasura(Usuario(), [expr("email", "_eq", tokenInfo["email"])], [returning]);
+    var sql = sqlHasura(Usuario(), [expr("email", "_eq", tokenInfo["email"])], [selectFields(Usuario())]);
 
     Usuario usuario;
 
@@ -61,11 +60,11 @@ class GoogleLoginEndpoint extends RouterMethods {
       usuario = Usuario();
       usuario.nome = tokenInfo["name"];
       usuario.email = tokenInfo["email"];
-      usuario = await insertHasura(usuario, returning: returning);
+      usuario = await insertHasura(usuario, returning: selectFields(Usuario()));
     }
 
     String jwt = Security.criarJwt(usuario);
-
+    usuario.senha = "";
     return Response.ok(json.encode({"token": token, "tokenInfo": tokenInfo, "usuario": usuario, "jwt": jwt}));
   }
 

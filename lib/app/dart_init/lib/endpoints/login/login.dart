@@ -41,6 +41,7 @@ class LoginEndpoint extends RouterMethods {
     }
     String jwt = Security.criarJwt(usuario);
     Map map = {};
+    usuario.senha = "";
     map["usuario"] = usuario.classToMap();
     map["jwt"] = jwt;
     return Response.ok(json.encode(map));

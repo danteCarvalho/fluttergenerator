@@ -7,6 +7,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../app_routes.dart';
 import '../app_store.dart';
 import '../entidades/imagem/imagem.dart';
 import '../entidades/usuario/usuario.dart';
@@ -83,6 +84,7 @@ googleLoginOs(AppStoreBase app) async {
 
     app.usuario = usuario;
     app.mostrarSnackBar("Logado com sucesso");
+    router.pushReplacement("/logado");
   });
 }
 

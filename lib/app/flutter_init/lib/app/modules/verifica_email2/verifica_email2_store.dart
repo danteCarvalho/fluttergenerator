@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../app_routes.dart';
 import '../../app_store.dart';
+import '../../entidades/usuario/usuario.dart';
 import '../../outros/logger.dart';
 import '../../requests/server_requets.dart';
 import 'verifica_email2_page.dart';
@@ -39,7 +41,11 @@ abstract class VerificaEmail2StoreBase with Store {
       var responseBody = await serverPost(map,"verificaEmail2");
       if (responseBody.isNotEmpty) {
         Map responseMap = json.decode(responseBody);
-        if (responseMap.containsKey("ok")) {
+        if (responseMap.containsKey("usuario")) {
+          Usuario usuario = Usuario.fromJson(responseMap["usuario"]);
+          var shared = await SharedPreferences.getInstance();
+          shared.setString("usuario", usuario.classToString());
+          app.usuario = usuario;
           verificado = true;
         } else if (responseMap.containsKey("mensagem")) {
           app.mostrarSnackBar(responseMap["mensagem"]);

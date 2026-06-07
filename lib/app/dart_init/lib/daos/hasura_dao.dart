@@ -59,22 +59,18 @@ String customSelectHasura(String campo, List<Map> whereList, List<String> select
   return sql;
 }
 
-Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? returning, bool subFields = false}) async {
-  var nomeTabela = entidade.runtimeType.toString().toLowerCase();
-
-  String sql = """
-{
-  $nomeTabela${config.hasuraSufix}_by_pk(id: "$id") {
-    ${returning ?? selectFields(entidade, subFields: subFields)}
+Future<Map> _executarHasura(String sql, {Map<String, dynamic>? variables}) async {
+  Map<String, dynamic> payload = {"query": sql};
+  if (variables != null) {
+    payload["variables"] = variables;
   }
-}
 
-""";
+  String myJson = json.encode(payload);
 
-  String myJson = json.encode({"query": sql});
-
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
+  Map<String, String> headers = {
+    "X-Hasura-Admin-Secret": config.hasuraAdminSecret,
+    "Content-Type": "application/json",
+  };
 
   var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/graphql");
 
@@ -82,8 +78,30 @@ Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? r
 
   Map decode = json.decode(response.body);
   if (decode.containsKey("errors")) {
+    var error = decode["errors"][0];
+    String? code = error["extensions"]?["code"];
+    String? msg = error["message"];
+    if (code == "constraint-violation") {
+      throw ConstraintError(msg ?? "Constraint violation");
+    }
     throw decode["errors"];
   }
+  return decode;
+}
+
+Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? returning, bool subFields = false}) async {
+  var nomeTabela = entidade.runtimeType.toString().toLowerCase();
+
+  String sql = """
+query GetById(\$id: uuid!) {
+  $nomeTabela${config.hasuraSufix}_by_pk(id: \$id) {
+    ${returning ?? selectFields(entidade, subFields: subFields)}
+  }
+}
+""";
+
+  var decode = await _executarHasura(sql, variables: {"id": id});
+
   if (decode["data"]["$nomeTabela${config.hasuraSufix}_by_pk"] == null) {
     throw NaoEncontrado(nomeTabela);
   }
@@ -92,16 +110,7 @@ Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? r
 }
 
 Future<T> selectOneHasura<T extends Entidade>(String sql, T entidade) async {
-  String myJson = json.encode({"query": sql});
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/graphql");
-  var response = await post(uri, body: myJson, headers: headers);
-  Map decode = json.decode(response.body);
-  if (decode.containsKey("errors")) {
-    throw decode["errors"];
-  }
+  var decode = await _executarHasura(sql);
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
   if (nuloOuvazio([decode["data"][nomeTabela + config.hasuraSufix]])) {
     throw NaoEncontrado(nomeTabela);
@@ -115,16 +124,7 @@ Future<T> selectOneHasura<T extends Entidade>(String sql, T entidade) async {
 }
 
 Future selectHasura(String sql) async {
-  String myJson = json.encode({"query": sql});
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/graphql");
-  var response = await post(uri, body: myJson, headers: headers);
-  Map decode = json.decode(response.body);
-  if (decode.containsKey("errors")) {
-    throw decode["errors"];
-  }
+  var decode = await _executarHasura(sql);
   Map data = decode["data"];
   var first = data.values.first;
   if (first is Map) {
@@ -135,19 +135,7 @@ Future selectHasura(String sql) async {
 }
 
 Future<List<T>> selectListHasura<T extends Entidade>(String sql, T entidade) async {
-  String myJson = json.encode({"query": sql});
-
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/graphql");
-
-  var response = await post(uri, body: myJson, headers: headers);
-
-  Map decode = json.decode(response.body);
-  if (decode.containsKey("errors")) {
-    throw decode["errors"];
-  }
+  var decode = await _executarHasura(sql);
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
   if (nuloOuvazio([decode["data"][nomeTabela + config.hasuraSufix]])) {
     throw NaoEncontrado(nomeTabela);
@@ -245,8 +233,6 @@ Future<T> insertHasura<T extends Entidade>(T entidade, {String? insertFields, St
   obj.remove("id");
   obj.remove("id2");
 
-  trocarStrings(obj);
-
   obj = fieldsToLowerCase(obj);
 
   if (insertFields != null) {
@@ -258,34 +244,14 @@ Future<T> insertHasura<T extends Entidade>(T entidade, {String? insertFields, St
   }
 
   var sql = """
-mutation MyMutation {
-  insert_$nomeentidade${config.hasuraSufix}_one(object:   ${obj.toString()}  ) {
+mutation Insert(\$obj: ${nomeentidade}${config.hasuraSufix}_insert_input!) {
+  insert_$nomeentidade${config.hasuraSufix}_one(object: \$obj) {
     ${returning ?? selectFields(entidade, subFields: subFields)}
   }
 }
 """;
 
-  obj = {};
-  obj["query"] = sql;
-
-  String myJson = json.encode(obj);
-
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/graphql");
-
-  var response = await post(uri, body: myJson, headers: headers);
-
-  Map decode = json.decode(response.body);
-  if (decode.containsKey("errors")) {
-    String code = decode["errors"][0]["extensions"]["code"];
-    String msg = decode["errors"][0]["message"];
-    if (code == "constraint-violation") {
-      throw ConstraintError(msg);
-    }
-    throw decode["errors"];
-  }
+  var decode = await _executarHasura(sql, variables: {"obj": obj});
 
   T retorno = entidade.mapToClass(decode["data"]["insert_$nomeentidade${config.hasuraSufix}_one"]);
 
@@ -305,8 +271,6 @@ Future<T> updateHasura<T extends Entidade>(T entidade, {String? updateFields, St
 
   trocarNomeEntidades(entidade, obj);
 
-  trocarStrings(obj);
-
   obj = fieldsToLowerCase(obj);
   String id = obj["id"];
 
@@ -319,34 +283,14 @@ Future<T> updateHasura<T extends Entidade>(T entidade, {String? updateFields, St
   }
 
   var sql = """
-mutation MyMutation {
-  update_$nomeentidade${config.hasuraSufix}_by_pk(pk_columns: {id:   $id   }, _set:   ${obj.toString()}   ) {
+mutation Update(\$id: uuid!, \$set: ${nomeentidade}${config.hasuraSufix}_set_input!) {
+  update_$nomeentidade${config.hasuraSufix}_by_pk(pk_columns: {id: \$id}, _set: \$set) {
     ${returning ?? selectFields(entidade, subFields: subFields)}
   }
 }
-  """;
+""";
 
-  obj = {};
-  obj["query"] = sql;
-
-  String myJson = json.encode(obj);
-
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/graphql");
-
-  var response = await post(uri, body: myJson, headers: headers);
-
-  Map decode = json.decode(response.body);
-  if (decode.containsKey("errors")) {
-    String code = decode["errors"][0]["extensions"]["code"];
-    String msg = decode["errors"][0]["message"];
-    if (code == "constraint-violation") {
-      throw ConstraintError(msg);
-    }
-    throw decode["errors"];
-  }
+  var decode = await _executarHasura(sql, variables: {"id": id, "set": obj});
 
   T retorno = entidade.mapToClass(decode["data"]["update_$nomeentidade${config.hasuraSufix}_by_pk"]);
 
@@ -362,15 +306,6 @@ trocarNomeEntidades(Entidade entidade, Map map) {
       map["${obj.name}_id"] = valor?["id"];
     }
   }
-}
-
-trocarStrings(Map obj) {
-  obj.forEach((key, value) {
-    if (value is String || value is DateTime) {
-      String value2 = value.toString().replaceAll(r'"', r'\"').replaceAll('\n', r'\n');
-      obj[key] = '"$value2"';
-    }
-  });
 }
 
 fieldsToLowerCase(Map obj) {

@@ -37,6 +37,7 @@ class UsuarioEndpoint extends RouterMethods {
       usuario.senha = hashed;
       usuario = await insertHasura(usuario);
       String jwt = Security.criarJwt(usuario);
+      usuario.senha = "";
       resposta["usuario"] = usuario;
       resposta["jwt"] = jwt;
       return Response.ok(json.encode(resposta));
@@ -54,11 +55,12 @@ class UsuarioEndpoint extends RouterMethods {
     Usuario usuario = Usuario().mapToClass(requestMap["usuario"]);
     String? updateFields = requestMap["updateFields"];
     usuario = await updateHasura(usuario, updateFields: updateFields);
+    usuario.senha = "";
     resposta["usuario"] = usuario;
     return Response.ok(json.encode(resposta));
   }
 
-  @Route.post('/verificaEmail')
+  @Route.post('/verificaEmail')//envia o email para ser verificado
   @RouterMethodAnnotation(authorization: true)
   Future<Response> verificaEmail(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
@@ -78,7 +80,7 @@ class UsuarioEndpoint extends RouterMethods {
     return Response.ok(json.encode(resposta));
   }
 
-  @Route.post('/verificaEmail2')
+  @Route.post('/verificaEmail2')//confirma o email do usuario como verificado
   Future<Response> verificaEmail2(Request request) async {
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);
@@ -94,9 +96,10 @@ class UsuarioEndpoint extends RouterMethods {
       var usuario = appLink.usuario!;
       usuario.emailVerificado = true;
       appLink.ativa = false;
-      await updateHasura(usuario, updateFields: "emailVerificado");
+      usuario = await updateHasura(usuario, updateFields: "emailVerificado");
       await updateHasura(appLink);
-      resposta["ok"] = "ok";
+      usuario.senha = "";
+      resposta["usuario"] = usuario;
     } on NaoEncontrado catch (e, _) {
       resposta["mensagem"] = "Link não encontrado";
     }

@@ -100,6 +100,6 @@ abstract class VerificaEmailStoreBase with Store {
     var id = queryParameters["id"];
     await request.response.close();
     server.close();
-    router.go("/verificaEmail2?id=$id");
+    router.pushReplacement("/verificaEmail2?id=$id");
   }
 }
