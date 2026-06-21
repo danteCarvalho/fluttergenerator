@@ -88,16 +88,20 @@ Config _$ConfigFromJson(Map json) => Config()
               '/clI8ca/I1M8aUFnH7zt+EM+fKJEDxJ7NMJhCGoneZPexkno8sQEvtjgETV2vggGbGV+6rpbXEK8en2wDbTuCw==')
   ..emailServer = json['emailServer'] != null
       ? json['emailServer'] as String
-      : const String.fromEnvironment('emailServer', defaultValue: 'google')
+      : const String.fromEnvironment('emailServer', defaultValue: 'amazon')
   ..email = json['email'] != null
       ? json['email'] as String
       : const String.fromEnvironment('email',
-          defaultValue: 'dantecarvalhocosta@gmail.com')
+          defaultValue: 'teste@agentech.com.br')
+  ..emailUsername = json['emailUsername'] != null
+      ? json['emailUsername'] as String
+      : const String.fromEnvironment('emailUsername',
+          defaultValue: 'AKIARXTC5FOT5AS6PLMD')
   ..emailPassword = json['emailPassword'] != null
       ? json['emailPassword'] as String
       : const String.fromEnvironment('emailPassword',
           defaultValue:
-              '6ZdisprSCv2v+DxEZzM+devnBZJyi6HCSZVk3qxGkQcg/xbXRoLsxX8dF9ORC+rk');
+              'vZ4YBYbLoBnPbQEXAmz+jCAgg5cC+n6EzfolTN668xkyYEVooMfAwLZeNCN1p8HhcC/bXAFKJxqEKR0+vCNWfA==');
 
 Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'arquivoConf': instance.arquivoConf,
@@ -124,6 +128,7 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'imageSecretKey': instance.imageSecretKey,
       'emailServer': instance.emailServer,
       'email': instance.email,
+      'emailUsername': instance.emailUsername,
       'emailPassword': instance.emailPassword,
     };
 

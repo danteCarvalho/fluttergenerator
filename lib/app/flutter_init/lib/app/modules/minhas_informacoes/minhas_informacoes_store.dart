@@ -33,7 +33,7 @@ abstract class MinhasInformacoesStoreBase with Store {
 
   Future<void> init(MinhasInformacoesPageState state) async {
     app = state.context.read<AppStore>();
-    usuario = await selectByIdHasura(app.usuario!.id, Usuario());
+    usuario = await selectByIdHasura(app.usuario!.id, Usuario(),excludFields: "senha");
     if (usuario.imagem != null) {
       imagem = usuario.imagem!;
     }

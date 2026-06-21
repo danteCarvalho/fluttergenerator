@@ -244,7 +244,7 @@ class JwtEndpoint$reflection extends ClassReflection<JwtEndpoint>
             const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
             null,
             null,
-            const [Route.post('/verificaAtualizaJwt')]);
+            const [Route.post('/verificaJwt')]);
       case 'getrouter':
         return MethodReflection<JwtEndpoint, Router>(
             this,

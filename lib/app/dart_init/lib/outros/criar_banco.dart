@@ -15,10 +15,20 @@ import '../entidades/imagem/imagem.dart';
 import '../entidades/pagamento/pagamento.dart';
 import '../entidades/pagamento_sistema/pagamento_sistema.dart';
 import '../entidades/usuario/usuario.dart';
+import '../pubspec.dart';
 import 'config/config.dart';
 import 'entidade_helper.dart';
 
 criarBanco() async {
+  var file = File(".last_build_date");
+  // if (await file.exists()) {
+  //   var lastBuildDateStr = await file.readAsString();
+  //   if (lastBuildDateStr == Pubspec.buildDate.toIso8601String()) {
+  //     print("Banco de dados já criado para esta versão.");
+  //     return;
+  //   }
+  // }
+
   List<Entidade> entidades = [];
   entidades.add(Imagem());
   entidades.add(Usuario());
@@ -30,53 +40,28 @@ criarBanco() async {
   await checkHasura();
   await addHasuraSource();
   await processaEntidades(entidades);
-  await refreshHarusa();
+  await refreshHasura();
   await verificaAdmin();
+
+  await file.writeAsString(Pubspec.buildDate.toIso8601String());
 }
 
 checkPostgres() async {
   try {
     Connection connection = await getPostgresConnection();
     print(connection);
-  }
-  on SocketException catch (e) {
-    print("Postgres desligado ou não alcançado");
-    print(e);
-    exit(0);
-  }
-  catch (e) {
-    print("Postgres desligado ou não alcançado");
-    print(e);
+  } catch (e) {
+    print("Postgres desligado ou não alcançado: $e");
     exit(0);
   }
 }
 
 checkHasura() async {
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/healthz");
-
-  try {
-    var response = await get(uri, headers: headers);
-    print('Hasura: ${response.body}');
-  } on SocketException {
-    print("Hasura desligado ou não alcançado");
-    print(uri);
-    exit(0);
-  } catch (e) {
-    print(e);
-    exit(0);
-  }
+  await _hasuraRequest("/healthz", method: 'GET');
 }
 
 addHasuraSource() async {
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/metadata");
-
-String request = """
+  String request = """
 {
    "type":"postgres_add_source",
    "args":{
@@ -89,21 +74,10 @@ String request = """
    }
 }
 """;
-
-  try {
-    var response = await post(uri, headers: headers,body: request);
-    print('Hasura: ${response.body}');
-  } on SocketException {
-    print("Hasura desligado ou não alcançado");
-    print(uri);
-    exit(0);
-  } catch (e) {
-    print(e);
-    exit(0);
-  }
+  await _hasuraRequest("/v1/metadata", body: request);
 }
 
-refreshHarusa() async {
+refreshHasura() async {
   String sql = """
   {
     "type" : "reload_metadata",
@@ -114,14 +88,7 @@ refreshHarusa() async {
     }
 }
   """;
-
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/metadata");
-
-  var response = await post(uri, body: sql, headers: headers);
-  print(response.body);
+  await _hasuraRequest("/v1/metadata", body: sql);
 }
 
 addHasuraTable(Entidade entidade) async {
@@ -139,14 +106,7 @@ addHasuraTable(Entidade entidade) async {
    }
 }
   """;
-
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/metadata");
-
-  var response = await post(uri, body: sql, headers: headers);
-  print(response.body);
+  await _hasuraRequest("/v1/metadata", body: sql);
 }
 
 addHasuraForeignKeys(Entidade tabela, Entidade campo, String nomeCampo) async {
@@ -173,7 +133,7 @@ addHasuraForeignKeys(Entidade tabela, Entidade campo, String nomeCampo) async {
    "args": {
       "source":  "${config.hasuraSource}" ,
       "table": "$nomeTabelaReferencia",
-      "name": "${'${nomeTabela}s'}",
+      "name": "${nomeTabela}s",
       "using": {
          "foreign_key_constraint_on": {
             "table" : "$nomeTabela",
@@ -184,15 +144,8 @@ addHasuraForeignKeys(Entidade tabela, Entidade campo, String nomeCampo) async {
 }
   """;
 
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/metadata");
-
-  var response = await post(uri, body: sql, headers: headers);
-  print(response.body);
-  response = await post(uri, body: sql2, headers: headers);
-  print(response.body);
+  await _hasuraRequest("/v1/metadata", body: sql);
+  await _hasuraRequest("/v1/metadata", body: sql2);
 }
 
 verificaAdmin() async {
@@ -213,32 +166,72 @@ verificaAdmin() async {
 processaEntidades(List<Entidade> entidades) async {
   await addExtencoes();
 
-  for (int i = 0; i < entidades.length; i++) {
-    await addTable(entidades[i]);
+  for (var e in entidades) {
+    await addTable(e);
   }
-
-  for (int i = 0; i < entidades.length; i++) {
-    await addCampos(entidades[i]);
+  for (var e in entidades) {
+    await addCampos(e);
   }
-
-  for (int i = 0; i < entidades.length; i++) {
-    await addSequence(entidades[i]);
+  for (var e in entidades) {
+    await addSequence(e);
   }
-
-  for (int i = 0; i < entidades.length; i++) {
-    await addConstraints(entidades[i]);
+  for (var e in entidades) {
+    await addConstraints(e);
   }
-  for (int i = 0; i < entidades.length; i++) {
-    await addForeignKeys(entidades[i]);
+  for (var e in entidades) {
+    await addForeignKeys(e);
   }
-
-  for (var entidade in entidades) {
-    await permissoesTabela(entidade);
+  for (var e in entidades) {
+    await permissoesTabela(e);
   }
 }
 
 permissoesTabela(Entidade entidade) async {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
+
+  var reflection = entidade.reflect();
+  var allFields = reflection.allFields();
+
+  List<String> colunasPermitidas = [];
+
+  for (var field in allFields) {
+    Coluna? coluna = anotacaoColuna(field.annotations);
+
+    if (coluna != null && !coluna.selectable) {
+      continue;
+    }
+
+    String nomeColuna = field.name.toLowerCase();
+    bool ehColunaValida = false;
+
+    try {
+      instancia(field.type.type);
+      nomeColuna = "${nomeColuna}_id";
+      ehColunaValida = true;
+    } catch (e) {
+      if (coluna != null && coluna.tipo != null) {
+        ehColunaValida = true;
+      } else if (bancotype(field) != null) {
+        ehColunaValida = true;
+      }
+    }
+
+    if (ehColunaValida) {
+      colunasPermitidas.add('"$nomeColuna"');
+    }
+  }
+
+  var sqlDrop = """
+{
+    "type" : "pg_drop_select_permission",
+    "args" : {
+        "source":  "${config.hasuraSource}" ,
+        "table" : "$nomeTabela",
+        "role" : "usuario"
+    }
+}
+  """;
+  await _hasuraRequest("/v1/metadata", body: sqlDrop);
 
   var sql = """
 {
@@ -248,7 +241,7 @@ permissoesTabela(Entidade entidade) async {
         "table" : "$nomeTabela",
         "role" : "usuario",
         "permission" : {
-            "columns" : "*",
+            "columns" : [${colunasPermitidas.join(", ")}],
             "filter" : {
              },
              "allow_aggregations": true
@@ -256,12 +249,26 @@ permissoesTabela(Entidade entidade) async {
     }
 }
   """;
+  await _hasuraRequest("/v1/query", body: sql);
+}
 
-  Map<String, String> headers = {};
-  headers["X-Hasura-Admin-Secret"] = config.hasuraAdminSecret;
-  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}/v1/query");
-  var response = await post(uri, body: sql, headers: headers);
-  print(response.body);
+Future<Response> _hasuraRequest(String path, {String? body, String method = 'POST'}) async {
+  var uri = Uri.parse("${config.schemeHasura}://${config.ipHasura}:${config.portaHasura}$path");
+  Map<String, String> headers = {"X-Hasura-Admin-Secret": config.hasuraAdminSecret};
+
+  try {
+    var response = method == 'POST' 
+        ? await post(uri, body: body, headers: headers) 
+        : await get(uri, headers: headers);
+    print('Hasura $path: ${response.body}');
+    return response;
+  } on SocketException {
+    print("Hasura desligado ou não alcançado: $uri");
+    exit(0);
+  } catch (e) {
+    print("Erro Hasura ($path): $e");
+    exit(0);
+  }
 }
 
 addExtencoes() async {
@@ -305,7 +312,6 @@ addCampos(Entidade entidade) async {
       if (coluna != null && coluna.tipo != null) {
         tipo = coluna.tipo!;
       } else {
-        obj is String;
         var tipo2 = bancotype(obj);
         if (tipo2 == null) {
           continue;
@@ -319,20 +325,18 @@ addCampos(Entidade entidade) async {
 }
 
 String? bancotype(FieldReflection field) {
-  var reflectionFactory = ReflectionFactory();
   var typeString = field.type.type.toString();
-  if (typeString == "String") {
-    return "character varying (255)";
-  } else if (typeString == "int") {
-    return "integer";
-  } else if (typeString == "double") {
-    return "double precision";
-  } else if (typeString == "bool") {
-    return "boolean";
-  } else if (typeString == "DateTime") {
-    return "timestamp without time zone";
-  }
-  else if(reflectionFactory.hasRegisterEnumReflection(field.type.type)){
+  var map = {
+    "String": "character varying (255)",
+    "int": "integer",
+    "double": "double precision",
+    "bool": "boolean",
+    "DateTime": "timestamp without time zone",
+  };
+
+  if (map.containsKey(typeString)) return map[typeString];
+
+  if (ReflectionFactory().hasRegisterEnumReflection(field.type.type)) {
     return "character varying (255)";
   }
 

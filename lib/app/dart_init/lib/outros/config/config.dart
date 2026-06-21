@@ -38,9 +38,10 @@ class Config with _$Serial {
   String imageStorage = const String.fromEnvironment('imageStorage', defaultValue: 'amazon');
   String imageAccessKey = const String.fromEnvironment('imageAccessKey', defaultValue: 'hgVG0yGhI3ELhjU7ZwnRU2LiZWtkxCv90hKbL+IDdyYoe+0Z6/qf2jciVEP1yCu7');
   String imageSecretKey = const String.fromEnvironment('imageSecretKey', defaultValue: '/clI8ca/I1M8aUFnH7zt+EM+fKJEDxJ7NMJhCGoneZPexkno8sQEvtjgETV2vggGbGV+6rpbXEK8en2wDbTuCw==');
-  String emailServer = const String.fromEnvironment('emailServer', defaultValue: 'google');
-  String email = const String.fromEnvironment('email', defaultValue: 'dantecarvalhocosta@gmail.com');
-  String emailPassword = const String.fromEnvironment('emailPassword', defaultValue: '6ZdisprSCv2v+DxEZzM+devnBZJyi6HCSZVk3qxGkQcg/xbXRoLsxX8dF9ORC+rk');
+  String emailServer = const String.fromEnvironment('emailServer', defaultValue: 'amazon');
+  String email = const String.fromEnvironment('email', defaultValue: 'teste@agentech.com.br');
+  String emailUsername = const String.fromEnvironment('emailUsername', defaultValue: 'AKIARXTC5FOT5AS6PLMD');
+  String emailPassword = const String.fromEnvironment('emailPassword', defaultValue: 'vZ4YBYbLoBnPbQEXAmz+jCAgg5cC+n6EzfolTN668xkyYEVooMfAwLZeNCN1p8HhcC/bXAFKJxqEKR0+vCNWfA==');
 
   static fromJson(Map map) {
     return _$ConfigFromJson(map);

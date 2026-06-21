@@ -14,7 +14,7 @@ Future<String> myLog(Object error, StackTrace stack) async {
     }
   });
   var dateTime = DateTime.now();
-  var retorno = "AAAAAAAAAAAAAAAA\n$dateTime\n$stack1\n$stack2\nWWWWWWWWWWWWWWWWW";
-  print(retorno);
+  var retorno = "$dateTime\n$stack1\n$stack2";
+  print("AAAAAAAAAAAAAAAA\n$retorno\nWWWWWWWWWWWWWWWWW");
   return retorno;
 }

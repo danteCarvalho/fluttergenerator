@@ -10,7 +10,6 @@ import '../entidades/entidade.dart';
 import '../outros/config/config.dart';
 import '../outros/excecoes.dart';
 
-Map mapStore = {};
 Database? db;
 
 initSembast({bool useSqflite = false}) async {

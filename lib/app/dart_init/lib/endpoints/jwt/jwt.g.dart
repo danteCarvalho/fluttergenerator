@@ -10,7 +10,7 @@ Router _$JwtEndpointRouter(JwtEndpoint service) {
   final router = Router();
   router.add(
     'POST',
-    r'/verificaAtualizaJwt',
+    r'/verificaJwt',
     service.verificaAtualizaJwt,
   );
   return router;

@@ -9,7 +9,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': '*',
 };
 
-Middleware renponseMiddleware() {
+Middleware responseMiddleware() {
   return createMiddleware(
     responseHandler: (Response response) {
       if (response == Router.routeNotFound) {

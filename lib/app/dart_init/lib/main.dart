@@ -10,6 +10,7 @@ import 'outros/config/config.dart';
 import 'outros/criar_banco.dart';
 import 'outros/logger.dart';
 import 'routers.g.dart';
+import 'schedules/init_schedules.dart';
 main() async {
   initializeReflectable();
   await configurar(showConfig: true);
@@ -21,7 +22,7 @@ main() async {
     Isolate.spawn(serverStart, {}, debugName: "WWWWWWWW$i");
   }
 
-  serverStart({});
+  serverStart({"schedules": initSchedules});
 
   print("INICIADO");
 }

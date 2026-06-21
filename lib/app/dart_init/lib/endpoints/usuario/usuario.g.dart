@@ -20,6 +20,11 @@ Router _$UsuarioEndpointRouter(UsuarioEndpoint service) {
   );
   router.add(
     'POST',
+    r'/getUsuario',
+    service.getUsuario,
+  );
+  router.add(
+    'POST',
     r'/verificaEmail',
     service.verificaEmail,
   );

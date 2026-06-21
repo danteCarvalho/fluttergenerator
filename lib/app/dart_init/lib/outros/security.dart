@@ -34,7 +34,10 @@ class Security {
     clains["https://hasura.io/jwt/claims"] = clains2;
 
     final claimSet = JwtClaim(
-        subject: usuario.id, jwtId: _randomString(32), otherClaims: clains);
+        subject: usuario.id,
+        jwtId: _randomString(32),
+        expiry: DateTime.now().add(const Duration(days: 15)),
+        otherClaims: clains);
 
     final token = issueJwtHS256(claimSet, config.hasuraSharedSecret);
 
@@ -44,7 +47,7 @@ class Security {
   static String _randomString(int length) {
     const chars =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    final rnd = Random(DateTime.now().millisecondsSinceEpoch);
+    final rnd = Random.secure();
     final buf = StringBuffer();
 
     for (var x = 0; x < length; x++) {

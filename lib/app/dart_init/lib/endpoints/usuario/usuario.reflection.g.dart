@@ -176,12 +176,11 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
 
   static const List<String> _methodsNames = const <String>[
     'addUsuario',
-    'buildMessage',
     'editUsuario',
-    'enviarEmail',
     'esqueciSenha',
     'esqueciSenha2',
     'getRouter',
+    'getUsuario',
     'reflect',
     'verificaEmail',
     'verificaEmail2'
@@ -274,6 +273,23 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
               Route.post('/editUsuario'),
               RouterMethodAnnotation(authorization: true)
             ]);
+      case 'getusuario':
+        return MethodReflection<UsuarioEndpoint, Future<Response>>(
+            this,
+            UsuarioEndpoint,
+            'getUsuario',
+            const __TR<Future<Response>>(
+                Future, <__TR>[__TR<Response>(Response)]),
+            false,
+            (o) => o!.getUsuario,
+            obj,
+            const <__PR>[__PR(__TR<Request>(Request), 'request', false, true)],
+            null,
+            null,
+            const [
+              Route.post('/getUsuario'),
+              RouterMethodAnnotation(authorization: true)
+            ]);
       case 'verificaemail':
         return MethodReflection<UsuarioEndpoint, Future<Response>>(
             this,
@@ -305,36 +321,6 @@ class UsuarioEndpoint$reflection extends ClassReflection<UsuarioEndpoint>
             null,
             null,
             const [Route.post('/verificaEmail2')]);
-      case 'buildmessage':
-        return MethodReflection<UsuarioEndpoint, Message>(
-            this,
-            UsuarioEndpoint,
-            'buildMessage',
-            const __TR<Message>(Message),
-            false,
-            (o) => o!.buildMessage,
-            obj,
-            const <__PR>[
-              __PR(__TR.tString, 'msg', false, true),
-              __PR(__TR.tString, 'to', false, true),
-              __PR(__TR.tString, 'subject', false, true)
-            ],
-            null,
-            null,
-            null);
-      case 'enviaremail':
-        return MethodReflection<UsuarioEndpoint, dynamic>(
-            this,
-            UsuarioEndpoint,
-            'enviarEmail',
-            __TR.tDynamic,
-            false,
-            (o) => o!.enviarEmail,
-            obj,
-            const <__PR>[__PR(__TR<Message>(Message), 'message', false, true)],
-            null,
-            null,
-            null);
       case 'esquecisenha':
         return MethodReflection<UsuarioEndpoint, Future<Response>>(
             this,

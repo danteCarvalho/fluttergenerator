@@ -14,6 +14,8 @@ part 'app_store.g.dart';
 
 class AppStore = AppStoreBase with _$AppStore;
 
+Function? onJwtExpired;
+
 abstract class AppStoreBase with Store {
   @observable
   bool iniciado = false;
@@ -33,6 +35,7 @@ abstract class AppStoreBase with Store {
   LocalConfig localConfig = LocalConfig();
 
   init(AppWidgetState appWidgetState) async {
+    onJwtExpired = sair;
     this.appWidgetState = appWidgetState;
     var shared = await SharedPreferences.getInstance();
     usuario = shared.containsKey("usuario") ? Usuario().stringToClass(shared.getString("usuario")!) : null;
@@ -170,13 +173,15 @@ abstract class AppStoreBase with Store {
     }
   }
 
-  sair() async {
+  sair({bool redirecionar = true}) async {
     var shared = await SharedPreferences.getInstance();
     shared.remove("token");
     shared.remove("tokenInfo");
     shared.remove("jwt");
     shared.remove("usuario");
     usuario = null;
-    router.go("/home");
+    if (redirecionar) {
+      router.go("/home");
+    }
   }
 }

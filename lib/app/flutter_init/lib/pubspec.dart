@@ -3,7 +3,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 mixin Pubspec {
-  static final buildDate = DateTime.utc(2026, 6, 6, 4, 38, 18);
+  static final buildDate = DateTime.utc(2026, 6, 15, 18, 27, 54);
 
   static const name = 'teste';
 
@@ -54,6 +54,7 @@ mixin Pubspec {
     'sembast_sqflite': '^2.2.1+1',
     'sqflite_common_ffi': '^2.4.0+3',
     'shared_preferences': '^2.5.5',
+    'jwt_decoder': '^2.0.1',
     'shared_preferences_web': '^2.4.3',
     'mobx': '^2.6.0',
     'flutter_mobx': '^2.3.0',

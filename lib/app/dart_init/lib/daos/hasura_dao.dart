@@ -9,7 +9,8 @@ import '../outros/config/config.dart';
 import '../outros/entidade_helper.dart';
 import '../outros/excecoes.dart';
 
-String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<String> selectList, {List<Map>? orderByList, int? inicio, int? maximo}) {
+String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<String> selectList,
+    {List<Map>? orderByList, int? inicio, int? maximo}) {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
   String whereString = where(whereList);
   String selectString = select(selectList);
@@ -36,7 +37,8 @@ String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<Strin
   return sql;
 }
 
-String customSelectHasura(String campo, List<Map> whereList, List<String> selectList, {List<Map>? orderByList, int? inicio, int? maximo}) {
+String customSelectHasura(String campo, List<Map> whereList, List<String> selectList,
+    {List<Map>? orderByList, int? inicio, int? maximo}) {
   String whereString = where(whereList);
   String selectString = select(selectList);
   String orderByString = "";
@@ -89,13 +91,21 @@ Future<Map> _executarHasura(String sql, {Map<String, dynamic>? variables}) async
   return decode;
 }
 
-Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade, {String? returning, bool subFields = false}) async {
+Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade,
+    {String? returning, String? excludFields, bool subFields = false}) async {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
+
+  var returning2 = returning ?? selectFields(entidade, subFields: subFields);
+  if (excludFields != null) {
+    for (var obj in excludFields.split(" ")) {
+      returning2 = returning2.replaceAll(obj.toLowerCase(), "");
+    }
+  }
 
   String sql = """
 query GetById(\$id: uuid!) {
   $nomeTabela${config.hasuraSufix}_by_pk(id: \$id) {
-    ${returning ?? selectFields(entidade, subFields: subFields)}
+    $returning2
   }
 }
 """;
@@ -178,11 +188,33 @@ String orderBy(List<Map> list) {
 
 Map expr(String path, String operator, dynamic value) {
   List split = path.toLowerCase().split(".");
-  Map currentValue = {operator: (value is String || value is DateTime) ? "\"$value\"" : value};
+  Map currentValue = {
+    operator: (value is String || value is DateTime)
+        ? '"$value"'
+        : value is List
+            ? listValue(value)
+            : value,
+  };
   for (var obj in split.reversed) {
     currentValue = {obj: currentValue};
   }
   return currentValue;
+}
+
+Map orExpr(List<Map> list) {
+  return {"_or": list};
+}
+
+Map andExpr(List<Map> list) {
+  return {"_and": list};
+}
+
+String listValue(List values) {
+  if (values.runtimeType.toString() == "List<String>") {
+    return '["${values.join('","')}"]';
+  } else {
+    return values.join(",");
+  }
 }
 
 Map orderExpr(String path, String order) {
@@ -211,13 +243,20 @@ String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
         campos += "${obj.name.toLowerCase()}{ id }";
       }
     } else {
-      campos += "${obj.name.toLowerCase()} ";
+      var reflectionFactory = ReflectionFactory();
+      var typeString = obj.type.toString();
+      if (obj.type.isPrimitiveType ||
+          typeString == "DateTime" ||
+          reflectionFactory.hasRegisterEnumReflection(obj.type.type)) {
+        campos += "${obj.name.toLowerCase()} ";
+      }
     }
   }
   return campos;
 }
 
-Future<T> insertHasura<T extends Entidade>(T entidade, {String? insertFields, String? excludFields, String? returning, bool subFields = false}) async {
+Future<T> insertHasura<T extends Entidade>(T entidade,
+    {String? insertFields, String? excludFields, String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
 
   var data = DateTime.now();
@@ -243,10 +282,17 @@ Future<T> insertHasura<T extends Entidade>(T entidade, {String? insertFields, St
     excluirCampos(excludFields, obj);
   }
 
+  var returning2 = returning ?? selectFields(entidade, subFields: subFields);
+  if (excludFields != null) {
+    for (var obj in excludFields.split(" ")) {
+      returning2 = returning2.replaceAll(obj.toLowerCase(), "");
+    }
+  }
+
   var sql = """
-mutation Insert(\$obj: ${nomeentidade}${config.hasuraSufix}_insert_input!) {
+mutation Insert(\$obj: $nomeentidade${config.hasuraSufix}_insert_input!) {
   insert_$nomeentidade${config.hasuraSufix}_one(object: \$obj) {
-    ${returning ?? selectFields(entidade, subFields: subFields)}
+    $returning2
   }
 }
 """;
@@ -258,7 +304,8 @@ mutation Insert(\$obj: ${nomeentidade}${config.hasuraSufix}_insert_input!) {
   return retorno;
 }
 
-Future<T> updateHasura<T extends Entidade>(T entidade, {String? updateFields, String? excludFields, String? returning, bool subFields = false}) async {
+Future<T> updateHasura<T extends Entidade>(T entidade,
+    {String? updateFields, String? excludFields, String? returning, bool subFields = false}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
 
   if (entidade.id.isEmpty) {
@@ -282,10 +329,17 @@ Future<T> updateHasura<T extends Entidade>(T entidade, {String? updateFields, St
     excluirCampos(excludFields, obj);
   }
 
+  var returning2 = returning ?? selectFields(entidade, subFields: subFields);
+  if (excludFields != null) {
+    for (var obj in excludFields.split(" ")) {
+      returning2 = returning2.replaceAll(obj.toLowerCase(), "");
+    }
+  }
+
   var sql = """
-mutation Update(\$id: uuid!, \$set: ${nomeentidade}${config.hasuraSufix}_set_input!) {
+mutation Update(\$id: uuid!, \$set: $nomeentidade${config.hasuraSufix}_set_input!) {
   update_$nomeentidade${config.hasuraSufix}_by_pk(pk_columns: {id: \$id}, _set: \$set) {
-    ${returning ?? selectFields(entidade, subFields: subFields)}
+    $returning2
   }
 }
 """;
@@ -303,7 +357,7 @@ trocarNomeEntidades(Entidade entidade, Map map) {
   for (var obj in allFields) {
     if (reflector.canReflectType(obj.type.type)) {
       var valor = map.remove(obj.name);
-      map["${obj.name}_id"] = valor?["id"];
+      map["${obj.name.toLowerCase()}_id"] = valor?["id"];
     }
   }
 }

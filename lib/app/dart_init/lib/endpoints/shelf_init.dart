@@ -6,7 +6,7 @@ import 'package:shelf_static/shelf_static.dart';
 
 import '../outros/config/config.dart';
 import 'middlewares/exception_middle.dart';
-import 'middlewares/renponse_middle.dart';
+import 'middlewares/response_middle.dart';
 import 'middlewares/request_middle.dart';
 
 startShelfServer() async {
@@ -17,7 +17,7 @@ startShelfServer() async {
   }
   var excecoes = noAuthMethods(routeClasses);
   Router router = getRoutersByClass(routeClasses);
-  var pipeline = const Pipeline().addMiddleware(logRequests()).addMiddleware(exceptionMiddleware()).addMiddleware(renponseMiddleware()).addMiddleware(requestMiddleware(excecoes));
+  var pipeline = const Pipeline().addMiddleware(logRequests()).addMiddleware(exceptionMiddleware()).addMiddleware(responseMiddleware()).addMiddleware(requestMiddleware(excecoes));
   var handler = pipeline.addHandler(router.call);
   var hand = createStaticHandler("files");
   var handler2 = Cascade().add(hand).add(handler).handler;

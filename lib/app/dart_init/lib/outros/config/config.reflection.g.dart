@@ -155,6 +155,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
     'email',
     'emailPassword',
     'emailServer',
+    'emailUsername',
     'googleClientIdOS',
     'googleSecretOS',
     'googleSecretWeb',
@@ -516,6 +517,18 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
           obj,
           false,
         );
+      case 'emailusername':
+        return FieldReflection<Config, String>(
+          this,
+          Config,
+          __TR.tString,
+          'emailUsername',
+          false,
+          (o) => () => o!.emailUsername,
+          (o) => (v) => o!.emailUsername = v,
+          obj,
+          false,
+        );
       case 'emailpassword':
         return FieldReflection<Config, String>(
           this,
@@ -562,6 +575,7 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
       'imageSecretKey': obj?.imageSecretKey,
       'emailServer': obj?.emailServer,
       'email': obj?.email,
+      'emailUsername': obj?.emailUsername,
       'emailPassword': obj?.emailPassword,
       if (withHashCode) 'hashCode': obj?.hashCode,
     };

@@ -1,16 +1,24 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../app_store.dart';
 import '../outros/config/config.dart';
 import '../outros/excecoes.dart';
+
+
 
 Future<String> serverJwtPost(Map map, String endpoint) async {
   var instance = await SharedPreferences.getInstance();
   var jwt = instance.getString("jwt");
   if (jwt == null) {
-    throw PararError("Sem jwt");
+    throw PararError("Faça o login");
+  }
+  if (JwtDecoder.isExpired(jwt)) {
+    await onJwtExpired!();
+    throw PararError("Faça o login novamente");
   }
   Map<String, String> headers = {};
   headers["Authorization"] = "Bearer $jwt";

@@ -3,7 +3,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 mixin Pubspec {
-  static final buildDate = DateTime.utc(2026, 6, 4, 21, 14, 16);
+  static final buildDate = DateTime.utc(2026, 6, 15, 14, 40, 12);
 
   static const name = 'teste';
 
@@ -45,6 +45,7 @@ mixin Pubspec {
     'sentry': '^9.21.0',
     'mercadopago_sdk': '^1.3.0',
     'dart_date': '^1.5.3',
+    'cron': '^0.6.0',
     'file': '^7.0.1',
     'sembast': '^3.8.5+1',
     'sembast_sqflite': '^2.2.2',

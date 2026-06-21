@@ -97,12 +97,11 @@ verificaJwt(AppStoreBase app) async {
     }
     Map map = {};
     map["jwt"] = jwt;
-    map["usuarioId"] = app.usuario?.id;
-    var responseBody = await serverPost(map, "verificaAtualizaJwt");
+    var responseBody = await serverPost(map, "verificaJwt");
     if (responseBody.isNotEmpty) {
       Map responseMap = json.decode(responseBody);
-      if (responseMap.containsKey("jwt")) {
-        await shared.setString("jwt", responseMap["jwt"]);
+      if (responseMap.containsKey("invalido")) {
+        app.sair(redirecionar: false);
       } else if (responseMap.containsKey("mensagem")) {
         app.mostrarSnackBar(responseMap["mensagem"]);
       }
