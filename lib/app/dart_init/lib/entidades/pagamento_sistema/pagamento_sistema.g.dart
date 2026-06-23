@@ -50,6 +50,23 @@ Map<String, dynamic> _$PagamentoSistemaToJson(PagamentoSistema instance) =>
       'valor': instance.valor,
     };
 
+PagamentoSistema _$PagamentoSistemaFromMap(Map map) => PagamentoSistema()
+  ..id = map['id'] != null ? map['id'] : ""
+  ..id2 = map['id2'] != null ? map['id2'] : 0
+  ..ativa = map['ativa'] != null ? map['ativa'] : false
+  ..dataCriacao = map['dataCriacao'] != null ? map['dataCriacao'] : initialTime
+  ..dataEdicao = map['dataEdicao'] != null ? map['dataEdicao'] : initialTime
+  ..dataDelecao = map['dataDelecao'] != null ? map['dataDelecao'] : initialTime
+  ..referencia = map['referencia'] != null ? map['referencia'] : ""
+  ..qrCode = map['qrCode'] != null ? map['qrCode'] : ""
+  ..pago = map['pago'] != null ? map['pago'] : false
+  ..dataConfirmado =
+      map['dataConfirmado'] != null ? map['dataConfirmado'] : initialTime
+  ..link = map['link'] != null ? map['link'] : ""
+  ..empresa = map['empresa'] != null ? map['empresa'] : null
+  ..usuario = map['usuario'] != null ? map['usuario'] : null
+  ..valor = map['valor'] != null ? map['valor'] : 0;
+
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
     return _$PagamentoSistemaToJson(this as PagamentoSistema);
@@ -67,7 +84,7 @@ mixin _$Serial {
     return json.encode(list);
   }
 
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
+  Map<String, dynamic> matchKeysToFields(Map original) {
     Map<String, dynamic> map2 = {};
     List allFields = PagamentoSistema().reflect().allFields();
     for (var obj in allFields) {
@@ -83,13 +100,18 @@ mixin _$Serial {
 
   PagamentoSistema stringToClass(String string) {
     Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
+    map2 = matchKeysToFields(map2);
     return _$PagamentoSistemaFromJson(map2);
   }
 
   PagamentoSistema mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
+    Map map2 = matchKeysToFields(map);
     return _$PagamentoSistemaFromJson(map2);
+  }
+
+  PagamentoSistema mapToClass2(Map map) {
+    Map map2 = matchKeysToFields(map);
+    return _$PagamentoSistemaFromMap(map2);
   }
 
   List<PagamentoSistema> listMapToListClass(List list) {

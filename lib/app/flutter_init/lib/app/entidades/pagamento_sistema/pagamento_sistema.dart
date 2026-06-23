@@ -17,7 +17,7 @@ part 'pagamento_sistema.reflection.g.dart';
 @SerialAnnotation()
 class PagamentoSistema extends _PagamentoSistemaBase with _$PagamentoSistema, _$Serial {
   static PagamentoSistema fromJson(Map map) {
-    Map map2 = PagamentoSistema().dbMaptoClassMap(map);
+    Map map2 = PagamentoSistema().matchKeysToFields(map);
     return _$PagamentoSistemaFromJson(map2);
   }
 }

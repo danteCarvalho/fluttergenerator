@@ -16,7 +16,7 @@ part 'imagem.reflection.g.dart';
 class Imagem extends _ImagemBase with _$Imagem, _$Serial {
 
   static Imagem fromJson(Map map) {
-    Map map2 = Imagem().dbMaptoClassMap(map);
+    Map map2 = Imagem().matchKeysToFields(map);
     return _$ImagemFromJson(map2);
   }
 

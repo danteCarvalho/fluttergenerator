@@ -8,6 +8,7 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 import '../../daos/hasura_dao.dart';
+import '../../daos/postgres_dao.dart';
 import '../../entidades/app_link/app_link.dart';
 import '../../entidades/imagem/imagem.dart';
 import '../../entidades/usuario/usuario.dart';
@@ -53,7 +54,7 @@ class UsuarioEndpoint extends RouterMethods {
     Map resposta = {};
     Usuario usuario = Usuario().mapToClass(requestMap["usuario"]);
     String? updateFields = "cidade estado telefone email username imagem_id";
-    usuario = await updateHasura(usuario, updateFields: updateFields,excludFields: "senha");
+    usuario = await updateHasura(usuario, updateFields: updateFields, excludFields: "senha");
     usuario.senha = "";
     resposta["usuario"] = usuario;
     return Response.ok(json.encode(resposta));
@@ -67,7 +68,7 @@ class UsuarioEndpoint extends RouterMethods {
     Map resposta = {};
     String id = requestMap["id"];
     try {
-      Usuario usuario = await selectByIdHasura(id, Usuario(),excludFields: "senha");
+      Usuario usuario = await selectByIdHasura(id, Usuario(), excludFields: "senha");
       usuario.senha = "";
       resposta["usuario"] = usuario;
     } on NaoEncontrado catch (e, _) {
@@ -112,8 +113,13 @@ class UsuarioEndpoint extends RouterMethods {
       var usuario = appLink.usuario!;
       usuario.emailVerificado = true;
       appLink.ativa = false;
-      usuario = await updateHasura(usuario, updateFields: "emailVerificado");
-      await updateHasura(appLink);
+      await runTransactionPostgres(
+        (session) async {
+          await updatePostgres(usuario, updateFields: "emailVerificado", session: session);
+          await updatePostgres(appLink, updateFields: "ativa", session: session);
+        },
+      );
+      usuario = await selectByIdHasura(usuario.id, usuario,excludFields: "senha");
       usuario.senha = "";
       resposta["usuario"] = usuario;
     } on NaoEncontrado catch (e, _) {
@@ -122,10 +128,9 @@ class UsuarioEndpoint extends RouterMethods {
     return Response.ok(json.encode(resposta));
   }
 
-
-
   @Route.post('/esqueciSenha')
   Future<Response> esqueciSenha(Request request) async {
+    //envia o email de esqueci a senha
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);
     Map resposta = {};
@@ -155,6 +160,7 @@ class UsuarioEndpoint extends RouterMethods {
 
   @Route.post('/esqueciSenha2')
   Future<Response> esqueciSenha2(Request request) async {
+    //salva a alteração da senha
     String myJson = await utf8.decoder.bind(request.read()).join();
     Map requestMap = json.decode(myJson);
     Map resposta = {};
@@ -171,8 +177,12 @@ class UsuarioEndpoint extends RouterMethods {
       String hashed = BCrypt.hashpw(senha, BCrypt.gensalt(logRounds: 10));
       usuario.senha = hashed;
       appLink.ativa = false;
-      await updateHasura(usuario, updateFields: "senha");
-      await updateHasura(appLink);
+      await runTransactionPostgres(
+        (session) async {
+          await updatePostgres(usuario, updateFields: "senha", session: session);
+          await updatePostgres(appLink, updateFields: "ativa", session: session);
+        },
+      );
       resposta["ok"] = "ok";
     } on NaoEncontrado catch (e, _) {
       resposta["mensagem"] = "Link não encontrado";

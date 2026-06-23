@@ -62,6 +62,47 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
   'imageStorage': instance.imageStorage,
 };
 
+Config _$ConfigFromMap(Map map) => Config()
+  ..arquivoConf = map['arquivoConf'] != null
+      ? map['arquivoConf']
+      : const bool.fromEnvironment('arquivoConf', defaultValue: false)
+  ..portaApp = map['portaApp'] != null
+      ? map['portaApp']
+      : const int.fromEnvironment("portaApp", defaultValue: 8001)
+  ..sembastDbName = map['sembastDbName'] != null
+      ? map['sembastDbName']
+      : const String.fromEnvironment(
+          "sembastDbName",
+          defaultValue: "testeSembast.db",
+        )
+  ..schemeServidor = map['schemeServidor'] != null
+      ? map['schemeServidor']
+      : const String.fromEnvironment('schemeServidor', defaultValue: 'http')
+  ..ipServidor = map['ipServidor'] != null
+      ? map['ipServidor']
+      : const String.fromEnvironment('ipServidor', defaultValue: 'localhost')
+  ..portaServidor = map['portaServidor'] != null
+      ? map['portaServidor']
+      : const int.fromEnvironment("portaServidor", defaultValue: 7001)
+  ..schemeHasura = map['schemeHasura'] != null
+      ? map['schemeHasura']
+      : const String.fromEnvironment('schemeHasura', defaultValue: 'http')
+  ..ipHasura = map['ipHasura'] != null
+      ? map['ipHasura']
+      : const String.fromEnvironment('ipHasura', defaultValue: 'localhost')
+  ..portaHasura = map['portaHasura'] != null
+      ? map['portaHasura']
+      : const int.fromEnvironment("portaHasura", defaultValue: 6001)
+  ..hasuraSource = map['hasuraSource'] != null
+      ? map['hasuraSource']
+      : const String.fromEnvironment('hasuraSource', defaultValue: 'default')
+  ..hasuraSufix = map['hasuraSufix'] != null
+      ? map['hasuraSufix']
+      : const String.fromEnvironment('hasuraSufix', defaultValue: '')
+  ..imageStorage = map['imageStorage'] != null
+      ? map['imageStorage']
+      : const String.fromEnvironment('imageStorage', defaultValue: 'amazon');
+
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
     return _$ConfigToJson(this as Config);
@@ -79,7 +120,7 @@ mixin _$Serial {
     return json.encode(list);
   }
 
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
+  Map<String, dynamic> matchKeysToFields(Map original) {
     Map<String, dynamic> map2 = {};
     List allFields = Config().reflect().allFields();
     for (var obj in allFields) {
@@ -95,13 +136,18 @@ mixin _$Serial {
 
   Config stringToClass(String string) {
     Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
+    map2 = matchKeysToFields(map2);
     return _$ConfigFromJson(map2);
   }
 
   Config mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
+    Map map2 = matchKeysToFields(map);
     return _$ConfigFromJson(map2);
+  }
+
+  Config mapToClass2(Map map) {
+    Map map2 = matchKeysToFields(map);
+    return _$ConfigFromMap(map2);
   }
 
   List<Config> listMapToListClass(List list) {

@@ -46,7 +46,7 @@ abstract class VerificaEmailStoreBase with Store {
     list.add(expr("id", "_eq", app.usuario?.id));
     list.add(expr("emailVerificado", "_eq", true));
 
-    var sql = sqlHasura(Usuario(), list, [selectFields(Usuario())]);
+    var sql = sqlHasura(Usuario(), list, [selectFields(Usuario())],excludFields: "senha");
     try {
       var usuario = await selectOneHasura(sql, Usuario());
       app.mostrarSnackBar("Email confirmado");

@@ -266,11 +266,12 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
   static const List<String> _methodsNames = const <String>[
     'classToMap',
     'classToString',
-    'dbMaptoClassMap',
     'listClassToString',
     'listMapToListClass',
     'listStringToListClass',
     'mapToClass',
+    'mapToClass2',
+    'matchKeysToFields',
     'reflect',
     'stringToClass',
     'toJson',
@@ -404,14 +405,14 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
           null,
           null,
         );
-      case 'dbmaptoclassmap':
+      case 'matchkeystofields':
         return MethodReflection<LocalConfig, Map<String, dynamic>>(
           this,
           _$Serial,
-          'dbMaptoClassMap',
+          'matchKeysToFields',
           __TR.tMapStringDynamic,
           false,
-          (o) => o!.dbMaptoClassMap,
+          (o) => o!.matchKeysToFields,
           obj,
           const <__PR>[
             __PR(
@@ -450,6 +451,30 @@ class LocalConfig$reflection extends ClassReflection<LocalConfig>
           const __TR<LocalConfig>(LocalConfig),
           false,
           (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
+      case 'maptoclass2':
+        return MethodReflection<LocalConfig, LocalConfig>(
+          this,
+          _$Serial,
+          'mapToClass2',
+          const __TR<LocalConfig>(LocalConfig),
+          false,
+          (o) => o!.mapToClass2,
           obj,
           const <__PR>[
             __PR(

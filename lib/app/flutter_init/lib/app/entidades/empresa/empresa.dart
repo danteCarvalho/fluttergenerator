@@ -15,7 +15,7 @@ part 'empresa.reflection.g.dart';
 @SerialAnnotation()
 class Empresa extends _EmpresaBase with _$Empresa, _$Serial {
   static Empresa fromJson(Map map) {
-    Map map2 = Empresa().dbMaptoClassMap(map);
+    Map map2 = Empresa().matchKeysToFields(map);
     return _$EmpresaFromJson(map2);
   }
 }

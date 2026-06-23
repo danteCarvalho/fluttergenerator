@@ -11,6 +11,8 @@ LocalConfig _$LocalConfigFromJson(Map json) => LocalConfig();
 Map<String, dynamic> _$LocalConfigToJson(LocalConfig instance) =>
     <String, dynamic>{};
 
+LocalConfig _$LocalConfigFromMap(Map map) => LocalConfig();
+
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
     return _$LocalConfigToJson(this as LocalConfig);
@@ -28,7 +30,7 @@ mixin _$Serial {
     return json.encode(list);
   }
 
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
+  Map<String, dynamic> matchKeysToFields(Map original) {
     Map<String, dynamic> map2 = {};
     List allFields = LocalConfig().reflect().allFields();
     for (var obj in allFields) {
@@ -44,13 +46,18 @@ mixin _$Serial {
 
   LocalConfig stringToClass(String string) {
     Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
+    map2 = matchKeysToFields(map2);
     return _$LocalConfigFromJson(map2);
   }
 
   LocalConfig mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
+    Map map2 = matchKeysToFields(map);
     return _$LocalConfigFromJson(map2);
+  }
+
+  LocalConfig mapToClass2(Map map) {
+    Map map2 = matchKeysToFields(map);
+    return _$LocalConfigFromMap(map2);
   }
 
   List<LocalConfig> listMapToListClass(List list) {

@@ -21,10 +21,16 @@ String sqlHasura<T extends Entidade>(
   List<Map>? orderByList,
   int? inicio,
   int? maximo,
+  String? excludFields,
 }) {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
   String whereString = where(whereList);
-  String selectString = select(selectList);
+  String selectString = selectStatement(selectList);
+  if (excludFields != null) {
+    for (var obj in excludFields.split(" ")) {
+      selectString = selectString.replaceAll(obj.toLowerCase(), "");
+    }
+  }
   String orderByString = "";
   String inicioString = "";
   String maximoString = "";
@@ -49,16 +55,22 @@ String sqlHasura<T extends Entidade>(
   return sql;
 }
 
-String customSelectHasura(
+String customSqlHasura(
   String campo,
   List<Map> whereList,
   List<String> selectList, {
   List<Map>? orderByList,
   int? inicio,
   int? maximo,
+  String? excludFields,
 }) {
   String whereString = where(whereList);
-  String selectString = select(selectList);
+  String selectString = selectStatement(selectList);
+  if (excludFields != null) {
+    for (var obj in excludFields.split(" ")) {
+      selectString = selectString.replaceAll(obj.toLowerCase(), "");
+    }
+  }
   String orderByString = "";
   String inicioString = "";
   String maximoString = "";
@@ -199,7 +211,7 @@ Future<List<T>> selectListHasura<T extends Entidade>(String sql, T entidade) asy
   return retorno;
 }
 
-String select(List<String> selectList) {
+String selectStatement(List<String> selectList) {
   String selectString = "";
   for (var obj in selectList) {
     selectString += "$obj ";
@@ -359,114 +371,6 @@ List<T>? eventAsListHasura<T extends Entidade>(String event, T entidade) {
     return retorno;
   }
   return null;
-}
-
-Future<T> insertHasura<T extends Entidade>(
-  T entidade, {
-  String? insertFields,
-  String? excludFields,
-  String? returning,
-  bool subFields = false,
-}) async {
-  String nomeentidade = entidade.runtimeType.toString().toLowerCase();
-
-  var data = DateTime.now();
-
-  entidade.dataCriacao = data;
-  entidade.dataEdicao = data;
-  entidade.ativa = true;
-
-  Map obj = entidade.classToMap();
-
-  trocarNomeEntidades(entidade, obj);
-
-  obj.remove("id");
-  obj.remove("id2");
-
-  obj = fieldsToLowerCase(obj);
-
-  if (insertFields != null) {
-    obj = manterCampos(insertFields, obj, "datacriacao dataedicao ativa");
-  }
-
-  if (excludFields != null) {
-    excluirCampos(excludFields, obj);
-  }
-
-  var returning2 = returning ?? selectFields(entidade, subFields: subFields);
-  if (excludFields != null) {
-    for (var obj in excludFields.split(" ")) {
-      returning2 = returning2.replaceAll(obj.toLowerCase(), "");
-    }
-  }
-
-  var sql =
-      """
-mutation Insert(\$obj: $nomeentidade${config.hasuraSufix}_insert_input!) {
-  insert_$nomeentidade${config.hasuraSufix}_one(object: \$obj) {
-    $returning2
-  }
-}
-""";
-
-  var decode = await _executarHasura(sql, variables: {"obj": obj});
-
-  T retorno = entidade.mapToClass(decode["data"]["insert_$nomeentidade${config.hasuraSufix}_one"]);
-
-  return retorno;
-}
-
-Future<T> updateHasura<T extends Entidade>(
-  T entidade, {
-  String? updateFields,
-  String? excludFields,
-  String? returning,
-  bool subFields = false,
-}) async {
-  String nomeentidade = entidade.runtimeType.toString().toLowerCase();
-
-  if (entidade.id.isEmpty) {
-    throw PararError("update sem id");
-  }
-
-  entidade.dataEdicao = DateTime.now();
-
-  Map obj = entidade.classToMap();
-
-  trocarNomeEntidades(entidade, obj);
-
-  obj = fieldsToLowerCase(obj);
-  String id = obj["id"];
-
-  if (updateFields != null) {
-    obj = manterCampos(updateFields, obj, "dataedicao");
-  }
-
-  if (excludFields != null) {
-    excluirCampos(excludFields, obj);
-  }
-
-  var returning2 = returning ?? selectFields(entidade, subFields: subFields);
-  if (excludFields != null) {
-    for (var obj in excludFields.split(" ")) {
-      returning2 = returning2.replaceAll(obj.toLowerCase(), "");
-    }
-  }
-
-  var sql =
-      """
-mutation Update(\$id: uuid!, \$set: $nomeentidade${config.hasuraSufix}_set_input!) {
-  update_$nomeentidade${config.hasuraSufix}_by_pk(pk_columns: {id: \$id}, _set: \$set) {
-    $returning2
-  }
-}
-""";
-
-  var decode = await _executarHasura(sql, variables: {"id": id, "set": obj});
-
-  T retorno = entidade.mapToClass(decode["data"]["update_$nomeentidade${config.hasuraSufix}_by_pk"]);
-
-  return retorno;
 }
 
 trocarNomeEntidades(Entidade entidade, Map map) {

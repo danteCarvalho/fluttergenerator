@@ -320,11 +320,12 @@ class Entidade$reflection extends ClassReflection<Entidade>
   static const List<String> _methodsNames = const <String>[
     'classToMap',
     'classToString',
-    'dbMaptoClassMap',
     'listClassToString',
     'listMapToListClass',
     'listStringToListClass',
     'mapToClass',
+    'mapToClass2',
+    'matchKeysToFields',
     'reflect',
     'stringToClass',
     'toJson',
@@ -428,14 +429,14 @@ class Entidade$reflection extends ClassReflection<Entidade>
           null,
           null,
         );
-      case 'dbmaptoclassmap':
+      case 'matchkeystofields':
         return MethodReflection<Entidade, Map<String, dynamic>>(
           this,
           SerialMethods,
-          'dbMaptoClassMap',
+          'matchKeysToFields',
           __TR.tMapStringDynamic,
           false,
-          (o) => o!.dbMaptoClassMap,
+          (o) => o!.matchKeysToFields,
           obj,
           const <__PR>[
             __PR(
@@ -502,6 +503,30 @@ class Entidade$reflection extends ClassReflection<Entidade>
           __TR.tDynamic,
           false,
           (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
+      case 'maptoclass2':
+        return MethodReflection<Entidade, dynamic>(
+          this,
+          SerialMethods,
+          'mapToClass2',
+          __TR.tDynamic,
+          false,
+          (o) => o!.mapToClass2,
           obj,
           const <__PR>[
             __PR(

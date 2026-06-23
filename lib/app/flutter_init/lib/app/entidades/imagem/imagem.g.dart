@@ -37,6 +37,18 @@ Map<String, dynamic> _$ImagemToJson(Imagem instance) => <String, dynamic>{
   'size': instance.size,
 };
 
+Imagem _$ImagemFromMap(Map map) => Imagem()
+  ..id = map['id'] != null ? map['id'] : ""
+  ..id2 = map['id2'] != null ? map['id2'] : 0
+  ..ativa = map['ativa'] != null ? map['ativa'] : false
+  ..dataCriacao = map['dataCriacao'] != null ? map['dataCriacao'] : initialTime
+  ..dataEdicao = map['dataEdicao'] != null ? map['dataEdicao'] : initialTime
+  ..dataDelecao = map['dataDelecao'] != null ? map['dataDelecao'] : initialTime
+  ..value = map['value'] != null ? map['value'] : ""
+  ..name = map['name'] != null ? map['name'] : ""
+  ..extension = map['extension'] != null ? map['extension'] : ""
+  ..size = map['size'] != null ? map['size'] : 0;
+
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
     return _$ImagemToJson(this as Imagem);
@@ -54,7 +66,7 @@ mixin _$Serial {
     return json.encode(list);
   }
 
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
+  Map<String, dynamic> matchKeysToFields(Map original) {
     Map<String, dynamic> map2 = {};
     List allFields = Imagem().reflect().allFields();
     for (var obj in allFields) {
@@ -70,13 +82,18 @@ mixin _$Serial {
 
   Imagem stringToClass(String string) {
     Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
+    map2 = matchKeysToFields(map2);
     return _$ImagemFromJson(map2);
   }
 
   Imagem mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
+    Map map2 = matchKeysToFields(map);
     return _$ImagemFromJson(map2);
+  }
+
+  Imagem mapToClass2(Map map) {
+    Map map2 = matchKeysToFields(map);
+    return _$ImagemFromMap(map2);
   }
 
   List<Imagem> listMapToListClass(List list) {

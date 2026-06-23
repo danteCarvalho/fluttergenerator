@@ -15,7 +15,7 @@ part 'imagem.reflection.g.dart';
 @SerialAnnotation()
 class Imagem extends Entidade with _$Serial {
   static Imagem fromJson(Map map) {
-    Map map2 = Imagem().dbMaptoClassMap(map);
+    Map map2 = Imagem().matchKeysToFields(map);
     return _$ImagemFromJson(map2);
   }
 

@@ -9,11 +9,23 @@ import '../outros/config/config.dart';
 import '../outros/entidade_helper.dart';
 import '../outros/excecoes.dart';
 
-String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<String> selectList,
-    {List<Map>? orderByList, int? inicio, int? maximo}) {
+String sqlHasura<T extends Entidade>(
+  T entidade,
+  List<Map> whereList,
+  List<String> selectList, {
+  List<Map>? orderByList,
+  int? inicio,
+  int? maximo,
+  String? excludFields,
+}) {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
   String whereString = where(whereList);
-  String selectString = select(selectList);
+  String selectString = selectStatement(selectList);
+  if (excludFields != null) {
+    for (var obj in excludFields.split(" ")) {
+      selectString = selectString.replaceAll(obj.toLowerCase(), "");
+    }
+  }
   String orderByString = "";
   String inicioString = "";
   String maximoString = "";
@@ -37,10 +49,22 @@ String sqlHasura<T extends Entidade>(T entidade, List<Map> whereList, List<Strin
   return sql;
 }
 
-String customSelectHasura(String campo, List<Map> whereList, List<String> selectList,
-    {List<Map>? orderByList, int? inicio, int? maximo}) {
+String customSqlHasura(
+  String campo,
+  List<Map> whereList,
+  List<String> selectList, {
+  List<Map>? orderByList,
+  int? inicio,
+  int? maximo,
+  String? excludFields,
+}) {
   String whereString = where(whereList);
-  String selectString = select(selectList);
+  String selectString = selectStatement(selectList);
+  if (excludFields != null) {
+    for (var obj in excludFields.split(" ")) {
+      selectString = selectString.replaceAll(obj.toLowerCase(), "");
+    }
+  }
   String orderByString = "";
   String inicioString = "";
   String maximoString = "";
@@ -91,8 +115,13 @@ Future<Map> _executarHasura(String sql, {Map<String, dynamic>? variables}) async
   return decode;
 }
 
-Future<T> selectByIdHasura<T extends Entidade>(String id, T entidade,
-    {String? returning, String? excludFields, bool subFields = false}) async {
+Future<T> selectByIdHasura<T extends Entidade>(
+  String id,
+  T entidade, {
+  String? returning,
+  String? excludFields,
+  bool subFields = false,
+}) async {
   var nomeTabela = entidade.runtimeType.toString().toLowerCase();
 
   var returning2 = returning ?? selectFields(entidade, subFields: subFields);
@@ -162,7 +191,7 @@ Future<List<T>> selectListHasura<T extends Entidade>(String sql, T entidade) asy
   return retorno;
 }
 
-String select(List<String> selectList) {
+String selectStatement(List<String> selectList) {
   String selectString = "";
   for (var obj in selectList) {
     selectString += "$obj ";
@@ -255,8 +284,13 @@ String selectFields<T extends Entidade>(T entidade, {bool subFields = false}) {
   return campos;
 }
 
-Future<T> insertHasura<T extends Entidade>(T entidade,
-    {String? insertFields, String? excludFields, String? returning, bool subFields = false}) async {
+Future<T> insertHasura<T extends Entidade>(
+  T entidade, {
+  String? insertFields,
+  String? excludFields,
+  String? returning,
+  bool subFields = false,
+}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
 
   var data = DateTime.now();
@@ -304,8 +338,13 @@ mutation Insert(\$obj: $nomeentidade${config.hasuraSufix}_insert_input!) {
   return retorno;
 }
 
-Future<T> updateHasura<T extends Entidade>(T entidade,
-    {String? updateFields, String? excludFields, String? returning, bool subFields = false}) async {
+Future<T> updateHasura<T extends Entidade>(
+  T entidade, {
+  String? updateFields,
+  String? excludFields,
+  String? returning,
+  bool subFields = false,
+}) async {
   String nomeentidade = entidade.runtimeType.toString().toLowerCase();
 
   if (entidade.id.isEmpty) {

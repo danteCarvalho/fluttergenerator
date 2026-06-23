@@ -17,7 +17,7 @@ part 'pagamento.reflection.g.dart';
 @SerialAnnotation()
 class Pagamento extends Entidade with _$Serial {
   static Pagamento fromJson(Map map) {
-    Map map2 = Pagamento().dbMaptoClassMap(map);
+    Map map2 = Pagamento().matchKeysToFields(map);
     return _$PagamentoFromJson(map2);
   }
 

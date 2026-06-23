@@ -103,6 +103,52 @@ Map<String, dynamic> _$UsuarioToJson(Usuario instance) => <String, dynamic>{
   'emailVerificado': instance.emailVerificado,
 };
 
+Usuario _$UsuarioFromMap(Map map) => Usuario()
+  ..id = map['id'] != null ? map['id'] : ""
+  ..id2 = map['id2'] != null ? map['id2'] : 0
+  ..ativa = map['ativa'] != null ? map['ativa'] : false
+  ..dataCriacao = map['dataCriacao'] != null ? map['dataCriacao'] : initialTime
+  ..dataEdicao = map['dataEdicao'] != null ? map['dataEdicao'] : initialTime
+  ..dataDelecao = map['dataDelecao'] != null ? map['dataDelecao'] : initialTime
+  ..nome = map['nome'] != null ? map['nome'] : ""
+  ..senha = map['senha'] != null ? map['senha'] : ""
+  ..username = map['username'] != null ? map['username'] : null
+  ..email = map['email'] != null ? map['email'] : ""
+  ..cpfCnpj = map['cpfCnpj'] != null ? map['cpfCnpj'] : null
+  ..dataNascimento = map['dataNascimento'] != null
+      ? map['dataNascimento']
+      : initialTime
+  ..enderecoLogradouroRua = map['enderecoLogradouroRua'] != null
+      ? map['enderecoLogradouroRua']
+      : ""
+  ..numeroEndereco = map['numeroEndereco'] != null ? map['numeroEndereco'] : ""
+  ..bairro = map['bairro'] != null ? map['bairro'] : ""
+  ..cep = map['cep'] != null ? map['cep'] : ""
+  ..cidade = map['cidade'] != null ? map['cidade'] : ""
+  ..estado = map['estado'] != null ? map['estado'] : ""
+  ..complemento = map['complemento'] != null ? map['complemento'] : ""
+  ..telefone = map['telefone'] != null ? map['telefone'] : ""
+  ..admin = map['admin'] != null ? map['admin'] : false
+  ..empresa = map['empresa'] != null ? map['empresa'] : null
+  ..valorPagamento = map['valorPagamento'] != null
+      ? map['valorPagamento']
+      : null
+  ..dataPagamento = map['dataPagamento'] != null
+      ? map['dataPagamento']
+      : initialTime
+  ..ultimoPagamentoCompleto = map['ultimoPagamentoCompleto'] != null
+      ? map['ultimoPagamentoCompleto']
+      : initialTime
+  ..ultimoPagamentoGerado = map['ultimoPagamentoGerado'] != null
+      ? map['ultimoPagamentoGerado']
+      : initialTime
+  ..imagem = map['imagem'] != null ? map['imagem'] : null
+  ..latitude = map['latitude'] != null ? map['latitude'] : 0
+  ..longitude = map['longitude'] != null ? map['longitude'] : 0
+  ..emailVerificado = map['emailVerificado'] != null
+      ? map['emailVerificado']
+      : false;
+
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
     return _$UsuarioToJson(this as Usuario);
@@ -120,7 +166,7 @@ mixin _$Serial {
     return json.encode(list);
   }
 
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
+  Map<String, dynamic> matchKeysToFields(Map original) {
     Map<String, dynamic> map2 = {};
     List allFields = Usuario().reflect().allFields();
     for (var obj in allFields) {
@@ -136,13 +182,18 @@ mixin _$Serial {
 
   Usuario stringToClass(String string) {
     Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
+    map2 = matchKeysToFields(map2);
     return _$UsuarioFromJson(map2);
   }
 
   Usuario mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
+    Map map2 = matchKeysToFields(map);
     return _$UsuarioFromJson(map2);
+  }
+
+  Usuario mapToClass2(Map map) {
+    Map map2 = matchKeysToFields(map);
+    return _$UsuarioFromMap(map2);
   }
 
   List<Usuario> listMapToListClass(List list) {

@@ -16,7 +16,7 @@ part 'app_link.reflection.g.dart';
 @SerialAnnotation()
 class AppLink extends Entidade with _$Serial {
   static AppLink fromJson(Map map) {
-    Map map2 = AppLink().dbMaptoClassMap(map);
+    Map map2 = AppLink().matchKeysToFields(map);
     return _$AppLinkFromJson(map2);
   }
 

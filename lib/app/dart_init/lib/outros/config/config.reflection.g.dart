@@ -592,11 +592,12 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
   static const List<String> _methodsNames = const <String>[
     'classToMap',
     'classToString',
-    'dbMaptoClassMap',
     'listClassToString',
     'listMapToListClass',
     'listStringToListClass',
     'mapToClass',
+    'mapToClass2',
+    'matchKeysToFields',
     'reflect',
     'stringToClass',
     'toJson'
@@ -706,14 +707,14 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             null,
             null,
             null);
-      case 'dbmaptoclassmap':
+      case 'matchkeystofields':
         return MethodReflection<Config, Map<String, dynamic>>(
             this,
             _$Serial,
-            'dbMaptoClassMap',
+            'matchKeysToFields',
             __TR.tMapStringDynamic,
             false,
-            (o) => o!.dbMaptoClassMap,
+            (o) => o!.matchKeysToFields,
             obj,
             const <__PR>[
               __PR(
@@ -747,6 +748,26 @@ class Config$reflection extends ClassReflection<Config> with __ReflectionMixin {
             const __TR<Config>(Config),
             false,
             (o) => o!.mapToClass,
+            obj,
+            const <__PR>[
+              __PR(
+                  __TR<Map<dynamic, dynamic>>(
+                      Map, <__TR>[__TR.tDynamic, __TR.tDynamic]),
+                  'map',
+                  false,
+                  true)
+            ],
+            null,
+            null,
+            null);
+      case 'maptoclass2':
+        return MethodReflection<Config, Config>(
+            this,
+            _$Serial,
+            'mapToClass2',
+            const __TR<Config>(Config),
+            false,
+            (o) => o!.mapToClass2,
             obj,
             const <__PR>[
               __PR(

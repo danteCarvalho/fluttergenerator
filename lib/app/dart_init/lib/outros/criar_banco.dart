@@ -21,13 +21,13 @@ import 'entidade_helper.dart';
 
 criarBanco() async {
   var file = File(".last_build_date");
-  // if (await file.exists()) {
-  //   var lastBuildDateStr = await file.readAsString();
-  //   if (lastBuildDateStr == Pubspec.buildDate.toIso8601String()) {
-  //     print("Banco de dados já criado para esta versão.");
-  //     return;
-  //   }
-  // }
+  if (await file.exists()) {
+    var lastBuildDateStr = await file.readAsString();
+    if (lastBuildDateStr == Pubspec.buildDate.toIso8601String()) {
+      print("Banco de dados já criado para esta versão.");
+      return;
+    }
+  }
 
   List<Entidade> entidades = [];
   entidades.add(Imagem());
@@ -149,8 +149,11 @@ addHasuraForeignKeys(Entidade tabela, Entidade campo, String nomeCampo) async {
 }
 
 verificaAdmin() async {
+  await  runTransactionPostgres((session) async{
+
+  },);
   String sql = "select * from usuario where admin = true limit 1 ";
-  List results = await selectPostgues(sql);
+  List results = await executePostgres(sql);
   if (results.isEmpty) {
     Usuario usuario = Usuario();
     usuario.nome = "admin";

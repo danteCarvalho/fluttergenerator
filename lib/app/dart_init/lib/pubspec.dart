@@ -3,7 +3,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 mixin Pubspec {
-  static final buildDate = DateTime.utc(2026, 6, 15, 14, 40, 12);
+  static final buildDate = DateTime.utc(2026, 6, 23, 7, 11, 31);
 
   static const name = 'teste';
 

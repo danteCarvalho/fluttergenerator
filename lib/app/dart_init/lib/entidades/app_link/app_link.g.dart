@@ -34,6 +34,16 @@ Map<String, dynamic> _$AppLinkToJson(AppLink instance) => <String, dynamic>{
       'service': instance.service,
     };
 
+AppLink _$AppLinkFromMap(Map map) => AppLink()
+  ..id = map['id'] != null ? map['id'] : ""
+  ..id2 = map['id2'] != null ? map['id2'] : 0
+  ..ativa = map['ativa'] != null ? map['ativa'] : false
+  ..dataCriacao = map['dataCriacao'] != null ? map['dataCriacao'] : initialTime
+  ..dataEdicao = map['dataEdicao'] != null ? map['dataEdicao'] : initialTime
+  ..dataDelecao = map['dataDelecao'] != null ? map['dataDelecao'] : initialTime
+  ..usuario = map['usuario'] != null ? map['usuario'] : null
+  ..service = map['service'] != null ? map['service'] : "";
+
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
     return _$AppLinkToJson(this as AppLink);
@@ -51,7 +61,7 @@ mixin _$Serial {
     return json.encode(list);
   }
 
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
+  Map<String, dynamic> matchKeysToFields(Map original) {
     Map<String, dynamic> map2 = {};
     List allFields = AppLink().reflect().allFields();
     for (var obj in allFields) {
@@ -67,13 +77,18 @@ mixin _$Serial {
 
   AppLink stringToClass(String string) {
     Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
+    map2 = matchKeysToFields(map2);
     return _$AppLinkFromJson(map2);
   }
 
   AppLink mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
+    Map map2 = matchKeysToFields(map);
     return _$AppLinkFromJson(map2);
+  }
+
+  AppLink mapToClass2(Map map) {
+    Map map2 = matchKeysToFields(map);
+    return _$AppLinkFromMap(map2);
   }
 
   List<AppLink> listMapToListClass(List list) {

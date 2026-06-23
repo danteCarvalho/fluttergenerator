@@ -648,11 +648,12 @@ class Empresa$reflection extends ClassReflection<Empresa>
   static const List<String> _methodsNames = const <String>[
     'classToMap',
     'classToString',
-    'dbMaptoClassMap',
     'listClassToString',
     'listMapToListClass',
     'listStringToListClass',
     'mapToClass',
+    'mapToClass2',
+    'matchKeysToFields',
     'reflect',
     'stringToClass',
     'toJson',
@@ -757,14 +758,14 @@ class Empresa$reflection extends ClassReflection<Empresa>
           null,
           null,
         );
-      case 'dbmaptoclassmap':
+      case 'matchkeystofields':
         return MethodReflection<Empresa, Map<String, dynamic>>(
           this,
           SerialMethods,
-          'dbMaptoClassMap',
+          'matchKeysToFields',
           __TR.tMapStringDynamic,
           false,
-          (o) => o!.dbMaptoClassMap,
+          (o) => o!.matchKeysToFields,
           obj,
           const <__PR>[
             __PR(
@@ -831,6 +832,30 @@ class Empresa$reflection extends ClassReflection<Empresa>
           __TR.tDynamic,
           false,
           (o) => o!.mapToClass,
+          obj,
+          const <__PR>[
+            __PR(
+              __TR<Map<dynamic, dynamic>>(Map, <__TR>[
+                __TR.tDynamic,
+                __TR.tDynamic,
+              ]),
+              'map',
+              false,
+              true,
+            ),
+          ],
+          null,
+          null,
+          null,
+        );
+      case 'maptoclass2':
+        return MethodReflection<Empresa, dynamic>(
+          this,
+          SerialMethods,
+          'mapToClass2',
+          __TR.tDynamic,
+          false,
+          (o) => o!.mapToClass2,
           obj,
           const <__PR>[
             __PR(

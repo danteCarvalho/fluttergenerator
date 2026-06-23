@@ -17,7 +17,7 @@ part 'usuario.reflection.g.dart';
 @SerialAnnotation()
 class Usuario extends Entidade with _$Serial {
   static Usuario fromJson(Map map) {
-    Map map2 = Usuario().dbMaptoClassMap(map);
+    Map map2 = Usuario().matchKeysToFields(map);
     return _$UsuarioFromJson(map2);
   }
 

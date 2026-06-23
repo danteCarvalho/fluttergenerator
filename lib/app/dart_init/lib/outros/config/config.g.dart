@@ -132,6 +132,103 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'emailPassword': instance.emailPassword,
     };
 
+Config _$ConfigFromMap(Map map) => Config()
+  ..arquivoConf = map['arquivoConf'] != null
+      ? map['arquivoConf']
+      : const bool.fromEnvironment('arquivoConf', defaultValue: false)
+  ..portaServidor = map['portaServidor'] != null
+      ? map['portaServidor']
+      : const int.fromEnvironment('portaServidor', defaultValue: 7001)
+  ..sembastDbName = map['sembastDbName'] != null
+      ? map['sembastDbName']
+      : const String.fromEnvironment("sembastDbName",
+          defaultValue: "teste/teste.db")
+  ..sslBanco = map['sslBanco'] != null
+      ? map['sslBanco']
+      : const bool.fromEnvironment('sslBanco', defaultValue: false)
+  ..ipBanco = map['ipBanco'] != null
+      ? map['ipBanco']
+      : const String.fromEnvironment('ipBanco', defaultValue: 'localhost')
+  ..portaBanco = map['portaBanco'] != null
+      ? map['portaBanco']
+      : const int.fromEnvironment('portaBanco', defaultValue: 5431)
+  ..banco = map['banco'] != null
+      ? map['banco']
+      : const String.fromEnvironment('banco', defaultValue: 'postgres')
+  ..usuario = map['usuario'] != null
+      ? map['usuario']
+      : const String.fromEnvironment('usuario', defaultValue: 'postgres')
+  ..senha = map['senha'] != null
+      ? map['senha']
+      : const String.fromEnvironment('senha', defaultValue: 'postgrespassword')
+  ..schemeHasura = map['schemeHasura'] != null
+      ? map['schemeHasura']
+      : const String.fromEnvironment('schemeHasura', defaultValue: 'http')
+  ..ipHasura = map['ipHasura'] != null
+      ? map['ipHasura']
+      : const String.fromEnvironment('ipHasura', defaultValue: 'localhost')
+  ..portaHasura = map['portaHasura'] != null
+      ? map['portaHasura']
+      : const int.fromEnvironment('portaHasura', defaultValue: 6001)
+  ..hasuraSource = map['hasuraSource'] != null
+      ? map['hasuraSource']
+      : const String.fromEnvironment('hasuraSource', defaultValue: 'default')
+  ..hasuraSufix = map['hasuraSufix'] != null
+      ? map['hasuraSufix']
+      : const String.fromEnvironment('hasuraSufix', defaultValue: '')
+  ..hasuraSharedSecret = map['hasuraSharedSecret'] != null
+      ? map['hasuraSharedSecret']
+      : const String.fromEnvironment('hasuraSharedSecret',
+          defaultValue: 'tkGStmgfm6h8MV8IJNB60amcRZ93GHo8')
+  ..hasuraAdminSecret = map['hasuraAdminSecret'] != null
+      ? map['hasuraAdminSecret']
+      : const String.fromEnvironment('hasuraAdminSecret',
+          defaultValue: 'myadminsecretkey')
+  ..googleSecretWeb = map['googleSecretWeb'] != null
+      ? map['googleSecretWeb']
+      : const String.fromEnvironment('googleSecretWeb',
+          defaultValue:
+              'DkW+Fa/vG2s0wcECx0vjSrPkbKOfMEd86SS9tXAxT6+SO3iPGsaGIbPhrlcdeci7Hpo0s28vfiB4dhkA28tSRg==')
+  ..googleSecretOS = map['googleSecretOS'] != null
+      ? map['googleSecretOS']
+      : const String.fromEnvironment('googleSecretOS',
+          defaultValue:
+              'RqaJs+kJxK+tKHw1NtrmwdeG0fuPK28CQvaIskZoO8A48Zqh/pe391V0EQruxiFBy4e39NeAdxyLZ1vpJbFZmg==')
+  ..googleClientIdOS = map['googleClientIdOS'] != null
+      ? map['googleClientIdOS']
+      : const String.fromEnvironment('googleClientIdOS',
+          defaultValue:
+              '44265153130-ifekhq2splh4lcf25tuvhrikaha73dhf.apps.googleusercontent.com')
+  ..imageStorage = map['imageStorage'] != null
+      ? map['imageStorage']
+      : const String.fromEnvironment('imageStorage', defaultValue: 'amazon')
+  ..imageAccessKey = map['imageAccessKey'] != null
+      ? map['imageAccessKey']
+      : const String.fromEnvironment('imageAccessKey',
+          defaultValue:
+              'hgVG0yGhI3ELhjU7ZwnRU2LiZWtkxCv90hKbL+IDdyYoe+0Z6/qf2jciVEP1yCu7')
+  ..imageSecretKey = map['imageSecretKey'] != null
+      ? map['imageSecretKey']
+      : const String.fromEnvironment('imageSecretKey',
+          defaultValue:
+              '/clI8ca/I1M8aUFnH7zt+EM+fKJEDxJ7NMJhCGoneZPexkno8sQEvtjgETV2vggGbGV+6rpbXEK8en2wDbTuCw==')
+  ..emailServer = map['emailServer'] != null
+      ? map['emailServer']
+      : const String.fromEnvironment('emailServer', defaultValue: 'amazon')
+  ..email = map['email'] != null
+      ? map['email']
+      : const String.fromEnvironment('email',
+          defaultValue: 'teste@agentech.com.br')
+  ..emailUsername = map['emailUsername'] != null
+      ? map['emailUsername']
+      : const String.fromEnvironment('emailUsername',
+          defaultValue: 'AKIARXTC5FOT5AS6PLMD')
+  ..emailPassword = map['emailPassword'] != null
+      ? map['emailPassword']
+      : const String.fromEnvironment('emailPassword',
+          defaultValue:
+              'vZ4YBYbLoBnPbQEXAmz+jCAgg5cC+n6EzfolTN668xkyYEVooMfAwLZeNCN1p8HhcC/bXAFKJxqEKR0+vCNWfA==');
+
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
     return _$ConfigToJson(this as Config);
@@ -149,7 +246,7 @@ mixin _$Serial {
     return json.encode(list);
   }
 
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
+  Map<String, dynamic> matchKeysToFields(Map original) {
     Map<String, dynamic> map2 = {};
     List allFields = Config().reflect().allFields();
     for (var obj in allFields) {
@@ -165,13 +262,18 @@ mixin _$Serial {
 
   Config stringToClass(String string) {
     Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
+    map2 = matchKeysToFields(map2);
     return _$ConfigFromJson(map2);
   }
 
   Config mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
+    Map map2 = matchKeysToFields(map);
     return _$ConfigFromJson(map2);
+  }
+
+  Config mapToClass2(Map map) {
+    Map map2 = matchKeysToFields(map);
+    return _$ConfigFromMap(map2);
   }
 
   List<Config> listMapToListClass(List list) {

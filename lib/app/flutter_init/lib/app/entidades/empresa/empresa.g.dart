@@ -79,6 +79,38 @@ Map<String, dynamic> _$EmpresaToJson(Empresa instance) => <String, dynamic>{
   'numeroCasa': instance.numeroCasa,
 };
 
+Empresa _$EmpresaFromMap(Map map) => Empresa()
+  ..id = map['id'] != null ? map['id'] : ""
+  ..id2 = map['id2'] != null ? map['id2'] : 0
+  ..ativa = map['ativa'] != null ? map['ativa'] : false
+  ..dataCriacao = map['dataCriacao'] != null ? map['dataCriacao'] : initialTime
+  ..dataEdicao = map['dataEdicao'] != null ? map['dataEdicao'] : initialTime
+  ..dataDelecao = map['dataDelecao'] != null ? map['dataDelecao'] : initialTime
+  ..nome = map['nome'] != null ? map['nome'] : ""
+  ..valorPagamento = map['valorPagamento'] != null ? map['valorPagamento'] : 0
+  ..telefone = map['telefone'] != null ? map['telefone'] : ""
+  ..anydesk = map['anydesk'] != null ? map['anydesk'] : ""
+  ..whatsapp = map['whatsapp'] != null ? map['whatsapp'] : ""
+  ..latitude = map['latitude'] != null ? map['latitude'] : 0
+  ..longitude = map['longitude'] != null ? map['longitude'] : 0
+  ..dataPagamento = map['dataPagamento'] != null
+      ? map['dataPagamento']
+      : initialTime
+  ..ultimoPagamentoCompleto = map['ultimoPagamentoCompleto'] != null
+      ? map['ultimoPagamentoCompleto']
+      : initialTime
+  ..ultimoPagamentoGerado = map['ultimoPagamentoGerado'] != null
+      ? map['ultimoPagamentoGerado']
+      : initialTime
+  ..cnpj = map['cnpj'] != null ? map['cnpj'] : ""
+  ..razaoSocial = map['razaoSocial'] != null ? map['razaoSocial'] : ""
+  ..municipio = map['municipio'] != null ? map['municipio'] : ""
+  ..estado = map['estado'] != null ? map['estado'] : ""
+  ..cep = map['cep'] != null ? map['cep'] : ""
+  ..bairro = map['bairro'] != null ? map['bairro'] : ""
+  ..logradouro = map['logradouro'] != null ? map['logradouro'] : ""
+  ..numeroCasa = map['numeroCasa'] != null ? map['numeroCasa'] : "";
+
 mixin _$Serial {
   Map<String, dynamic> classToMap() {
     return _$EmpresaToJson(this as Empresa);
@@ -96,7 +128,7 @@ mixin _$Serial {
     return json.encode(list);
   }
 
-  Map<String, dynamic> dbMaptoClassMap(Map original) {
+  Map<String, dynamic> matchKeysToFields(Map original) {
     Map<String, dynamic> map2 = {};
     List allFields = Empresa().reflect().allFields();
     for (var obj in allFields) {
@@ -112,13 +144,18 @@ mixin _$Serial {
 
   Empresa stringToClass(String string) {
     Map map2 = json.decode(string);
-    map2 = dbMaptoClassMap(map2);
+    map2 = matchKeysToFields(map2);
     return _$EmpresaFromJson(map2);
   }
 
   Empresa mapToClass(Map map) {
-    Map map2 = dbMaptoClassMap(map);
+    Map map2 = matchKeysToFields(map);
     return _$EmpresaFromJson(map2);
+  }
+
+  Empresa mapToClass2(Map map) {
+    Map map2 = matchKeysToFields(map);
+    return _$EmpresaFromMap(map2);
   }
 
   List<Empresa> listMapToListClass(List list) {
