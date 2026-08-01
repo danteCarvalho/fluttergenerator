@@ -104,13 +104,12 @@ class ListaMensalidadesPageState extends State<ListaMensalidadesPage> {
     columnWidgets.add(tabela);
 
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: Card(
-            color: Colors.red,
             child: column,
           )),
-    ), context);
+    );
 
 
   }

@@ -55,7 +55,6 @@ class CadastroPageState extends State<CadastroPage> {
             width: porcentagemMenorLado(context, 20),
             height: porcentagemMenorLado(context, 20),
             child: FloatingActionButton(
-              backgroundColor: Colors.grey,
               onPressed: () async{
                 store.selectFoto();
               },
@@ -162,13 +161,13 @@ class CadastroPageState extends State<CadastroPage> {
     columnWidgets.add(sessao(checkbox));
     columnWidgets.add(sessao(elevatedButton));
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: Form(
             key: formKey,
             child: column,
           )),
-    ), context);
+    );
 
   }
 }

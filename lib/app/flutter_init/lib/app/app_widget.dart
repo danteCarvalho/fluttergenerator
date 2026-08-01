@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
@@ -8,9 +7,7 @@ import 'package:provider/provider.dart';
 
 import 'app_routes.dart';
 import 'app_store.dart';
-import 'widgets/root_app_bar_widget.dart';
-import 'widgets/splash/splash_widget.dart';
-import 'widgets/wait/wait_widget.dart';
+import 'app_theme.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -36,32 +33,14 @@ class AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'pt_BR';
-    var colorScheme = ColorScheme.fromSeed(seedColor: Colors.green);
     return MaterialApp.router(
-      builder: (context, child) {
-        child = Scaffold(
-          appBar: RootAppBarWidget(),
-          body: child,
-        );
-        child = Asuka.builder(context, child);
-        child = Stack(
-          alignment: Alignment.center,
-          children: [child, const WaitWidget()],
-        );
-        return store.iniciado ? child : const SplashWidget();
-      },
+      scaffoldMessengerKey: store.messengerKey,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: const [Locale('pt', 'BR'), Locale('en', 'US')],
+      locale: const Locale('pt', 'BR'),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          buttonTheme: const ButtonThemeData(
-            alignedDropdown: true,
-          ),
-          colorScheme: colorScheme,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.black, foregroundColor: Colors.white),
-          ),
-          useMaterial3: true),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       routerConfig: router,
       scrollBehavior: ScrollConfiguration.of(context).copyWith(
         dragDevices: PointerDeviceKind.values.toSet(),

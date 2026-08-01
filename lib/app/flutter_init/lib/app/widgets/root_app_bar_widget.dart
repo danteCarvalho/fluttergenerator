@@ -92,18 +92,13 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
         return PopupMenuButton(
           icon: const Icon(Icons.more_vert),
           onSelected: (dynamic value) {
-            app.contexts.remove(context);
             value?.call();
           },
           itemBuilder: (BuildContext context) {
             return list;
           },
-          onOpened: () {
-            app.contexts.add(context);
-          },
-          onCanceled: () {
-            app.contexts.remove(context);
-          },
+          onOpened: () {},
+          onCanceled: () {},
         );
       },
     );
@@ -111,8 +106,9 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
     var streamBuilder = StreamBuilder(
       stream: NavigationHistoryObserver().historyChangeStream,
       builder: (context, snapshot) {
-        print("Histórico: ${NavigationHistoryObserver().history.map((e) => e.settings.name).toList()}");
-        if (NavigationHistoryObserver().history.length > 1) {
+        var nonNulls = NavigationHistoryObserver().history.where((element) => element.settings.name != null).toList();
+        print("Histórico: ${nonNulls.map((e) => e.settings.name).toList()}");
+        if (nonNulls.length > 1) {
           return IconButton(
             onPressed: () {
               if (router.canPop()) {
@@ -120,18 +116,29 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
               }
             },
             onLongPress: () {
+              final RenderBox button = context.findRenderObject() as RenderBox;
+              final RenderBox overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+              final RelativeRect position = RelativeRect.fromRect(
+                Rect.fromPoints(
+                  button.localToGlobal(Offset.zero, ancestor: overlay),
+                  button.localToGlobal(button.size.bottomRight(Offset.zero), ancestor: overlay),
+                ),
+                Offset.zero & overlay.size,
+              );
+
               List<PopupMenuItem> listaHistorico = [];
-              for (Route route in NavigationHistoryObserver().history) {
+              for (Route route in nonNulls) {
                 var nome = route.settings.name;
                 if (nome == null) {
                   continue;
                 }
-                listaHistorico.add(PopupMenuItem(
-                  value: nome,
-                  child: Text(nome),
-                ));
+                listaHistorico.add(PopupMenuItem(value: nome, child: Text(nome)));
               }
-              app.menu(context, listaHistorico);
+              showMenu(context: context, position: position, items: listaHistorico).then((value) {
+                if (value != null) {
+                  router.go(value);
+                }
+              });
             },
             icon: const Icon(Icons.arrow_back),
           );
@@ -140,6 +147,6 @@ class RootAppBarWidgetState extends State<RootAppBarWidget> {
         }
       },
     );
-    return AppBar(leading: streamBuilder, backgroundColor: Colors.lightBlueAccent, actions: [menu]);
+    return AppBar(leading: streamBuilder, actions: [menu]);
   }
 }

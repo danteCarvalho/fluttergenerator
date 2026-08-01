@@ -41,7 +41,7 @@ class PagamentoSistemaUtil {
     return result;
   }
 
-  static mostarQrcode(AppStore app, String qrcodeString, double valor) async{
+  static mostarQrcode(BuildContext context, AppStore app, String qrcodeString, double valor) async{
 
 
     var qrcode = LayoutBuilder(
@@ -79,7 +79,7 @@ class PagamentoSistemaUtil {
     Dialog dialog = Dialog(
       child: qrcode,
     );
-    await app.dialog(dialog);
+    await showDialog(context: context, builder: (context) => dialog);
   }
 
   static criarPreferencia(double valor) async {

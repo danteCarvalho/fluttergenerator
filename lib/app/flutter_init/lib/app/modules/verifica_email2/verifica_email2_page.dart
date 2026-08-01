@@ -60,7 +60,6 @@ class VerificaEmail2PageState extends State<VerificaEmail2Page> {
           ));
           columnWidgets.add(Icon(
             FontAwesome.check_circle,
-            color: Colors.green,
             size: porcentagemMenorLado(context, 10),
           ));
           return column;
@@ -71,10 +70,10 @@ class VerificaEmail2PageState extends State<VerificaEmail2Page> {
     );
     columnWidgets.add(sessao(observer));
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: column),
-    ), context);
+    );
 
   }
 }

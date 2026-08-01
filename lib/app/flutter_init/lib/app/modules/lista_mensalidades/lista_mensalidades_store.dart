@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:async/async.dart';
 import 'package:dartutils/dartutils.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,10 @@ abstract class ListaMensalidadesStoreBase with Store {
   @observable
   bool existe = false;
 
+  late ListaMensalidadesPageState state;
+
   Future<void> init(ListaMensalidadesPageState state) async {
+    this.state = state;
     app = state.context.read<AppStore>();
     var usuario = app.usuario!;
     List<Map> list = [];
@@ -88,7 +92,7 @@ abstract class ListaMensalidadesStoreBase with Store {
   mostrarQrcode(PagamentoSistema pagamentoSistema )async{
     this.pagamentoSistema = pagamentoSistema;
     timer = Timer(const Duration(seconds: 10), verificaPix);
-    await PagamentoSistemaUtil.mostarQrcode(app, pagamentoSistema.qrCode, pagamentoSistema.valor);
+    await PagamentoSistemaUtil.mostarQrcode(state.context, app, pagamentoSistema.qrCode, pagamentoSistema.valor);
     cancelableOperation?.cancel();
     timer?.cancel();
   }
@@ -113,7 +117,9 @@ abstract class ListaMensalidadesStoreBase with Store {
           app.mostrarSnackBar(responseMap["mensagem"]);
         }
       }
-      await app.pop();
+      if(state.mounted){
+        Navigator.pop(state.context);
+      }
       app.mostrarSnackBar("Pix aprovado");
       return;
     }

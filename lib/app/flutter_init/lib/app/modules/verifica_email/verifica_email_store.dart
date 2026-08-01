@@ -38,6 +38,9 @@ abstract class VerificaEmailStoreBase with Store {
         await verificar();
       },
     );
+    if (!kIsWeb) {
+      esperarResposta();
+    }
   }
 
   verificar() async {
@@ -77,9 +80,6 @@ abstract class VerificaEmailStoreBase with Store {
         Map responseMap = json.decode(responseBody);
         if (responseMap.containsKey("ok")) {
           app.mostrarSnackBar("Email enviado");
-          if (!kIsWeb) {
-            esperarResposta();
-          }
         } else if (responseMap.containsKey("mensagem")) {
           app.mostrarSnackBar(responseMap["mensagem"]);
         }

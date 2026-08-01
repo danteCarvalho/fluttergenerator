@@ -3,7 +3,7 @@
 // ignore_for_file: public_member_api_docs, constant_identifier_names, avoid_classes_with_only_static_members
 
 mixin Pubspec {
-  static final buildDate = DateTime.utc(2026, 6, 23, 7, 9, 4);
+  static final buildDate = DateTime.utc(2026, 8, 1, 18, 26, 12);
 
   static const name = 'teste';
 
@@ -54,8 +54,8 @@ mixin Pubspec {
     'sembast_sqflite': '^2.2.1+1',
     'sqflite_common_ffi': '^2.4.0+3',
     'shared_preferences': '^2.5.5',
-    'jwt_decoder': '^2.0.1',
     'shared_preferences_web': '^2.4.3',
+    'jwt_decoder': '^2.0.1',
     'mobx': '^2.6.0',
     'flutter_mobx': '^2.3.0',
     'uuid': '^4.5.3',
@@ -72,7 +72,6 @@ mixin Pubspec {
     'navigation_history_observer': '^1.1.1',
     'reflection_factory': '^2.7.5',
     'reflectable': '^5.2.3',
-    'sentry_flutter': '^9.21.0',
     'clipboard': '3.0.0',
     'mercadopago_sdk': '^1.3.0',
     'qr_flutter': '^4.1.0',
@@ -83,6 +82,7 @@ mixin Pubspec {
     'osm_nominatim': '^4.0.1',
     'geolocator': '^14.0.1',
     'sentry': '^9.21.0',
+    'sentry_flutter': '^9.21.0',
     'pubspec_extract': '^2.1.1',
     'flutter_vector_icons': <dynamic, dynamic>{
       'git': <dynamic, dynamic>{
@@ -95,12 +95,6 @@ mixin Pubspec {
     },
     'dartutils': <dynamic, dynamic>{
       'path': '../dartutils',
-    },
-    'asuka': <dynamic, dynamic>{
-      'git': <dynamic, dynamic>{
-        'url': 'https://github.com/Flutterando/asuka.git',
-        'ref': '82e0b98497d19d42e974d8252b31d13fde8e4ffb',
-      },
     },
   };
 

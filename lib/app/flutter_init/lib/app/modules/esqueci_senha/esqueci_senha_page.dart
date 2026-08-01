@@ -64,10 +64,10 @@ class EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
     columnWidgets.add(sessao(email,width: responsiveSize(context,mobile: col_12(context),desktop3: col_6(context))));
     columnWidgets.add(sessao(botao));
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: column),
-    ), context);
+    );
 
   }
 }

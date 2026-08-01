@@ -28,10 +28,10 @@ class LogadoPageState extends State<LogadoPage> {
       children: columnWidgets,
     );
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: column),
-    ), context);
+    );
   }
 }
 

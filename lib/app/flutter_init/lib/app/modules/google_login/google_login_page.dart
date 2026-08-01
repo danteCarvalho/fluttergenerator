@@ -32,10 +32,10 @@ class GoogleLoginPageState extends State<GoogleLoginPage> {
 
 
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: column),
-    ), context);
+    );
 
   }
 }

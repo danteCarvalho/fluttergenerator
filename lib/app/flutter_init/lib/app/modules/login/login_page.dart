@@ -49,10 +49,8 @@ class LoginPageState extends State<LoginPage> {
     );
     var botao = ElevatedButton(
       onPressed: () async => store.enviar(),
-      style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
       child: const Text(
         "Entrar",
-        style: TextStyle(color: Colors.white),
       ),
     );
 
@@ -81,11 +79,11 @@ class LoginPageState extends State<LoginPage> {
     columnWidgets.add(sessao(ainda));
     columnWidgets.add(sessao(esqueciSenha));
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: Center(
             child: column,
           )),
-    ), context);
+    );
   }
 }

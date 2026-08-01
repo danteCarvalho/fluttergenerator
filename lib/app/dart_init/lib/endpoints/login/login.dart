@@ -35,6 +35,9 @@ class LoginEndpoint extends RouterMethods {
     } on NaoEncontrado {
       return Response.unauthorized(json.encode({"mensagem": "Usuário ou senha incorretos"}));
     }
+    if(usuario.senha.isEmpty){
+      return Response.unauthorized(json.encode({"mensagem": "Usuário ou senha incorretos"}));
+    }
     final bool checkPassword = BCrypt.checkpw(senha, usuario.senha);
     if(!checkPassword){
       return Response.unauthorized(json.encode({"mensagem": "Usuário ou senha incorretos"}));

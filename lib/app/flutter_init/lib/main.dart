@@ -20,7 +20,7 @@ main() async {
     configureUrlStrategy();
     await initSentry();
     FlutterError.onError = (FlutterErrorDetails details)async {
-      await myLog(details.exception, details.stack!);
+      await myLog(details.exception, details.stack);
     };
     runApp(
       MultiProvider(

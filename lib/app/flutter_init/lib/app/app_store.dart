@@ -26,11 +26,11 @@ abstract class AppStoreBase with Store {
   bool esperar = false;
   @observable
   bool bloquear = false;
-  Set<BuildContext> contexts = {};
 
   late AppWidgetState appWidgetState;
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldMessengerState> messengerKey = GlobalKey<ScaffoldMessengerState>();
   @observable
   LocalConfig localConfig = LocalConfig();
 
@@ -39,8 +39,7 @@ abstract class AppStoreBase with Store {
     this.appWidgetState = appWidgetState;
     var shared = await SharedPreferences.getInstance();
     usuario = shared.containsKey("usuario") ? Usuario().stringToClass(shared.getString("usuario")!) : null;
-    localConfig =
-    shared.containsKey("localConfig")
+    localConfig = shared.containsKey("localConfig")
         ? LocalConfig().stringToClass(shared.getString("localConfig")!)
         : await newConfig();
     verificaJwt(this);
@@ -70,109 +69,12 @@ abstract class AppStoreBase with Store {
     });
   }
 
-
-
   mostrarSnackBar(String texto, {SnackBarAction? action}) {
-    removeInvalids();
-    var snackBar = SnackBar(
-      content: Text(texto),
-      duration: Duration(seconds: 3),
-      action: action,
-    );
-    ScaffoldMessenger.of(contexts.last).showSnackBar(snackBar);
+    var snackBar = SnackBar(content: Text(texto), duration: Duration(seconds: 3),action: action,);
+    messengerKey.currentState?.showSnackBar(snackBar);
   }
 
-  dialog(
-      Widget dialog, {
-        bool barrierDismissible = true,
-        Color? barrierColor,
-      }) async {
-    removeInvalids();
-    BuildContext? context2;
-    await showDialog(
-      context: contexts.last,
-      builder: (context) {
-        contexts.add(context);
-        context2 = context;
-        return dialog;
-      },
-      barrierDismissible: barrierDismissible,
-      barrierColor: barrierColor,
-      useRootNavigator: false,
-    );
-
-    contexts.remove(context2);
-  }
-
-  modalBottomSheetItems(List<Widget> items) {
-    ListView listView = ListView(
-      shrinkWrap: true,
-      children: items,
-    );
-    return listView;
-  }
-
-  modalBottomSheet(Widget dialog) async {
-    removeInvalids();
-    BuildContext? context2;
-    await showModalBottomSheet(
-      context: contexts.last,
-      builder: (context) {
-        contexts.add(context);
-        context2 = context;
-        return dialog;
-      },
-      useRootNavigator: false,
-    );
-
-    contexts.remove(context2);
-  }
-
-  menu(BuildContext context, List<PopupMenuItem> items) async {
-    contexts.add(context);
-    await showMenu(context: context, position: RelativeRect.fill, items: items);
-    contexts.remove(context);
-  }
-
-  popScope(Widget child, BuildContext context, {bool canPop = false}) {
-    contexts.add(context);
-    return PopScope(
-      canPop: canPop,
-      onPopInvokedWithResult: (didPop, result) {
-        if (!didPop) {
-          pop();
-        } else {
-          contexts.remove(context);
-        }
-      },
-      child: child,
-    );
-  }
-
-  removeInvalids() {
-    var toRemove = [];
-    for (var obj in contexts) {
-      try {
-        obj.size;
-      } catch (e) {
-        toRemove.add(obj);
-      }
-    }
-    for (var obj in toRemove) {
-      contexts.remove(obj);
-    }
-  }
-
-  pop() {
-    removeInvalids();
-    if (contexts.isNotEmpty) {
-      var last = contexts.last;
-      if (Navigator.canPop(last)) {
-        Navigator.pop(last, last);
-      }
-    }
-  }
-
+  
   sair({bool redirecionar = true}) async {
     var shared = await SharedPreferences.getInstance();
     shared.remove("token");

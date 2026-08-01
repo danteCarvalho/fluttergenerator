@@ -72,10 +72,10 @@ class VerificaEmailPageState extends State<VerificaEmailPage> {
     columnWidgets.add(sessao(const Text(("ou"))));
     columnWidgets.add(sessao(sair));
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: column),
-    ), context);
+    );
 
   }
 }

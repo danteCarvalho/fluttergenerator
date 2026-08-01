@@ -22,6 +22,6 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return store.app.popScope(Scaffold(body: Container()), context);
+    return Scaffold(body: Container());
   }
 }

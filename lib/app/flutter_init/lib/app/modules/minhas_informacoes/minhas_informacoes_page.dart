@@ -75,7 +75,6 @@ class MinhasInformacoesPageState extends State<MinhasInformacoesPage> {
             width: porcentagemMenorLado(context, 20),
             height: porcentagemMenorLado(context, 20),
             child: FloatingActionButton(
-              backgroundColor: Colors.grey,
               onPressed: () {
                 store.selectFoto();
               },
@@ -147,10 +146,10 @@ class MinhasInformacoesPageState extends State<MinhasInformacoesPage> {
 
 
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: column),
-    ), context);
+    );
 
   }
 }

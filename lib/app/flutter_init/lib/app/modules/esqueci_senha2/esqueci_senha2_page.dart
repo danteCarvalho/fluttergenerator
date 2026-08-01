@@ -50,7 +50,7 @@ class EsqueciSenha2PageState extends State<EsqueciSenha2Page> {
         );
         if (store.alterada) {
           var text = Text("Senha alterada", style: TextStyle(fontSize: porcentagemMenorLado(context, 4)));
-          var icon = Icon(FontAwesome.check_circle, color: Colors.green, size: porcentagemMenorLado(context, 10));
+          var icon = Icon(FontAwesome.check_circle,  size: porcentagemMenorLado(context, 10));
           columnWidgets.add(sessao(text));
           columnWidgets.add(sessao(icon));
           return column;
@@ -105,10 +105,10 @@ class EsqueciSenha2PageState extends State<EsqueciSenha2Page> {
       },
     );
 
-    return store.app.popScope(Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
           child: sessao(observer, center: true)),
-    ), context);
+    );
 
   }
 }

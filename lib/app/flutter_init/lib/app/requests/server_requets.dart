@@ -37,6 +37,6 @@ Future<String> serverPost(Map map, String endpoint) async {
 
 Future<String> serverGet(String endpoint) async {
   var uri = Uri.parse("${config.schemeServidor}://${config.ipServidor}:${config.portaServidor}/$endpoint");
-  var response = await post(uri);
+  var response = await get(uri);
   return response.body;
 }
